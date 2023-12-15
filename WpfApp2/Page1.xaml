@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d" 
       d:DesignHeight="685" d:DesignWidth="965"
-      Title="Page1">
+      Title="Page1" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
 
     <Canvas Name="MyCanvas" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp" Focusable="True" Background="White">
-        <Rectangle Tag="floor" Height="630" Width="950" Canvas.Left="0" Canvas.Top="20">
+        <Rectangle Tag="floor" Height="630" Width="950" Canvas.Left="0" Canvas.Top="20" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="img/map.png" />
             </Rectangle.Fill>

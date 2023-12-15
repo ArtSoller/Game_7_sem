@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfApp2.Page2"
+﻿<local:Room x:Class="WpfApp2.Page2"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -53,4 +53,4 @@
         </Rectangle>
         <TextBlock FontSize="16" Name="txtScore" Foreground="Black" />
     </Canvas>
-</Page>
+</local:Room>
