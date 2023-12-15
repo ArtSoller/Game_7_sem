@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\floor.png" />
+    <None Remove="img\floor_1.png" />
+    <None Remove="img\image.png" />
+    <None Remove="img\kirpich.jpg" />
+    <None Remove="img\map.png" />
+    <None Remove="img\orange.jpg" />
+    <None Remove="img\pacman.jpg" />
+    <None Remove="img\Picture_preview_transparent.png" />
+    <None Remove="img\pink.jpg" />
+    <None Remove="img\quest1_1.png" />
+    <None Remove="img\red.jpg" />
+    <None Remove="img\Screenshot_1.png" />
+    <None Remove="img\wall.png" />
+    <None Remove="img\wall_down.png" />
+    <None Remove="img\wall_side.png" />
+    <None Remove="img\wall_side_1.png" />
+    <None Remove="img\wall_up.png" />
+    <None Remove="img\windows_picture.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\floor.png" />
+    <Resource Include="img\floor_1.png" />
+    <Resource Include="img\image.png" />
+    <Resource Include="img\kirpich.jpg" />
+    <Resource Include="img\map.png" />
+    <Resource Include="img\orange.jpg" />
+    <Resource Include="img\pacman.jpg" />
+    <Resource Include="img\Picture_preview_transparent.png" />
+    <Resource Include="img\pink.jpg" />
+    <Resource Include="img\quest1_1.png" />
+    <Resource Include="img\red.jpg" />
+    <Resource Include="img\Screenshot_1.png" />
+    <Resource Include="img\wall.png" />
+    <Resource Include="img\wall_down.png" />
+    <Resource Include="img\wall_side.png" />
+    <Resource Include="img\wall_side_1.png" />
+    <Resource Include="img\wall_up.png" />
+    <Resource Include="img\windows_picture.png" />
+  </ItemGroup>
+
+</Project>
