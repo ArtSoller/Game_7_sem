@@ -6,19 +6,23 @@
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d" 
       d:DesignHeight="685" d:DesignWidth="965"
-      Title="Page1" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
+      Title="Page1">
 
-    <Canvas Name="MyCanvas" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp" Focusable="True" Background="White">
-        <Rectangle Tag="floor" Height="630" Width="950" Canvas.Left="0" Canvas.Top="20" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
+    <Canvas Name="MyCanvas" Focusable="True" Background="White" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
+
+        <Rectangle Tag="floor" Height="630" Width="950" Canvas.Left="0" Canvas.Top="20">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="img/map.png" />
             </Rectangle.Fill>
         </Rectangle>
+
         <Rectangle Name="pacman" Width="30" Height="30" Fill="Yellow" Canvas.Left="100" Canvas.Top="260" />
-        <Rectangle Name="orangeGuy" Tag="ghost" Width="30" Height="30" Fill="Orange" Canvas.Left="649" Canvas.Top="187" RenderTransformOrigin="0.563,1.376" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle Name="pinkGuy" Tag="ghost" Width="30" Height="30" Fill="Pink" Canvas.Left="173" Canvas.Top="424" />
-        <Button Name="But1" Click="But1_Click"  Content="B" Height="194" Canvas.Left="322" Canvas.Top="211" Width="381"/>
-        <Rectangle Name="picture2" ToolTip="Для взаимодействия нажмите кнопку F" Tag="wall" Width="120" Height="99" Canvas.Left="414" Canvas.Top="124">
+        <Rectangle Name="orangeGuy" Tag="ghost" Width="30" Height="30" Fill="Orange" Canvas.Left="838" Canvas.Top="260" RenderTransformOrigin="0.563,1.376" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Rectangle Name="pinkGuy" Tag="ghost" Width="30" Height="30" Fill="Pink" Canvas.Left="460" Canvas.Top="320" />
+
+        <Button Name="But1" Click="But1_Click"  Content="B" Height="41" Canvas.Left="838" Canvas.Top="70" Width="100"/>
+
+        <Rectangle Name="picture2" ToolTip="Для взаимодействия нажмите кнопку F" Tag="wall" Width="120" Height="99" Canvas.Left="141" Canvas.Top="225.5" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
@@ -43,14 +47,12 @@
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="25">
-        </Rectangle>
-        <Rectangle Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="615">
-        </Rectangle>
-        <Rectangle Tag="wall" Height="630" Width="12" Canvas.Left="10" Canvas.Top="25">
-        </Rectangle>
-        <Rectangle Tag="wall" Height="630" Width="20" Canvas.Left="928" Canvas.Top="25">
-        </Rectangle>
-        <TextBlock FontSize="16" Name="txtScore" Foreground="Black" />
+
+        <Rectangle Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="25"/>
+        <Rectangle Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="615"/>
+        <Rectangle Tag="wall" Height="630" Width="12" Canvas.Left="10" Canvas.Top="25"/>
+        <Rectangle Tag="wall" Height="630" Width="20" Canvas.Left="928" Canvas.Top="25"/>
+
+        <TextBlock FontSize="16" Name="txtScore" Foreground="Black"/>
     </Canvas>
 </local:Room>

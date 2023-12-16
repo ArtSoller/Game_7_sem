@@ -1,12 +1,13 @@
-﻿using System.Windows.Media;
+﻿using System.Windows;
+using System.Windows.Media;
 using System.Windows.Shapes;
-
 
 namespace WpfApp2;
 
-public class Pacman
+public class Pacman : UIElement
 {
     public Rectangle Position { get; set; }
+
     public Pacman()
     {
         var mySolidColorBrush = new SolidColorBrush

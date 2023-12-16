@@ -17,7 +17,7 @@
         <Rectangle Name="pacman" Width="30" Height="30" Fill="Yellow" Canvas.Left="100" Canvas.Top="260" />
         <Rectangle Name="orangeGuy" Tag="ghost" Width="30" Height="30" Fill="Orange" Canvas.Left="649" Canvas.Top="187" RenderTransformOrigin="0.563,1.376" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Rectangle Name="pinkGuy" Tag="ghost" Width="30" Height="30" Fill="Pink" Canvas.Left="173" Canvas.Top="424" />
-        <Button Name="But1" Click="But2_Click"  Content="B" Height="194" Canvas.Left="322" Canvas.Top="211" Width="381"/>
+        <Button Name="But2" Click="But2_Click"  Content="B" Height="194" Canvas.Left="322" Canvas.Top="211" Width="381"/>
         <Rectangle Name="picture2" ToolTip="Для взаимодействия нажмите кнопку F" Tag="wall" Width="120" Height="99" Canvas.Left="414" Canvas.Top="124">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />

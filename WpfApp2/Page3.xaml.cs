@@ -19,14 +19,14 @@ public partial class Page3
         InitializeComponent();
     }
 
-    //private void CanvasKeyDown(object sender, KeyEventArgs e)
-    //{
-    //    if (e.Key == Key.F)
-    //    {
-    //        // Открываем страницу для прямоугольника 1
-    //        NavigationService.Navigate(new Page1());
-    //    }
-    //}
+    private void CanvasKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.F)
+        {
+            // Открываем страницу для прямоугольника 1
+            NavigationService.Navigate(new Page1());
+        }
+    }
 
     private void Image_MouseDown(object sender, MouseButtonEventArgs e)
     {
