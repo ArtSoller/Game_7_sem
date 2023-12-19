@@ -16,43 +16,47 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="pacman" Width="30" Height="30" Fill="Yellow" Canvas.Left="100" Canvas.Top="260" />
-        <Rectangle Name="orangeGuy" Tag="ghost" Width="30" Height="30" Fill="Orange" Canvas.Left="838" Canvas.Top="260" RenderTransformOrigin="0.563,1.376" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="pinkGuy" Tag="ghost" Width="30" Height="30" Fill="Pink" Canvas.Left="460" Canvas.Top="320" />
+        <Rectangle Name="Player1" Width="30" Height="30" Fill="Yellow" Canvas.Left="100" Canvas.Top="260" />
+        <Rectangle Name="Player2" Tag="ghost" Width="30" Height="30" Fill="Pink" Canvas.Left="100" Canvas.Top="406" />
 
-        <Button Name="But1" Click="But1_Click"  Content="B" Height="41" Canvas.Left="838" Canvas.Top="70" Width="100"/>
-
-        <Rectangle Name="picture2" ToolTip="Для взаимодействия нажмите кнопку F" Tag="wall" Width="120" Height="99" Canvas.Left="141" Canvas.Top="225.5" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Rectangle Name="picture2" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="120" Height="100" Canvas.Left="305" Canvas.Top="140" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="picture3" Tag="wall" Width="120" Height="99" Canvas.Left="681" Canvas.Top="124">
+        <Rectangle Name="picture3" Tag="easel" Width="120" Height="99" Canvas.Left="681" Canvas.Top="124">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="picture4" Tag="wall" Width="120" Height="99" Canvas.Left="147" Canvas.Top="462">
+        <Rectangle Name="picture4" Tag="easel" Width="120" Height="99" Canvas.Left="147" Canvas.Top="462">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="picture5" Tag="wall" Width="120" Height="99" Canvas.Left="414" Canvas.Top="462">
+        <Rectangle Name="picture5" Tag="easel" Width="120" Height="99" Canvas.Left="414" Canvas.Top="462">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="picture6" Tag="wall" Width="120" Height="99" Canvas.Left="681" Canvas.Top="462">
+        <Rectangle Name="picture6" Tag="easel" Width="120" Height="99" Canvas.Left="681" Canvas.Top="462">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="25"/>
-        <Rectangle Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="615"/>
-        <Rectangle Tag="wall" Height="630" Width="12" Canvas.Left="10" Canvas.Top="25"/>
-        <Rectangle Tag="wall" Height="630" Width="20" Canvas.Left="928" Canvas.Top="25"/>
+        <Rectangle Name="wallTop" Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="25"/>
+        <Rectangle Name="wallBottom" Tag="wall" Height="40" Width="950" Canvas.Left="5" Canvas.Top="615"/>
+        <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" Canvas.Left="10" Canvas.Top="25"/>
+        <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" Canvas.Left="928" Canvas.Top="25"/>
 
-        <TextBlock FontSize="16" Name="txtScore" Foreground="Black"/>
+        <TextBox Canvas.Left="16" Name="Tb1" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb2" TextWrapping="Wrap" Text="TextBox" Canvas.Top="90" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb3" TextWrapping="Wrap" Text="TextBox" Canvas.Top="110" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb4" TextWrapping="Wrap" Text="TextBox" Canvas.Top="130" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb5" TextWrapping="Wrap" Text="TextBox" Canvas.Top="150" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb6" TextWrapping="Wrap" Text="TextBox" Canvas.Top="170" Width="120"/>
+        
+        <Rectangle Name="TeleportToLocaltion2" Tag="teleport" Height="89" Canvas.Left="928" Canvas.Top="79" Width="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>
 </local:Room>

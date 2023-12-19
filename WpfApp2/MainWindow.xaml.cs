@@ -10,6 +10,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        MainFrame.Content = new Page1();
+        MainFrame.Content = new OpeningPage();
     }
 }

@@ -20,215 +20,230 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page1.xaml
 /// </summary>
-public partial class Page1
+public partial class Page1 : Room
 {
+    protected DispatcherTimer? gameTimer;
+
+    protected bool _isUpKeyPressed, _isDownKeyPressed, _isLeftKeyPressed, _isRightKeyPressed;
+
+    protected const float _friction = 0.88F, _speed = 0.8F;
+
+    protected float _speedX, _speedY;
+
+    protected bool _isPossibleUpwardMovement, _isPossibleDownwardMovement,
+                 _isPossibleLeftwardMovement, _isPossibleRightwardMovement;
+
+    protected bool _isPlayerMovingUpward, _isPlayerMovingLeftward,
+                 _isPlayerMovingRightward, _isPlayerMovingDownward;
+
+    protected Rect pacmanHitBox;
+
     public Page1()
     {
-        InitializeComponent();
-        myPacman = new();
         gameTimer = new();
-        
+        InitializeComponent();
         GameSetUp();
     }
 
-    private void GameSetUp()
+    // TODO: Улучшить взаимодействие с мольбертом.
+    #region Механика игры
+    private void CanvasKeyDown(object sender, KeyEventArgs e)
     {
-        Random rnd = new();
-
-        //Получить случайное число (в диапазоне от 0 до 1)
-        var value = rnd.Next(0, 2);
-        switch (value)
+        if (e.Key == Key.W)
         {
-            case 0:
-                score = "Исполнитель";
-                break;
-            case 1:
-                score = "Информатор";
-                break;
+            _isUpKeyPressed = true;
+            _isPlayerMovingUpward = true;
         }
-        // this function will run when the program loads
-        MyCanvas.Focus(); // set my canvas as the main focus for the program
-        gameTimer.Tick += GameLoop; // link the game loop event to the time tick
-        gameTimer.Interval = TimeSpan.FromMilliseconds(20); // set time to tick every 20 milliseconds
-        gameTimer.Start(); // start the time
-        currentGhostStep = ghostMoveStep; // set current ghost step to the ghost move step
-        // below pac man and the ghosts images are being imported from the images folder and then we are assigning the image brush to the rectangles
-        ImageBrush pacmanImage = new()
+
+        if (e.Key == Key.A)
         {
-            ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.jpg"))
-        };
-        pacman.Fill = pacmanImage;
-        //ImageBrush redGhost = new ImageBrush();
-        //redGhost.ImageSource = new BitmapImage(new Uri("pack://application:,,,/NewFolder1/red.jpg"));
-        //redGuy.Fill = redGhost;
-        ImageBrush orangeGhost = new()
+            _isLeftKeyPressed = true;
+            _isPlayerMovingLeftward = true;
+            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
+        }
+
+        if (e.Key == Key.D) 
         {
-            ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/orange.jpg"))
-        };
-        orangeGuy.Fill = orangeGhost;
-        ImageBrush pinkGhost = new()
+            _isRightKeyPressed = true;
+            _isPlayerMovingRightward = true;
+            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+        }
+
+        if (e.Key == Key.S)
         {
-            ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pink.jpg"))
-        };
-        pinkGuy.Fill = pinkGhost;
+            _isDownKeyPressed = true;
+            _isPlayerMovingDownward = true;
+        }
+
+        if (e.Key == Key.Escape)
+            GameOver("Dead");
+    }
+
+    private void CanvasKeyUp(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.W) _isUpKeyPressed = false;
+
+        if (e.Key == Key.A) _isLeftKeyPressed = false;
+
+        if (e.Key == Key.D) _isRightKeyPressed = false;
+        
+        if (e.Key == Key.S) _isDownKeyPressed = false;
+    }
+
+    private void SetMovementPossibility()
+    {
+        _isPossibleUpwardMovement = Canvas.GetTop(Player1) > 70;
+        _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > 19;
+        _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + 30 < Application.Current.MainWindow.ActualWidth - 39;
+        _isPossibleDownwardMovement = Canvas.GetTop(Player1) + 30 < Application.Current.MainWindow.ActualHeight - 70;
+
+        // asssign the pac man hit box to the pac man rectangle
+        pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+
+        foreach (var obj in MyCanvas.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport")))
+        {
+            Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
+
+            if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
+                NavigationService.Navigate(new Page2());
+
+
+            // check if we are colliding with the wall while moving up if true then stop the pac man movement
+            if (pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingUpward)
+            {
+                Canvas.SetTop(Player1, Canvas.GetTop(Player1) + 15);
+                _isPossibleUpwardMovement = false;
+                _speedY = 0;
+                _isPlayerMovingUpward = false;
+            }
+
+            // check if we are colliding with the wall while moving left if true then stop the pac man movement
+            if (pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingLeftward)
+            {
+                Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + 20);
+                _isPossibleLeftwardMovement = false;
+                _speedX = 0;
+                _isPlayerMovingLeftward = false;
+            }
+
+            // check if we are colliding with the wall while moving right if true then stop the pac man movement
+            if (pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingRightward)
+            {
+                Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - 20);
+                _isPossibleRightwardMovement = false;
+                _speedX = 0;
+                _isPlayerMovingRightward = false;
+            }
+
+            // check if we are colliding with the wall while moving down if true then stop the pac man movement
+            if (pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingDownward)
+            {
+                Canvas.SetTop(Player1, Canvas.GetTop(Player1) - 15);
+                _isPossibleDownwardMovement = false;
+                _speedY = 0;
+                _isPlayerMovingDownward = false;
+            }
+        }
+
+    }
+
+    private void SetMovementsStatus()
+    {
+        if (Math.Abs(_speedX) > 1e-1F)
+        {
+            if (_speedX > 0)
+            {
+                _isPlayerMovingRightward = true;
+                _isPlayerMovingLeftward = false;
+            }
+            else if (_speedX < 0)
+            {
+                _isPlayerMovingLeftward = true;
+                _isPlayerMovingRightward = false;
+            }
+        }
+        else
+        {
+            _isPlayerMovingLeftward = false;
+            _isPlayerMovingRightward = false;
+        }
+
+        if (Math.Abs(_speedY) > 1e-1F)
+        {
+            if (_speedY < 0)
+            {
+                _isPlayerMovingDownward = true;
+                _isPlayerMovingUpward = false;
+            }
+            else if (_speedY > 0)
+            {
+                _isPlayerMovingUpward = true;
+                _isPlayerMovingDownward = false;
+            }
+        }
+        else
+        {
+            _isPlayerMovingUpward = false;
+            _isPlayerMovingDownward = false;
+        }
     }
 
     private void GameLoop(object sender, EventArgs e)
     {
+        SetMovementsStatus();
 
-        // this is the game loop event, this event will control all of the movements, outcome, collision and score for the game
-        txtScore.Text = "Роль: " + score; // show the scoreo to the txtscore label. 
-        // start moving the character in the movement directions
-        if (goRight)
-        {
-            speedX += speed;
-            // if go right boolean is true then move pac man to the right direction by adding the speed to the left 
-            //Canvas.SetLeft(pacman, Canvas.GetLeft(pacman) + speed);
-        }
-        if (goLeft)
-        {
-            speedX -= speed;
-            // if go left boolean is then move pac man to the left direction by deducting the speed from the left
-            //Canvas.SetLeft(pacman, Canvas.GetLeft(pacman) - speed);
-        }
-        if (goUp)
-        {
-            speedY += speed;
-            // if go up boolean is true then deduct the speed integer from the top position of the pac man
-            //Canvas.SetTop(pacman, Canvas.GetTop(pacman) - speed);
-        }
-        if (goDown)
-        {
-            speedY -= speed;
-            // if go down boolean is true then add speed integer value to the pac man top position
-            //Canvas.SetTop(pacman, Canvas.GetTop(pacman) + speed);
-        }
-        speedX *= Friction;
-        speedY *= Friction;
-        Canvas.SetLeft(pacman, Canvas.GetLeft(pacman) + speedX);
-        Canvas.SetTop(pacman, Canvas.GetTop(pacman) - speedY);
+        SetMovementPossibility();
 
-        // end the movement 
-        // restrict the movement
-        if (goDown && Canvas.GetTop(pacman) + 80 > Application.Current.MainWindow.Height)
-        {
-            // if pac man is moving down the position of pac man is grater than the main window height then stop down movement
-            noDown = true;
-            goDown = false;
-        }
-        if (goUp && Canvas.GetTop(pacman) < 1)
-        {
-            // is pac man is moving and position of pac man is less than 1 then stop up movement
-            noUp = true;
-            goUp = false;
-        }
-        if (goLeft && Canvas.GetLeft(pacman) - 10 < 1)
-        {
-            // if pac man is moving left and pac man position is less than 1 then stop moving left
-            noLeft = true;
-            goLeft = false;
-        }
-        if (goRight && Canvas.GetLeft(pacman) + 70 > Application.Current.MainWindow.Width)
-        {
-            // if pac man is moving right and pac man position is greater than the main window then stop moving right
-            noRight = true;
-            goRight = false;
-        }
-        pacmanHitBox = new Rect(Canvas.GetLeft(pacman), Canvas.GetTop(pacman), pacman.Width, pacman.Height); // asssign the pac man hit box to the pac man rectangle
-        // below is the main game loop that will scan through all of the rectangles available inside of the game
-        foreach (var x in MyCanvas.Children.OfType<Rectangle>())
-        {
-            // loop through all of the rectangles inside of the game and identify them using the x variable
-            Rect hitBox = new(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height); // create a new rect called hit box for all of the available rectangles inside of the game
-            // find the walls, if any of the rectangles inside of the game has the tag wall inside of it
-            if ((string)x.Tag == "wall")
-            {
-                // check if we are colliding with the wall while moving left if true then stop the pac man movement
-                if (goLeft == true && pacmanHitBox.IntersectsWith(hitBox))
-                {
-                    Canvas.SetLeft(pacman, Canvas.GetLeft(pacman) + 20);
-                    noLeft = true;
-                    goLeft = false;
-                }
-                // check if we are colliding with the wall while moving right if true then stop the pac man movement
-                if (goRight == true && pacmanHitBox.IntersectsWith(hitBox))
-                {
-                    Canvas.SetLeft(pacman, Canvas.GetLeft(pacman) - 20);
-                    noRight = true;
-                    goRight = false;
-                }
-                // check if we are colliding with the wall while moving down if true then stop the pac man movement
-                if (goDown == true && pacmanHitBox.IntersectsWith(hitBox))
-                {
-                    Canvas.SetTop(pacman, Canvas.GetTop(pacman) - 15);
-                    noDown = true;
-                    goDown = false;
-                }
-                // check if we are colliding with the wall while moving up if true then stop the pac man movement
-                if (goUp == true && pacmanHitBox.IntersectsWith(hitBox))
-                {
-                    Canvas.SetTop(pacman, Canvas.GetTop(pacman) + 15);
-                    noUp = true;
-                    goUp = false;
-                }
-            }
-            // check if the any of the rectangles has a coin tag inside of them
-            if ((string)x.Tag == "coin")
-            {
-                // if pac man collides with any of the coin and coin is still visible to the screen
-                if (pacmanHitBox.IntersectsWith(hitBox) && x.Visibility == Visibility.Visible)
-                {
-                    // set the coin visiblity to hidden
-                    x.Visibility = Visibility.Hidden;
-                    // add 1 to the score
-                    //score++;
-                }
-            }
+        if (_isUpKeyPressed && _isPossibleUpwardMovement) _speedY += _speed;
+        else if (!_isPossibleUpwardMovement && _isPlayerMovingUpward) _speedY = 0;
 
-            // if any rectangle has the tag ghost inside of it
-            //if ((string)x.Tag == "ghost")
-            //{
-            //    // check if pac man collides with the ghost 
-            //    if (pacmanHitBox.IntersectsWith(hitBox))
-            //    {
-            //        // if collision has happened, then end the game by calling the game over function and passing in the message
-            //        GameOver("Ghosts got you, click ok to play again");
-            //    }
-            //    // if there is a rectangle called orange guy in the game
-            //    if (x.Name.ToString() == "orangeGuy")
-            //    {
-            //        // move that rectangle to towards the left of the screen
-            //        Canvas.SetLeft(x, Canvas.GetLeft(x) - ghostSpeed);
-            //    }
-            //    else
-            //    {
-            //        // other ones can move towards the right of the screen
-            //        Canvas.SetLeft(x, Canvas.GetLeft(x) + ghostSpeed);
-            //    }
-            //    // reduce one from the current ghost step integer
-            //    currentGhostStep--;
-            //    // if the current ghost step integer goes below 1 
-            //    if (currentGhostStep < 1)
-            //    {
-            //        // reset the current ghost step to the ghost move step value
-            //        currentGhostStep = ghostMoveStep;
-            //        // reverse the ghost speed integer
-            //        ghostSpeed = -ghostSpeed;
-            //    }
-            //}
-        }
-        // if the player collected 85 coins in the game
-        //if (score == 85)
-        //{
-        //    // show game over function with the you win message
-        //    GameOver("You Win, you collected all of the coins");
-        //}
+        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _speedX -= _speed;
+        else if (!_isPossibleLeftwardMovement && _isPlayerMovingLeftward) _speedX = 0;
 
+        if (_isRightKeyPressed && _isPossibleRightwardMovement) _speedX += _speed;
+        else if (!_isPossibleRightwardMovement && _isPlayerMovingRightward) _speedX = 0;
+
+        if (_isDownKeyPressed && _isPossibleDownwardMovement) _speedY -= _speed;
+        else if (!_isPossibleDownwardMovement && _isPlayerMovingDownward) _speedY = 0;
+
+
+        _speedX *= _friction;
+        _speedY *= _friction;
+
+        Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + _speedX);
+        Canvas.SetTop(Player1, Canvas.GetTop(Player1) - _speedY);
+
+        Tb1.Text = _isPlayerMovingUpward.ToString();
+        Tb2.Text = _isPlayerMovingLeftward.ToString();
+        Tb3.Text = _isPlayerMovingRightward.ToString();
+        Tb4.Text = _isPlayerMovingDownward.ToString();
+        Tb5.Text = _speedX.ToString();
+        Tb6.Text = _speedY.ToString();
+    }
+    #endregion
+
+    private void GameSetUp()
+    {
+        if (gameTimer is null) throw new Exception("gameTimer is null");
+
+        MyCanvas.Focus();
+
+        gameTimer.Interval = TimeSpan.FromMilliseconds(16);
+
+        gameTimer.Tick += GameLoop; 
+
+        gameTimer.Start();
+
+        ImageBrush pacmanImage = new()
+        {
+            ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
+        };
+        Player1.Fill = pacmanImage;
     }
 
     private void Rectangle1_PreviewKeyDown(object sender, KeyEventArgs e)
     {
-        var left = Canvas.GetLeft(myPacman);
+        var left = Canvas.GetLeft(Player1);
         if (e.Key == Key.F && left > 0)
         {
             // Открываем страницу для прямоугольника 1
@@ -241,6 +256,7 @@ public partial class Page1
 
     private void GameOver(string message)
     {
+        if (gameTimer is null) throw new Exception("gameTimer is null");
         // inside the game over function we passing in a string to show the final message to the game
         gameTimer.Stop(); // stop the game timer
         MessageBox.Show(message, "The Pac Man Game WPF MOO ICT"); // show a mesage box with the message that is passed in this function
@@ -254,74 +270,4 @@ public partial class Page1
     {
         NavigationService.Navigate(new Page2());
     }
-
-    //private void CanvasKeyDown(object sender, KeyEventArgs e)
-    //{
-    //    // this is the key down event
-    //    if (e.Key == Key.Left && noLeft == false)
-    //    {
-    //        // if the left key is down and the boolean noLeft is set to false
-    //        goRight = goUp = goDown = false; // set rest of the direction booleans to false
-    //        noRight = noUp = noDown = false; // set rest of the restriction boolean to false
-    //        goLeft = true; // set go left true
-    //        pacman.RenderTransform = new RotateTransform(-180, pacman.Width / 2, pacman.Height / 2); // rotate the pac man image to face left
-    //    }
-    //    if (e.Key == Key.Right && noRight == false)
-    //    {
-    //        // if the right key pressed and no right boolean is false
-    //        noLeft = noUp = noDown = false; // set rest of the direction boolean to false
-    //        goLeft = goUp = goDown = false; // set rest of the restriction boolean to false
-    //        goRight = true; // set go right to true
-    //        pacman.RenderTransform = new RotateTransform(0, pacman.Width / 2, pacman.Height / 2); // rotate the pac man image to face right
-    //    }
-    //    if (e.Key == Key.Up && noUp == false)
-    //    {
-    //        // if the up key is pressed and no up is set to false
-    //        noRight = noDown = noLeft = false; // set rest of the direction boolean to false
-    //        goRight = goDown = goLeft = false; // set rest of the restriction boolean to false
-    //        goUp = true; // set go up to true
-    //        pacman.RenderTransform = new RotateTransform(-90, pacman.Width / 2, pacman.Height / 2); // rotate the pac man character to face up
-    //    }
-    //    if (e.Key == Key.Down && noDown == false)
-    //    {
-    //        // if the down key is press and the no down boolean is false
-    //        noUp = noLeft = noRight = false; // set rest of the direction boolean to false
-    //        goUp = goLeft = goRight = false; // set rest of the restriction boolean to false
-    //        goDown = true; // set go down to true
-    //        pacman.RenderTransform = new RotateTransform(90, pacman.Width / 2, pacman.Height / 2); // rotate the pac man character to face down
-    //    }
-    //    var left = Canvas.GetLeft(pacman);
-    //    var top = Canvas.GetTop(pacman);
-    //    if (e.Key == Key.F && top > 422 && top < 601 && left > 107 && left < 286)
-    //    {
-    //        // Открываем страницу для прямоугольника 1
-    //        NavigationService.Navigate(new Page3());
-    //    }
-    //}
-
-    //private void CanvasKeyUp(object sender, KeyEventArgs e)
-    //{
-    //    // this is the key down event
-    //    if (e.Key == Key.Left && noLeft == false)
-    //    {
-    //        // if the left key is down and the boolean noLeft is set to false
-    //        goLeft = false;
-    //    }
-    //    if (e.Key == Key.Right && noRight == false)
-    //    {
-    //        // if the right key pressed and no right boolean is false
-    //        goRight = false; // set go right to true
-    //    }
-    //    if (e.Key == Key.Up && noUp == false)
-    //    {
-    //        // if the up key is pressed and no up is set to false
-    //        goUp = false; // set go up to true
-    //    }
-    //    if (e.Key == Key.Down && noDown == false)
-    //    {
-    //        // if the down key is press and the no down boolean is false
-    //        // set go down to true
-    //        goDown = false;
-    //    }
-    //}
 }
