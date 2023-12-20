@@ -55,3 +55,5 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.genr
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\ref\WpfApp2.dll
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.baml

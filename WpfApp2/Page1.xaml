@@ -56,7 +56,12 @@
         <TextBox Canvas.Left="16" Name="Tb4" TextWrapping="Wrap" Text="TextBox" Canvas.Top="130" Width="120"/>
         <TextBox Canvas.Left="16" Name="Tb5" TextWrapping="Wrap" Text="TextBox" Canvas.Top="150" Width="120"/>
         <TextBox Canvas.Left="16" Name="Tb6" TextWrapping="Wrap" Text="TextBox" Canvas.Top="170" Width="120"/>
-        
+        <TextBox Canvas.Left="160" Name="Tb7" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="120"/>
+        <TextBox Canvas.Left="160" Name="Tb8" TextWrapping="Wrap" Text="TextBox" Canvas.Top="90" Width="120"/>
+        <TextBox Canvas.Left="300" Name="Tb9" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="120"/>
+        <TextBox Canvas.Left="300" Name="Tb10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="90" Width="120"/>
+
+
         <Rectangle Name="TeleportToLocaltion2" Tag="teleport" Height="89" Canvas.Left="928" Canvas.Top="79" Width="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>
 </local:Room>

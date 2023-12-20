@@ -20,5 +20,9 @@ namespace WpfApp2;
 
 public class Room : Page
 {
+    protected Player _me = new("Kaka puka", Role.Performer);
 
+    protected Player _companion = new();
+
+    
 }

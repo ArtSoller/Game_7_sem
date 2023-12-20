@@ -42,6 +42,15 @@ public partial class Page1 : Room
     {
         gameTimer = new();
         InitializeComponent();
+
+        // Перенести в OpeningWindow
+        _companion = new("Buga guga", Role.Assistant);
+
+        _me.X = Canvas.GetLeft(Player1);
+        _me.Y = Canvas.GetTop(Player1);
+
+        _companion.X = Canvas.GetLeft(Player2);
+        _companion.Y = Canvas.GetTop(Player2);
         GameSetUp();
     }
 
@@ -105,8 +114,10 @@ public partial class Page1 : Room
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
             if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
+            {
+                _me.TeleportateTo(Location.Location2);
                 NavigationService.Navigate(new Page2());
-
+            }
 
             // check if we are colliding with the wall while moving up if true then stop the pac man movement
             if (pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingUpward)
@@ -213,12 +224,22 @@ public partial class Page1 : Room
         Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + _speedX);
         Canvas.SetTop(Player1, Canvas.GetTop(Player1) - _speedY);
 
+        _me.X += _speedX;
+        _me.Y -= _speedY;
+
         Tb1.Text = _isPlayerMovingUpward.ToString();
         Tb2.Text = _isPlayerMovingLeftward.ToString();
         Tb3.Text = _isPlayerMovingRightward.ToString();
         Tb4.Text = _isPlayerMovingDownward.ToString();
         Tb5.Text = _speedX.ToString();
         Tb6.Text = _speedY.ToString();
+        Tb7.Text = Canvas.GetLeft(Player1).ToString();
+        Tb8.Text = Canvas.GetTop(Player1).ToString();
+        Tb9.Text = _me.X.ToString();
+        Tb10.Text = _me.Y.ToString();
+
+        
+
     }
     #endregion
 
@@ -234,11 +255,18 @@ public partial class Page1 : Room
 
         gameTimer.Start();
 
-        ImageBrush pacmanImage = new()
+        ImageBrush MyImage = new()
         {
             ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
         };
-        Player1.Fill = pacmanImage;
+        Player1.Fill = MyImage;
+
+
+        //ImageBrush CompanionImage = new()
+        //{
+        //    ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
+        //};
+        //Player2.Fill = CompanionImage;
     }
 
     private void Rectangle1_PreviewKeyDown(object sender, KeyEventArgs e)

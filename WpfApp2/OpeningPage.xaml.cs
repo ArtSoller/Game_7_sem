@@ -18,9 +18,11 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для OpeningPage.xaml
 /// </summary>
-public partial class OpeningPage : Page
+public partial class OpeningPage : Room
 {
     private bool _isConnectedWithCompanion;
+
+    private Brush? _brush;
 
     public OpeningPage()
     {
@@ -29,36 +31,28 @@ public partial class OpeningPage : Page
         var IP = Dns.GetHostAddresses(Host);
         var ipAddress = IP.Length == 5 ? $"{IP[4]}:7106" : $"{IP[1]}:7106";
         TextBoxInfoIP.Text = "Ваш IP адрес: " + ipAddress;
-        ButtConnect2.Visibility = Visibility.Collapsed;
-        GoBack.Visibility = Visibility.Collapsed;
+
+        _brush = new SolidColorBrush(Color.FromRgb(190, 190, 190));
+        ButtStart.Foreground = _brush;
     }
 
     private void StartGame(object sender, RoutedEventArgs e)
     {
-        UnrealCyberRoyak.Content = "Ожидаем подключения";
+        NavigationService.Navigate(new Page1());
+    }
 
-        ButtStart.Visibility = Visibility.Collapsed;
-        ButtConnect1.Visibility = Visibility.Collapsed;
-
-        ButtConnect2.Visibility = Visibility.Collapsed;
-        GoBack.Visibility = Visibility.Collapsed;
-
-        /*Подключение должно быть асинхронным*/
-        UnrealCyberRoyak.Visibility = Visibility.Collapsed;
-        _isConnectedWithCompanion = true;
-        if (_isConnectedWithCompanion)
-            NavigationService.Navigate(new Page1());
+    private async void WaitingForCompanion(object sender, RoutedEventArgs e)
+    {
+        /* Здесь будет логика подключения между игроками */
+        
     }
 
     private void ConnectToCompanion(object sender, RoutedEventArgs e)
     {
-        UnrealCyberRoyak.Content = "Lobby zone";
-
+        
         ButtStart.Visibility = Visibility.Collapsed;
         ButtConnect1.Visibility = Visibility.Collapsed;
 
-        ButtConnect2.Visibility = Visibility.Visible;
-        GoBack.Visibility = Visibility.Visible;
     }
 
     private void TryToConnect(object sender, RoutedEventArgs e)
@@ -73,7 +67,5 @@ public partial class OpeningPage : Page
         ButtStart.Visibility = Visibility.Visible;
         ButtConnect1.Visibility = Visibility.Visible;
 
-        ButtConnect2.Visibility = Visibility.Collapsed;
-        GoBack.Visibility = Visibility.Collapsed;
     }
 }

@@ -54,6 +54,9 @@
     <Resource Include="img\mapSmoothed.jpg" />
     <Resource Include="snd\backgroundMusic.mp3" />
     <Resource Include="snd\backgroundMusicShort.mp3" />
+    <Resource Include="snd\backgroundMusic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

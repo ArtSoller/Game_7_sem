@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\App.xaml
-5798694825
+61585676594
 
-111272476387
+14340428706
 198-688555687
-MainWindow.xaml;OpeningPage.xaml;Page1.xaml;Page2.xaml;Page3.xaml;
+Lobby.xaml;MainWindow.xaml;OpeningPage.xaml;Page1.xaml;Page2.xaml;Page3.xaml;
 
 False
 
