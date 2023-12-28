@@ -62,7 +62,7 @@ public partial class OpeningPage : Room
 
     private void BackToMain(object sender, RoutedEventArgs e)
     {
-        UnrealCyberRoyak.Content = "Нереально красивое название для игры будет здесь";
+        //UnrealCyberRoyak.Content = "Нереально красивое название для игры будет здесь";
 
         ButtStart.Visibility = Visibility.Visible;
         ButtConnect1.Visibility = Visibility.Visible;

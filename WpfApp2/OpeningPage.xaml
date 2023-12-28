@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d" 
-      d:DesignHeight="685" d:DesignWidth="965"
+      d:DesignHeight="620" d:DesignWidth="965"
       Title="OpeningPage">
 
     <Grid>
         <Canvas Name="Huy" Background="White">
 
-            <Rectangle Tag="floor" Height="630" Width="950" Canvas.Left="0" Canvas.Top="20">
+            <Rectangle Tag="floor" Height="650" Width="950" Canvas.Left="0" Canvas.Top="0">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="img/mapSmoothed.jpg" />
                 </Rectangle.Fill>
@@ -21,7 +21,12 @@
             <Button Name="ButtStart" Content="Начать" Height="57" Canvas.Left="414" Canvas.Top="413" Width="122" Click="StartGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24"/>
             <Button Name ="ButtConnect1" Content="Подключиться" Height="57" Canvas.Left="414" Canvas.Top="483" Width="122" Click="ConnectToCompanion" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-            <Label Name="UnrealCyberRoyak" Content="Нереально красивое название для игры будет здесь" Height="94" Canvas.Left="138" Canvas.Top="153" Width="688" FontFamily="Segoe Script" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Italic"/>
+            <Rectangle Height="94" Width="688" Canvas.Left="138" Canvas.Top="153">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="img/3D_logo_V3.png" />
+                </Rectangle.Fill>
+            </Rectangle>
+
 
             <TextBox Name="TextBoxInfoIP" Canvas.Left="830" TextWrapping="Wrap" Text="TextBox" Canvas.Top="613" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
