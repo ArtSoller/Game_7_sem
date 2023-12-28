@@ -1,8 +1,19 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp2;
 
@@ -19,15 +30,10 @@ public partial class Page3
         InitializeComponent();
     }
 
-    private void CanvasKeyDown(object sender, KeyEventArgs e)
+    private void But2_Click(object sender, RoutedEventArgs e)
     {
-        if (e.Key == Key.F)
-        {
-            // Открываем страницу для прямоугольника 1
-            NavigationService.Navigate(new Page1());
-        }
+        NavigationService.Navigate(new Page1());
     }
-
     private void Image_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.ChangedButton == MouseButton.Left)

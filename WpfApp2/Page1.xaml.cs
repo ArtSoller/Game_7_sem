@@ -49,7 +49,6 @@ public partial class Page1 : Room
 
         _me.X = Canvas.GetLeft(Player1);
         _me.Y = Canvas.GetTop(Player1);
-
         _companion.X = Canvas.GetLeft(Player2);
         _companion.Y = Canvas.GetTop(Player2);
         GameSetUp();
@@ -289,18 +288,18 @@ public partial class Page1 : Room
         //Player2.Fill = CompanionImage;
     }
 
-    private void Rectangle1_PreviewKeyDown(object sender, KeyEventArgs e)
-    {
-        var left = Canvas.GetLeft(Player1);
-        if (e.Key == Key.F && left > 0)
-        {
-            // Открываем страницу для прямоугольника 1
-            // NavigationService.Navigate(new Page2());
-            // Page2 page = new Page2();
-            // this.Content = page;
-            NavigationService.Navigate(new Uri("Page2.xaml", UriKind.Relative));
-        }
-    }
+    //private void Rectangle1_PreviewKeyDown(object sender, KeyEventArgs e)
+    //{
+    //    var left = Canvas.GetLeft(Player1);
+    //    if (e.Key == Key.F && left > 0)
+    //    {
+    //        // Открываем страницу для прямоугольника 1
+    //        // NavigationService.Navigate(new Page2());
+    //        // Page2 page = new Page2();
+    //        // this.Content = page;
+    //        NavigationService.Navigate(new Uri("Page2.xaml", UriKind.Relative));
+    //    }
+    //}
 
     private void GameOver(string message)
     {

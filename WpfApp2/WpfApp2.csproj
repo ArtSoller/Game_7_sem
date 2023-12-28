@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\2_quest.png" />
     <None Remove="img\3D_logo_V3.png" />
     <None Remove="img\floor.png" />
     <None Remove="img\floor_1.png" />
@@ -24,6 +25,7 @@
     <None Remove="img\quest1_1.png" />
     <None Remove="img\red.jpg" />
     <None Remove="img\Screenshot_1.png" />
+    <None Remove="img\Uravnenia.png" />
     <None Remove="img\wall.png" />
     <None Remove="img\wall_down.png" />
     <None Remove="img\wall_side.png" />
@@ -33,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="img\2_quest.png" />
     <Resource Include="img\3D_logo_V3.png" />
     <Resource Include="img\floor.png" />
     <Resource Include="img\floor_1.png" />
@@ -47,6 +50,7 @@
     <Resource Include="img\quest1_1.png" />
     <Resource Include="img\red.jpg" />
     <Resource Include="img\Screenshot_1.png" />
+    <Resource Include="img\Uravnenia.png" />
     <Resource Include="img\wall.png" />
     <Resource Include="img\wall_down.png" />
     <Resource Include="img\wall_side.png" />

@@ -8,7 +8,7 @@
       d:DesignHeight="685" d:DesignWidth="965"
       Title="Page3">
 
-    <Canvas Name="MyCanvas" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyDown" Focusable="True" Background="White">
+    <Canvas Name="MyCanvas" Focusable="True" Background="White">
         <Border  Name="Target" 
         Background="LightGray"
         DragEnter="Target_DragEnter" 
@@ -21,5 +21,7 @@
         <StackPanel Name="DropTargets" Orientation="Horizontal" Canvas.Left="0" Canvas.Top="460">
             <!-- Здесь будут отображаться поля для перетаскивания картинок -->
         </StackPanel>
+        <Button Name="But3" Click="But2_Click"  Content="B" Height="194" Canvas.Left="322" Canvas.Top="211" Width="381"/>
+
     </Canvas>
 </local:Room>
