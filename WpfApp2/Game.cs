@@ -39,7 +39,7 @@ public class Game
 
         Role role1 = value == 0 ? Role.Performer : Role.Assistant;
         Role role2 = value == 0 ? Role.Assistant : Role.Performer;
-
+        
         Me = new Player() 
         { 
             X = 100, 

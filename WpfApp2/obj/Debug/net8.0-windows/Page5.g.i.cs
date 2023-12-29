@@ -101,7 +101,7 @@ namespace WpfApp2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfApp2;V1.0.0.0;component/page5.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfApp2;component/page5.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Page5.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -11,5 +11,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         MainFrame.Content = new OpeningPage();
+        WindowState = WindowState.Maximized;
+        WindowStyle = WindowStyle.None;
     }
 }

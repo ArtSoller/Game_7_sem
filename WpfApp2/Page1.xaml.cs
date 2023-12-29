@@ -26,7 +26,7 @@ public partial class Page1 : Room
 
     protected bool _isUpKeyPressed, _isDownKeyPressed, _isLeftKeyPressed, _isRightKeyPressed;
 
-    protected const float _friction = 0.88F, _speed = 0.8F;
+    protected const float _friction = 0.88F, _speed = 1.5F;
 
     protected float _speedX, _speedY;
 
@@ -47,15 +47,22 @@ public partial class Page1 : Room
         // Перенести в OpeningWindow
         _companion = new("Buga guga", Role.Assistant);
 
-        // _me.X = Canvas.GetLeft(Player1);
-        // _me.Y = Canvas.GetTop(Player1);
+        Floor.Height = SystemParameters.VirtualScreenHeight;
+        Floor.Width = SystemParameters.VirtualScreenWidth;
 
-        Canvas.SetLeft(Player1, _me.X);
-        Canvas.SetTop(Player1, _me.Y);
+        CanvasSetObjects();
 
         _companion.X = Canvas.GetLeft(Player2);
         _companion.Y = Canvas.GetTop(Player2);
         GameSetUp();
+    }
+
+    private void CanvasSetObjects()
+    {
+        Canvas.SetLeft(Player1, _me.X);
+        Canvas.SetTop(Player1, _me.Y);
+
+        Canvas.SetLeft(TeleportToLocaltion2, SystemParameters.VirtualScreenWidth - TeleportToLocaltion2.Width - 30);
     }
 
     // TODO: Улучшить взаимодействие с мольбертом.
