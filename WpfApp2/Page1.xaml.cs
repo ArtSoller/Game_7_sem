@@ -47,8 +47,12 @@ public partial class Page1 : Room
         // Перенести в OpeningWindow
         _companion = new("Buga guga", Role.Assistant);
 
-        _me.X = Canvas.GetLeft(Player1);
-        _me.Y = Canvas.GetTop(Player1);
+        // _me.X = Canvas.GetLeft(Player1);
+        // _me.Y = Canvas.GetTop(Player1);
+
+        Canvas.SetLeft(Player1, _me.X);
+        Canvas.SetTop(Player1, _me.Y);
+
         _companion.X = Canvas.GetLeft(Player2);
         _companion.Y = Canvas.GetTop(Player2);
         GameSetUp();
@@ -123,19 +127,12 @@ public partial class Page1 : Room
             if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
             {
                 _me.TeleportateTo(Location.Location2);
-                if (NavigationService != null)
-                {
-                    NavigationService.Navigate(new Page2());
-                }
+                NavigationService?.Navigate(new Page2());
             }
 
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isforceButtonClicked)
             {
-                if (NavigationService != null)
-                {
-                    NavigationService.Navigate(new Page3());
-                }
-
+                NavigationService?.Navigate(new Page3());
             }
 
             // check if we are colliding with the wall while moving up if true then stop the pac man movement
@@ -240,8 +237,11 @@ public partial class Page1 : Room
         _speedX *= _friction;
         _speedY *= _friction;
 
-        Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + _speedX);
-        Canvas.SetTop(Player1, Canvas.GetTop(Player1) - _speedY);
+        // Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + _speedX);
+        // Canvas.SetTop(Player1, Canvas.GetTop(Player1) - _speedY);
+
+        Canvas.SetLeft(Player1, _me.X + _speedX);
+        Canvas.SetTop(Player1, _me.Y - _speedY);
 
         _me.X += _speedX;
         _me.Y -= _speedY;

@@ -10,9 +10,7 @@ namespace WpfApp2;
 /// </summary>
 public partial class App : Application
 {
-    public Player Me;
-
-    public Player? Companion;
+    public Game myGame;
 
     private MediaPlayer _mediaPlayer;
 
@@ -31,14 +29,15 @@ public partial class App : Application
     public App()
     {
         _mediaPlayer = new();
-        Me = new();
+
+        myGame = new();
 
         // Гг
         // D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\snd\backgroundMusic.mp3
         // "pack://siteoforigin:,,,/snd/backgroundMusic.wav"
         _openFileDialog = new()
         {
-            FileName = "A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\backgroundMusic.mp3"
+            FileName = "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\backgroundMusic.wav"
         };
         _mediaPlayer.MediaOpened += RunMusic;
         _mediaPlayer.MediaFailed += FailedMusic;

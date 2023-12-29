@@ -7,30 +7,13 @@ using System.Net;
 
 namespace WpfApp2;
 
-public enum Location
-{
-    Location1,
-    Location2,
-    Location3,
-    Location4,
-    Location5,
-    Location6,
-    Location7
-}
-
-public enum Role
-{
-    Performer,
-    Assistant
-}
-
 public class Player
 {
     private string _imgPath = "path to load player image";
 
-    private readonly string _name;
+    private string _name;
 
-    public string Name {  get => _name; }
+    public string Name { get => _name; set => _name = value; }
 
     private double _x;
 
@@ -40,7 +23,7 @@ public class Player
 
     public double Y { get => _y; set => _y = value; }
 
-    private Location _currentLocation; 
+    internal Location CurrentLocation; 
 
     public Role _role;
 
@@ -51,7 +34,6 @@ public class Player
     public Player()
     {
         _name = "Default";
-        _currentLocation = Location.Location1;
         _role = Role.Performer;
         var Host = Dns.GetHostName();
         var _IP = Dns.GetHostAddresses(Host);
@@ -61,7 +43,6 @@ public class Player
     public Player(string name, Role role)
     {
         _name = name;
-        _currentLocation = Location.Location1;
         _role = role;
         var Host = Dns.GetHostName();
         var _IP = Dns.GetHostAddresses(Host);
@@ -70,10 +51,12 @@ public class Player
 
     public void TeleportateTo(Location location)
     {
-        _currentLocation = location;
-        switch (_currentLocation)
+        CurrentLocation = location;
+        switch (CurrentLocation)
         {
             case Location.Location1:
+                X = 896.0D;
+                Y = 92.0D;
             break;
             case Location.Location2:
                 X = 0.0D;

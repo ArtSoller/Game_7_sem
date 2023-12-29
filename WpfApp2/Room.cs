@@ -20,9 +20,7 @@ namespace WpfApp2;
 
 public class Room : Page
 {
-    protected Player _me = new("Kaka puka", Role.Performer);
+    protected Player _me = new("Kaka puka", Role.Performer) { X = 100, Y = 260 };
 
-    protected Player _companion = new();
-
-    
+    protected Player _companion = new() { X = 100, Y = 460 };
 }

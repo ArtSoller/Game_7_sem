@@ -18,6 +18,7 @@ public partial class Page2
 
     private void But2_Click(object sender, RoutedEventArgs e)
     {
+        _me.TeleportateTo(Location.Location1);
         NavigationService.Navigate(new Page1());
     }
 }
