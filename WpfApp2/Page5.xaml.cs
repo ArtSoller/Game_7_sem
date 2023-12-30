@@ -33,7 +33,9 @@ public partial class Page5
 
     private void But4_Click(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new Page1());
+        if (_me is null) throw new ArgumentException("_me is null");
+        if (_companion is null) throw new ArgumentException("_companion is null");
+        NavigationService.Navigate(new Page1(_me, _companion));
     }
     private void But5_Click(object sender, RoutedEventArgs e)
     {

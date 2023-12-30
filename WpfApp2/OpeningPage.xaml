@@ -1,4 +1,4 @@
-﻿<local:Room x:Class="WpfApp2.OpeningPage"
+﻿<Page x:Class="WpfApp2.OpeningPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -35,4 +35,4 @@
             <Button x:Name="QuitBox" Content="Выйти" Height="57" Canvas.Left="414" Canvas.Top="563" Width="122" Click="QuitGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Canvas>
     </Grid>
-</local:Room>
+</Page>

@@ -56,6 +56,6 @@ public class Game
             CurrentLocation = Location.Location1 
         };
         
-        MyPage = new Page1();
+        MyPage = new Page1(Me, Companion);
     }
 }

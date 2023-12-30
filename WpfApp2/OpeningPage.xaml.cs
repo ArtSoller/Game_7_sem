@@ -19,17 +19,21 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для OpeningPage.xaml
 /// </summary>
-public partial class OpeningPage : Room
+public partial class OpeningPage
 {
     private bool _isConnectedWithCompanion;
 
     private Brush? _brush;
 
-    public OpeningPage()
+    public Game Game;
+
+    public OpeningPage(Game game)
     {
         InitializeComponent();
         Font.Height = SystemParameters.VirtualScreenHeight;
         Font.Width = SystemParameters.VirtualScreenWidth;
+
+        Game = game;
 
         CanvasSetObjects();
         IpConnect();
@@ -72,7 +76,7 @@ public partial class OpeningPage : Room
 
     private void StartGame(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new Page1());
+        NavigationService.Navigate(new Page1(Game.Me, Game.Companion));
     }
 
     private async void WaitingForCompanion(object sender, RoutedEventArgs e)

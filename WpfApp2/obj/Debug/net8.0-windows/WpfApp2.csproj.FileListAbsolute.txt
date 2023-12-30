@@ -6,9 +6,6 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.pdb
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\MainWindow.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page1.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page2.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page3.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page4.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.g.cs
@@ -20,9 +17,6 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2_Mark
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\MainWindow.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page1.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page2.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page3.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page4.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.baml
@@ -38,3 +32,9 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\refint\WpfAp
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.pdb
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.genruntimeconfig.cache
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\ref\WpfApp2.dll
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.baml
