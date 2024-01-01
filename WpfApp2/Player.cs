@@ -32,6 +32,8 @@ public class Player
 
     public double SpeedY { get => _speedY; set => _speedY = value; }
 
+    public double Speed { get => Math.Sqrt(_speedX * _speedX + _speedY * _speedY); }
+
     internal Location CurrentLocation; 
 
     public Role _role;

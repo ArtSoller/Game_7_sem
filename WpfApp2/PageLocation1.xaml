@@ -45,10 +45,10 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" Canvas.Left="5" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="Black"/>
-        <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Canvas.Left="8" Canvas.Top="635" Stroke="Black"/>
-        <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" Canvas.Left="5" Canvas.Top="25" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
-        <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" Canvas.Left="943" Canvas.Top="25" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
+        <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="Black"/>
+        <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>
+        <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
+        <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
 
         <TextBox Canvas.Left="16" Name="Tb1" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="120"/>
         <TextBox Canvas.Left="16" Name="Tb2" TextWrapping="Wrap" Text="TextBox" Canvas.Top="90" Width="120"/>

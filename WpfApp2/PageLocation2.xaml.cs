@@ -89,33 +89,31 @@ public partial class Page2
         if (e.Key == Key.W)
         {
             _isUpKeyPressed = true;
-            _isPlayerMovingUpward = true;
+            // _isPlayerMovingUpward = true;
         }
 
         if (e.Key == Key.A)
         {
             _isLeftKeyPressed = true;
-            _isPlayerMovingLeftward = true;
+            // _isPlayerMovingLeftward = true;
             Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
         }
 
         if (e.Key == Key.D)
         {
             _isRightKeyPressed = true;
-            _isPlayerMovingRightward = true;
+            // _isPlayerMovingRightward = true;
             Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
         }
 
         if (e.Key == Key.S)
         {
             _isDownKeyPressed = true;
-            _isPlayerMovingDownward = true;
+            // _isPlayerMovingDownward = true;
         }
 
         if (e.Key == Key.F)
-        {
             _isForceButtonClicked = true;
-        }
 
         if (e.Key == Key.Escape)
             GameOver("Dead");
@@ -131,7 +129,6 @@ public partial class Page2
         _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + 30 < Application.Current.MainWindow.ActualWidth - 39;
         _isPossibleDownwardMovement = Canvas.GetTop(Player1) + 30 < Application.Current.MainWindow.ActualHeight - 70;
 
-        // asssign the pac man hit box to the pac man rectangle
         pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
 
         foreach (var obj in MyCanvas.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
@@ -154,7 +151,6 @@ public partial class Page2
                 NavigationService?.Navigate(new Page3(_me, _companion));
             }
 
-            // check if we are colliding with the wall while moving up if true then stop the pac man movement
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingUpward)
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + 15);
@@ -163,7 +159,6 @@ public partial class Page2
                 _isPlayerMovingUpward = false;
             }
 
-            // check if we are colliding with the wall while moving left if true then stop the pac man movement
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingLeftward)
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + 20);
@@ -172,7 +167,6 @@ public partial class Page2
                 _isPlayerMovingLeftward = false;
             }
 
-            // check if we are colliding with the wall while moving right if true then stop the pac man movement
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingRightward)
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - 20);
@@ -181,7 +175,6 @@ public partial class Page2
                 _isPlayerMovingRightward = false;
             }
 
-            // check if we are colliding with the wall while moving down if true then stop the pac man movement
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingDownward)
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - 15);
@@ -197,8 +190,7 @@ public partial class Page2
     {
         if (_me is null) throw new ArgumentNullException("_me is null!");
 
-        SetMovementsStatus();
-        
+        SetMovementsStatus();  
         SetMovementPossibility();
 
         if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;

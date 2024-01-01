@@ -87,19 +87,25 @@ public partial class Page1
         Canvas.SetLeft(AreaEasel6, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width) + 18);
 
         // Ставим стены.
-        //Canvas.SetTop(wallTop, 0.8 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height) + 18);
-        //Canvas.SetLeft(wallTop, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width) + 18);
+        Canvas.SetTop(wallTop, 0);
+        Canvas.SetLeft(wallTop, 0);
+        wallTop.Height = 80;
+        wallTop.Width = SystemParameters.VirtualScreenWidth;
 
-        //Canvas.SetTop(wallLeft, 0.8 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height) + 18);
-        //Canvas.SetLeft(wallLeft, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width) + 18);
+        Canvas.SetTop(wallLeft, 0);
+        Canvas.SetLeft(wallLeft, 0);
+        wallLeft.Height = SystemParameters.VirtualScreenHeight;
+        wallLeft.Width = 25;
 
-        //Canvas.SetTop(wallRight, 0.8 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height) + 18);
-        //Canvas.SetLeft(wallRight, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width) + 18);
+        Canvas.SetRight(wallRight, 0);
+        Canvas.SetBottom(wallRight, 0);
+        wallRight.Height = SystemParameters.VirtualScreenHeight;
+        wallRight.Width = 25;
 
-        //Canvas.SetTop(wallBottom, 0.8 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height) + 18);
-        //Canvas.SetLeft(wallBottom, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width) + 18);
-
-
+        Canvas.SetRight(wallBottom, 0);
+        Canvas.SetBottom(wallBottom, 0);
+        wallBottom.Height = 75;
+        wallBottom.Width = SystemParameters.VirtualScreenHeight;
     }
 
     private void GameSetUp()
@@ -108,7 +114,7 @@ public partial class Page1
 
         MyCanvas.Focus();
 
-        gameTimer.Interval = TimeSpan.FromMilliseconds(16);
+        gameTimer.Interval = TimeSpan.FromMilliseconds(10);
 
         gameTimer.Tick += GameLoop;
 
@@ -119,13 +125,6 @@ public partial class Page1
             ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
         };
         Player1.Fill = MyImage;
-
-
-        //ImageBrush CompanionImage = new()
-        //{
-        //    ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
-        //};
-        //Player2.Fill = CompanionImage;
     }
     #endregion
 
@@ -174,10 +173,10 @@ public partial class Page1
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
 
-        _isPossibleUpwardMovement = Canvas.GetTop(Player1) > 70;
-        _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > 19;
-        _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + 30 < Application.Current.MainWindow.ActualWidth - 39;
-        _isPossibleDownwardMovement = Canvas.GetTop(Player1) + 30 < Application.Current.MainWindow.ActualHeight - 70;
+        _isPossibleUpwardMovement = Canvas.GetTop(Player1) > Canvas.GetTop(wallTop) + wallTop.Height;
+        _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > Canvas.GetLeft(wallLeft) + wallLeft.Width;
+        _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + Player1.Width < SystemParameters.VirtualScreenWidth - wallRight.Width;
+        _isPossibleDownwardMovement = Canvas.GetTop(Player1) + Player1.Height < SystemParameters.VirtualScreenHeight - wallBottom.Height;
 
         // asssign the pac man hit box to the pac man rectangle
         pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
@@ -201,7 +200,6 @@ public partial class Page1
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + 15);
                 _isPossibleUpwardMovement = false;
-                _me.SpeedY = 0;
                 _isPlayerMovingUpward = false;
             }
 
@@ -210,7 +208,7 @@ public partial class Page1
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + 20);
                 _isPossibleLeftwardMovement = false;
-                _me.SpeedX = 0;
+                // _me.SpeedX = 0;
                 _isPlayerMovingLeftward = false;
             }
 
@@ -219,7 +217,7 @@ public partial class Page1
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - 20);
                 _isPossibleRightwardMovement = false;
-                _me.SpeedX = 0;
+                // _me.SpeedX = 0;
                 _isPlayerMovingRightward = false;
             }
 
@@ -228,7 +226,7 @@ public partial class Page1
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - 15);
                 _isPossibleDownwardMovement = false;
-                _me.SpeedY = 0;
+                //_me.SpeedY = 0;
                 _isPlayerMovingDownward = false;
             }
         }
@@ -281,7 +279,7 @@ public partial class Page1
         //Tb9.Text = _isPossibleRightwardMovement.ToString();
         //Tb10.Text = _isPossibleDownwardMovement.ToString();
 
-        Tb1.Text = _isPlayerMovingUpward.ToString();
+        Tb1.Text = Canvas.GetRight(wallRight).ToString();
         Tb2.Text = _isPlayerMovingLeftward.ToString();
         Tb3.Text = _isPlayerMovingRightward.ToString();
         Tb4.Text = _isPlayerMovingDownward.ToString();
