@@ -131,6 +131,7 @@ public partial class Page1
 
     // TODO: Улучшить взаимодействие с мольбертом.
     #region Механика игры
+
     private void CanvasKeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.W)
@@ -161,7 +162,7 @@ public partial class Page1
 
         if (e.Key == Key.F)
         {
-            _isforceButtonClicked = true;
+            _isForceButtonClicked = true;
         }
 
         if (e.Key == Key.Escape)
@@ -187,13 +188,12 @@ public partial class Page1
 
             if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
             {
-                _me.TeleportateTo(Location.Location2);
-                NavigationService?.Navigate(new Page2(_me, _companion));
+                NavigationService?.Navigate(TeleportTo(Location.Location2));
             }
 
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isforceButtonClicked)
+            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
             {
-                NavigationService?.Navigate(new Page3());
+                NavigationService?.Navigate(new Page3(_me, _companion));
             }
 
             // check if we are colliding with the wall while moving up if true then stop the pac man movement
@@ -201,7 +201,7 @@ public partial class Page1
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + 15);
                 _isPossibleUpwardMovement = false;
-                _speedY = 0;
+                _me.SpeedY = 0;
                 _isPlayerMovingUpward = false;
             }
 
@@ -210,7 +210,7 @@ public partial class Page1
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + 20);
                 _isPossibleLeftwardMovement = false;
-                _speedX = 0;
+                _me.SpeedX = 0;
                 _isPlayerMovingLeftward = false;
             }
 
@@ -219,7 +219,7 @@ public partial class Page1
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - 20);
                 _isPossibleRightwardMovement = false;
-                _speedX = 0;
+                _me.SpeedX = 0;
                 _isPlayerMovingRightward = false;
             }
 
@@ -228,7 +228,7 @@ public partial class Page1
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - 15);
                 _isPossibleDownwardMovement = false;
-                _speedY = 0;
+                _me.SpeedY = 0;
                 _isPlayerMovingDownward = false;
             }
         }
@@ -241,60 +241,56 @@ public partial class Page1
 
         SetMovementPossibility();
 
-        if (_isUpKeyPressed && _isPossibleUpwardMovement) _speedY += _speed;
-        else if (!_isPossibleUpwardMovement && _isPlayerMovingUpward) _speedY = 0;
+        if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;
+        else if (!_isPossibleUpwardMovement && _isPlayerMovingUpward) _me.SpeedY = 0;
 
-        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _speedX -= _speed;
-        else if (!_isPossibleLeftwardMovement && _isPlayerMovingLeftward) _speedX = 0;
+        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _me.SpeedX -= _speed;
+        else if (!_isPossibleLeftwardMovement && _isPlayerMovingLeftward) _me.SpeedX = 0;
 
-        if (_isRightKeyPressed && _isPossibleRightwardMovement) _speedX += _speed;
-        else if (!_isPossibleRightwardMovement && _isPlayerMovingRightward) _speedX = 0;
+        if (_isRightKeyPressed && _isPossibleRightwardMovement) _me.SpeedX += _speed;
+        else if (!_isPossibleRightwardMovement && _isPlayerMovingRightward) _me.SpeedX = 0;
 
-        if (_isDownKeyPressed && _isPossibleDownwardMovement) _speedY -= _speed;
-        else if (!_isPossibleDownwardMovement && _isPlayerMovingDownward) _speedY = 0;
+        if (_isDownKeyPressed && _isPossibleDownwardMovement) _me.SpeedY -= _speed;
+        else if (!_isPossibleDownwardMovement && _isPlayerMovingDownward) _me.SpeedY = 0;
 
 
-        _speedX *= _friction;
-        _speedY *= _friction;
+        _me.SpeedX *= _friction;
+        _me.SpeedY *= _friction;
 
         // Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + _speedX);
         // Canvas.SetTop(Player1, Canvas.GetTop(Player1) - _speedY);
 
-        Canvas.SetLeft(Player1, _me.X + _speedX);
-        Canvas.SetTop(Player1, _me.Y - _speedY);
+        Canvas.SetLeft(Player1, _me.X + _me.SpeedX);
+        Canvas.SetTop(Player1, _me.Y - _me.SpeedY);
 
-        _me.X += _speedX;
-        _me.Y -= _speedY;
+        _me.X += _me.SpeedX;
+        _me.Y -= _me.SpeedY;
+
+        //Tb1.Text = _isPlayerMovingUpward.ToString();
+        //Tb2.Text = _isPlayerMovingLeftward.ToString();
+        //Tb3.Text = _isPlayerMovingRightward.ToString();
+        //Tb4.Text = _isPlayerMovingDownward.ToString();
+
+        //Tb5.Text = _isUpKeyPressed.ToString();
+        //Tb6.Text = _isLeftKeyPressed.ToString();
+        //Tb11.Text = _isRightKeyPressed.ToString();
+        //Tb12.Text = _isDownKeyPressed.ToString();
+
+        //Tb7.Text = _isPossibleUpwardMovement.ToString();
+        //Tb8.Text = _isPossibleLeftwardMovement.ToString();
+        //Tb9.Text = _isPossibleRightwardMovement.ToString();
+        //Tb10.Text = _isPossibleDownwardMovement.ToString();
 
         Tb1.Text = _isPlayerMovingUpward.ToString();
         Tb2.Text = _isPlayerMovingLeftward.ToString();
         Tb3.Text = _isPlayerMovingRightward.ToString();
         Tb4.Text = _isPlayerMovingDownward.ToString();
-        Tb5.Text = _speedX.ToString();
-        Tb6.Text = _speedY.ToString();
+        Tb5.Text = _me.SpeedX.ToString();
+        Tb6.Text = _me.SpeedY.ToString();
         Tb7.Text = Canvas.GetLeft(Player1).ToString();
         Tb8.Text = Canvas.GetTop(Player1).ToString();
         Tb9.Text = _me.X.ToString();
         Tb10.Text = _me.Y.ToString();
     }
     #endregion
-
-
-    //private void Rectangle1_PreviewKeyDown(object sender, KeyEventArgs e)
-    //{
-    //    var left = Canvas.GetLeft(Player1);
-    //    if (e.Key == Key.F && left > 0)
-    //    {
-    //        // Открываем страницу для прямоугольника 1
-    //        // NavigationService.Navigate(new Page2());
-    //        // Page2 page = new Page2();
-    //        // this.Content = page;
-    //        NavigationService.Navigate(new Uri("Page2.xaml", UriKind.Relative));
-    //    }
-    //}
-
-    private void But1_Click(object sender, RoutedEventArgs e)
-    {
-        NavigationService.Navigate(new Page2(_me, _companion));
-    }
 }

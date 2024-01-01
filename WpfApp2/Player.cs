@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using System.Windows;
 
 namespace WpfApp2;
 
@@ -23,11 +24,19 @@ public class Player
 
     public double Y { get => _y; set => _y = value; }
 
+    private double _speedX;
+
+    private double _speedY;
+
+    public double SpeedX { get => _speedX; set => _speedX = value; }
+
+    public double SpeedY { get => _speedY; set => _speedY = value; }
+
     internal Location CurrentLocation; 
 
     public Role _role;
 
-    private string _ip;
+    private readonly string _ip;
 
     public string IP { get => _ip; }
 
@@ -55,12 +64,12 @@ public class Player
         switch (CurrentLocation)
         {
             case Location.Location1:
-                X = 896.0D;
-                Y = 92.0D;
+                X = SystemParameters.VirtualScreenWidth - 100;
+                Y = 95;
             break;
             case Location.Location2:
-                X = 0.0D;
-                Y = 0.0D;
+                X = 80;
+                Y = 0.5 * (SystemParameters.VirtualScreenHeight - 50);
             break;
             case Location.Location3:
                 break;

@@ -39,11 +39,6 @@ public partial class Page2
 
     public void CanvasSetObjects()
     {
-        // Положение игрока.
-        // Халтурно, но да ладно.
-        Canvas.SetLeft(Player1, Canvas.GetLeft(TeleportToLocation1) + TeleportToLocation1.Width + 5);
-        Canvas.SetTop(Player1, 0.5 * (SystemParameters.VirtualScreenHeight - Player1.Height));
-
         // Переходы на карты.
         Canvas.SetLeft(TeleportToLocation1, 30);
         Canvas.SetTop(TeleportToLocation1, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocation1.Height));
@@ -86,13 +81,6 @@ public partial class Page2
             ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
         };
         Player1.Fill = MyImage;
-
-
-        //ImageBrush CompanionImage = new()
-        //{
-        //    ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
-        //};
-        //Player2.Fill = CompanionImage;
     }
 
     #region Механика игры
@@ -126,7 +114,7 @@ public partial class Page2
 
         if (e.Key == Key.F)
         {
-            _isforceButtonClicked = true;
+            _isForceButtonClicked = true;
         }
 
         if (e.Key == Key.Escape)
@@ -152,20 +140,18 @@ public partial class Page2
 
             if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
             {
-                if ((string)obj.Name == "TeleportToLocation1")
-                {
-                    _me.TeleportateTo(Location.Location1);
-                    NavigationService?.Navigate(new Page1(_me, _companion));
-                }
-                if ((string)obj.Name == "TeleportToLocation3")
+                if (obj.Name == "TeleportToLocation1")
+                    NavigationService?.Navigate(TeleportTo(Location.Location1));
+                
+                if (obj.Name == "TeleportToLocation3")
                 {
                     _me.TeleportateTo(Location.Location3);
-                    NavigationService?.Navigate(new Page3());
+                    NavigationService?.Navigate(new Page3(_me, _companion));
                 }
             }
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isforceButtonClicked)
+            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
             {
-                NavigationService?.Navigate(new Page3());
+                NavigationService?.Navigate(new Page3(_me, _companion));
             }
 
             // check if we are colliding with the wall while moving up if true then stop the pac man movement
@@ -173,7 +159,7 @@ public partial class Page2
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + 15);
                 _isPossibleUpwardMovement = false;
-                _speedY = 0;
+                _me.SpeedY = 0;
                 _isPlayerMovingUpward = false;
             }
 
@@ -182,7 +168,7 @@ public partial class Page2
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + 20);
                 _isPossibleLeftwardMovement = false;
-                _speedX = 0;
+                _me.SpeedX = 0;
                 _isPlayerMovingLeftward = false;
             }
 
@@ -191,7 +177,7 @@ public partial class Page2
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - 20);
                 _isPossibleRightwardMovement = false;
-                _speedX = 0;
+                _me.SpeedX = 0;
                 _isPlayerMovingRightward = false;
             }
 
@@ -200,7 +186,7 @@ public partial class Page2
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - 15);
                 _isPossibleDownwardMovement = false;
-                _speedY = 0;
+                _me.SpeedY = 0;
                 _isPlayerMovingDownward = false;
             }
         }
@@ -209,34 +195,36 @@ public partial class Page2
 
     private void GameLoop(object sender, EventArgs e)
     {
-        SetMovementsStatus();
+        if (_me is null) throw new ArgumentNullException("_me is null!");
 
+        SetMovementsStatus();
+        
         SetMovementPossibility();
 
-        if (_isUpKeyPressed && _isPossibleUpwardMovement) _speedY += _speed;
-        else if (!_isPossibleUpwardMovement && _isPlayerMovingUpward) _speedY = 0;
+        if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;
+        else if (!_isPossibleUpwardMovement && _isPlayerMovingUpward) _me.SpeedY = 0;
 
-        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _speedX -= _speed;
-        else if (!_isPossibleLeftwardMovement && _isPlayerMovingLeftward) _speedX = 0;
+        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _me.SpeedX -= _speed;
+        else if (!_isPossibleLeftwardMovement && _isPlayerMovingLeftward) _me.SpeedX = 0;
 
-        if (_isRightKeyPressed && _isPossibleRightwardMovement) _speedX += _speed;
-        else if (!_isPossibleRightwardMovement && _isPlayerMovingRightward) _speedX = 0;
+        if (_isRightKeyPressed && _isPossibleRightwardMovement) _me.SpeedX += _speed;
+        else if (!_isPossibleRightwardMovement && _isPlayerMovingRightward) _me.SpeedX = 0;
 
-        if (_isDownKeyPressed && _isPossibleDownwardMovement) _speedY -= _speed;
-        else if (!_isPossibleDownwardMovement && _isPlayerMovingDownward) _speedY = 0;
+        if (_isDownKeyPressed && _isPossibleDownwardMovement) _me.SpeedY -= _speed;
+        else if (!_isPossibleDownwardMovement && _isPlayerMovingDownward) _me.SpeedY = 0;
 
 
-        _speedX *= _friction;
-        _speedY *= _friction;
+        _me.SpeedX *= _friction;
+        _me.SpeedY *= _friction;
 
         // Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + _speedX);
         // Canvas.SetTop(Player1, Canvas.GetTop(Player1) - _speedY);
 
-        Canvas.SetLeft(Player1, _me.X + _speedX);
-        Canvas.SetTop(Player1, _me.Y - _speedY);
+        Canvas.SetLeft(Player1, _me.X + _me.SpeedX);
+        Canvas.SetTop(Player1, _me.Y - _me.SpeedY);
 
-        _me.X += _speedX;
-        _me.Y -= _speedY;
+        _me.X += _me.SpeedX;
+        _me.Y -= _me.SpeedY;
     }
     #endregion
 

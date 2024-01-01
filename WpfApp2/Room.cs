@@ -23,24 +23,23 @@ public abstract class Room : Page
 {
     protected DispatcherTimer? gameTimer;
 
-    protected bool _isUpKeyPressed, _isDownKeyPressed, _isLeftKeyPressed, _isRightKeyPressed;
+    protected bool _isUpKeyPressed = false, _isDownKeyPressed = false,
+                   _isLeftKeyPressed = false, _isRightKeyPressed = false;
 
     protected const float _friction = 0.88F, _speed = 1.5F;
-
-    protected float _speedX, _speedY;
 
     protected bool _isPossibleUpwardMovement, _isPossibleDownwardMovement,
                    _isPossibleLeftwardMovement, _isPossibleRightwardMovement;
 
     protected bool _isPlayerMovingUpward, _isPlayerMovingLeftward,
                    _isPlayerMovingRightward, _isPlayerMovingDownward,
-                   _isforceButtonClicked;
+                   _isForceButtonClicked;
 
     protected Rect pacmanHitBox;
 
-    protected Player? _me;// = new("Kaka puka", Role.Performer) { X = 0.1 * SystemParameters.VirtualScreenWidth, Y = 0.33 * SystemParameters.VirtualScreenHeight };
+    protected Player? _me;
 
-    protected Player? _companion;// = new("Buga guga", Role.Assistant) { X = 0.1 * SystemParameters.VirtualScreenWidth, Y = 0.66 * SystemParameters.VirtualScreenHeight };
+    protected Player? _companion;
 
     protected void GameOver(string message)
     {
@@ -64,19 +63,40 @@ public abstract class Room : Page
 
         if (e.Key == Key.S) _isDownKeyPressed = false;
 
-        if (e.Key == Key.F) _isforceButtonClicked = false;
+        if (e.Key == Key.F) _isForceButtonClicked = false;
+    }
+
+    protected Page TeleportTo(Location location)
+    {
+        if (_me is null) throw new ArgumentNullException("_me is null");
+
+        if (_companion is null) throw new ArgumentNullException("_companion is null");
+
+        _me.TeleportateTo(location);
+
+        //_isDownKeyPressed = false;
+        //_isUpKeyPressed = false;
+        //_isLeftKeyPressed = false;
+        //_isRightKeyPressed = false;
+
+        return location switch
+        {
+            Location.Location1 => new Page1(_me, _companion),
+            Location.Location2 => new Page2(_me, _companion),
+            _ => throw new NotSupportedException("Kuda zalez, pridurok?")
+        };
     }
 
     protected void SetMovementsStatus()
     {
-        if (Math.Abs(_speedX) > 1e-1F)
+        if (Math.Abs(_me.SpeedX) > 1e-1F)
         {
-            if (_speedX > 0)
+            if (_me.SpeedX > 0)
             {
                 _isPlayerMovingRightward = true;
                 _isPlayerMovingLeftward = false;
             }
-            else if (_speedX < 0)
+            else if (_me.SpeedX < 0)
             {
                 _isPlayerMovingLeftward = true;
                 _isPlayerMovingRightward = false;
@@ -88,14 +108,14 @@ public abstract class Room : Page
             _isPlayerMovingRightward = false;
         }
 
-        if (Math.Abs(_speedY) > 1e-1F)
+        if (Math.Abs(_me.SpeedY) > 1e-1F)
         {
-            if (_speedY < 0)
+            if (_me.SpeedY < 0)
             {
                 _isPlayerMovingDownward = true;
                 _isPlayerMovingUpward = false;
             }
-            else if (_speedY > 0)
+            else if (_me.SpeedY > 0)
             {
                 _isPlayerMovingUpward = true;
                 _isPlayerMovingDownward = false;

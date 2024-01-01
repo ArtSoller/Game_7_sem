@@ -25,11 +25,15 @@ public partial class Page3
     private bool isDragging = false;
     private Point startPoint;
 
-    public Page3()
+    public Page3(Player pl1, Player pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
+        
+        _me = pl1;
+        _companion = pl2;
+        
         CanvasSetUp();
     }
 

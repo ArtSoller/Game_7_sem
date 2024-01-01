@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfApp2;
 
@@ -31,6 +32,8 @@ public class Game
 
     public Room MyPage;
 
+    private bool _isConnected = false;
+
     public Game()
     {
         Random rnd = new();
@@ -42,20 +45,32 @@ public class Game
         
         Me = new Player() 
         { 
-            X = 100, 
-            Y = 260, 
+            X = 0.05 * SystemParameters.VirtualScreenWidth, 
+            Y = 0.33 * SystemParameters.VirtualScreenHeight, 
             _role = role1, 
             CurrentLocation = Location.Location1
         };
         
         Companion = new Player() 
-        { 
-            X = 100, 
-            Y = 460, 
+        {
+            X = 0.05 * SystemParameters.VirtualScreenWidth,
+            Y = 0.66 * SystemParameters.VirtualScreenHeight,
             _role = role2, 
             CurrentLocation = Location.Location1 
         };
         
         MyPage = new Page1(Me, Companion);
+    }
+
+    public bool ConnectPlayers()
+    {
+        /* Логика подключения */
+        return _isConnected;
+    }
+
+    public void StartGame()
+    {
+        if (_isConnected)
+            MyPage = new Page1(Me, Companion);
     }
 }
