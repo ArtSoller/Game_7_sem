@@ -19,7 +19,7 @@
         <Rectangle Name="Player1" Width="50" Height="50" Fill="Yellow" Canvas.Left="100" Canvas.Top="260" />
         <Rectangle Name="Player2" Width="50" Height="50" Fill="Pink" Canvas.Left="100" Canvas.Top="406" />
 
-        <Rectangle Name="picture2" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="305" Canvas.Top="140" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Rectangle Name="picture2" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="305" Canvas.Top="140" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>

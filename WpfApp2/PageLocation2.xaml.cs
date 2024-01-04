@@ -151,36 +151,36 @@ public partial class Page2
                 NavigationService?.Navigate(new Page3(_me, _companion));
             }
 
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingUpward)
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) + 15);
                 _isPossibleUpwardMovement = false;
                 _me.SpeedY = 0;
-                _isPlayerMovingUpward = false;
+                _me.IsMovingUpward = false;
             }
 
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingLeftward)
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + 20);
                 _isPossibleLeftwardMovement = false;
                 _me.SpeedX = 0;
-                _isPlayerMovingLeftward = false;
+                _me.IsMovingLeftward = false;
             }
 
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingRightward)
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
             {
                 Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - 20);
                 _isPossibleRightwardMovement = false;
                 _me.SpeedX = 0;
-                _isPlayerMovingRightward = false;
+                _me.IsMovingRightward = false;
             }
 
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingDownward)
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingDownward)
             {
                 Canvas.SetTop(Player1, Canvas.GetTop(Player1) - 15);
                 _isPossibleDownwardMovement = false;
                 _me.SpeedY = 0;
-                _isPlayerMovingDownward = false;
+                _me.IsMovingDownward = false;
             }
         }
 
@@ -194,16 +194,16 @@ public partial class Page2
         SetMovementPossibility();
 
         if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;
-        else if (!_isPossibleUpwardMovement && _isPlayerMovingUpward) _me.SpeedY = 0;
+        else if (!_isPossibleUpwardMovement && _me.IsMovingUpward) _me.SpeedY = 0;
 
         if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _me.SpeedX -= _speed;
-        else if (!_isPossibleLeftwardMovement && _isPlayerMovingLeftward) _me.SpeedX = 0;
+        else if (!_isPossibleLeftwardMovement && _me.IsMovingLeftward) _me.SpeedX = 0;
 
         if (_isRightKeyPressed && _isPossibleRightwardMovement) _me.SpeedX += _speed;
-        else if (!_isPossibleRightwardMovement && _isPlayerMovingRightward) _me.SpeedX = 0;
+        else if (!_isPossibleRightwardMovement && _me.IsMovingRightward) _me.SpeedX = 0;
 
         if (_isDownKeyPressed && _isPossibleDownwardMovement) _me.SpeedY -= _speed;
-        else if (!_isPossibleDownwardMovement && _isPlayerMovingDownward) _me.SpeedY = 0;
+        else if (!_isPossibleDownwardMovement && _me.IsMovingDownward) _me.SpeedY = 0;
 
 
         _me.SpeedX *= _friction;

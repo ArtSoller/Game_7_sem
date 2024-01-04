@@ -44,7 +44,7 @@ public class Player
 
     public bool IsForcing { get; set; }
 
-    internal Location CurrentLocation;
+    internal Location CurrentLocation; 
 
     public Role _role;
 
@@ -76,13 +76,13 @@ public class Player
         switch (CurrentLocation)
         {
             case Location.Location1:
-                X = SystemParameters.VirtualScreenWidth / 2 - 100;
+                X = SystemParameters.VirtualScreenWidth - 100;
                 Y = 95;
-                break;
+            break;
             case Location.Location2:
                 X = 80;
                 Y = 0.5 * (SystemParameters.VirtualScreenHeight - 50);
-                break;
+            break;
             case Location.Location3:
                 break;
             case Location.Location4:

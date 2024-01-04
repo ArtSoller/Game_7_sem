@@ -31,9 +31,11 @@ public abstract class Room : Page
 
     protected bool _isPossibleUpwardMovement = false, _isPossibleDownwardMovement = false,
                    _isPossibleLeftwardMovement = false, _isPossibleRightwardMovement = false;
-
+    /*
     protected bool _isPlayerMovingUpward = false, _isPlayerMovingLeftward = false,
-                   _isPlayerMovingRightward = false, _isPlayerMovingDownward = false;
+                   _isPlayerMovingRightward = false, _isPlayerMovingDownward = false,
+                   _isForceButtonClicked = false;
+    */
     protected Rect pacmanHitBox;
 
     protected Player? _me;
@@ -92,7 +94,7 @@ public abstract class Room : Page
         {
             if (_me.SpeedX > 0)
             {
-                _me.IsMovingRightward = true;
+                _me.IsMovingRightward= true;
                 _me.IsMovingLeftward = false;
             }
             else if (_me.SpeedX < 0)
