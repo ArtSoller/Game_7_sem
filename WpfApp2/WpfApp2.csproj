@@ -7,41 +7,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="img\2_quest.png" />
-    <None Remove="img\3D_logo_V3.png" />
-    <None Remove="img\floor.png" />
-    <None Remove="img\floor_1.png" />
-    <None Remove="img\image.png" />
-    <None Remove="img\kirpich.jpg" />
-    <None Remove="img\map.png" />
-    <None Remove="img\orange.jpg" />
-    <None Remove="img\pacman.jpg" />
-    <None Remove="img\pacman.png" />
-    <None Remove="img\pacman1.jpg" />
-    <None Remove="img\Picture_preview_transparent.png" />
-    <None Remove="img\pink.jpg" />
-    <None Remove="img\quest1_1.png" />
-    <None Remove="img\red.jpg" />
-    <None Remove="img\Screenshot_1.png" />
-    <None Remove="img\Uravnenia.png" />
-    <None Remove="img\wall.png" />
-    <None Remove="img\wall_down.png" />
-    <None Remove="img\wall_side.png" />
-    <None Remove="img\wall_side_1.png" />
-    <None Remove="img\wall_up.png" />
-    <None Remove="img\windows_picture.png" />
-  </ItemGroup>
-
+    
   <ItemGroup>
     <Resource Include="img\2_quest.png" />
     <Resource Include="img\3D_logo_V3.png" />
+    <Resource Include="img\3_quest.png" />
+    <Resource Include="img\4_quest_1.png" />
+    <Resource Include="img\4_quest_2.png" />
     <Resource Include="img\floor.png" />
     <Resource Include="img\floor_1.png" />
     <Resource Include="img\image.png" />
     <Resource Include="img\kirpich.jpg" />
     <Resource Include="img\map.png" />
+    <Resource Include="img\mapSmoothed.jpg" />
     <Resource Include="img\orange.jpg" />
     <Resource Include="img\pacman.jpg" />
     <Resource Include="img\pacman.png" />
@@ -57,16 +35,5 @@
     <Resource Include="img\wall_side_1.png" />
     <Resource Include="img\wall_up.png" />
     <Resource Include="img\windows_picture.png" />
-    <Resource Include="img\mapSmoothed.jpg" />
-    <Resource Include="snd\backgroundMusic.mp3" />
-    <Resource Include="snd\backgroundMusicShort.mp3" />
-    <Resource Include="snd\backgroundMusic.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="snd\" />
-  </ItemGroup>
-
 </Project>

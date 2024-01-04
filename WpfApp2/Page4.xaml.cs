@@ -30,9 +30,13 @@ public partial class Page4
         InitializeComponent();
     }
 
+    
     private void But3_Click(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new Page1());
+        if (_me is null) throw new ArgumentException("_me is null");
+        if (_companion is null) throw new ArgumentException("_companion is null");
+
+        NavigationService.Navigate(new Page1(_me, _companion));
     }
 
 }

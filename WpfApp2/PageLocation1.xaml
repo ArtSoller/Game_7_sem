@@ -1,0 +1,75 @@
+﻿<local:Room x:Class="WpfApp2.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp2"
+      mc:Ignorable="d" 
+      d:DesignHeight="685" d:DesignWidth="965"
+      Title="Page1">
+
+    <Canvas Name="MyCanvas" Focusable="True" Background="White" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
+
+        <Rectangle Name="Floor" Tag="floor" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="img/map.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Name="Player1" Width="50" Height="50" Fill="Yellow" Canvas.Left="100" Canvas.Top="260" />
+        <Rectangle Name="Player2" Width="50" Height="50" Fill="Pink" Canvas.Left="100" Canvas.Top="406" />
+
+        <Rectangle Name="picture2" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="305" Canvas.Top="140" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="picture3" Tag="easel" Width="160" Height="140" Canvas.Left="681" Canvas.Top="124">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="picture4" Tag="easel" Width="160" Height="140" Canvas.Left="147" Canvas.Top="462">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="picture5" Tag="easel" Width="160" Height="140" Canvas.Left="414" Canvas.Top="462">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="picture6" Tag="easel" Width="160" Height="140" Canvas.Left="681" Canvas.Top="462">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="Black"/>
+        <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>
+        <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
+        <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
+
+        <TextBox Canvas.Left="16" Name="Tb1" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb2" TextWrapping="Wrap" Text="TextBox" Canvas.Top="90" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb3" TextWrapping="Wrap" Text="TextBox" Canvas.Top="110" Width="120"/>
+        <TextBox Canvas.Left="16" Name="Tb4" TextWrapping="Wrap" Text="TextBox" Canvas.Top="130" Width="120"/>
+        
+        <TextBox Canvas.Left="16" Name="Tb5" TextWrapping="Wrap" Text="TextBox" Canvas.Top="162" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="16" Name="Tb6" TextWrapping="Wrap" Text="TextBox" Canvas.Top="182" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="16" Name="Tb11" TextWrapping="Wrap" Text="TextBox" Canvas.Top="202" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="16" Name="Tb12" TextWrapping="Wrap" Text="TextBox" Canvas.Top="223" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBox Canvas.Left="160" Name="Tb7" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="120"/>
+        <TextBox Canvas.Left="160" Name="Tb8" TextWrapping="Wrap" Text="TextBox" Canvas.Top="90" Width="120"/>
+        <TextBox Canvas.Left="160" Name="Tb9" TextWrapping="Wrap" Text="TextBox" Canvas.Top="110" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="160" Name="Tb10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="130" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <Rectangle Name="TeleportToLocaltion2" Tag="teleport" Height="89" Canvas.Left="928" Canvas.Top="79" Width="10" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="#FF0000FA" />
+        <Rectangle x:Name="AreaEasel2" Tag="easel_area" Height="200" Canvas.Left="252" Canvas.Top="90" Width="230" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle x:Name="AreaEasel3" Tag="easel_area" Height="188" Canvas.Left="626" Canvas.Top="79" Width="230" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Rectangle x:Name="AreaEasel4" Tag="easel_area" Height="195" Canvas.Left="92" Canvas.Top="406" Width="230" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle x:Name="AreaEasel5" Tag="easel_area" Height="181" Canvas.Left="360" Canvas.Top="406" Width="230" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle x:Name="AreaEasel6" Tag="easel_area" Height="181" Canvas.Left="626" Canvas.Top="406" Width="230" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+    </Canvas>
+</local:Room>
