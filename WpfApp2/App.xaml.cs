@@ -37,7 +37,7 @@ public partial class App : Application
         // "pack://siteoforigin:,,,/snd/backgroundMusic.wav"
         _openFileDialog = new()
         {
-            FileName = "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\backgroundMusic.wav"
+            FileName = "C:\\Users\\ЛаринМаркВячеславови\\Desktop\\Word  and Game\\Игра\\Game_code\\Game_7_sem\\WpfApp2\\snd\\backgroundMusic.mp3"
         };
         _mediaPlayer.MediaOpened += RunMusic;
         _mediaPlayer.MediaFailed += FailedMusic;

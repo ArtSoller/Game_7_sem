@@ -7,6 +7,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\chest.png" />
+  </ItemGroup>
     
   <ItemGroup>
     <Resource Include="img\2_quest.png" />
@@ -14,6 +18,7 @@
     <Resource Include="img\3_quest.png" />
     <Resource Include="img\4_quest_1.png" />
     <Resource Include="img\4_quest_2.png" />
+    <Resource Include="img\chest.png" />
     <Resource Include="img\floor.png" />
     <Resource Include="img\floor_1.png" />
     <Resource Include="img\image.png" />
