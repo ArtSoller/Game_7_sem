@@ -34,6 +34,16 @@ public class Player
 
     public double Speed { get => Math.Sqrt(_speedX * _speedX + _speedY * _speedY); }
 
+    public bool IsMovingUpward { get; set; }
+
+    public bool IsMovingDownward { get; set; }
+
+    public bool IsMovingLeftward { get; set; }
+
+    public bool IsMovingRightward { get; set; }
+
+    public bool IsForcing { get; set; }
+
     internal Location CurrentLocation; 
 
     public Role _role;
