@@ -136,27 +136,27 @@ public partial class Page1
         if (e.Key == Key.W)
         {
             _isUpKeyPressed = true;
-            _isPlayerMovingUpward = true;
+            _me.IsMovingUpward = true;
         }
 
         if (e.Key == Key.A)
         {
             _isLeftKeyPressed = true;
-            _isPlayerMovingLeftward = true;
+            _me.IsMovingLeftward = true;
             Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
         }
 
         if (e.Key == Key.D)
         {
             _isRightKeyPressed = true;
-            _isPlayerMovingRightward = true;
+            _me.IsMovingRightward = true;
             Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
         }
 
         if (e.Key == Key.S)
         {
             _isDownKeyPressed = true;
-            _isPlayerMovingDownward = true;
+            _me.IsMovingDownward = true;
         }
 
         if (e.Key == Key.F)
@@ -178,7 +178,6 @@ public partial class Page1
         _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + Player1.Width < SystemParameters.VirtualScreenWidth - wallRight.Width;
         _isPossibleDownwardMovement = Canvas.GetTop(Player1) + Player1.Height < SystemParameters.VirtualScreenHeight - wallBottom.Height;
 
-        // asssign the pac man hit box to the pac man rectangle
         pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
 
         foreach (var obj in MyCanvas.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
@@ -186,48 +185,41 @@ public partial class Page1
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
             if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
-            {
                 NavigationService?.Navigate(TeleportTo(Location.Location2));
-            }
-
+            
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-            {
                 NavigationService?.Navigate(new Page3(_me, _companion));
-            }
-
-            // check if we are colliding with the wall while moving up if true then stop the pac man movement
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingUpward)
+            
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
             {
-                Canvas.SetTop(Player1, Canvas.GetTop(Player1) + 15);
                 _isPossibleUpwardMovement = false;
-                _isPlayerMovingUpward = false;
+                _me.SpeedY = 0;
+                _me.Y = Canvas.GetTop(obj) + obj.Height + 30;
+                _me.IsMovingUpward = false;
             }
 
-            // check if we are colliding with the wall while moving left if true then stop the pac man movement
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingLeftward)
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
             {
-                Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + 20);
                 _isPossibleLeftwardMovement = false;
-                // _me.SpeedX = 0;
-                _isPlayerMovingLeftward = false;
+                _me.SpeedX = 0;
+                _me.X = Canvas.GetLeft(obj) + obj.Width + 30;
+                _me.IsMovingLeftward = false;
             }
 
-            // check if we are colliding with the wall while moving right if true then stop the pac man movement
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingRightward)
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
             {
-                Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) - 20);
                 _isPossibleRightwardMovement = false;
-                // _me.SpeedX = 0;
-                _isPlayerMovingRightward = false;
+                _me.SpeedX = 0;
+                _me.X = Canvas.GetLeft(obj) - 0.5 * obj.Width;
+                _me.IsMovingRightward = false;
             }
 
-            // check if we are colliding with the wall while moving down if true then stop the pac man movement
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _isPlayerMovingDownward)
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingDownward)
             {
-                Canvas.SetTop(Player1, Canvas.GetTop(Player1) - 15);
+                _me.Y = Canvas.GetTop(obj) - 0.5 * obj.Height - 30;
                 _isPossibleDownwardMovement = false;
-                //_me.SpeedY = 0;
-                _isPlayerMovingDownward = false;
+                _me.SpeedY = 0;
+                _me.IsMovingDownward = false;
             }
         }
 
@@ -240,16 +232,16 @@ public partial class Page1
         SetMovementPossibility();
 
         if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;
-        else if (!_isPossibleUpwardMovement && _isPlayerMovingUpward) _me.SpeedY = 0;
+        else if (!_isPossibleUpwardMovement && _me.IsMovingUpward) _me.SpeedY = 0;
 
         if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _me.SpeedX -= _speed;
-        else if (!_isPossibleLeftwardMovement && _isPlayerMovingLeftward) _me.SpeedX = 0;
+        else if (!_isPossibleLeftwardMovement && _me.IsMovingLeftward) _me.SpeedX = 0;
 
         if (_isRightKeyPressed && _isPossibleRightwardMovement) _me.SpeedX += _speed;
-        else if (!_isPossibleRightwardMovement && _isPlayerMovingRightward) _me.SpeedX = 0;
+        else if (!_isPossibleRightwardMovement && _me.IsMovingRightward) _me.SpeedX = 0;
 
         if (_isDownKeyPressed && _isPossibleDownwardMovement) _me.SpeedY -= _speed;
-        else if (!_isPossibleDownwardMovement && _isPlayerMovingDownward) _me.SpeedY = 0;
+        else if (!_isPossibleDownwardMovement && _me.IsMovingDownward) _me.SpeedY = 0;
 
 
         _me.SpeedX *= _friction;
@@ -264,31 +256,31 @@ public partial class Page1
         _me.X += _me.SpeedX;
         _me.Y -= _me.SpeedY;
 
-        //Tb1.Text = _isPlayerMovingUpward.ToString();
+        Tb1.Text = _me.IsMovingUpward.ToString();
+        Tb2.Text = _me.IsMovingLeftward.ToString();
+        Tb3.Text = _me.IsMovingRightward.ToString();
+        Tb4.Text = _me.IsMovingDownward.ToString();
+
+        Tb5.Text = _isUpKeyPressed.ToString();
+        Tb6.Text = _isLeftKeyPressed.ToString();
+        Tb11.Text = _isRightKeyPressed.ToString();
+        Tb12.Text = _isDownKeyPressed.ToString();
+
+        Tb7.Text = _isPossibleUpwardMovement.ToString();
+        Tb8.Text = _isPossibleLeftwardMovement.ToString();
+        Tb9.Text = _isPossibleRightwardMovement.ToString();
+        Tb10.Text = _isPossibleDownwardMovement.ToString();
+
+        //Tb1.Text = Canvas.GetRight(wallRight).ToString();
         //Tb2.Text = _isPlayerMovingLeftward.ToString();
         //Tb3.Text = _isPlayerMovingRightward.ToString();
         //Tb4.Text = _isPlayerMovingDownward.ToString();
-
-        //Tb5.Text = _isUpKeyPressed.ToString();
-        //Tb6.Text = _isLeftKeyPressed.ToString();
-        //Tb11.Text = _isRightKeyPressed.ToString();
-        //Tb12.Text = _isDownKeyPressed.ToString();
-
-        //Tb7.Text = _isPossibleUpwardMovement.ToString();
-        //Tb8.Text = _isPossibleLeftwardMovement.ToString();
-        //Tb9.Text = _isPossibleRightwardMovement.ToString();
-        //Tb10.Text = _isPossibleDownwardMovement.ToString();
-
-        Tb1.Text = Canvas.GetRight(wallRight).ToString();
-        Tb2.Text = _isPlayerMovingLeftward.ToString();
-        Tb3.Text = _isPlayerMovingRightward.ToString();
-        Tb4.Text = _isPlayerMovingDownward.ToString();
-        Tb5.Text = _me.SpeedX.ToString();
-        Tb6.Text = _me.SpeedY.ToString();
-        Tb7.Text = Canvas.GetLeft(Player1).ToString();
-        Tb8.Text = Canvas.GetTop(Player1).ToString();
-        Tb9.Text = _me.X.ToString();
-        Tb10.Text = _me.Y.ToString();
+        //Tb5.Text = _me.SpeedX.ToString();
+        //Tb6.Text = _me.SpeedY.ToString();
+        //Tb7.Text = Canvas.GetLeft(Player1).ToString();
+        //Tb8.Text = Canvas.GetTop(Player1).ToString();
+        //Tb9.Text = _me.X.ToString();
+        //Tb10.Text = _me.Y.ToString();
     }
     #endregion
 }
