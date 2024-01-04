@@ -24,17 +24,16 @@ public abstract class Room : Page
     protected DispatcherTimer? gameTimer;
 
     protected bool _isUpKeyPressed = false, _isDownKeyPressed = false,
-                   _isLeftKeyPressed = false, _isRightKeyPressed = false;
+                   _isLeftKeyPressed = false, _isRightKeyPressed = false,
+                   _isForceButtonClicked = false;
 
     protected const double _friction = 0.88F, _speed = 1.5F;
 
-    protected bool _isPossibleUpwardMovement, _isPossibleDownwardMovement,
-                   _isPossibleLeftwardMovement, _isPossibleRightwardMovement;
+    protected bool _isPossibleUpwardMovement = false, _isPossibleDownwardMovement = false,
+                   _isPossibleLeftwardMovement = false, _isPossibleRightwardMovement = false;
 
-    protected bool _isPlayerMovingUpward, _isPlayerMovingLeftward,
-                   _isPlayerMovingRightward, _isPlayerMovingDownward,
-                   _isForceButtonClicked;
-
+    protected bool _isPlayerMovingUpward = false, _isPlayerMovingLeftward = false,
+                   _isPlayerMovingRightward = false, _isPlayerMovingDownward = false;
     protected Rect pacmanHitBox;
 
     protected Player? _me;
@@ -74,10 +73,10 @@ public abstract class Room : Page
 
         _me.TeleportateTo(location);
 
-        //_isDownKeyPressed = false;
-        //_isUpKeyPressed = false;
-        //_isLeftKeyPressed = false;
-        //_isRightKeyPressed = false;
+        _isDownKeyPressed = false;
+        _isUpKeyPressed = false;
+        _isLeftKeyPressed = false;
+        _isRightKeyPressed = false;
 
         return location switch
         {
@@ -93,38 +92,38 @@ public abstract class Room : Page
         {
             if (_me.SpeedX > 0)
             {
-                _isPlayerMovingRightward = true;
-                _isPlayerMovingLeftward = false;
+                _me.IsMovingRightward = true;
+                _me.IsMovingLeftward = false;
             }
             else if (_me.SpeedX < 0)
             {
-                _isPlayerMovingLeftward = true;
-                _isPlayerMovingRightward = false;
+                _me.IsMovingLeftward = true;
+                _me.IsMovingRightward = false;
             }
         }
         else
         {
-            _isPlayerMovingLeftward = false;
-            _isPlayerMovingRightward = false;
+            _me.IsMovingLeftward = false;
+            _me.IsMovingRightward = false;
         }
 
         if (Math.Abs(_me.SpeedY) > 1e-1F)
         {
             if (_me.SpeedY < 0)
             {
-                _isPlayerMovingDownward = true;
-                _isPlayerMovingUpward = false;
+                _me.IsMovingDownward = true;
+                _me.IsMovingUpward = false;
             }
             else if (_me.SpeedY > 0)
             {
-                _isPlayerMovingUpward = true;
-                _isPlayerMovingDownward = false;
+                _me.IsMovingUpward = true;
+                _me.IsMovingDownward = false;
             }
         }
         else
         {
-            _isPlayerMovingUpward = false;
-            _isPlayerMovingDownward = false;
+            _me.IsMovingUpward = false;
+            _me.IsMovingDownward = false;
         }
     }
 }

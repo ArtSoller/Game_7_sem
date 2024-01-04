@@ -34,7 +34,17 @@ public class Player
 
     public double Speed { get => Math.Sqrt(_speedX * _speedX + _speedY * _speedY); }
 
-    internal Location CurrentLocation; 
+    public bool IsMovingUpward { get; set; }
+
+    public bool IsMovingDownward { get; set; }
+
+    public bool IsMovingLeftward { get; set; }
+
+    public bool IsMovingRightward { get; set; }
+
+    public bool IsForcing { get; set; }
+
+    internal Location CurrentLocation;
 
     public Role _role;
 
@@ -66,13 +76,13 @@ public class Player
         switch (CurrentLocation)
         {
             case Location.Location1:
-                X = SystemParameters.VirtualScreenWidth - 100;
+                X = SystemParameters.VirtualScreenWidth / 2 - 100;
                 Y = 95;
-            break;
+                break;
             case Location.Location2:
                 X = 80;
                 Y = 0.5 * (SystemParameters.VirtualScreenHeight - 50);
-            break;
+                break;
             case Location.Location3:
                 break;
             case Location.Location4:
