@@ -149,7 +149,7 @@ namespace WpfApp2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfApp2;component/beginingpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfApp2;V1.0.0.0;component/beginingpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\BeginingPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

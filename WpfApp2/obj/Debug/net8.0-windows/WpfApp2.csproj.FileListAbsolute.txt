@@ -43,7 +43,6 @@ C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игр�
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.runtimeconfig.json
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.dll
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.pdb
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.g.cs
@@ -51,14 +50,12 @@ C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игр�
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page7.g.cs
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2_MarkupCompile.cache
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2_MarkupCompile.lref
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.baml
@@ -66,7 +63,6 @@ C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игр�
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page7.baml
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.g.resources
@@ -80,3 +76,9 @@ C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игр�
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.pdb
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.genruntimeconfig.cache
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\ref\WpfApp2.dll
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage_loc.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_1.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_2.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage_loc.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_1.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_2.baml

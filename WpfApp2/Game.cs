@@ -59,7 +59,7 @@ public class Game
             CurrentLocation = Location.Location1 
         };
         
-        MyPage = new Page1(Me, Companion);
+        MyPage = new PageLocation1_2(Me, Companion);
     }
 
     public bool ConnectPlayers()
@@ -71,6 +71,6 @@ public class Game
     public void StartGame()
     {
         if (_isConnected)
-            MyPage = new Page1(Me, Companion);
+            MyPage = new PageLocation1_2(Me, Companion);
     }
 }
