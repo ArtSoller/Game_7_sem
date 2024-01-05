@@ -8,19 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ЛаринМаркВячеславови\\.nuget\\packages\\": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ЛаринМаркВячеславови\\Desktop\\Word  and Game\\Игра\\Game_code\\Game_7_sem\\WpfApp2\\WpfApp2.csproj",
+      "projectUniqueName": "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\WpfApp2.csproj",
       "projectName": "WpfApp2",
-      "projectPath": "C:\\Users\\ЛаринМаркВячеславови\\Desktop\\Word  and Game\\Игра\\Game_code\\Game_7_sem\\WpfApp2\\WpfApp2.csproj",
-      "packagesPath": "C:\\Users\\ЛаринМаркВячеславови\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ЛаринМаркВячеславови\\Desktop\\Word  and Game\\Игра\\Game_code\\Game_7_sem\\WpfApp2\\obj\\",
+      "projectPath": "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\WpfApp2.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ЛаринМаркВячеславови\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
