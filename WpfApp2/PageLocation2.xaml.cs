@@ -34,6 +34,7 @@ public partial class Page2
         Floor.Width = SystemParameters.VirtualScreenWidth;
 
         CanvasSetObjects();
+        Room.IsTeleportActive = false;
         GameSetUp();
     }
 
@@ -135,7 +136,7 @@ public partial class Page2
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
+            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
             {
                 if (obj.Name == "TeleportToLocation1")
                     NavigationService?.Navigate(TeleportTo(Location.Location1));
