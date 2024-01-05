@@ -31,7 +31,7 @@ public partial class OpeningPage
     {
         InitializeComponent();
         Font.Height = SystemParameters.VirtualScreenHeight;
-        Font.Width = SystemParameters.VirtualScreenWidth / 2;
+        Font.Width = SystemParameters.VirtualScreenWidth;
 
         Game = game;
 
@@ -41,25 +41,25 @@ public partial class OpeningPage
 
     private void CanvasSetObjects()
     {
-        Canvas.SetLeft(Sign, 0.5 * (SystemParameters.VirtualScreenWidth / 2 - Sign.Width));
+        Canvas.SetLeft(Sign, 0.5 * (SystemParameters.VirtualScreenWidth - Sign.Width));
 
         Canvas.SetTop(TextBoxInfoIP, TextBoxInfoIP.Height);
-        Canvas.SetLeft(TextBoxInfoIP, SystemParameters.VirtualScreenWidth / 2 - TextBoxInfoIP.Width);
+        Canvas.SetLeft(TextBoxInfoIP, SystemParameters.VirtualScreenWidth - TextBoxInfoIP.Width);
 
         Canvas.SetTop(ButtStart, 0.6 * (SystemParameters.VirtualScreenHeight - ButtStart.Height));
-        Canvas.SetLeft(ButtStart, 0.5 * (SystemParameters.VirtualScreenWidth / 2 - ButtStart.Width));
+        Canvas.SetLeft(ButtStart, 0.5 * (SystemParameters.VirtualScreenWidth - ButtStart.Width));
 
         Canvas.SetTop(ButtConnect1, Canvas.GetTop(ButtStart) + 90);
-        Canvas.SetLeft(ButtConnect1, 0.5 * (SystemParameters.VirtualScreenWidth / 2 - ButtStart.Width));
+        Canvas.SetLeft(ButtConnect1, 0.5 * (SystemParameters.VirtualScreenWidth - ButtStart.Width));
 
         Canvas.SetTop(QuitBox, Canvas.GetTop(ButtConnect1) + 90);
-        Canvas.SetLeft(QuitBox, 0.5 * (SystemParameters.VirtualScreenWidth / 2 - ButtConnect1.Width));
+        Canvas.SetLeft(QuitBox, 0.5 * (SystemParameters.VirtualScreenWidth - ButtConnect1.Width));
 
         Canvas.SetTop(MyNameTextBox, 0.35 * SystemParameters.VirtualScreenHeight);
-        Canvas.SetLeft(MyNameTextBox, 0.25 * (SystemParameters.VirtualScreenWidth / 2 - MyNameTextBox.Width));
+        Canvas.SetLeft(MyNameTextBox, 0.25 * (SystemParameters.VirtualScreenWidth - MyNameTextBox.Width));
 
         Canvas.SetTop(CompanionNameTextBox, 0.45 * SystemParameters.VirtualScreenHeight);
-        Canvas.SetLeft(CompanionNameTextBox, 0.25 * (SystemParameters.VirtualScreenWidth / 2 - CompanionNameTextBox.Width));
+        Canvas.SetLeft(CompanionNameTextBox, 0.25 * (SystemParameters.VirtualScreenWidth - CompanionNameTextBox.Width));
 
         _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
         ButtStart.Foreground = _brush;

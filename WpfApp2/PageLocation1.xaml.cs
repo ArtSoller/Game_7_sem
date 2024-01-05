@@ -32,10 +32,11 @@ public partial class Page1
 
         _me = pl1;
         _companion = pl2;
-
+        code.IsReadOnly = true;
+        code.Text = Game.parts_code;
         CanvasSetObjects();
         GameSetUp();
-    }
+}
 
     #region Настройка полотна и игры.
     private void CanvasSetObjects()
@@ -50,8 +51,10 @@ public partial class Page1
 
         // Переходы на карты.
         Canvas.SetLeft(TeleportToLocaltion2, SystemParameters.VirtualScreenWidth - TeleportToLocaltion2.Width - 30);
-
-
+        
+        Canvas.SetTop(code, 0.95 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+        
         // Ставим мольберты.
         Canvas.SetTop(picture2, 0.2 * (SystemParameters.VirtualScreenHeight - picture2.Height));
         Canvas.SetLeft(picture2, 0.33 * (SystemParameters.VirtualScreenWidth - picture2.Width));
@@ -184,9 +187,9 @@ public partial class Page1
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
+            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                 NavigationService?.Navigate(TeleportTo(Location.Location2));
-            
+                            
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                 NavigationService?.Navigate(new Page3(_me, _companion));
             

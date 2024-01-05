@@ -31,9 +31,10 @@ public partial class Page2
         _companion = pl2;
 
         Floor.Height = SystemParameters.VirtualScreenHeight;
-        Floor.Width = SystemParameters.VirtualScreenWidth / 2;
+        Floor.Width = SystemParameters.VirtualScreenWidth;
 
         CanvasSetObjects();
+        Room.IsTeleportActive = false;
         GameSetUp();
     }
 
@@ -43,25 +44,25 @@ public partial class Page2
         Canvas.SetLeft(TeleportToLocation1, 30);
         Canvas.SetTop(TeleportToLocation1, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocation1.Height));
 
-        Canvas.SetLeft(TeleportToLocation3, SystemParameters.VirtualScreenWidth / 2 - TeleportToLocation3.Width - 30);
+        Canvas.SetLeft(TeleportToLocation3, SystemParameters.VirtualScreenWidth - TeleportToLocation3.Width - 30);
         Canvas.SetTop(TeleportToLocation3, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocation3.Height));
 
 
         // Ставим мольберты.
         Canvas.SetTop(picture2, 0.2 * (SystemParameters.VirtualScreenHeight - picture2.Height));
-        Canvas.SetLeft(picture2, 0.33 * (SystemParameters.VirtualScreenWidth / 2 - picture2.Width));
+        Canvas.SetLeft(picture2, 0.33 * (SystemParameters.VirtualScreenWidth - picture2.Width));
 
         Canvas.SetTop(picture3, 0.2 * (SystemParameters.VirtualScreenHeight - picture3.Height));
-        Canvas.SetLeft(picture3, 0.66 * (SystemParameters.VirtualScreenWidth / 2 - picture3.Width));
+        Canvas.SetLeft(picture3, 0.66 * (SystemParameters.VirtualScreenWidth - picture3.Width));
 
         Canvas.SetTop(picture4, 0.8 * (SystemParameters.VirtualScreenHeight - picture4.Height));
-        Canvas.SetLeft(picture4, 0.2 * (SystemParameters.VirtualScreenWidth / 2 - picture4.Width));
+        Canvas.SetLeft(picture4, 0.2 * (SystemParameters.VirtualScreenWidth - picture4.Width));
 
         Canvas.SetTop(picture5, 0.8 * (SystemParameters.VirtualScreenHeight - picture5.Height));
-        Canvas.SetLeft(picture5, 0.5 * (SystemParameters.VirtualScreenWidth / 2 - picture5.Width));
+        Canvas.SetLeft(picture5, 0.5 * (SystemParameters.VirtualScreenWidth - picture5.Width));
 
         Canvas.SetTop(picture6, 0.8 * (SystemParameters.VirtualScreenHeight - picture6.Height));
-        Canvas.SetLeft(picture6, 0.8 * (SystemParameters.VirtualScreenWidth / 2 - picture6.Width));
+        Canvas.SetLeft(picture6, 0.8 * (SystemParameters.VirtualScreenWidth - picture6.Width));
     }
 
     private void GameSetUp()
@@ -135,7 +136,7 @@ public partial class Page2
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
+            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
             {
                 if (obj.Name == "TeleportToLocation1")
                     NavigationService?.Navigate(TeleportTo(Location.Location1));

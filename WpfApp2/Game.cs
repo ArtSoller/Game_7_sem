@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace WpfApp2;
 
@@ -33,6 +34,38 @@ public class Game
     public Room MyPage;
 
     private bool _isConnected = false;
+
+
+    private static Random random = new Random();
+
+    // Генерируем случайные цифры
+    //private static int digit1 = random.Next(0, 10);
+    //private static int digit2 = random.Next(0, 10);
+    //private static int digit3 = random.Next(0, 10);
+    //private static int digit4 = random.Next(0, 10);
+
+    private static int digit1 = 1;
+    private static int digit2 = 2;
+    private static int digit3 = 3;
+    private static int digit4 = 4;
+
+    //Brush[] colors = new Brush[]
+    //{
+    //    Brushes.Orange, // оранжевый
+    //    Brushes.Red,    // красный
+    //    Brushes.Blue,   // синий
+    //    Brushes.Green   // зеленый
+    //};
+
+    // Собираем строку из сгенерированных цифр $"{digit1}";
+
+    public static string randomString => $"{digit1}{digit2}{digit3}{digit4}";
+
+    public static int count_try = 5;
+
+    public static bool Quest0_5 = false, Quest1 = false, Quest2 = false, Quest3 = false, Quest4 = false;
+    public static string parts_code = "Найденные части кода: ";
+    
 
     public Game()
     {
