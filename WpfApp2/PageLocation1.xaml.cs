@@ -26,6 +26,9 @@ public partial class Page1
     {
         gameTimer = new();
         InitializeComponent();
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\zvuk-perelistyivaniya-stranitsyi.mp3"));
 
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
@@ -189,10 +192,13 @@ public partial class Page1
 
             if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                 NavigationService?.Navigate(TeleportTo(Location.Location2));
-                            
+
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page3(_me, _companion));
-            
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new Page8(_me, _companion));
+            }
+
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
             {
                 _isPossibleUpwardMovement = false;

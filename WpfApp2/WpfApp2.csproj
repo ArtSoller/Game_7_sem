@@ -31,6 +31,7 @@
     <None Remove="img\карта 4.png" />
     <None Remove="img\карта 5.png" />
     <None Remove="img\карта 6.png" />
+    <None Remove="snd\zvuk-perelistyivaniya-stranitsyi.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -85,5 +86,6 @@
     <Resource Include="img\карта 4.png" />
     <Resource Include="img\карта 5.png" />
     <Resource Include="img\карта 6.png" />
+    <Resource Include="snd\zvuk-perelistyivaniya-stranitsyi.mp3" />
   </ItemGroup>
 </Project>

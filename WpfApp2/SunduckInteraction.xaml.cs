@@ -49,7 +49,7 @@ public partial class Page8
     }
     private void Enter_Click(object sender, RoutedEventArgs e)
     {
-        string inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
+        var inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
 
         if (inputValue1 == Game.randomString)
         {
@@ -57,7 +57,8 @@ public partial class Page8
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
             Game.parts_code += Game.randomString[0];
-            Room.IsTeleportActive = true;
+            IsTeleportActive = true;
+            GameOver("Won");
         }
         else
         {
@@ -68,23 +69,29 @@ public partial class Page8
             Game.count_try -= 1;
             txtInput2.Text = Game.count_try.ToString();
             if (Game.count_try == 0)
-            {
                 GameOver("Dead");
-            }
         }
     }
 
-    protected void GameOver(string message)
+
+    private void GameOver(string message)
     {
         if (gameTimer is null) throw new Exception("gameTimer is null");
-        // inside the game over function we passing in a string to show the final message to the game
-        gameTimer.Stop(); // stop the game timer
-        MessageBox.Show(message, "The Pac Man Game WPF MOO ICT"); // show a mesage box with the message that is passed in this function
-        // when the player clicks ok on the message box
-        // restart the application
-        System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+        gameTimer.Stop();
+
+        switch (message)
+        {
+            case "Dead":
+                MessageBox.Show("You're " + message, "GAME OVER"); 
+                //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                break;
+            case "Won":
+                MessageBox.Show("You've " + message, "GAME OVER");
+                break;
+        }
         Application.Current.Shutdown();
     }
+
     private void Reset_Click(object sender, RoutedEventArgs e)
     {
         txtInput1.Text = ""; // Получаем значение из текстового поля
