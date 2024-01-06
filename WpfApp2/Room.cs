@@ -82,8 +82,8 @@ public abstract class Room : Page
 
         return location switch
         {
-            Location.Location1 => new Page1(_me, _companion),
-            Location.Location2 => new Page2(_me, _companion),
+            Location.Location1 => new PageLocation3_1(_me, _companion),
+            Location.Location2 => new PageLocation3_1(_me, _companion),
             _ => throw new NotSupportedException("Kuda zalez, pridurok?")
         };
     }

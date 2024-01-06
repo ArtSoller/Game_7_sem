@@ -42,7 +42,11 @@ namespace WpfApp2
             Canvas.SetTop(Player2, _me.Y);
 
             // Переходы на карты.
-            Canvas.SetLeft(TeleportToLocaltion2, SystemParameters.VirtualScreenWidth - TeleportToLocaltion2.Width - 30);
+            Canvas.SetTop(TeleportToLocaltion2_2, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion2_2.Height));
+            Canvas.SetLeft(TeleportToLocaltion2_2, SystemParameters.VirtualScreenWidth - TeleportToLocaltion2_2.Width - 10);
+
+            Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
+            Canvas.SetLeft(TeleportToLocaltionBack, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack.Width - 1880);
 
             // Ставим мольберты.
             Canvas.SetTop(picture1, 0.5 * (SystemParameters.VirtualScreenHeight - picture1.Height));
