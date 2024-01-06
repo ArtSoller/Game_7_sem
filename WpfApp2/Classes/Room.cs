@@ -29,6 +29,8 @@ public abstract class Room : Page
                    _isLeftKeyPressed = false, _isRightKeyPressed = false,
                    _isForceButtonClicked = false;
 
+    protected bool _toDisplay = true;
+
     public static bool IsTeleportActive = true;
 
     protected const double _friction = 0.88F, _speed = 1.5F;
@@ -88,10 +90,10 @@ public abstract class Room : Page
         _isUpKeyPressed = false;
         _isLeftKeyPressed = false;
         _isRightKeyPressed = false;
-
+        
         return location switch
         {
-            Location.Location0 => new PageLocation0(_me, _companion),
+            Location.Location0   => new PageLocation0(_me, _companion),
             Location.Location1_1 => new PageLocation1_1(_me, _companion),
             Location.Location1_2 => new PageLocation1_2(_me, _companion),
             Location.Location2_1 => new PageLocation2_1(_me, _companion),

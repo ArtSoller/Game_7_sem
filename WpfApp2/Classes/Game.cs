@@ -37,7 +37,6 @@ public class Game
 
     private bool _isConnected = false;
 
-
     private static Random random = new();
 
     // Генерируем случайные цифры
@@ -46,29 +45,21 @@ public class Game
     //private static int digit3 = random.Next(0, 10);
     //private static int digit4 = random.Next(0, 10);
 
-    private static int digit1 = 1;
-    private static int digit2 = 2;
-    private static int digit3 = 3;
-    private static int digit4 = 4;
+    private static readonly int digit1 = 1;
+    private static readonly int digit2 = 2;
+    private static readonly int digit3 = 3;
+    private static readonly int digit4 = 4;
 
-    //Brush[] colors = new Brush[]
-    //{
-    //    Brushes.Orange, // оранжевый
-    //    Brushes.Red,    // красный
-    //    Brushes.Blue,   // синий
-    //    Brushes.Green   // зеленый
-    //};
-
-    // Собираем строку из сгенерированных цифр $"{digit1}";
+    // Собираем строку из сгенерированных цифр
 
     public static string randomString => $"{digit1}{digit2}{digit3}{digit4}";
 
-    public static int count_try = 5;
+    public static int AttemptsNumber = 5;
 
     public static bool Quest0_5 = false, Quest1 = false, Quest2 = false, Quest3 = false, Quest4 = false;
+    
     public static string parts_code = "Найденные части кода: ";
     
-
     public Game()
     {
         Random rnd = new();

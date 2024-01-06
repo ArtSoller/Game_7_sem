@@ -36,7 +36,7 @@ public partial class Page8
         txtScore.Visibility = Visibility.Hidden;
         txtInput2.IsReadOnly = true;
         count.IsReadOnly = true;
-        txtInput2.Text = Game.count_try.ToString();        
+        txtInput2.Text = Game.AttemptsNumber.ToString();        
     }
 
 
@@ -66,9 +66,9 @@ public partial class Page8
             txtScore.Visibility = Visibility.Visible;
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
-            Game.count_try -= 1;
-            txtInput2.Text = Game.count_try.ToString();
-            if (Game.count_try == 0)
+            Game.AttemptsNumber -= 1;
+            txtInput2.Text = Game.AttemptsNumber.ToString();
+            if (Game.AttemptsNumber == 0)
                 GameOver("Dead");
         }
     }
