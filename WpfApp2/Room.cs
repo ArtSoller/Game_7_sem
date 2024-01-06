@@ -26,6 +26,7 @@ public abstract class Room : Page
     protected bool _isUpKeyPressed = false, _isDownKeyPressed = false,
                    _isLeftKeyPressed = false, _isRightKeyPressed = false,
                    _isForceButtonClicked = false;
+    public static bool IsTeleportActive = false;
 
     protected const double _friction = 0.88F, _speed = 1.5F;
 
