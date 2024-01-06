@@ -28,7 +28,8 @@ public abstract class Room : Page
     protected bool _isUpKeyPressed = false, _isDownKeyPressed = false,
                    _isLeftKeyPressed = false, _isRightKeyPressed = false,
                    _isForceButtonClicked = false;
-    public static bool IsTeleportActive = false;
+
+    public static bool IsTeleportActive = true;
 
     protected const double _friction = 0.88F, _speed = 1.5F;
 
@@ -90,8 +91,15 @@ public abstract class Room : Page
 
         return location switch
         {
-            Location.Location1 => new PageLocation3_1(_me, _companion),
-            Location.Location2 => new PageLocation3_1(_me, _companion),
+            Location.Location0 => new PageLocation0(_me, _companion),
+            Location.Location1_1 => new PageLocation1_1(_me, _companion),
+            Location.Location1_2 => new PageLocation1_2(_me, _companion),
+            Location.Location2_1 => new PageLocation2_1(_me, _companion),
+            Location.Location2_2 => new PageLocation2_2(_me, _companion),
+            Location.Location3_1 => new PageLocation3_1(_me, _companion),
+            Location.Location3_2 => new PageLocation3_2(_me, _companion),
+            Location.Location4_1 => new PageLocation4_1(_me, _companion),
+            Location.Location4_2 => new PageLocation4_2(_me, _companion),
             _ => throw new NotSupportedException("Kuda zalez, pridurok?")
         };
     }

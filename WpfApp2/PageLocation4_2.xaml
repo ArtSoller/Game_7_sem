@@ -8,7 +8,7 @@
       d:DesignHeight="685" d:DesignWidth="965"
       Title="Page1">
 
-    <Canvas Name="Location4_1" Focusable="True" Background="White" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
+    <Canvas Name="Location4_2" Focusable="True" Background="White" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
 
         <Rectangle Name="Floor" Tag="floor" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>

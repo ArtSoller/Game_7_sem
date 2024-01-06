@@ -20,6 +20,9 @@
     <None Remove="img\pole_v4.png" />
     <None Remove="img\svitok.png" />
     <None Remove="img\svitok_map.png" />
+    <None Remove="snd\ChestClosed.mp3" />
+    <None Remove="snd\ChestOpened.mp3" />
+    <None Remove="snd\GameWon.mp3" />
   </ItemGroup>
     
   <ItemGroup>
@@ -59,5 +62,8 @@
     <Resource Include="img\wall_side_1.png" />
     <Resource Include="img\wall_up.png" />
     <Resource Include="img\windows_picture.png" />
+    <Resource Include="snd\ChestClosed.mp3" />
+    <Resource Include="snd\ChestOpened.mp3" />
+    <Resource Include="snd\GameWon.mp3" />
   </ItemGroup>
 </Project>

@@ -30,11 +30,15 @@ namespace WpfApp2
 
             _me = pl1;
             _companion = pl2;
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
 
             CanvasSetObjects();
             GameSetUp();
         }
 
+        #region Настройка объектов
         private void CanvasSetObjects()
         {
             // Ставим игроков.
@@ -47,8 +51,8 @@ namespace WpfApp2
             Canvas.SetTop(chest, 0.5 * (SystemParameters.VirtualScreenHeight - chest.Height));
             Canvas.SetLeft(chest, 0.5 * (SystemParameters.VirtualScreenWidth - chest.Width));
 
-            Canvas.SetTop(chestArea, 0.5 * (SystemParameters.VirtualScreenHeight - chestArea.Height));
-            Canvas.SetLeft(chestArea, 0.5 * (SystemParameters.VirtualScreenWidth - chestArea.Width));
+            Canvas.SetTop(ChestArea, 0.5 * (SystemParameters.VirtualScreenHeight - ChestArea.Height));
+            Canvas.SetLeft(ChestArea, 0.5 * (SystemParameters.VirtualScreenWidth - ChestArea.Width));
 
             // Переходы на карты.
             Canvas.SetTop(TeleportToLocaltion1_ForPlayer1, SystemParameters.VirtualScreenHeight * 0.2);
@@ -79,6 +83,8 @@ namespace WpfApp2
             };
             Player1.Fill = MyImage;
         }
+        #endregion
+
         private void CanvasKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.W)
@@ -121,24 +127,31 @@ namespace WpfApp2
             if (_me is null) throw new ArgumentException("_me is null");
             if (_companion is null) throw new ArgumentException("_companion is null");
 
-            _isPossibleUpwardMovement = Canvas.GetTop(Player1) > Canvas.GetTop(wallTop) + wallTop.Height;
-            _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > Canvas.GetLeft(wallLeft) + wallLeft.Width;
+            _isPossibleUpwardMovement = Canvas.GetTop(Player1) > wallTop.Height;
+            _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > wallLeft.Width;
             _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + Player1.Width < SystemParameters.VirtualScreenWidth - wallRight.Width;
             _isPossibleDownwardMovement = Canvas.GetTop(Player1) + Player1.Height < SystemParameters.VirtualScreenHeight - wallBottom.Height;
 
             pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
 
-            foreach (var obj in Location0.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
+            foreach (var obj in Location0.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "chest" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "chestArea")))
             {
                 Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                if ((string)obj.Tag == "teleport" && pacmanHitBox.IntersectsWith(hitBox))
-                    NavigationService?.Navigate(TeleportTo(Location.Location2));
+                if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Performer)
+                    NavigationService?.Navigate(TeleportTo(Location.Location1_1));
 
-                if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    NavigationService?.Navigate(new Page3(_me, _companion));
+                if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Assistant)
+                    NavigationService?.Navigate(TeleportTo(Location.Location1_2));
 
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
+
+                if ((string)obj.Tag == "chestArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                {
+                    mediaPlayer.Play();
+                    NavigationService?.Navigate(new Page8(_me, _companion));
+                }
+
+                if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
                 {
                     _isPossibleUpwardMovement = false;
                     _me.SpeedY = 0;
@@ -146,7 +159,7 @@ namespace WpfApp2
                     _me.IsMovingUpward = false;
                 }
 
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
+                if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
                 {
                     _isPossibleLeftwardMovement = false;
                     _me.SpeedX = 0;
@@ -154,7 +167,7 @@ namespace WpfApp2
                     _me.IsMovingLeftward = false;
                 }
 
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
+                if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
                 {
                     _isPossibleRightwardMovement = false;
                     _me.SpeedX = 0;
@@ -162,7 +175,7 @@ namespace WpfApp2
                     _me.IsMovingRightward = false;
                 }
 
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingDownward)
+                if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingDownward)
                 {
                     _me.Y = Canvas.GetTop(obj) - 0.5 * obj.Height - 30;
                     _isPossibleDownwardMovement = false;
@@ -200,6 +213,8 @@ namespace WpfApp2
 
             Canvas.SetLeft(Player1, _me.X + _me.SpeedX);
             Canvas.SetTop(Player1, _me.Y - _me.SpeedY);
+
+            Tb1.Text = _me.Role.ToString();
 
             _me.X += _me.SpeedX;
             _me.Y -= _me.SpeedY;
