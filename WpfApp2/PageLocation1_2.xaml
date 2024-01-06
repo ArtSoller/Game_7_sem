@@ -8,7 +8,7 @@
       d:DesignHeight="685" d:DesignWidth="965"
       Title="Page1">
 
-    <Canvas Name="MyCanvas" Focusable="True" Background="White" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
+    <Canvas Name="Location1_2" Focusable="True" Background="White" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
 
         <Rectangle Name="Floor" Tag="floor" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
@@ -16,22 +16,22 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="Player2" Width="50" Height="50" Fill="Blue" Canvas.Left="100" Canvas.Top="260" />
+        <Rectangle Name="Player2" Width="50" Height="50" Fill="Blue" Canvas.Left="53" Canvas.Top="318" />
 
-        <Rectangle Name="picture1" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="368" Canvas.Top="79" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <Rectangle Name="picture1" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="193" Height="170" Canvas.Left="386" Canvas.Top="258" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle x:Name="AreaEasel1" Tag="easel_area" Height="200" Canvas.Left="368" Canvas.Top="260" Width="230" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle x:Name="AreaEasel1" Tag="easel_area" Height="232" Canvas.Left="350" Canvas.Top="226" Width="266" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.496,0.5" RadiusX="59" RadiusY="59"/>
 
         <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="Black"/>
         <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>
         <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
         <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
 
-        <Rectangle Name="TeleportToLocaltion2" Tag="teleport" Height="89" Canvas.Left="940" Canvas.Top="298" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#FF0000FA" />
-        <Rectangle Name="TeleportToLocaltionBack" Tag="teleport" Height="89" Canvas.Left="12" Canvas.Top="298" Width="10" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="Black" />
+        <Rectangle Name="TeleportToLocaltion2_2" Tag="teleport" Height="165" Canvas.Left="945" Canvas.Top="278" Width="30" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF0000FA" />
+        <Rectangle Name="TeleportToLocaltionBack" Tag="teleport" Height="165" Canvas.Top="278" Width="30" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="Black" />
     </Canvas>
 </local:Room>

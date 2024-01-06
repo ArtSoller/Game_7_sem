@@ -1,0 +1,57 @@
+﻿<local:Room x:Class="WpfApp2.Page3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp2"
+      mc:Ignorable="d" 
+      d:DesignHeight="685" d:DesignWidth="965"
+      Title="Page3">
+
+    <Canvas Name="MyCanvas" Focusable="True" Background="White">
+
+        <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Name="Quest" Height="312" Width="438" Canvas.Left="280" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.409,-0.382">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="img/correct.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <Border Name="TargetMain" Background="White">
+            <StackPanel Orientation="Horizontal" Name="MainContainer" Height="184" Width="960">
+                <Image Name="Picture1" Height="84" Width="121" Source="img/1.png" />
+                <Image Name="Picture2" Height="84" Width="121" Source="img/2.png" />
+                <Image Name="Picture3" Height="84" Width="121" Source="img/3.png" />
+                <Image Name="Picture4" Height="84" Width="121" Source="img/4.png" />
+                <Image Name="Picture5" Height="84" Width="121" Source="img/5.png" />
+                <Image Name="Picture6" Height="84" Width="121" Source="img/6.png" />
+                <Image Name="Picture7" Height="84" Width="121" Source="img/11.png" />
+                <Image Name="Picture8" Height="84" Width="121" Source="img/12.png" />
+            </StackPanel>
+        </Border>
+
+        <Border Name="Target1" Background="White">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer1" Height="184" Width="310">
+            </StackPanel>
+        </Border>
+
+        <Border Name="Target2" Background="White">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer2" Height="184" Width="310">
+            </StackPanel>
+        </Border>
+
+        <Border Name="Target3" Background="White">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer3" Height="184" Width="310">
+            </StackPanel>
+        </Border>
+
+
+        <Button Name="But3" Click="But2_Click"  Content="Назад" Height="66" Canvas.Left="434" Canvas.Top="608" Width="130"/>
+
+    </Canvas>
+</local:Room>

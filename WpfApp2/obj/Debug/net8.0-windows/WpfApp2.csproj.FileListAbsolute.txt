@@ -6,10 +6,6 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.pdb
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\MainWindow.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page4.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page7.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\App.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2_MarkupCompile.cache
@@ -17,10 +13,6 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2_Mark
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Lobby.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\MainWindow.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\OpeningPage.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page4.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page7.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.g.resources
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.GeneratedMSBuildEditorConfig.editorconfig
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.AssemblyInfoInputs.cache
@@ -32,10 +24,6 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\refint\WpfAp
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.pdb
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.genruntimeconfig.cache
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\ref\WpfApp2.dll
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.exe
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.deps.json
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\WpfApp2.runtimeconfig.json
@@ -48,7 +36,6 @@ C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игр�
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page7.g.cs
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
@@ -61,7 +48,6 @@ C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игр�
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page5.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page6.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\Page7.baml
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.g.resources
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.GeneratedMSBuildEditorConfig.editorconfig
@@ -74,15 +60,75 @@ C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игр�
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.pdb
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.genruntimeconfig.cache
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\ref\WpfApp2.dll
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage_loc.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_1.g.cs
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_2.g.cs
-C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage_loc.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_1.baml
 C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_2.baml
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage_loc.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation0.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation0.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_1.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_1.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_2.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_2.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_1.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_1.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_2.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_2.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_1.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_1.baml
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_2.g.cs
+C:\Users\ЛаринМаркВячеславови\Desktop\Word  and Game\Игра\Game_code\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation0.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_1.g.cs
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_2.g.cs
-D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\BeginingPage_loc.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_1.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_2.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_1.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_2.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_1.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_2.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_1_picture.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_2_picture.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_3_picture.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_4_picture.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_5_picture.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_6_picture.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_2.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest2_1.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest2_2.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_1.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_1_way.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_2_way.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_3_way.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_4_way.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_5_way.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_6_way.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest4_1_2.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\SunduckInteraction.g.cs
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation0.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_1.baml
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation1_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_1.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation2_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_1.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation3_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_1.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageLocation4_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_1_picture.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_2_picture.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_3_picture.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_4_picture.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_5_picture.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_1_6_picture.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest1_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest2_1.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest2_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_1.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_1_way.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_2_way.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_3_way.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_4_way.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_5_way.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest3_2_6_way.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest4_1_2.baml
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\SunduckInteraction.baml

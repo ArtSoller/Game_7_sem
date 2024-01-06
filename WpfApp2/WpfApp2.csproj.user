@@ -7,42 +7,60 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="BeginingPage_loc.xaml.cs">
+    <Compile Update="PageLocation1_1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageLocation3_1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageLocation3_2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageLocation4_1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageLocation2_2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageLocation2_1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageLocation0.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="PageLocation1_2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Page4.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Page5.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Page6.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Page7.xaml.cs">
+    <Compile Update="PageLocation4_2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="BeginingPage_loc.xaml">
+    <Page Update="PageLocation1_1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageLocation3_1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageLocation3_2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageLocation4_1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageLocation2_2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageLocation2_1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageLocation0.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PageLocation1_2.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Page4.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Page5.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Page6.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Page7.xaml">
+    <Page Update="PageLocation4_2.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Windows.Navigation;
 using Microsoft.Win32;
 
 namespace WpfApp2;
@@ -29,15 +30,13 @@ public partial class App : Application
     public App()
     {
         _mediaPlayer = new();
-
         myGame = new();
-
         // Гг
         // D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\snd\backgroundMusic.mp3
         // "pack://siteoforigin:,,,/snd/backgroundMusic.wav"
         _openFileDialog = new()
         {
-            FileName = "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\backgroundMusic.mp3"
+            FileName = "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3"
         };
         _mediaPlayer.MediaOpened += RunMusic;
         _mediaPlayer.MediaFailed += FailedMusic;

@@ -76,7 +76,7 @@ public partial class OpeningPage
 
     private void StartGame(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new BeginingPage(Game.Me, Game.Companion));
+        NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 
     private async void WaitingForCompanion(object sender, RoutedEventArgs e)
