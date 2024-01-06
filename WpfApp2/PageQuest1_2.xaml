@@ -21,24 +21,36 @@
                 <ImageBrush ImageSource="img/correct.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Border  Name="Target" 
-        Background="White"
-        DragEnter="Target_DragEnter" 
-        Drop="Target_Drop" Canvas.Left="0" Canvas.Top="460">
-            <StackPanel Orientation="Horizontal" Name="ImageContainer" Height="184" Width="961">
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/1.png" />
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/2.png" />
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/3.png" />
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/4.png" />
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/5.png" />
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/6.png" />
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/11.png" />
-                <Image MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" MouseUp="Image_MouseUp" Height="84" Width="121" Source="img/12.png" />
+        
+        <Border Name="TargetMain" Background="White">
+            <StackPanel Orientation="Horizontal" Name="MainContainer" Height="184" Width="960">
+                <Image Name="Picture1" Height="84" Width="121" Source="img/1.png" />
+                <Image Name="Picture2" Height="84" Width="121" Source="img/2.png" />
+                <Image Name="Picture3" Height="84" Width="121" Source="img/3.png" />
+                <Image Name="Picture4" Height="84" Width="121" Source="img/4.png" />
+                <Image Name="Picture5" Height="84" Width="121" Source="img/5.png" />
+                <Image Name="Picture6" Height="84" Width="121" Source="img/6.png" />
+                <Image Name="Picture7" Height="84" Width="121" Source="img/11.png" />
+                <Image Name="Picture8" Height="84" Width="121" Source="img/12.png" />
             </StackPanel>
         </Border>
-        <StackPanel Name="DropTargets" Orientation="Horizontal" Canvas.Left="0" Canvas.Top="460">
-            <!-- Здесь будут отображаться поля для перетаскивания картинок -->
-        </StackPanel>
+
+        <Border Name="Target1" Background="White">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer1" Height="184" Width="310">
+            </StackPanel>
+        </Border>
+
+        <Border Name="Target2" Background="White">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer2" Height="184" Width="310">
+            </StackPanel>
+        </Border>
+
+        <Border Name="Target3" Background="White">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer3" Height="184" Width="310">
+            </StackPanel>
+        </Border>
+
+
         <Button Name="But3" Click="But2_Click"  Content="Назад" Height="66" Canvas.Left="434" Canvas.Top="608" Width="130"/>
 
     </Canvas>
