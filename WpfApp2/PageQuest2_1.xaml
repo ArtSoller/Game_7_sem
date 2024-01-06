@@ -14,12 +14,12 @@
                 <ImageBrush ImageSource="img/mapSmoothed.jpg" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="quest_3" Tag="easel" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
+        <Rectangle Name="quest_2" Tag="easel" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/2_quest.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Button Name="But3" Click="But3_Click"  Content="B" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Name="Back" Click="Back_Click"  Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
     </Canvas>
 </local:Room>

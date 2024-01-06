@@ -28,7 +28,7 @@ public partial class Page1
         InitializeComponent();
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\zvuk-perelistyivaniya-stranitsyi.mp3"));
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\zvuk-perelistyivaniya-stranitsyi.mp3"));
 
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
@@ -37,6 +37,7 @@ public partial class Page1
         _companion = pl2;
         code.IsReadOnly = true;
         code.Text = Game.parts_code;
+        first_part_code.Text = Game.first_part_code;
         CanvasSetObjects();
         GameSetUp();
 }
@@ -57,7 +58,10 @@ public partial class Page1
         
         Canvas.SetTop(code, 0.95 * SystemParameters.VirtualScreenHeight);
         Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
-        
+
+        Canvas.SetTop(first_part_code, 0.95 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
         // Ставим мольберты.
         Canvas.SetTop(picture2, 0.2 * (SystemParameters.VirtualScreenHeight - picture2.Height));
         Canvas.SetLeft(picture2, 0.33 * (SystemParameters.VirtualScreenWidth - picture2.Width));
@@ -192,11 +196,12 @@ public partial class Page1
 
             if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                 NavigationService?.Navigate(TeleportTo(Location.Location2));
+                NavigationService?.RemoveBackEntry();
 
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
             {
                 mediaPlayer.Play();
-                NavigationService?.Navigate(new Page8(_me, _companion));
+                NavigationService?.Navigate(new Page3(_me, _companion));
             }
 
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)

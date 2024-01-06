@@ -72,6 +72,10 @@
         <Rectangle x:Name="AreaEasel5" Tag="easel_area" Height="181" Canvas.Left="360" Canvas.Top="406" Width="230" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Rectangle x:Name="AreaEasel6" Tag="easel_area" Height="181" Canvas.Left="626" Canvas.Top="406" Width="230" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-        <TextBox Name="code" Canvas.Left="690" Canvas.Top="646" Foreground="White" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="code" Canvas.Left="690" Canvas.Top="646" Foreground="White" FontSize="18" Background="Transparent" BorderBrush="Transparent">Найденные части кода:</TextBox>
+        <TextBox Name="first_part_code" Canvas.Left="892" Canvas.Top="646" Foreground="Orange"  FontSize="18" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <TextBox Name="second_part_code" Canvas.Left="892" Canvas.Top="646" Foreground="Aqua"  FontSize="18" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <TextBox Name="third_part_code" Canvas.Left="892" Canvas.Top="646" Foreground="LightGreen"  FontSize="18" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <TextBox Name="fourth_part_code" Canvas.Left="892" Canvas.Top="646" Foreground="HotPink"  FontSize="18" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
     </Canvas>
 </local:Room>

@@ -41,16 +41,16 @@ public partial class Page13
     {
         Canvas.SetLeft(quest_3, 0.5 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
 
-        Canvas.SetTop(But3, 0.6 * (SystemParameters.VirtualScreenHeight - But3.Height));
-        Canvas.SetLeft(But3, 0.5 * (SystemParameters.VirtualScreenWidth - But3.Width));
+        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
 
         _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        But3.Foreground = _brush;
+        Back.Foreground = _brush;
 
     }
 
-    private void But3_Click(object sender, RoutedEventArgs e)
+    private void Back_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");

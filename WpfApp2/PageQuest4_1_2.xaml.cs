@@ -38,33 +38,26 @@ public partial class Page5
         _companion = pl2;
         CanvasSetObjects();
 
-        Image image = new Image();
-        BitmapImage bitmap = new BitmapImage(new Uri("pack://application:,,,/img/reset.png")); // Указываем путь к вашей картинке
-        image.Source = bitmap;
-
-        // Устанавливаем изображение в качестве содержимого кнопки
-        But6.Content = image;
-
     }
 
     private void CanvasSetObjects()
     {
-        Canvas.SetTop(But4, 0.6 * (SystemParameters.VirtualScreenHeight - But4.Height));
-        Canvas.SetLeft(But4, 0.5 * (SystemParameters.VirtualScreenWidth - But4.Width));
+        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
 
         _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        But4.Foreground = _brush;
+        Back.Foreground = _brush;
 
     }
 
-    private void But4_Click(object sender, RoutedEventArgs e)
+    private void Back_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new Page1(_me, _companion));
     }
-    private void But5_Click(object sender, RoutedEventArgs e)
+    private void Enter_Click(object sender, RoutedEventArgs e)
     {
         string inputValue = txtInput.Text; // Получаем значение из текстового поля
         if (inputValue == "8903130627")
@@ -80,7 +73,7 @@ public partial class Page5
             txtInput.IsReadOnly = true;
         }
     }
-    private void But6_Click(object sender, RoutedEventArgs e)
+    private void Reset_Click(object sender, RoutedEventArgs e)
     {
         txtInput.Text = ""; // Получаем значение из текстового поля
         txtInput.IsReadOnly = false;

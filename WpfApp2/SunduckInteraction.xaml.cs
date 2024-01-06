@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -34,9 +35,9 @@ public partial class Page8
         _me = pl1;
         _companion = pl2;
         txtScore.Visibility = Visibility.Hidden;
-        txtInput2.IsReadOnly = true;
+        txtInput5.IsReadOnly = true;
         count.IsReadOnly = true;
-        txtInput2.Text = Game.count_try.ToString();        
+        txtInput5.Text = Game.count_try.ToString();        
     }
 
 
@@ -50,15 +51,20 @@ public partial class Page8
     private void Enter_Click(object sender, RoutedEventArgs e)
     {
         var inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
+        var inputValue2 = txtInput2.Text; // Получаем значение из текстового поля
+        var inputValue3 = txtInput3.Text; // Получаем значение из текстового поля
+        var inputValue4 = txtInput4.Text; // Получаем значение из текстового поля
 
-        if (inputValue1 == Game.randomString)
+
+        if (inputValue1 == Game.randomString[0].ToString() && inputValue2 == Game.randomString[1].ToString() && inputValue3 == Game.randomString[2].ToString() && inputValue4 == Game.randomString[3].ToString())
         {
             txtScore.Text = "Готово!";
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
-            Game.parts_code += Game.randomString[0];
+            Game.first_part_code += Game.randomString[0];
             IsTeleportActive = true;
-            GameOver("Won");
+            Enter.Visibility = Visibility.Collapsed;
+            //GameOver("Won");
         }
         else
         {
@@ -67,7 +73,7 @@ public partial class Page8
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
             Game.count_try -= 1;
-            txtInput2.Text = Game.count_try.ToString();
+            txtInput5.Text = Game.count_try.ToString();
             if (Game.count_try == 0)
                 GameOver("Dead");
         }

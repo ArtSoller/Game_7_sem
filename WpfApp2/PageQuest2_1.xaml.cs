@@ -22,16 +22,35 @@ namespace WpfApp2;
 /// </summary>
 public partial class Page4
 {
-    private bool isDragging = false;
-    private Point startPoint;
+    private Brush? _brush;
 
-    public Page4()
+    public Page4(Player pl1, Player pl2)
     {
         InitializeComponent();
+        Background.Width = SystemParameters.VirtualScreenWidth;
+        Background.Height = SystemParameters.VirtualScreenHeight;
+
+        _me = pl1;
+        _companion = pl2;
+
+        CanvasSetObjects();
     }
 
-    
-    private void But3_Click(object sender, RoutedEventArgs e)
+
+    private void CanvasSetObjects()
+    {
+        Canvas.SetLeft(quest_2, 0.5 * (SystemParameters.VirtualScreenWidth - quest_2.Width));
+
+        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
+
+
+        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
+        Back.Foreground = _brush;
+
+    }
+
+    private void Back_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");

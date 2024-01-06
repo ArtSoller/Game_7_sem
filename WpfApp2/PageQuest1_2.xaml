@@ -21,7 +21,7 @@
                 <ImageBrush ImageSource="img/correct.png" />
             </Rectangle.Fill>
         </Rectangle>
-        
+
         <Border Name="TargetMain" Background="White">
             <StackPanel Orientation="Horizontal" Name="MainContainer" Height="184" Width="960">
                 <Image Name="Picture1" Height="84" Width="121" Source="img/1.png" />
@@ -49,9 +49,11 @@
             <StackPanel Orientation="Horizontal" Name="AnswerContainer3" Height="184" Width="310">
             </StackPanel>
         </Border>
+        <TextBlock FontSize="16" Name="txtScore" Foreground="Black" Canvas.Top="57"/>
 
 
-        <Button Name="But3" Click="But2_Click"  Content="Назад" Height="66" Canvas.Left="434" Canvas.Top="608" Width="130"/>
+        <Button Name="Back" Click="Back_Click"  Content="Назад" Height="66" Canvas.Left="434" Canvas.Top="586" Width="130" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="Check" Click="Check_Click"  Content="Проверка" Height="66" Canvas.Left="434" Canvas.Top="506" Width="130" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
     </Canvas>
 </local:Room>

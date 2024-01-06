@@ -24,8 +24,8 @@ namespace WpfApp2;
 public partial class Page6
 {
     public string InputText { get; set; }
-
-    public Page6()
+    private Brush? _brush;
+    public Page6(Player pl1, Player pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
@@ -37,15 +37,33 @@ public partial class Page6
         txtInput4.Text = "-";
         txtInput6.Text = ")*";
         txtInput8.Text = "=10";
+        Background.Width = SystemParameters.VirtualScreenWidth;
+        Background.Height = SystemParameters.VirtualScreenHeight;
+
+        _me = pl1;
+        _companion = pl2;
+
+        CanvasSetObjects();
     }
 
-    private void But7_Click(object sender, RoutedEventArgs e)
+    private void CanvasSetObjects()
+    {
+        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
+
+
+        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
+        Back.Foreground = _brush;
+
+    }
+
+    private void Back_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new Page1(_me, _companion));
     }
-    private void But8_Click(object sender, RoutedEventArgs e)
+    private void Enter_Click(object sender, RoutedEventArgs e)
     {
         string inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
         string inputValue2 = txtInput3.Text; // Получаем значение из текстового поля
@@ -73,7 +91,7 @@ public partial class Page6
             txtInput7.IsReadOnly = true;
         }
     }
-    private void But9_Click(object sender, RoutedEventArgs e)
+    private void Reset_Click(object sender, RoutedEventArgs e)
     {
         txtInput1.Text = ""; // Получаем значение из текстового поля
         txtInput3.Text = ""; // Получаем значение из текстового поля
