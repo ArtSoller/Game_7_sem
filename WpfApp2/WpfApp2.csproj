@@ -9,57 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="img\1.png" />
-    <None Remove="img\11.png" />
-    <None Remove="img\12.png" />
-    <None Remove="img\2.png" />
-    <None Remove="img\3.png" />
-    <None Remove="img\4.png" />
-    <None Remove="img\5.png" />
-    <None Remove="img\6.png" />
-    <None Remove="img\correct.png" />
-    <None Remove="img\reset.png" />
-    <None Remove="img\window1.png" />
-    <None Remove="img\window2.png" />
-    <None Remove="img\window3.png" />
-    <None Remove="img\window4.png" />
-    <None Remove="img\window5%28correct%29.png" />
-    <None Remove="img\window6.png" />
-    <None Remove="img\карта 1.png" />
-    <None Remove="img\карта 2.png" />
-    <None Remove="img\карта 3 %28правильная%29.png" />
-    <None Remove="img\карта 4.png" />
-    <None Remove="img\карта 5.png" />
-    <None Remove="img\карта 6.png" />
-    <None Remove="snd\zvuk-perelistyivaniya-stranitsyi.mp3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="img\1.png" />
-    <Resource Include="img\11.png" />
-    <Resource Include="img\12.png" />
-    <Resource Include="img\2.png" />
-    <Resource Include="img\3.png" />
-    <Resource Include="img\4.png" />
-    <Resource Include="img\5.png" />
-    <Resource Include="img\6.png" />
-    <Resource Include="img\correct.png" />
-    <Resource Include="img\reset.png" />
-    <Resource Include="img\window1.png" />
-    <Resource Include="img\window2.png" />
-    <Resource Include="img\window3.png" />
-    <Resource Include="img\window4.png" />
-    <Resource Include="img\window5(correct).png" />
-    <Resource Include="img\window6.png" />
-    <Resource Include="img\карта 1.png" />
-  </ItemGroup>
-    
-  <ItemGroup>
     <Resource Include="img\2_quest.png" />
     <Resource Include="img\3D_logo_V3.png" />
     <Resource Include="img\3_quest.png" />
     <Resource Include="img\4_quest_1.png" />
     <Resource Include="img\4_quest_2.png" />
+    <Resource Include="img\book.png" />
+    <Resource Include="img\chest.png" />
     <Resource Include="img\floor.png" />
     <Resource Include="img\floor_1.png" />
     <Resource Include="img\image.png" />
@@ -70,10 +26,18 @@
     <Resource Include="img\pacman.jpg" />
     <Resource Include="img\pacman.png" />
     <Resource Include="img\Picture_preview_transparent.png" />
-    <Resource Include="img\pink.jpg" />
+    <Resource Include="img\.png" />
+    <Resource Include="img\plita_v2.png" />
+    <Resource Include="img\pole.png" />
+    <Resource Include="img\pole_v1.png" />
+    <Resource Include="img\pole_v2.png" />
+    <Resource Include="img\pole_v3.png" />
+    <Resource Include="img\pole_v4.png" />
     <Resource Include="img\quest1_1.png" />
     <Resource Include="img\red.jpg" />
     <Resource Include="img\Screenshot_1.png" />
+    <Resource Include="img\svitok.png" />
+    <Resource Include="img\svitok_map.png" />
     <Resource Include="img\Uravnenia.png" />
     <Resource Include="img\wall.png" />
     <Resource Include="img\wall_down.png" />
@@ -81,11 +45,5 @@
     <Resource Include="img\wall_side_1.png" />
     <Resource Include="img\wall_up.png" />
     <Resource Include="img\windows_picture.png" />
-    <Resource Include="img\карта 2.png" />
-    <Resource Include="img\карта 3 (правильная).png" />
-    <Resource Include="img\карта 4.png" />
-    <Resource Include="img\карта 5.png" />
-    <Resource Include="img\карта 6.png" />
-    <Resource Include="snd\zvuk-perelistyivaniya-stranitsyi.mp3" />
   </ItemGroup>
 </Project>

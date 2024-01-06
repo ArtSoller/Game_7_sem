@@ -1,0 +1,52 @@
+﻿<local:Room x:Class="WpfApp2.PageLocation0"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageLocation0">
+
+    <Canvas Name="Location0" Focusable="True" Background="White" KeyDown="CanvasKeyDown" KeyUp="CanvasKeyUp">
+
+        <Rectangle Name="Floor" Tag="floor" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="img/map.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Name="Player1" Width="50" Height="50" Fill="blue" Canvas.Left="100" Canvas.Top="251" />
+        <Rectangle Name="Player2" Width="50" Height="50" Fill="red" Canvas.Left="100" Canvas.Top="406" />
+
+        <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" Stroke="Black"/>
+        <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>
+        <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" Stroke="Black"/>
+        <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" Stroke="Black"/>
+
+        <Rectangle Name="TeleportToLocaltion1_ForPlayer1" Tag="teleport" Height="165" Canvas.Left="920" Canvas.Top="395" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Rectangle Name="TeleportToLocaltion1_ForPlayer2" Tag="teleport" Height="165" Canvas.Left="920" Canvas.Top="111" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <Rectangle Name="chest" Tag="chest" Height="147" Width="226" Canvas.Left="324" Canvas.Top="269">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/chest.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Name="ChestArea" Tag="chestArea" Height="235" Width="296" Canvas.Left="289" Canvas.Top="225" RadiusX="64.5" RadiusY="64.5"/>
+        <Rectangle x:Name="TeleportToLocaltionBack_1" Tag="teleport" Height="165" Canvas.Top="111" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle x:Name="TeleportToLocaltionBack_2" Tag="teleport" Height="165" Canvas.Top="395" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBox Name="Tb1" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="20" Canvas.Top="60"/>
+        <TextBox Name="Tb2" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="20" Canvas.Top="88"/>
+        <TextBox Name="Tb3" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="60"/>
+        <TextBox Name="Tb4" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="88"/>
+        <TextBox Name="Tb5" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="119"/>
+        <TextBox Name="Tb6" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="153"/>
+
+        <TextBox Name="Tb7" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="88"/>
+        <TextBox Name="Tb8" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="119"/>
+        <TextBox Name="Tb9" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="153"/>
+        <TextBox Name="Tb10" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="185"/>
+
+    </Canvas>
+</local:Room>

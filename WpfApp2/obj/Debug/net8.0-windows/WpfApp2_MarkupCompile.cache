@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\
 WpfApp2
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\App.xaml
-23-2054147593
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\App.xaml
+30-1122979647
 
-32-6171090
+39-532848287
 198-688555687
-Lobby.xaml;MainWindow.xaml;OpeningPage.xaml;PageLocation1.xaml;PageLocation2.xaml;PageQuest1_1_1_picture.xaml;PageQuest1_1_2_picture.xaml;PageQuest1_1_3_picture.xaml;PageQuest1_1_4_picture.xaml;PageQuest1_1_5_picture.xaml;PageQuest1_1_6_picture.xaml;PageQuest1_2.xaml;PageQuest2_1.xaml;PageQuest2_2.xaml;PageQuest3_1.xaml;PageQuest3_2_1_way.xaml;PageQuest3_2_2_way.xaml;PageQuest3_2_3_way.xaml;PageQuest3_2_4_way.xaml;PageQuest3_2_5_way.xaml;PageQuest3_2_6_way.xaml;PageQuest4_1_2.xaml;SunduckInteraction.xaml;
+Lobby.xaml;MainWindow.xaml;OpeningPage.xaml;PageLocation0.xaml;PageLocation1_1.xaml;PageLocation1_2.xaml;PageLocation2_1.xaml;PageLocation2_2.xaml;PageLocation3_1.xaml;PageLocation3_2.xaml;PageLocation4_1.xaml;PageLocation4_2.xaml;PageQuest1_1_1_picture.xaml;PageQuest1_1_2_picture.xaml;PageQuest1_1_3_picture.xaml;PageQuest1_1_4_picture.xaml;PageQuest1_1_5_picture.xaml;PageQuest1_1_6_picture.xaml;PageQuest1_2.xaml;PageQuest2_1.xaml;PageQuest2_2.xaml;PageQuest3_1.xaml;PageQuest3_2_1_way.xaml;PageQuest3_2_2_way.xaml;PageQuest3_2_3_way.xaml;PageQuest3_2_4_way.xaml;PageQuest3_2_5_way.xaml;PageQuest3_2_6_way.xaml;PageQuest4_1_2.xaml;SunduckInteraction.xaml;
 
 False
 

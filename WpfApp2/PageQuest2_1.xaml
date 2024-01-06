@@ -9,12 +9,7 @@
       Title="Page3">
 
     <Canvas Name="MyCanvas" Focusable="True" Background="White">
-        <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
-            </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle Name="quest_2" Tag="easel" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
+        <Rectangle Name="quest_3" Tag="easel" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/2_quest.png" />
             </Rectangle.Fill>

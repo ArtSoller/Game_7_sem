@@ -39,22 +39,16 @@ public partial class Page15
 
     private void CanvasSetObjects()
     {
-        Canvas.SetLeft(quest_1, 0.5 * (SystemParameters.VirtualScreenWidth - quest_1.Width));
 
-        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
-        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
 
         _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        Back.Foreground = _brush;
 
     }
 
-    private void Back_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
-        NavigationService.Navigate(new Page1(_me, _companion));
     }
 
 }
