@@ -23,14 +23,14 @@ namespace WpfApp2;
 public partial class Page4
 {
     private bool isDragging = false;
+    
     private Point startPoint;
 
-    public Page4()
+    public Page4(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
     }
 
-    
     private void But3_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
@@ -38,5 +38,4 @@ public partial class Page4
 
         NavigationService.Navigate(new PageLocation1_1(_me, _companion));
     }
-
 }

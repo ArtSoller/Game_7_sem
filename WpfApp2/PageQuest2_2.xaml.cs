@@ -25,7 +25,7 @@ public partial class Page6
 {
     public string InputText { get; set; }
 
-    public Page6()
+    public Page6(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
@@ -45,6 +45,7 @@ public partial class Page6
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new PageLocation3_1(_me, _companion));
     }
+
     private void But8_Click(object sender, RoutedEventArgs e)
     {
         string inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
@@ -73,6 +74,7 @@ public partial class Page6
             txtInput7.IsReadOnly = true;
         }
     }
+   
     private void But9_Click(object sender, RoutedEventArgs e)
     {
         txtInput1.Text = ""; // Получаем значение из текстового поля
@@ -85,5 +87,4 @@ public partial class Page6
         txtInput7.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
     }
-
 }

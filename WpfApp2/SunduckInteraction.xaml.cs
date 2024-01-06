@@ -25,9 +25,16 @@ public partial class Page8
 {
     public string InputText { get; set; }
 
-    public Page8(Player pl1, Player pl2)
+    private MediaPlayer _mediaPlayer;
+
+    public Page8(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
+
+        _mediaPlayer = new();
+        _mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
+        _mediaPlayer.MediaFailed += FailedMusic;
+        _mediaPlayer.Play();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
         gameTimer = new();
@@ -39,14 +46,17 @@ public partial class Page8
         txtInput2.Text = Game.AttemptsNumber.ToString();        
     }
 
-
-
     private void Back_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
+
+        _mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestClosed.mp3"));
+        _mediaPlayer.Play();
+
         NavigationService.Navigate(new PageLocation0(_me, _companion));
     }
+
     private void Enter_Click(object sender, RoutedEventArgs e)
     {
         var inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
@@ -73,8 +83,7 @@ public partial class Page8
         }
     }
 
-
-    private void GameOver(string message)
+    protected override void GameOver(string message)
     {
         if (gameTimer is null) throw new Exception("gameTimer is null");
         gameTimer.Stop();
@@ -98,5 +107,4 @@ public partial class Page8
         txtInput1.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
     }
-
 }

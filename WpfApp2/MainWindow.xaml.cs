@@ -14,6 +14,7 @@ public partial class MainWindow : Window
         myGame = new();
         InitializeComponent();
         MainFrame.Content = new OpeningPage(myGame);
+        //MainFrame.Content = new PageLocation0(myGame.Me, myGame.Companion);
         WindowState = WindowState.Maximized;
         WindowStyle = WindowStyle.None;
     }

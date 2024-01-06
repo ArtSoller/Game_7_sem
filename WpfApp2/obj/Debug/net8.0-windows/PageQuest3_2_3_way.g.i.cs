@@ -85,7 +85,7 @@ namespace WpfApp2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfApp2;V1.0.0.0;component/pagequest3_2_3_way.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfApp2;component/pagequest3_2_3_way.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\PageQuest3_2_3_way.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

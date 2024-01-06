@@ -24,18 +24,14 @@ public partial class Page14
 {
     private Brush? _brush;
 
-    public Page14(Player pl1, Player pl2)
+    public Page14(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
 
-        _me = pl1;
-        _companion = pl2;
-
         CanvasSetObjects();
     }
-
 
     private void CanvasSetObjects()
     {
@@ -56,5 +52,4 @@ public partial class Page14
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new PageLocation3_2(_me, _companion));
     }
-
 }

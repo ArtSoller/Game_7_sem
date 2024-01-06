@@ -25,7 +25,7 @@ public partial class Page7
     private bool isDragging = false;
     private Point startPoint;
 
-    public Page7()
+    public Page7(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
     }
@@ -36,5 +36,4 @@ public partial class Page7
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new PageLocation3_1(_me, _companion));
     }
-
 }

@@ -15,25 +15,16 @@ using System.Windows.Shapes;
 
 namespace WpfApp2;
 
-/// <summary>
-/// Логика взаимодействия для BeginingPage.xaml
-/// </summary>
 public partial class PageLocation0 : Room
 {
 
-    public PageLocation0(Player pl1, Player pl2)
+    public PageLocation0(Player pl1, Player pl2) : base(pl1, pl2)
     {
-        gameTimer = new();
         InitializeComponent();
-        _toDisplay = true;
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
 
-        _me = pl1;
-        _companion = pl2;
-        mediaPlayer = new();
-        mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
+        //mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
 
         CanvasSetObjects();
         GameSetUp();
@@ -69,59 +60,16 @@ public partial class PageLocation0 : Room
         Canvas.SetLeft(TeleportToLocaltionBack_2, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack_2.Width - 1875);
     }
 
-    private void GameSetUp()
+    protected override void GameSetUp()
     {
         if (gameTimer is null) throw new Exception("gameTimer is null");
 
         Location0.Focus();
-        gameTimer.Interval = TimeSpan.FromMilliseconds(10);
-        gameTimer.Tick += GameLoop;
-        gameTimer.Start();
+        base.GameSetUp();
 
-        ImageBrush MyImage = new()
-        {
-            ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
-        };
         Player1.Fill = MyImage;
     }
     #endregion
-
-    private void CanvasKeyDown(object sender, KeyEventArgs e)
-    {
-        if (e.Key == Key.W)
-        {
-            _isUpKeyPressed = true;
-            _me.IsMovingUpward = true;
-        }
-
-        if (e.Key == Key.A)
-        {
-            _isLeftKeyPressed = true;
-            _me.IsMovingLeftward = true;
-            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
-        }
-
-        if (e.Key == Key.D)
-        {
-            _isRightKeyPressed = true;
-            _me.IsMovingRightward = true;
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
-        }
-
-        if (e.Key == Key.S)
-        {
-            _isDownKeyPressed = true;
-            _me.IsMovingDownward = true;
-        }
-
-        if (e.Key == Key.F)
-        {
-            _isForceButtonClicked = true;
-        }
-
-        if (e.Key == Key.Escape)
-            GameOver("Dead");
-    }
 
     private void SetMovementPossibility()
     {
@@ -155,7 +103,7 @@ public partial class PageLocation0 : Room
 
                 if ((string)obj.Tag == "chestArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                 {
-                    mediaPlayer.Play();
+                    //mediaPlayer.Play();
                     NavigationService?.Navigate(new Page8(_me, _companion));
                 }
 
@@ -194,37 +142,23 @@ public partial class PageLocation0 : Room
         }
     }
 
-    private void GameLoop(object sender, EventArgs e)
+    protected override void GameLoop(object sender, EventArgs e)
     {
         SetMovementsStatus();
 
         SetMovementPossibility();
 
-        if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;
-        else if (!_isPossibleUpwardMovement && _me.IsMovingUpward) _me.SpeedY = 0;
+        if (_me.IsMovingLeftward)
+            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
+        else if (_me.IsMovingRightward)
+            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
 
-        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _me.SpeedX -= _speed;
-        else if (!_isPossibleLeftwardMovement && _me.IsMovingLeftward) _me.SpeedX = 0;
-
-        if (_isRightKeyPressed && _isPossibleRightwardMovement) _me.SpeedX += _speed;
-        else if (!_isPossibleRightwardMovement && _me.IsMovingRightward) _me.SpeedX = 0;
-
-        if (_isDownKeyPressed && _isPossibleDownwardMovement) _me.SpeedY -= _speed;
-        else if (!_isPossibleDownwardMovement && _me.IsMovingDownward) _me.SpeedY = 0;
-
-
-        _me.SpeedX *= _friction;
-        _me.SpeedY *= _friction;
-
-        // Canvas.SetLeft(Player1, Canvas.GetLeft(Player1) + _speedX);
-        // Canvas.SetTop(Player1, Canvas.GetTop(Player1) - _speedY);
+        base.GameLoop(sender, e);
 
         Canvas.SetLeft(Player1, _me.X + _me.SpeedX);
         Canvas.SetTop(Player1, _me.Y - _me.SpeedY);
 
         Tb1.Text = _me.Role.ToString();
 
-        _me.X += _me.SpeedX;
-        _me.Y -= _me.SpeedY;
     }
 }

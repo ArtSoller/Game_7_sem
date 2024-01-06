@@ -27,15 +27,13 @@ public partial class Page5
 
     private Brush? _brush;
 
-    public Page5(Player pl1, Player pl2)
+    public Page5(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
 
-        _me = pl1;
-        _companion = pl2;
         CanvasSetObjects();
 
         Image image = new Image();
@@ -64,6 +62,7 @@ public partial class Page5
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new PageLocation3_1(_me, _companion));
     }
+    
     private void But5_Click(object sender, RoutedEventArgs e)
     {
         string inputValue = txtInput.Text; // Получаем значение из текстового поля
@@ -80,11 +79,11 @@ public partial class Page5
             txtInput.IsReadOnly = true;
         }
     }
+    
     private void But6_Click(object sender, RoutedEventArgs e)
     {
         txtInput.Text = ""; // Получаем значение из текстового поля
         txtInput.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
     }
-
 }

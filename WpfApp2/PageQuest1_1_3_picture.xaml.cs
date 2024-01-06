@@ -24,14 +24,11 @@ public partial class Page17
 {
     private Brush? _brush;
 
-    public Page17(Player pl1, Player pl2)
+    public Page17(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
-
-        _me = pl1;
-        _companion = pl2;
 
         CanvasSetObjects();
     }
