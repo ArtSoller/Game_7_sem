@@ -31,7 +31,7 @@ public partial class PageLocation1_1 : Room
         GameSetUp();
     }
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         // Ставим игроков.
         Canvas.SetLeft(Player1, _me.X);
@@ -112,7 +112,7 @@ public partial class PageLocation1_1 : Room
         Player1.Fill = MyImage;
     }
 
-    private void SetMovementPossibility()
+    protected override void SetMovementPossibility()
     {
         if (_toDisplay)
         {

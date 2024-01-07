@@ -87,4 +87,14 @@ public partial class Page6
         txtInput7.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
     }
+
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
+    }
+
+    protected override void CanvasSetObjects()
+    {
+        throw new NotImplementedException();
+    }
 }

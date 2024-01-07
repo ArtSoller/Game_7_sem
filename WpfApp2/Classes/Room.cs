@@ -23,8 +23,6 @@ public abstract class Room : Page
 {
     protected DispatcherTimer? gameTimer;
 
-    //protected MediaPlayer? mediaPlayer;
-
     protected bool _isUpKeyPressed = false, _isDownKeyPressed = false,
                    _isLeftKeyPressed = false, _isRightKeyPressed = false,
                    _isForceButtonClicked = false;
@@ -51,14 +49,14 @@ public abstract class Room : Page
         gameTimer = new();
         _toDisplay = true;
 
-        MyImage = new()
-        {
-            ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/pacman.png"))
-        };
-
         _me = pl1;
         _companion = pl2;
-        
+
+        MyImage = new()
+        {
+            ImageSource = new BitmapImage(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
+        };
+
         //mediaPlayer = new();
         //mediaPlayer.MediaFailed += FailedMusic;
     }
@@ -181,6 +179,10 @@ public abstract class Room : Page
         _me.X += _me.SpeedX;
         _me.Y -= _me.SpeedY;
     }
+
+    protected abstract void SetMovementPossibility();
+
+    protected abstract void CanvasSetObjects();
 
     protected void SetMovementsStatus()
     {

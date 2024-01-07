@@ -34,11 +34,11 @@ public partial class Page3
         
         foreach(Image img in MainContainer.Children)
             img.MouseDown += DoubleMouseDown;
-        
-        CanvasSetUp();
+
+        CanvasSetObjects();
     }
 
-    private void CanvasSetUp()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetTop(Quest, 0.01 * (SystemParameters.VirtualScreenHeight));
         Canvas.SetLeft(Quest, 0.5 * (SystemParameters.VirtualScreenWidth - Quest.Width));
@@ -133,5 +133,10 @@ public partial class Page3
             else
                 throw new ArgumentException("Ty chto nadelal???");
         }
+    }
+
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
     }
 }

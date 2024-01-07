@@ -39,7 +39,7 @@ public partial class PageLocation1_2 : Room
         Player2.Fill = MyImage;
     }
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         // Ставим игроков.
         Canvas.SetLeft(Player2, _me.X);
@@ -82,7 +82,7 @@ public partial class PageLocation1_2 : Room
         wallBottom.Width = SystemParameters.VirtualScreenHeight;
     }
 
-    private void SetMovementPossibility()
+    protected override void SetMovementPossibility()
     {
         if (_toDisplay)
         {

@@ -70,8 +70,8 @@ public partial class OpeningPage
     {
         var Host = Dns.GetHostName();
         var IP = Dns.GetHostAddresses(Host);
-        var ipAddress = IP.Length == 5 ? $"{IP[4]}:7106" : $"{IP[1]}:7106";
-        TextBoxInfoIP.Text = "Ваш IP адрес: " + ipAddress;
+        var externalIP = new WebClient().DownloadString("https://api.ipify.org");
+        TextBoxInfoIP.Text = "Ваш внешний IP адрес: " + externalIP + "\nВаш локальный IP адрес: " + IP[0];
     }
 
     private void StartGame(object sender, RoutedEventArgs e)

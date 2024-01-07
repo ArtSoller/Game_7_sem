@@ -11,8 +11,6 @@ namespace WpfApp2;
 /// </summary>
 public partial class App : Application
 {
-    public Game myGame;
-
     private MediaPlayer _mediaPlayer;
 
     private OpenFileDialog _openFileDialog;
@@ -30,7 +28,6 @@ public partial class App : Application
     public App()
     {
         _mediaPlayer = new();
-        myGame = new();
         // Гг
         // D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\snd\backgroundMusic.mp3
         // "pack://siteoforigin:,,,/snd/backgroundMusic.wav"

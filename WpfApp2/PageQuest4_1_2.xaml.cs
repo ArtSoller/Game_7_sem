@@ -45,7 +45,7 @@ public partial class Page5
 
     }
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetTop(But4, 0.6 * (SystemParameters.VirtualScreenHeight - But4.Height));
         Canvas.SetLeft(But4, 0.5 * (SystemParameters.VirtualScreenWidth - But4.Width));
@@ -85,5 +85,10 @@ public partial class Page5
         txtInput.Text = ""; // Получаем значение из текстового поля
         txtInput.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
+    }
+
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
     }
 }

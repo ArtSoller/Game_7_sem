@@ -7,23 +7,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="img\.png" />
-    <None Remove="img\book.png" />
-    <None Remove="img\chest.png" />
-    <None Remove="img\plita_v2.png" />
-    <None Remove="img\pole.png" />
-    <None Remove="img\pole_v1.png" />
-    <None Remove="img\pole_v2.png" />
-    <None Remove="img\pole_v3.png" />
-    <None Remove="img\pole_v4.png" />
-    <None Remove="img\svitok.png" />
-    <None Remove="img\svitok_map.png" />
-    <None Remove="snd\ChestClosed.mp3" />
-    <None Remove="snd\ChestOpened.mp3" />
-    <None Remove="snd\GameWon.mp3" />
-  </ItemGroup>
     
   <ItemGroup>
     <Resource Include="img\2_quest.png" />

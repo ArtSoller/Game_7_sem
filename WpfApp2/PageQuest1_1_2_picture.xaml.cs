@@ -33,7 +33,7 @@ public partial class Page16
         CanvasSetObjects();
     }
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetLeft(quest_3, 0.5 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
 
@@ -44,6 +44,11 @@ public partial class Page16
         _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
         But3.Foreground = _brush;
 
+    }
+
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
     }
 
     private void But3_Click(object sender, RoutedEventArgs e)

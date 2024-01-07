@@ -52,13 +52,13 @@ public class Game
 
     // Собираем строку из сгенерированных цифр
 
-    public static string randomString => $"{digit1}{digit2}{digit3}{digit4}";
+    public static string QuestKeyString => $"{digit1}{digit2}{digit3}{digit4}";
 
     public static int AttemptsNumber = 5;
 
     public static bool Quest0_5 = false, Quest1 = false, Quest2 = false, Quest3 = false, Quest4 = false;
     
-    public static string parts_code = "Найденные части кода: ";
+    public static string CodeParts = "Найденные части кода: ";
     
     public Game()
     {

@@ -33,8 +33,7 @@ public partial class Page17
         CanvasSetObjects();
     }
 
-
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetLeft(quest_3, 0.5 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
 
@@ -47,11 +46,15 @@ public partial class Page17
 
     }
 
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
+    }
+
     private void But3_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new PageLocation1_1(_me, _companion));
     }
-
 }

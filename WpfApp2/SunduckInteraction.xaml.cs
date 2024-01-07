@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace WpfApp2;
 /// </summary>
 public partial class Page8
 {
-    public string InputText { get; set; }
+    public string? InputText { get; set; }
 
     private MediaPlayer _mediaPlayer;
 
@@ -32,8 +33,9 @@ public partial class Page8
         InitializeComponent();
 
         _mediaPlayer = new();
-        _mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
         _mediaPlayer.MediaFailed += FailedMusic;
+
+        _mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
         _mediaPlayer.Play();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
@@ -43,7 +45,7 @@ public partial class Page8
         txtScore.Visibility = Visibility.Hidden;
         txtInput2.IsReadOnly = true;
         count.IsReadOnly = true;
-        txtInput2.Text = Game.AttemptsNumber.ToString();        
+        txtInput2.Text = Game.AttemptsNumber.ToString();       
     }
 
     private void Back_Click(object sender, RoutedEventArgs e)
@@ -61,12 +63,12 @@ public partial class Page8
     {
         var inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
 
-        if (inputValue1 == Game.randomString)
+        if (inputValue1 == Game.QuestKeyString)
         {
             txtScore.Text = "Готово!";
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
-            Game.parts_code += Game.randomString[0];
+            Game.CodeParts += Game.QuestKeyString[0];
             IsTeleportActive = true;
             GameOver("Won");
         }
@@ -106,5 +108,15 @@ public partial class Page8
         txtInput1.Text = ""; // Получаем значение из текстового поля
         txtInput1.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
+    }
+
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
+    }
+
+    protected override void CanvasSetObjects()
+    {
+        throw new NotImplementedException();
     }
 }

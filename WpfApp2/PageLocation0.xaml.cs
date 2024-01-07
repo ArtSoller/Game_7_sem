@@ -31,7 +31,7 @@ public partial class PageLocation0 : Room
     }
 
     #region Настройка объектов
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         // Ставим игроков.
         Canvas.SetLeft(Player1, _me.X);
@@ -71,7 +71,7 @@ public partial class PageLocation0 : Room
     }
     #endregion
 
-    private void SetMovementPossibility()
+    protected override void SetMovementPossibility()
     {
         if (_toDisplay)
         {

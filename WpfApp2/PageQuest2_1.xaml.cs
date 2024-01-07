@@ -31,6 +31,16 @@ public partial class Page4
         InitializeComponent();
     }
 
+    protected override void CanvasSetObjects()
+    {
+        throw new NotImplementedException();
+    }
+
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
+    }
+
     private void But3_Click(object sender, RoutedEventArgs e)
     {
         if (_me is null) throw new ArgumentException("_me is null");
