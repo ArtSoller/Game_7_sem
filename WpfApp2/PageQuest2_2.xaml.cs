@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -79,6 +80,9 @@ public partial class PageQuest2_2
             txtInput3.IsReadOnly = true;
             txtInput5.IsReadOnly = true;
             txtInput7.IsReadOnly = true;
+            Game.second_part_code += Game.randomString[1];
+            IsTeleportActive = true;
+            Enter.Visibility = Visibility.Collapsed;
         }
         else
         {

@@ -31,6 +31,13 @@ namespace WpfApp2
             _me = pl1;
             _companion = pl2;
 
+            code.IsReadOnly = true;
+            code.Text = Game.parts_code;
+            first_part_code.Text = Game.first_part_code;
+            second_part_code.Text = Game.second_part_code;
+            third_part_code.Text = Game.third_part_code;
+            fourth_part_code.Text = Game.fourth_part_code;
+
             CanvasSetObjects();
             GameSetUp();
         }
@@ -75,6 +82,21 @@ namespace WpfApp2
             Canvas.SetBottom(wallBottom, 0);
             wallBottom.Height = 75;
             wallBottom.Width = SystemParameters.VirtualScreenHeight;
+
+            Canvas.SetTop(code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(first_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(second_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(second_part_code, 0.91 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
         }
 
         private void GameSetUp()

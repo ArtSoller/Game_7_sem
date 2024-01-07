@@ -65,6 +65,9 @@ public partial class PageQuest4_2_terminal
             txtScore.Text = "Готово!";
             txtScore.Visibility = Visibility.Visible;
             txtInput.IsReadOnly = true;
+            Game.third_part_code += Game.randomString[3];
+            IsTeleportActive = true;
+            Enter.Visibility = Visibility.Collapsed;
         }
         else
         {

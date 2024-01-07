@@ -63,5 +63,10 @@
         <Rectangle x:Name="AreaEasel4" Stroke="Black" Tag="easel_area" Height="261" Canvas.Left="61" Canvas.Top="398" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Rectangle x:Name="AreaEasel5" Stroke="Black" Tag="easel_area" Height="261" Canvas.Left="329" Canvas.Top="398" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Rectangle x:Name="AreaEasel6" Stroke="Black" Tag="easel_area" Height="261" Canvas.Left="595" Canvas.Top="398" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="code" Canvas.Left="690" Canvas.Top="646" Foreground="White" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="first_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Orange" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="second_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Aqua" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="third_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="LightGreen" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="fourth_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="HotPink" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
     </Canvas>
 </local:Room>

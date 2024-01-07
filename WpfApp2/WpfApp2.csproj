@@ -18,6 +18,7 @@
     <None Remove="img\5.png" />
     <None Remove="img\6.png" />
     <None Remove="img\correct.png" />
+    <None Remove="img\plita_v5.png" />
     <None Remove="img\window1.png" />
     <None Remove="img\window2.png" />
     <None Remove="img\window3.png" />
@@ -80,6 +81,7 @@
     <Resource Include="img\Picture_preview_transparent.png" />
     <Resource Include="img\.png" />
     <Resource Include="img\plita_v2.png" />
+    <Resource Include="img\plita_v5.png" />
     <Resource Include="img\pole.png" />
     <Resource Include="img\pole_v1.png" />
     <Resource Include="img\pole_v2.png" />
