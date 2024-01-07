@@ -65,7 +65,6 @@ namespace WpfApp2
             Canvas.SetLeft(TeleportToLocaltion2_2, SystemParameters.VirtualScreenWidth - TeleportToLocaltion2_2.Width - 10);
 
             Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
-            Canvas.SetLeft(TeleportToLocaltionBack, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack.Width - 1880);
 
             // Ставим мольберты.
             Canvas.SetTop(picture1, 0.5 * (SystemParameters.VirtualScreenHeight - picture1.Height));
@@ -152,7 +151,7 @@ namespace WpfApp2
                 {
                     Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                    if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion2_2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location2_2));
@@ -162,7 +161,7 @@ namespace WpfApp2
                     if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
                         //mediaPlayer.Play();
-                        NavigationService?.Navigate(new Page8(_me, _companion));
+                        NavigationService?.Navigate(new PageQuest1_2(_me, _companion));
                     }
 
                     if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)

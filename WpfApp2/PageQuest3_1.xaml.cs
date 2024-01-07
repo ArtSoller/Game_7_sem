@@ -20,11 +20,11 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page4.xaml
 /// </summary>
-public partial class Page7
+public partial class PageQuest3_1
 {
     private Brush? _brush;
 
-    public Page7(Player pl1, Player pl2)
+    public PageQuest3_1(Player pl1, Player pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;

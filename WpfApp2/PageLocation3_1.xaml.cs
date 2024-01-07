@@ -46,7 +46,6 @@ namespace WpfApp2
             Canvas.SetLeft(TeleportToLocaltion4_1, SystemParameters.VirtualScreenWidth - TeleportToLocaltion4_1.Width - 10);
 
             Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
-            Canvas.SetLeft(TeleportToLocaltionBack, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack.Width - 1880);
 
             // Ставим мольберты.
             Canvas.SetTop(QuestField, 0.5 * (SystemParameters.VirtualScreenHeight - QuestField.Height));
@@ -56,8 +55,22 @@ namespace WpfApp2
             Canvas.SetTop(QuestArea, 0.5 * (SystemParameters.VirtualScreenHeight - QuestArea.Height) - 15);
             Canvas.SetLeft(QuestArea, 0.5 * (SystemParameters.VirtualScreenWidth - QuestArea.Width) - 12);
 
-            Canvas.SetTop(Book, 50);
-            Canvas.SetLeft(Book, 50);
+            Canvas.SetTop(Book, 0.15 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(Book, 0.1 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(BookArea, 0.12 * (SystemParameters.VirtualScreenHeight - BookArea.Height));
+            Canvas.SetLeft(BookArea, 0.07 *SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(QuestField, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(QuestField, 0.2 * SystemParameters.VirtualScreenWidth);
+            QuestField.Height = 0.87 * SystemParameters.VirtualScreenHeight;
+            QuestField.Width = 0.65 * SystemParameters.VirtualScreenWidth;
+
+            Canvas.SetTop(QuestArea, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(QuestArea, 0.2 * SystemParameters.VirtualScreenWidth);
+            QuestArea.Height = 0.87 * SystemParameters.VirtualScreenHeight;
+            QuestArea.Width = 0.65 * SystemParameters.VirtualScreenWidth;
+
 
             Canvas.SetTop(Plate, 50);
             Canvas.SetLeft(Plate, SystemParameters.VirtualScreenWidth - Plate.Width - 12);
@@ -160,17 +173,17 @@ namespace WpfApp2
                 {
                     Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                    if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location4_1));
                     }
 
 
-                    if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    if ((string)obj.Name == "BookArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
                         //mediaPlayer.Play();
-                        NavigationService?.Navigate(new Page8(_me, _companion));
+                        NavigationService?.Navigate(new PageQuest3_1(_me, _companion));
                     }
 
                     if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)

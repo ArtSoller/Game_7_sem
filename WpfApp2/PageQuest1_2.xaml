@@ -1,4 +1,4 @@
-﻿<local:Room x:Class="WpfApp2.Page3"
+﻿<local:Room x:Class="WpfApp2.PageQuest1_2"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d" 
       d:DesignHeight="685" d:DesignWidth="965"
-      Title="Page3">
+      Title="PageQuest1_2">
 
     <Canvas Name="MyCanvas" Focusable="True" Background="White">
 

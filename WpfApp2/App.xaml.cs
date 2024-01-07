@@ -37,7 +37,7 @@ public partial class App : Application
         //A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3
         _openFileDialog = new()
         {
-            FileName = "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\backgroundMusic.wav"
+            FileName = "A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3"
         };
         _mediaPlayer.MediaOpened += RunMusic;
         _mediaPlayer.MediaFailed += FailedMusic;

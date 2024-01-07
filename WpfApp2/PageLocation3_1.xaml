@@ -18,35 +18,28 @@
 
         <Rectangle Name="Player1" Width="50" Height="50" Fill="Red" Canvas.Left="44" Canvas.Top="313" />
 
-        <Rectangle Name="Book" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="85" Height="77" Canvas.Left="44" Canvas.Top="65" HorizontalAlignment="Center" VerticalAlignment="Top" >
+        <Rectangle Name="Book" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="85" Height="77" Canvas.Left="67" Canvas.Top="106" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/book.png" />
             </Rectangle.Fill>
         </Rectangle>
+        <Rectangle x:Name="BookArea" Tag="easel_area" Stroke="Black" Height="171" Canvas.Left="14" Canvas.Top="55" Width="196" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
 
         <Rectangle Name="QuestField" ToolTip="Для взаимодействия нажмите кнопку F" Width="575" Height="570" Canvas.Left="193" Canvas.Top="60" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/pole_v4.png" />
             </Rectangle.Fill>
         </Rectangle>
+        <Rectangle x:Name="QuestArea" Stroke="Black" Height="566" Canvas.Left="184" Canvas.Top="65" Width="584" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
+        
         <Rectangle Name="Plate" Width="82" Height="86" Canvas.Left="857" Canvas.Top="61" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.5,0.5" >
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.121"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/plita_v2.png" />
             </Rectangle.Fill>
         </Rectangle>
-
-        <Rectangle x:Name="BookArea" Height="98" Canvas.Left="34" Canvas.Top="60" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle x:Name="PlateArea" Height="77" Canvas.Left="850" Canvas.Top="149" Width="79" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle x:Name="QuestArea" Height="566" Canvas.Left="184" Canvas.Top="65" Width="584" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle x:Name="PlateArea" Height="97" Stroke="Black" Canvas.Left="850" Canvas.Top="149" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="Black"/>
         <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>

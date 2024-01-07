@@ -21,11 +21,11 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page6.xaml
 /// </summary>
-public partial class Page6
+public partial class PageQuest2_2
 {
     public string InputText { get; set; }
     private Brush? _brush;
-    public Page6(Player pl1, Player pl2)
+    public PageQuest2_2(Player pl1, Player pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
@@ -61,7 +61,7 @@ public partial class Page6
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
-        NavigationService.Navigate(new PageLocation3_1(_me, _companion));
+        NavigationService.Navigate(new PageLocation2_2(_me, _companion));
     }
     private void Enter_Click(object sender, RoutedEventArgs e)
     {

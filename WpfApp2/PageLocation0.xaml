@@ -48,5 +48,6 @@
         <TextBox Name="Tb9" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="153"/>
         <TextBox Name="Tb10" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="185"/>
 
+        <TextBox Name="code" ForeColor="White" Text="Найденные части кода" Width="120" Canvas.Left="311" Canvas.Top="185"/>
     </Canvas>
 </local:Room>

@@ -20,11 +20,11 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page4.xaml
 /// </summary>
-public partial class Page16
+public partial class PageQuest1_1_2_picture
 {
     private Brush? _brush;
 
-    public Page16(Player pl1, Player pl2)
+    public PageQuest1_1_2_picture(Player pl1, Player pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
@@ -54,7 +54,7 @@ public partial class Page16
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
-        NavigationService.Navigate(new Page1(_me, _companion));
+        NavigationService.Navigate(new PageLocation1_1(_me, _companion));
     }
 
 }

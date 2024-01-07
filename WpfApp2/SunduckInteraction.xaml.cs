@@ -37,7 +37,7 @@ public partial class Page8
         txtScore.Visibility = Visibility.Hidden;
         txtInput5.IsReadOnly = true;
         count.IsReadOnly = true;
-        txtInput5.Text = Game.count_try.ToString();        
+        txtInput5.Text = Game.AttemptsNumber.ToString();        
     }
 
 
@@ -46,7 +46,7 @@ public partial class Page8
     {
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
-        NavigationService.Navigate(new Page1(_me, _companion));
+        NavigationService.Navigate(new PageLocation0(_me, _companion));
     }
     private void Enter_Click(object sender, RoutedEventArgs e)
     {
@@ -72,9 +72,9 @@ public partial class Page8
             txtScore.Visibility = Visibility.Visible;
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
-            Game.count_try -= 1;
-            txtInput5.Text = Game.count_try.ToString();
-            if (Game.count_try == 0)
+            Game.AttemptsNumber -= 1;
+            txtInput5.Text = Game.AttemptsNumber.ToString();
+            if (Game.AttemptsNumber == 0)
                 GameOver("Dead");
         }
     }

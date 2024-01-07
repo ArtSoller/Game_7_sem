@@ -28,7 +28,6 @@ public abstract class Room : Page
     protected bool _isUpKeyPressed = false, _isDownKeyPressed = false,
                    _isLeftKeyPressed = false, _isRightKeyPressed = false,
                    _isForceButtonClicked = false;
-    public static bool IsTeleportActive = false;
 
     protected bool _toDisplay = true;
 

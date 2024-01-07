@@ -59,7 +59,12 @@ public class Game
     public static bool Quest0_5 = false, Quest1 = false, Quest2 = false, Quest3 = false, Quest4 = false;
     
     public static string parts_code = "Найденные части кода: ";
-    
+    public static string first_part_code = "";
+    public static string second_part_code = "";
+    public static string third_part_code = "";
+    public static string fourth_part_code = "";
+
+
     public Game()
     {
         Random rnd = new();
