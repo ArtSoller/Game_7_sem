@@ -161,6 +161,9 @@ public abstract class Room : Page
 
     protected virtual void GameLoop(object sender, EventArgs e)
     {
+        if (!_toDisplay)
+            return;
+
         if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;
         else if (!_isPossibleUpwardMovement && _me.IsMovingUpward) _me.SpeedY = 0;
 

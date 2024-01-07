@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "IKlMJbUTfa5u4ntRC+KXI8RIf49Sju1dXLyGRreYEXQpSBkBd/8nPbeSZI4P/xfXibqch2Rne8x8YkpL3D6HrA==",
+  "dgSpecHash": "or6776lg81ohlKMaGBJc5RwfNrMSJwOoWyfqJIR4tFN9vjf3IoJlAbH8efcasFYnIrAXvwADOHMrutQ2V231yg==",
   "success": true,
   "projectFilePath": "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\WpfApp2.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\grpc.core.api\\2.60.0\\grpc.core.api.2.60.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\grpc.net.client\\2.60.0\\grpc.net.client.2.60.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\grpc.net.common\\2.60.0\\grpc.net.common.2.60.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\grpc.tools\\2.60.0\\grpc.tools.2.60.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

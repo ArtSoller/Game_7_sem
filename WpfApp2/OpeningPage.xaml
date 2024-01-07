@@ -18,8 +18,12 @@
             </Rectangle>
 
 
-            <Button Name="ButtStart" Content="Начать" Height="57" Canvas.Left="414" Canvas.Top="413" Width="122" Click="StartGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24"/>
+            <Button Name="ButtStart" Content="Начать" Height="57" Canvas.Left="414" Canvas.Top="413" Width="122" Click="StartGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24" IsEnabled="False"/>
             <Button Name ="ButtConnect1" Content="Подключиться" Height="57" Canvas.Left="414" Canvas.Top="483" Width="122" Click="ConnectToCompanion" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button Name ="ButtConnect2" Content="Подключиться" Height="57" Canvas.Left="414" Canvas.Top="483" Width="122" Click="ConnectToCompanion2" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="QuitBox" Content="Выйти" Height="57" Canvas.Left="414" Canvas.Top="563" Width="122" Click="QuitGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="BackBox" Content="Вернуться" Height="57" Canvas.Left="414" Canvas.Top="563" Width="122" Click="BackToMain" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="19" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
 
             <Rectangle Name="Sign" Height="113" Width="826" Canvas.Left="138" Canvas.Top="153">
                 <Rectangle.Fill>
@@ -32,7 +36,7 @@
 
             <TextBox x:Name="MyNameTextBox" Canvas.Left="166" TextWrapping="Wrap" Text="Введите имя" Canvas.Top="247" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="CompanionNameTextBox" Canvas.Left="166" TextWrapping="Wrap" Text="Имя игрока" Canvas.Top="317" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Button x:Name="QuitBox" Content="Выйти" Height="57" Canvas.Left="414" Canvas.Top="563" Width="122" Click="QuitGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="IPEnterBox" Canvas.Left="396" TextWrapping="Wrap" Visibility="Collapsed" Canvas.Top="247" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Canvas>
     </Grid>
 </Page>

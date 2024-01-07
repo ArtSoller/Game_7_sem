@@ -35,8 +35,6 @@ public class Game
 
     public Room MyPage;
 
-    private bool _isConnected = false;
-
     private static Random random = new();
 
     // Генерируем случайные цифры
@@ -63,7 +61,6 @@ public class Game
     public Game()
     {
         Random rnd = new();
-
         var value = rnd.Next(0, 2);
 
         Role role1 = value == 0 ? Role.Performer : Role.Assistant;
@@ -84,19 +81,7 @@ public class Game
             Role = role2, 
             CurrentLocation = Location.Location0
         };
-        
-        MyPage = new PageLocation0(Me, Companion);
-    }
-
-    public bool ConnectPlayers()
-    {
-        /* Логика подключения */
-        return _isConnected;
-    }
-
-    public void StartGame()
-    {
-        if (_isConnected)
-            MyPage = new PageLocation0(Me, Companion);
+        Connection.StartServer();
+        // MyPage = new PageLocation0(Me, Companion);
     }
 }

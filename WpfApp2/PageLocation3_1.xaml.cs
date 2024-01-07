@@ -92,72 +92,43 @@ public partial class PageLocation3_1 : Room
 
     protected override void SetMovementPossibility()
     {
-        if (_toDisplay)
+        if (_me is null) throw new ArgumentException("_me is null");
+        if (_companion is null) throw new ArgumentException("_companion is null");
+
+        _isPossibleUpwardMovement = Canvas.GetTop(Player1) > wallTop.Height;
+        _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > wallLeft.Width;
+        _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + Player1.Width < SystemParameters.VirtualScreenWidth - wallRight.Width;
+        _isPossibleDownwardMovement = Canvas.GetTop(Player1) + Player1.Height < SystemParameters.VirtualScreenHeight - wallBottom.Height;
+
+        pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+
+        foreach (var obj in Location3_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
         {
-            if (_me is null) throw new ArgumentException("_me is null");
-            if (_companion is null) throw new ArgumentException("_companion is null");
+            Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            _isPossibleUpwardMovement = Canvas.GetTop(Player1) > wallTop.Height;
-            _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > wallLeft.Width;
-            _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + Player1.Width < SystemParameters.VirtualScreenWidth - wallRight.Width;
-            _isPossibleDownwardMovement = Canvas.GetTop(Player1) + Player1.Height < SystemParameters.VirtualScreenHeight - wallBottom.Height;
-
-            pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
-
-            foreach (var obj in Location3_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
+            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
             {
-                Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
-
-                if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-                {
-                    _toDisplay = false;
-                    NavigationService?.Navigate(TeleportTo(Location.Location4_1));
-                }
+                _toDisplay = false;
+                NavigationService?.Navigate(TeleportTo(Location.Location4_1));
+            }
 
 
-                if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                {
-                    //mediaPlayer.Play();
-                    NavigationService?.Navigate(new Page8(_me, _companion));
-                }
-
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
-                {
-                    _isPossibleUpwardMovement = false;
-                    _me.SpeedY = 0;
-                    _me.Y = Canvas.GetTop(obj) + obj.Height + 30;
-                    _me.IsMovingUpward = false;
-                }
-
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
-                {
-                    _isPossibleLeftwardMovement = false;
-                    _me.SpeedX = 0;
-                    _me.X = Canvas.GetLeft(obj) + obj.Width + 30;
-                    _me.IsMovingLeftward = false;
-                }
-
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
-                {
-                    _isPossibleRightwardMovement = false;
-                    _me.SpeedX = 0;
-                    _me.X = Canvas.GetLeft(obj) - 0.5 * obj.Width;
-                    _me.IsMovingRightward = false;
-                }
-
-                if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingDownward)
-                {
-                    _me.Y = Canvas.GetTop(obj) - 0.5 * obj.Height - 30;
-                    _isPossibleDownwardMovement = false;
-                    _me.SpeedY = 0;
-                    _me.IsMovingDownward = false;
-                }
+            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                NavigationService?.Navigate(new Page8(_me, _companion));
+            
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
+            {
+                _me.X -= _me.SpeedX;
+                _me.Y += _me.SpeedY;
             }
         }
     }
 
     protected override void GameLoop(object sender, EventArgs e)
     {
+        if (!_toDisplay)
+            return;
+
         SetMovementsStatus();
 
         SetMovementPossibility();

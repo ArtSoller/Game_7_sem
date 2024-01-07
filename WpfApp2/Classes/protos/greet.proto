@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcService1";
+
+package greet;
+
+service Greeter {
+    rpc ActionStream (stream Coordinates) returns (stream Coordinates);
+}
+
+message Coordinates {
+	double XPosition = 1;
+	double YPosition = 2;
+}

@@ -78,3 +78,10 @@ D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\refint\WpfAp
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.pdb
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.genruntimeconfig.cache
 D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\ref\WpfApp2.dll
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.csproj.AssemblyReference.cache
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\Google.Protobuf.dll
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\Grpc.Core.Api.dll
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\Grpc.Net.Client.dll
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\Grpc.Net.Common.dll
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.csproj.CopyComplete
