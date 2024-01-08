@@ -40,17 +40,13 @@ public abstract class Room : Page
 
     protected ImageBrush MyImage;
 
-    protected Player? _me;
-
-    protected Player? _companion;
-
     protected Room(Player pl1, Player pl2)
     {
         gameTimer = new();
         _toDisplay = true;
 
-        _me = pl1;
-        _companion = pl2;
+        Game.Me = pl1;
+        Game.Companion = pl2;
 
         MyImage = new()
         {
@@ -90,25 +86,25 @@ public abstract class Room : Page
         if (e.Key == Key.W)
         {
             _isUpKeyPressed = true;
-            _me.IsMovingUpward = true;
+            Game.Me.IsMovingUpward = true;
         }
 
         if (e.Key == Key.A)
         {
             _isLeftKeyPressed = true;
-            _me.IsMovingLeftward = true;
+            Game.Me.IsMovingLeftward = true;
         }
 
         if (e.Key == Key.D)
         {
             _isRightKeyPressed = true;
-            _me.IsMovingRightward = true;
+            Game.Me.IsMovingRightward = true;
         }
 
         if (e.Key == Key.S)
         {
             _isDownKeyPressed = true;
-            _me.IsMovingDownward = true;
+            Game.Me.IsMovingDownward = true;
         }
 
         if (e.Key == Key.F)
@@ -133,11 +129,11 @@ public abstract class Room : Page
 
     protected Page TeleportTo(Location location)
     {
-        if (_me is null) throw new ArgumentNullException("_me is null");
+        if (Game.Me is null) throw new ArgumentNullException("Game.Me is null");
 
-        if (_companion is null) throw new ArgumentNullException("_companion is null");
+        if (Game.Companion is null) throw new ArgumentNullException("Game.Companion is null");
 
-        _me.TeleportateTo(location);
+        Game.Me.TeleportateTo(location);
 
         _isDownKeyPressed = false;
         _isUpKeyPressed = false;
@@ -146,15 +142,15 @@ public abstract class Room : Page
         
         return location switch
         {
-            Location.Location0   => new PageLocation0(_me, _companion),
-            Location.Location1_1 => new PageLocation1_1(_me, _companion),
-            Location.Location1_2 => new PageLocation1_2(_me, _companion),
-            Location.Location2_1 => new PageLocation2_1(_me, _companion),
-            Location.Location2_2 => new PageLocation2_2(_me, _companion),
-            Location.Location3_1 => new PageLocation3_1(_me, _companion),
-            Location.Location3_2 => new PageLocation3_2(_me, _companion),
-            Location.Location4_1 => new PageLocation4_1(_me, _companion),
-            Location.Location4_2 => new PageLocation4_2(_me, _companion),
+            Location.Location0   => new PageLocation0(Game.Me, Game.Companion),
+            Location.Location1_1 => new PageLocation1_1(Game.Me, Game.Companion),
+            Location.Location1_2 => new PageLocation1_2(Game.Me, Game.Companion),
+            Location.Location2_1 => new PageLocation2_1(Game.Me, Game.Companion),
+            Location.Location2_2 => new PageLocation2_2(Game.Me, Game.Companion),
+            Location.Location3_1 => new PageLocation3_1(Game.Me, Game.Companion),
+            Location.Location3_2 => new PageLocation3_2(Game.Me, Game.Companion),
+            Location.Location4_1 => new PageLocation4_1(Game.Me, Game.Companion),
+            Location.Location4_2 => new PageLocation4_2(Game.Me, Game.Companion),
             _ => throw new NotSupportedException("Kuda zalez, pridurok?")
         };
     }
@@ -164,25 +160,25 @@ public abstract class Room : Page
         if (!_toDisplay)
             return;
 
-        if (_isUpKeyPressed && _isPossibleUpwardMovement) _me.SpeedY += _speed;
-        else if (!_isPossibleUpwardMovement && _me.IsMovingUpward) _me.SpeedY = 0;
+        if (_isUpKeyPressed && _isPossibleUpwardMovement) Game.Me.SpeedY += _speed;
+        else if (!_isPossibleUpwardMovement && Game.Me.IsMovingUpward) Game.Me.SpeedY = 0;
 
-        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) _me.SpeedX -= _speed;
-        else if (!_isPossibleLeftwardMovement && _me.IsMovingLeftward) _me.SpeedX = 0;
+        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) Game.Me.SpeedX -= _speed;
+        else if (!_isPossibleLeftwardMovement && Game.Me.IsMovingLeftward) Game.Me.SpeedX = 0;
 
-        if (_isRightKeyPressed && _isPossibleRightwardMovement) _me.SpeedX += _speed;
-        else if (!_isPossibleRightwardMovement && _me.IsMovingRightward) _me.SpeedX = 0;
+        if (_isRightKeyPressed && _isPossibleRightwardMovement) Game.Me.SpeedX += _speed;
+        else if (!_isPossibleRightwardMovement && Game.Me.IsMovingRightward) Game.Me.SpeedX = 0;
 
-        if (_isDownKeyPressed && _isPossibleDownwardMovement) _me.SpeedY -= _speed;
-        else if (!_isPossibleDownwardMovement && _me.IsMovingDownward) _me.SpeedY = 0;
+        if (_isDownKeyPressed && _isPossibleDownwardMovement) Game.Me.SpeedY -= _speed;
+        else if (!_isPossibleDownwardMovement && Game.Me.IsMovingDownward) Game.Me.SpeedY = 0;
 
-        _me.SpeedX *= _friction;
-        _me.SpeedY *= _friction;
+        Game.Me.SpeedX *= _friction;
+        Game.Me.SpeedY *= _friction;
 
-        _me.X += _me.SpeedX;
-        _me.Y -= _me.SpeedY;
+        Game.Me.X += Game.Me.SpeedX;
+        Game.Me.Y -= Game.Me.SpeedY;
 
-        Connection.SendCoordinates(_me.Name, _me.X, _me.Y);
+        Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y);
     }
 
     protected abstract void SetMovementPossibility();
@@ -191,42 +187,42 @@ public abstract class Room : Page
 
     protected void SetMovementsStatus()
     {
-        if (Math.Abs(_me.SpeedX) > 1e-1F)
+        if (Math.Abs(Game.Me.SpeedX) > 1e-1F)
         {
-            if (_me.SpeedX > 0)
+            if (Game.Me.SpeedX > 0)
             {
-                _me.IsMovingRightward= true;
-                _me.IsMovingLeftward = false;
+                Game.Me.IsMovingRightward= true;
+                Game.Me.IsMovingLeftward = false;
             }
-            else if (_me.SpeedX < 0)
+            else if (Game.Me.SpeedX < 0)
             {
-                _me.IsMovingLeftward = true;
-                _me.IsMovingRightward = false;
+                Game.Me.IsMovingLeftward = true;
+                Game.Me.IsMovingRightward = false;
             }
         }
         else
         {
-            _me.IsMovingLeftward = false;
-            _me.IsMovingRightward = false;
+            Game.Me.IsMovingLeftward = false;
+            Game.Me.IsMovingRightward = false;
         }
 
-        if (Math.Abs(_me.SpeedY) > 1e-1F)
+        if (Math.Abs(Game.Me.SpeedY) > 1e-1F)
         {
-            if (_me.SpeedY < 0)
+            if (Game.Me.SpeedY < 0)
             {
-                _me.IsMovingDownward = true;
-                _me.IsMovingUpward = false;
+                Game.Me.IsMovingDownward = true;
+                Game.Me.IsMovingUpward = false;
             }
-            else if (_me.SpeedY > 0)
+            else if (Game.Me.SpeedY > 0)
             {
-                _me.IsMovingUpward = true;
-                _me.IsMovingDownward = false;
+                Game.Me.IsMovingUpward = true;
+                Game.Me.IsMovingDownward = false;
             }
         }
         else
         {
-            _me.IsMovingUpward = false;
-            _me.IsMovingDownward = false;
+            Game.Me.IsMovingUpward = false;
+            Game.Me.IsMovingDownward = false;
         }
     }
 }

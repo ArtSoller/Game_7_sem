@@ -30,11 +30,11 @@ public partial class PageLocation0 : Room
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player1, _me.X);
-        Canvas.SetTop(Player1, _me.Y);
+        Canvas.SetLeft(Player1, Game.Me.X);
+        Canvas.SetTop(Player1, Game.Me.Y);
 
-        Canvas.SetLeft(Player2, _companion.X);
-        Canvas.SetTop(Player2, _companion.Y);
+        Canvas.SetLeft(Player2, Game.Companion.X);
+        Canvas.SetTop(Player2, Game.Companion.Y);
 
         Canvas.SetTop(chest, 0.5 * (SystemParameters.VirtualScreenHeight - chest.Height));
         Canvas.SetLeft(chest, 0.5 * (SystemParameters.VirtualScreenWidth - chest.Width));
@@ -69,8 +69,8 @@ public partial class PageLocation0 : Room
 
     protected override void SetMovementPossibility()
     {
-        if (_me is null) throw new ArgumentException("_me is null");
-        if (_companion is null) throw new ArgumentException("_companion is null");
+        if (Game.Me is null) throw new ArgumentException("Game.Me is null");
+        if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
         _isPossibleUpwardMovement = Canvas.GetTop(Player1) > wallTop.Height;
         _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > wallLeft.Width;
@@ -83,25 +83,25 @@ public partial class PageLocation0 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Performer)
+            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Performer)
             {
                 NavigationService?.Navigate(TeleportTo(Location.Location1_1));
                 _toDisplay = false;
             }
 
-            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Assistant)
+            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Assistant)
             {
                 NavigationService?.Navigate(TeleportTo(Location.Location1_2));
                 _toDisplay = false;
             }
 
             if ((string)obj.Tag == "chestArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page8(_me, _companion));
+                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
                 
             if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox))
             {
-                _me.X -= 1.1 * _me.SpeedX;
-                _me.Y += 1.1 * _me.SpeedY;
+                Game.Me.X -= 1.1 * Game.Me.SpeedX;
+                Game.Me.Y += 1.1 * Game.Me.SpeedY;
             }
         }
     }
@@ -115,19 +115,23 @@ public partial class PageLocation0 : Room
 
         SetMovementPossibility();
 
-        if (_me.IsMovingLeftward)
+        if (Game.Me.IsMovingLeftward)
             Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
-        else if (_me.IsMovingRightward)
+        else if (Game.Me.IsMovingRightward)
             Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
 
         base.GameLoop(sender, e);
 
-        Canvas.SetLeft(Player1, _me.Role == Role.Performer ? _me.X : _companion.X);
-        Canvas.SetTop(Player1, _me.Role == Role.Performer ? _me.Y : _companion.Y);
+        Canvas.SetLeft(Player1, Game.Me.Role == Role.Performer ? Game.Me.X : Game.Companion.X);
+        Canvas.SetTop(Player1, Game.Me.Role == Role.Performer ? Game.Me.Y : Game.Companion.Y);
 
-        Canvas.SetLeft(Player2, _me.Role == Role.Assistant ? _me.X : _companion.X);
-        Canvas.SetTop(Player2, _me.Role == Role.Assistant ? _me.Y : _companion.Y);
+        Canvas.SetLeft(Player2, Game.Me.Role == Role.Assistant ? Game.Me.X : Game.Companion.X);
+        Canvas.SetTop(Player2, Game.Me.Role == Role.Assistant ? Game.Me.Y : Game.Companion.Y);
 
-        Tb1.Text = _me.Role.ToString();
+        Tb1.Text = Game.Me.Role.ToString();
+        Tb3.Text = Game.Me.X.ToString();
+        Tb4.Text = Game.Me.Y.ToString();
+        Tb7.Text = Game.Companion.X.ToString();
+        Tb8.Text = Game.Companion.Y.ToString();
     }
 }

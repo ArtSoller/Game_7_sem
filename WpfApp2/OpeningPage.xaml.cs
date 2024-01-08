@@ -78,7 +78,7 @@ public partial class OpeningPage
     private void StartGame(object sender, RoutedEventArgs e)
     {
         Connection.ReceiveRole();
-        Connection.ReceiveCoordinates().Start();
+        Task.Run(Connection.ReceiveCoordinates);
         NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 
@@ -90,7 +90,7 @@ public partial class OpeningPage
     private void ConnectToCompanion(object sender, RoutedEventArgs e)
     {
         IPEnterBox.Visibility = Visibility.Visible;
-        Connection.SetConnection(IPEnterBox.Text);
+        Connection.SetConnection(IPEnterBox.Text, MyNameTextBox.Text);
         if (Connection.IsConnected)
         {
             _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 0));

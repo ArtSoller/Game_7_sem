@@ -40,8 +40,8 @@ public partial class Page8
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
         gameTimer = new();
-        _me = pl1;
-        _companion = pl2;
+        Game.Me = pl1;
+        Game.Companion = pl2;
         txtScore.Visibility = Visibility.Hidden;
         txtInput2.IsReadOnly = true;
         count.IsReadOnly = true;
@@ -50,13 +50,13 @@ public partial class Page8
 
     private void Back_Click(object sender, RoutedEventArgs e)
     {
-        if (_me is null) throw new ArgumentException("_me is null");
-        if (_companion is null) throw new ArgumentException("_companion is null");
+        if (Game.Me is null) throw new ArgumentException("Game.Me is null");
+        if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
         _mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestClosed.mp3"));
         _mediaPlayer.Play();
 
-        NavigationService.Navigate(new PageLocation0(_me, _companion));
+        NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 
     private void Enter_Click(object sender, RoutedEventArgs e)

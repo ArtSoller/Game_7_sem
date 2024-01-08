@@ -34,8 +34,8 @@ public partial class PageLocation2_2 : Room
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player2, _me.X);
-        Canvas.SetTop(Player2, _me.Y);
+        Canvas.SetLeft(Player2, Game.Me.X);
+        Canvas.SetTop(Player2, Game.Me.Y);
 
         // Переходы на карты.
         Canvas.SetTop(TeleportToLocaltion3_2, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion3_2.Height));
@@ -85,8 +85,8 @@ public partial class PageLocation2_2 : Room
 
     protected override void SetMovementPossibility()
     {
-        if (_me is null) throw new ArgumentException("_me is null");
-        if (_companion is null) throw new ArgumentException("_companion is null");
+        if (Game.Me is null) throw new ArgumentException("Game.Me is null");
+        if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
         _isPossibleUpwardMovement = Canvas.GetTop(Player2) > wallTop.Height;
         _isPossibleLeftwardMovement = Canvas.GetLeft(Player2) > wallLeft.Width;
@@ -107,12 +107,12 @@ public partial class PageLocation2_2 : Room
 
 
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page8(_me, _companion));
+                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
             
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
             {
-                _me.X -= 1.1 * _me.SpeedX;
-                _me.Y += 1.1 * _me.SpeedY;
+                Game.Me.X -= 1.1 * Game.Me.SpeedX;
+                Game.Me.Y += 1.1 * Game.Me.SpeedY;
             }
         }
     }
@@ -126,15 +126,15 @@ public partial class PageLocation2_2 : Room
 
         SetMovementPossibility();
 
-        if (_me.IsMovingLeftward)
+        if (Game.Me.IsMovingLeftward)
             Player2.RenderTransform = new RotateTransform(180, Player2.Width / 2, Player2.Height / 2);
-        else if (_me.IsMovingRightward)
+        else if (Game.Me.IsMovingRightward)
             Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
 
 
         base.GameLoop(sender, e);
 
-        Canvas.SetLeft(Player2, _me.X + _me.SpeedX);
-        Canvas.SetTop(Player2, _me.Y - _me.SpeedY);
+        Canvas.SetLeft(Player2, Game.Me.X + Game.Me.SpeedX);
+        Canvas.SetTop(Player2, Game.Me.Y - Game.Me.SpeedY);
     }
 }

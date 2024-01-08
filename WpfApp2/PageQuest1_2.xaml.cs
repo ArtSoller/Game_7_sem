@@ -82,10 +82,10 @@ public partial class Page3
 
     private void But2_Click(object sender, RoutedEventArgs e)
     {
-        if (_me is null) throw new ArgumentException("_me is null");
-        if (_companion is null) throw new ArgumentException("_companion is null");
+        if (Game.Me is null) throw new ArgumentException("Game.Me is null");
+        if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
-        NavigationService.Navigate(new PageLocation3_1(_me, _companion));
+        NavigationService.Navigate(new PageLocation3_1(Game.Me, Game.Companion));
     }
 
     private void DoubleMouseDown(object sender, MouseButtonEventArgs e)

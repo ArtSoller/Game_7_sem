@@ -43,9 +43,9 @@ public partial class Page4
 
     private void But3_Click(object sender, RoutedEventArgs e)
     {
-        if (_me is null) throw new ArgumentException("_me is null");
-        if (_companion is null) throw new ArgumentException("_companion is null");
+        if (Game.Me is null) throw new ArgumentException("Game.Me is null");
+        if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
-        NavigationService.Navigate(new PageLocation1_1(_me, _companion));
+        NavigationService.Navigate(new PageLocation1_1(Game.Me, Game.Companion));
     }
 }
