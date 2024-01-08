@@ -18,21 +18,21 @@
 
         <Rectangle Name="Player1" Width="50" Height="50" Fill="Red" Canvas.Left="100" Canvas.Top="260" />
 
-        <Rectangle Name="picture1" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="112" Height="98" Canvas.Left="432" Canvas.Top="293" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <Rectangle Name="Book" Tag="book" ToolTip="Для взаимодействия нажмите кнопку F" Width="112" Height="98" Canvas.Left="432" Canvas.Top="293" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/book.png" />
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle x:Name="AreaEasel1" Tag="easel_area" Height="200" Canvas.Left="373" Canvas.Top="238" Width="230" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="56" RadiusY="56"/>
+        <Rectangle x:Name="BookArea" Tag="book_area" Height="200" Canvas.Left="373" Canvas.Top="238" Width="230" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="56" RadiusY="56"/>
 
         <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="Black"/>
         <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>
         <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
         <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
 
-        <Rectangle Name="TeleportToLocaltion3_1" Tag="teleport" Height="165" Canvas.Left="940" Canvas.Top="298" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="Red" />
-        <Rectangle Name="TeleportToLocaltionBack" Tag="teleport" Height="165" Canvas.Left="12" Canvas.Top="293" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="Black" RadiusX="0" RadiusY="0" />
+        <Rectangle Name="TeleportToLocaltion3_1" Tag="teleport" Height="165" Canvas.Left="940" Canvas.Top="298" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="LightGray" />
+        <Rectangle Name="TeleportToLocaltionBack" Tag="teleport" Height="165" Canvas.Left="12" Canvas.Top="293" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="LightGray"/>
         <TextBox Name="code" Canvas.Left="690" Canvas.Top="646" Foreground="White" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
         <TextBox Name="first_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Orange" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
         <TextBox Name="second_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Aqua" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>

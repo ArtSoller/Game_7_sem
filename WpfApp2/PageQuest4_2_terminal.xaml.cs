@@ -36,6 +36,12 @@ public partial class PageQuest4_2_terminal
 
         _me = pl1;
         _companion = pl2;
+
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PapirusOpened.mp3"));
+        mediaPlayer.Play();
+
         CanvasSetObjects();
 
     }
@@ -53,6 +59,8 @@ public partial class PageQuest4_2_terminal
 
     private void Back_Click(object sender, RoutedEventArgs e)
     {
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PapirusOpened.mp3"));
+        mediaPlayer.Play();
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
         NavigationService.Navigate(new PageLocation4_2(_me, _companion));

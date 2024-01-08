@@ -61,9 +61,6 @@ public partial class OpeningPage
         Canvas.SetTop(CompanionNameTextBox, 0.45 * SystemParameters.VirtualScreenHeight);
         Canvas.SetLeft(CompanionNameTextBox, 0.25 * (SystemParameters.VirtualScreenWidth - CompanionNameTextBox.Width));
 
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        ButtStart.Foreground = _brush;
-
     }
 
     private void IpConnect()

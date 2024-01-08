@@ -11,10 +11,10 @@
     <Canvas Name="MyCanvas" Focusable="True" Background="White">
         <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
+                <ImageBrush ImageSource="img/Smooth2_1.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="quest_2" Tag="easel" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
+        <Rectangle Name="quest_2" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/2_quest.png" />
             </Rectangle.Fill>

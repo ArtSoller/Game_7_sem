@@ -12,7 +12,7 @@
 
         <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
+                <ImageBrush ImageSource="img/Smooth1_2.png" />
             </Rectangle.Fill>
         </Rectangle>
 

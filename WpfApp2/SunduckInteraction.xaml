@@ -11,12 +11,12 @@
     <Canvas Name="MyCanvas" Focusable="True">
         <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
+                <ImageBrush ImageSource="img/Smooth0.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Button Name="Back" Click="Back_Click"  Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232"/>
         <Button x:Name="Enter" Click="Enter_Click" Content="Ввод" Height="59" Canvas.Left="232" Canvas.Top="69" Width="116"/>
-        <Button x:Name="Reset" Click="Reset_Click" Content="Сброс" Height="59" Canvas.Left="232" Canvas.Top="194" Width="116"/>
+        <Button x:Name="Reset" Style="{StaticResource ResetButtonStyle}" Click="Reset_Click" Content="Сброс" Height="59" Canvas.Left="232" Canvas.Top="194" Width="116"/>
         <TextBlock FontSize="16" Name="txtScore" Foreground="Black" Canvas.Top="57"/>
         <TextBox Name="txtInput1" Width="15" Height="30" MaxLength="1" Canvas.Left="140" Canvas.Top="84" />
         <TextBox Name="txtInput2" Width="15" Height="30" MaxLength="1" Canvas.Left="155" Canvas.Top="84" />

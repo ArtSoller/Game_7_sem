@@ -31,6 +31,10 @@ namespace WpfApp2
             _me = pl1;
             _companion = pl2;
 
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\BookOpened.mp3"));
+
             code.IsReadOnly = true;
             code.Text = Game.parts_code;
             first_part_code.Text = Game.first_part_code;
@@ -54,12 +58,12 @@ namespace WpfApp2
             Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
 
             // Ставим мольберты.
-            Canvas.SetTop(picture1, 0.5 * (SystemParameters.VirtualScreenHeight - picture1.Height));
-            Canvas.SetLeft(picture1, 0.5 * (SystemParameters.VirtualScreenWidth - picture1.Width));
+            Canvas.SetTop(Book, 0.5 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(Book, 0.5 * (SystemParameters.VirtualScreenWidth - Book.Width));
 
             // Ставим область вокруг мольбертов.
-            Canvas.SetTop(AreaEasel1, 0.5 * (SystemParameters.VirtualScreenHeight - AreaEasel1.Height) - 15);
-            Canvas.SetLeft(AreaEasel1, 0.5 * (SystemParameters.VirtualScreenWidth - AreaEasel1.Width) - 12);
+            Canvas.SetTop(BookArea, 0.5 * (SystemParameters.VirtualScreenHeight - BookArea.Height) - 15);
+            Canvas.SetLeft(BookArea, 0.5 * (SystemParameters.VirtualScreenWidth - BookArea.Width) - 12);
 
             // Ставим стены.
             Canvas.SetTop(wallTop, 0);
@@ -168,7 +172,7 @@ namespace WpfApp2
 
                 pacmanHitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
 
-                foreach (var obj in Location2_2.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
+                foreach (var obj in Location2_2.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "book" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "book_area")))
                 {
                     Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
@@ -179,13 +183,13 @@ namespace WpfApp2
                     }
 
 
-                    if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest2_2(_me, _companion));
                     }
 
-                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
+                    if ((string)obj.Tag == "book" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
                     {
                         _isPossibleUpwardMovement = false;
                         _me.SpeedY = 0;
@@ -193,7 +197,7 @@ namespace WpfApp2
                         _me.IsMovingUpward = false;
                     }
 
-                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
+                    if ((string)obj.Tag == "book" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
                     {
                         _isPossibleLeftwardMovement = false;
                         _me.SpeedX = 0;
@@ -201,7 +205,7 @@ namespace WpfApp2
                         _me.IsMovingLeftward = false;
                     }
 
-                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
+                    if ((string)obj.Tag == "book" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
                     {
                         _isPossibleRightwardMovement = false;
                         _me.SpeedX = 0;
@@ -209,7 +213,7 @@ namespace WpfApp2
                         _me.IsMovingRightward = false;
                     }
 
-                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingDownward)
+                    if ((string)obj.Tag == "book" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingDownward)
                     {
                         _me.Y = Canvas.GetTop(obj) - 0.5 * obj.Height - 30;
                         _isPossibleDownwardMovement = false;

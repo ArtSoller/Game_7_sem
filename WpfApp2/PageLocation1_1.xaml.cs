@@ -31,6 +31,10 @@ namespace WpfApp2
             _me = pl1;
             _companion = pl2;
 
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
+
             code.IsReadOnly = true;
             code.Text = Game.parts_code;
             first_part_code.Text = Game.first_part_code;
@@ -212,37 +216,37 @@ namespace WpfApp2
 
                     if ((string)obj.Name == "AreaEasel1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest1_1_1_picture(_me, _companion));
                     }
 
                     if ((string)obj.Name == "AreaEasel2" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest1_1_2_picture(_me, _companion));
                     }
 
                     if ((string)obj.Name == "AreaEasel3" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest1_1_3_picture(_me, _companion));
                     }
 
                     if ((string)obj.Name == "AreaEasel4" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest1_1_4_picture(_me, _companion));
                     }
 
                     if ((string)obj.Name == "AreaEasel5" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest1_1_5_picture(_me, _companion));
                     }
 
                     if ((string)obj.Name == "AreaEasel6" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest1_1_6_picture(_me, _companion));
                     }
 

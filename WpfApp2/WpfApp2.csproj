@@ -19,6 +19,15 @@
     <None Remove="img\6.png" />
     <None Remove="img\correct.png" />
     <None Remove="img\plita_v5.png" />
+    <None Remove="img\Smooth0.png" />
+    <None Remove="img\Smooth1_1.png" />
+    <None Remove="img\Smooth1_2.png" />
+    <None Remove="img\Smooth2_1.png" />
+    <None Remove="img\Smooth2_2.png" />
+    <None Remove="img\Smooth3_2.png" />
+    <None Remove="img\Smooth4_1.png" />
+    <None Remove="img\Smooth4_2.png" />
+    <None Remove="img\test.png" />
     <None Remove="img\window1.png" />
     <None Remove="img\window2.png" />
     <None Remove="img\window3.png" />
@@ -35,10 +44,10 @@
     <None Remove="snd\934.mp3" />
     <None Remove="snd\947.mp3" />
     <None Remove="snd\948.mp3" />
+    <None Remove="snd\BookOpened.mp3" />
     <None Remove="snd\ChestClosed.mp3" />
     <None Remove="snd\ChestOpened.mp3" />
     <None Remove="snd\GameWon.mp3" />
-    <None Remove="snd\in.mp3" />
     <None Remove="snd\Music1.mp3" />
     <None Remove="snd\Music2.mp3" />
     <None Remove="snd\Music3.mp3" />
@@ -46,10 +55,14 @@
     <None Remove="snd\Music5.mp3" />
     <None Remove="snd\Music5Short.mp3" />
     <None Remove="snd\Music6.mp3" />
+    <None Remove="snd\PictureOpened.mp3" />
     <None Remove="snd\wood1.mp3" />
     <None Remove="snd\wood_click.mp3" />
     <None Remove="snd\zvuk-otkryitiya-sunduka.mp3" />
-    <None Remove="snd\zvuk-perelistyivaniya-stranitsyi.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\Smooth0.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,8 +103,16 @@
     <Resource Include="img\quest1_1.png" />
     <Resource Include="img\red.jpg" />
     <Resource Include="img\Screenshot_1.png" />
+    <Resource Include="img\Smooth1_1.png" />
+    <Resource Include="img\Smooth1_2.png" />
+    <Resource Include="img\Smooth2_1.png" />
+    <Resource Include="img\Smooth2_2.png" />
+    <Resource Include="img\Smooth3_2.png" />
+    <Resource Include="img\Smooth4_1.png" />
+    <Resource Include="img\Smooth4_2.png" />
     <Resource Include="img\svitok.png" />
     <Resource Include="img\svitok_map.png" />
+    <Resource Include="img\test.png" />
     <Resource Include="img\Uravnenia.png" />
     <Resource Include="img\wall.png" />
     <Resource Include="img\wall_down.png" />
@@ -118,7 +139,7 @@
     <Resource Include="snd\ChestClosed.mp3" />
     <Resource Include="snd\ChestOpened.mp3" />
     <Resource Include="snd\GameWon.mp3" />
-    <Resource Include="snd\in.mp3" />
+    <Resource Include="snd\PictureOpened.mp3" />
     <Resource Include="snd\Music1.mp3" />
     <Resource Include="snd\Music2.mp3" />
     <Resource Include="snd\Music3.mp3" />
@@ -129,6 +150,6 @@
     <Resource Include="snd\wood1.mp3" />
     <Resource Include="snd\wood_click.mp3" />
     <Resource Include="snd\zvuk-otkryitiya-sunduka.mp3" />
-    <Resource Include="snd\zvuk-perelistyivaniya-stranitsyi.mp3" />
+    <Resource Include="snd\BookOpened.mp3" />
   </ItemGroup>
 </Project>

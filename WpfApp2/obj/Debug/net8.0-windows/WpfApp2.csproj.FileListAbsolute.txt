@@ -214,3 +214,8 @@ A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\
 A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.sourcelink.json
 A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\WpfApp2.genruntimeconfig.cache
 A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\ref\WpfApp2.dll
+A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest4_1_code.g.cs
+A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest4_2_code.g.cs
+A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest4_1_code.baml
+A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\PageQuest4_2_code.baml
+A:\NSTU\4_course\7_sem\Elem_comp\Игра\Game_new\Game_7_sem\WpfApp2\obj\Debug\net8.0-windows\App.baml

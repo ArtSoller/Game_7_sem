@@ -31,6 +31,10 @@ namespace WpfApp2
             _me = pl1;
             _companion = pl2;
 
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
+
             code.IsReadOnly = true;
             code.Text = Game.parts_code;
             first_part_code.Text = Game.first_part_code;
@@ -182,7 +186,7 @@ namespace WpfApp2
 
                     if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
-                        //mediaPlayer.Play();
+                        mediaPlayer.Play();
                         NavigationService?.Navigate(new PageQuest1_2(_me, _companion));
                     }
 

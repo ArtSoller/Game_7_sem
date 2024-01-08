@@ -11,7 +11,7 @@
     <Canvas Name="MyCanvas" Focusable="True" Background="White">
         <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
+                <ImageBrush ImageSource="img/Smooth1_1.png" />
             </Rectangle.Fill>
         </Rectangle>
 

@@ -31,6 +31,10 @@ public partial class PageQuest1_2
         foreach(Image img in MainContainer.Children)
             img.MouseDown += DoubleMouseDown;
 
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureClosed.mp3"));
+
         _me = pl1;
         _companion = pl2;
         txtScore.Visibility = Visibility.Hidden;
@@ -89,6 +93,7 @@ public partial class PageQuest1_2
 
     private void Back_Click(object sender, RoutedEventArgs e)
     {
+        mediaPlayer.Play();
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
 
@@ -97,17 +102,26 @@ public partial class PageQuest1_2
 
     private void Check_Click(object sender, RoutedEventArgs e)
     {
-        object obj1 = AnswerContainer1.FindName("Picture1") as Image;
-        object obj2 = AnswerContainer1.FindName("Picture6") as Image;
-        object obj3 = AnswerContainer1.FindName("Picture8") as Image;
-        if (obj1 != null && obj2 != null && obj3 != null)
+        foreach (Image child in AnswerContainer1.Children)
         {
-            txtScore.Text = "Готово!";
-            txtScore.Visibility = Visibility.Visible;
-            Game.first_part_code += Game.randomString[0];
-            IsTeleportActive = true;
-            Check.Visibility = Visibility.Collapsed;
+            if (child.Name != "Picture1")
+                return;
         }
+        foreach (Image child in AnswerContainer2.Children)
+        {
+            if (child.Name != "Picture6")
+                return;
+        }
+        foreach (Image child in AnswerContainer3.Children)
+        {
+            if (child.Name != "Picture8")
+                return;
+        }
+        txtScore.Text = "Готово!";
+        txtScore.Visibility = Visibility.Visible;
+        Game.first_part_code += Game.randomString[0];
+        IsTeleportActive = true;
+        Check.Visibility = Visibility.Collapsed;
     }
 
     private void DoubleMouseDown(object sender, MouseButtonEventArgs e)
