@@ -59,18 +59,11 @@ public static class Game
     public static string CodeParts = "Найденные части кода: ";
 
     public static void Init()
-    {
-        Random rnd = new();
-        var value = rnd.Next(0, 2);
-
-        Role role1 = value == 0 ? Role.Performer : Role.Assistant;
-        Role role2 = value == 0 ? Role.Assistant : Role.Performer;
-        
+    {                              
         Me = new Player() 
         { 
             X = 0.05 * SystemParameters.VirtualScreenWidth, 
             Y = 0.33 * SystemParameters.VirtualScreenHeight, 
-            Role = role1, 
             CurrentLocation = Location.Location0
         };
         
@@ -78,11 +71,9 @@ public static class Game
         {
             X = 0.05 * SystemParameters.VirtualScreenWidth,
             Y = 0.66 * SystemParameters.VirtualScreenHeight,
-            Role = role2, 
             CurrentLocation = Location.Location0
         };
 
         Connection.StartServer();
     }
-
 }

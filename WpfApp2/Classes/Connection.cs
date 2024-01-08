@@ -44,13 +44,25 @@ internal static class Connection
         /* Остановка сервера. */
     }
 
-    public static void Send(double _x, double _y)
+    public static void SendCoordinates(double _x, double _y)
     {
         if (call is null) throw new ArgumentNullException("call is null");
         call.RequestStream.WriteAsync(new Coordinates() { XPosition = _x, YPosition = _y });
     }
 
-    public static async void Receive()
+    public static void SendRole(bool role)
+    {
+       if (client is null) throw new ArgumentNullException("client is null");
+           client.SendRole(new RoleMessage { Role = role });
+    }
+
+    public static bool ReceiveRole()
+    {
+        if (client is null) throw new ArgumentNullException("client is null");
+        return client.GetRole(null).Role;
+    }
+
+   public static async void ReceiveCoordinates()
     {
         if (call is null) throw new ArgumentNullException("call is null");
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -80,7 +81,21 @@ public partial class OpeningPage
 
     private void StartGame(object sender, RoutedEventArgs e)
     {
-        Connection.Receive();
+        if (IPEnterBox.Text is null)
+        {
+            Random rnd = new();
+            var value = rnd.Next(0, 2);
+            Game.Me.Role = value == 0 ? Role.Performer : Role.Assistant;
+            Game.Companion.Role = value == 0 ? Role.Assistant : Role.Performer;
+            Connection.SendRole(Game.Me.Role == 0 ? true : false);
+        }
+        else
+        {
+            Game.Me.Role = Connection.ReceiveRole() ? Role.Assistant : Role.Performer;
+            Game.Companion.Role = Connection.ReceiveRole() ? Role.Performer : Role.Assistant;
+        }
+
+        Connection.ReceiveCoordinates();
         NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 

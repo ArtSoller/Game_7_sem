@@ -54,7 +54,7 @@ public abstract class Room : Page
 
         MyImage = new()
         {
-            ImageSource = new BitmapImage(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
+            ImageSource = new BitmapImage(new Uri("C:\\Users\\popen\\source\\repos\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
         };
 
         //mediaPlayer = new();
@@ -182,7 +182,7 @@ public abstract class Room : Page
         _me.X += _me.SpeedX;
         _me.Y -= _me.SpeedY;
 
-        Connection.Send(_me.X, _me.Y);
+        Connection.SendCoordinates(_me.X, _me.Y);
     }
 
     protected abstract void SetMovementPossibility();
