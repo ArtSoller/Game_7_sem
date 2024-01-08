@@ -22,50 +22,17 @@ public class GreeterService : Greeter.GreeterBase
         while (true)
         {
             var clientMessage = await ReadMessageWithTimeoutAsync(requestStream, Timeout.InfiniteTimeSpan);
-
-            await SendBroadcastMessageAsync(clientMessage);
-
-            switch (clientMessage.ContentCase)
-            {
-                case ActionRequest.ContentOneofCase.Name:
-                    await AddClientAsync(new ChatClient
-                    {
-                        StreamWriter = responseStream,
-                        UserName = clientMessage.Name
-                    });
-                    Console.WriteLine($"Connected new client {clientMessage.Name}");
-                    await SendBroadcastMessageAsync($"{DateTime.UtcNow} {clientMessage.Name} joined");
-                    break;
-                case ActionRequest.ContentOneofCase.Motion:
-                    string move = clientMessage.Motion switch
-                    {
-                        "W" or "w" => "moved up",
-                        "S" or "s" => "moved down",
-                        "A" or "a" => "moved left",
-                        "D" or "d" => "moved right",
-                        _ => throw new NotImplementedException()
-                    };
-                    await SendBroadcastMessageAsync($"{1} {move}");
-                    break;
-                case ActionRequest.ContentOneofCase.Force:
-                    await SendBroadcastMessageAsync($"{1} forced");
-                    break;
-                case ActionRequest.ContentOneofCase.Quit:
-                    await RemoveClientAsync(new ChatClient
-                    {
-                        UserName = clientMessage.Quit,
-                        StreamWriter = responseStream
-                    });
-                    break;
-            }
+            await SendBroadcastMessageAsync($"{clientMessage.XPosition} {clientMessage.YPosition}");
         }
     }
 
     private static async Task SendBroadcastMessageAsync(string messageBody)
     {
-        var message = new ActionReply { Answer = messageBody };
+        var message = new Coordinates { XPosition = Convert.ToDouble(messageBody.Split()[0]),
+                                        YPosition = Convert.ToDouble(messageBody.Split()[1])};
+        Console.WriteLine(messageBody);
         var tasks = new List<Task>() { };
-        foreach (KeyValuePair<string, IServerStreamWriter<ActionReply>> client in clients)
+        foreach (KeyValuePair<string, IServerStreamWriter<Coordinates>> client in clients)
             tasks.Add(client.Value.WriteAsync(message));
         await Task.WhenAll(tasks);
     }
@@ -93,7 +60,7 @@ public class GreeterService : Greeter.GreeterBase
         await Task.CompletedTask;
     }
 
-    public async Task<ActionRequest> ReadMessageWithTimeoutAsync(IAsyncStreamReader<ActionRequest> requestStream, TimeSpan timeout)
+    public async Task<Coordinates> ReadMessageWithTimeoutAsync(IAsyncStreamReader<Coordinates> requestStream, TimeSpan timeout)
     {
         CancellationTokenSource cancellationTokenSource = new();
 

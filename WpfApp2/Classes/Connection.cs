@@ -24,18 +24,14 @@ internal static class Connection
 
     public static void SetConnection(string address)
     {
+        if (address is null) return;
         channel = GrpcChannel.ForAddress($"http://{address}");
         client = new Greeter.GreeterClient(channel);
         call = client.ActionStream();
         while (channel.State == ConnectivityState.Connecting)
             continue;
-        IsConnected = true;
-    }
-
-    public static async void StartStream(double _x, double _y)
-    {
-        await Send(_x, _y);
-        await Receive();
+        if (channel.State == ConnectivityState.Ready)
+            IsConnected = true;
     }
 
     public static async void StartServer()
@@ -48,55 +44,21 @@ internal static class Connection
         /* Остановка сервера. */
     }
 
-    private static async Task Send(double _x, double _y)
+    public static void Send(double _x, double _y)
     {
         if (call is null) throw new ArgumentNullException("call is null");
-        var isDisposed = false;
-        while (!isDisposed)
-            await call.RequestStream.WriteAsync(new Coordinates() { XPosition = _x, YPosition = _y });
+        call.RequestStream.WriteAsync(new Coordinates() { XPosition = _x, YPosition = _y });
     }
 
-    public static async Task Receive()
+    public static async void Receive()
     {
         if (call is null) throw new ArgumentNullException("call is null");
-        double _x;
-        double _y;
+
         while (IsConnected)
             await foreach (var res in call.ResponseStream.ReadAllAsync())
             { 
-                _x = res.XPosition;
-                _y = res.YPosition;
+                Game.Companion.X = res.XPosition;
+                Game.Companion.Y = res.YPosition;
             }
     }
-
-    //public static async void ConnectTo(string address)
-    //{
-    //    while (_isConnected)
-    //    {
-    //        if (channel.State == ConnectivityState.Ready)
-    //        {
-    //            var name = "NUBAS";
-    //            await call.RequestStream.WriteAsync(new ActionRequest() { Name = name });
-
-    //            var recieve = Task.Run(async () =>
-    //            {
-    //                while (_isConnected)
-    //                    await foreach (var res in call.ResponseStream.ReadAllAsync())
-    //                        Console.WriteLine(res.Answer);
-    //            });
-
-    //            var send = Task.Run(Send());
-    //            await send;
-    //            //if (isConnected) 
-    //            await recieve;
-    //        }
-    //        else if (channel.State == ConnectivityState.TransientFailure)
-    //        {
-    //            Console.WriteLine("Error during connection");
-    //            Console.WriteLine("Type localhost or required ip");
-    //            address = Console.ReadLine();
-    //        }
-    //    }
-    //    Console.WriteLine("Type any key to quit");
-    //    Console.ReadKey();
 }

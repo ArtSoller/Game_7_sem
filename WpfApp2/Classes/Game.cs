@@ -27,13 +27,13 @@ public enum Role
     Assistant
 }
 
-public class Game
+public static class Game
 {
-    public Player Me;
+    public static Player Me;
 
-    public Player Companion;
+    public static Player Companion;
 
-    public Room MyPage;
+    public static Room MyPage;
 
     private static Random random = new();
 
@@ -57,8 +57,8 @@ public class Game
     public static bool Quest0_5 = false, Quest1 = false, Quest2 = false, Quest3 = false, Quest4 = false;
     
     public static string CodeParts = "Найденные части кода: ";
-    
-    public Game()
+
+    public static void Init()
     {
         Random rnd = new();
         var value = rnd.Next(0, 2);
@@ -81,7 +81,8 @@ public class Game
             Role = role2, 
             CurrentLocation = Location.Location0
         };
+
         Connection.StartServer();
-        // MyPage = new PageLocation0(Me, Companion);
     }
+
 }

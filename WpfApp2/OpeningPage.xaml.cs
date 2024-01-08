@@ -25,15 +25,11 @@ public partial class OpeningPage
 
     private Brush? _brush;
 
-    public Game Game;
-
-    public OpeningPage(Game game)
+    public OpeningPage()
     {
         InitializeComponent();
         Font.Height = SystemParameters.VirtualScreenHeight;
         Font.Width = SystemParameters.VirtualScreenWidth;
-
-        Game = game;
 
         CanvasSetObjects();
         IpConnect();
@@ -84,6 +80,7 @@ public partial class OpeningPage
 
     private void StartGame(object sender, RoutedEventArgs e)
     {
+        Connection.Receive();
         NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 
@@ -106,8 +103,8 @@ public partial class OpeningPage
 
     private void ConnectToCompanion2(object sender, RoutedEventArgs e)
     {
-        Connection.SetConnection(CompanionNameTextBox.Text);
         Connection.StopServer();
+        Connection.SetConnection(IPEnterBox.Text);
         if (Connection.IsConnected)
         {
             _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 0));
@@ -115,7 +112,6 @@ public partial class OpeningPage
             ButtStart.IsEnabled = true;
             CompanionNameTextBox.Text = Game.Companion.Name; 
         }
-
     }
 
     private void TryToConnect(object sender, RoutedEventArgs e)

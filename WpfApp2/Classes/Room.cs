@@ -181,6 +181,8 @@ public abstract class Room : Page
 
         _me.X += _me.SpeedX;
         _me.Y -= _me.SpeedY;
+
+        Connection.Send(_me.X, _me.Y);
     }
 
     protected abstract void SetMovementPossibility();

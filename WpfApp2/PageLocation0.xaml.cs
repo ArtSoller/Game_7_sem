@@ -124,6 +124,11 @@ public partial class PageLocation0 : Room
 
         Canvas.SetLeft(Player1, _me.X);
         Canvas.SetTop(Player1, _me.Y);
+
+        Canvas.SetLeft(Player2, _companion.X);
+        Canvas.SetTop(Player2, _companion.Y);
+
+
         Tb1.Text = _me.Role.ToString();
     }
 }

@@ -7,13 +7,11 @@ namespace WpfApp2;
 /// </summary>
 public partial class MainWindow : Window
 {
-    Game myGame;
-
     public MainWindow()
     {
-        myGame = new();
+        Game.Init();
         InitializeComponent();
-        MainFrame.Content = new OpeningPage(myGame);
+        MainFrame.Content = new OpeningPage();
         WindowState = WindowState.Maximized;
         WindowStyle = WindowStyle.None;
     }
