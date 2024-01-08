@@ -20,7 +20,7 @@
                 <ImageBrush ImageSource="/img/window6.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Button Name="Back" Click="Back_Click"  Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232"/>
+        <Button Name="Back" Style="{StaticResource BackButtonStyle}" Click="Back_Click" Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232"/>
 
     </Canvas>
 </local:Room>

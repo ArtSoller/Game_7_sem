@@ -41,6 +41,8 @@ namespace WpfApp2
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
+            if (Game.isQuestDone == true)
+                TeleportToLocaltion3_2.Fill = Game.blueBrush;
             CanvasSetObjects();
             GameSetUp();
         }

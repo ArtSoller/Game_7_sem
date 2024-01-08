@@ -16,9 +16,9 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="Quest" Height="312" Width="438" Canvas.Left="280" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.409,-0.382">
+        <Rectangle Name="Quest" Height="312" Width="498" Canvas.Left="250" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.409,-0.382">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="img/correct.png" />
+                <ImageBrush ImageSource="img/window5correct_.png" />
             </Rectangle.Fill>
         </Rectangle>
 
@@ -36,23 +36,23 @@
         </Border>
 
         <Border Name="Target1" Background="White">
-            <StackPanel Orientation="Horizontal" Name="AnswerContainer1" Height="184" Width="310">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer1" Height="89" Width="126">
             </StackPanel>
         </Border>
 
         <Border Name="Target2" Background="White">
-            <StackPanel Orientation="Horizontal" Name="AnswerContainer2" Height="184" Width="310">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer2" Height="89" Width="126">
             </StackPanel>
         </Border>
 
         <Border Name="Target3" Background="White">
-            <StackPanel Orientation="Horizontal" Name="AnswerContainer3" Height="184" Width="310">
+            <StackPanel Orientation="Horizontal" Name="AnswerContainer3" Height="89" Width="126">
             </StackPanel>
         </Border>
-        <TextBlock FontSize="16" Name="txtScore" Foreground="Black" Canvas.Top="57"/>
+        <TextBlock Name="txtScore" Foreground="LightYellow" FontFamily="Segoe Print" FontSize="20" Canvas.Top="130" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="141"/>
 
 
-        <Button Name="Back" Click="Back_Click"  Content="Назад" Height="66" Canvas.Left="434" Canvas.Top="586" Width="130" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button Name="Back" Style="{StaticResource BackButtonStyle}" Click="Back_Click"  Content="Назад" Height="66" Canvas.Left="434" Canvas.Top="586" Width="130" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Button x:Name="Check" Click="Check_Click"  Content="Проверка" Height="66" Canvas.Left="434" Canvas.Top="506" Width="130" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
     </Canvas>

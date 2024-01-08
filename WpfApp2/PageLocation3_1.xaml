@@ -16,6 +16,19 @@
             </Rectangle.Fill>
         </Rectangle>
 
+        <Rectangle Name="Plate" Width="143" Height="150" Canvas.Left="783" Canvas.Top="76" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.5,0.5" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/plita_v2.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Name="QuestField" Width="575" Height="570" Canvas.Left="193" Canvas.Top="60" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/plita_v5.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+
         <Rectangle Name="Player1" Width="50" Height="50" Fill="Red" Canvas.Left="44" Canvas.Top="313" />
 
         <Rectangle Name="Book" Tag="book" ToolTip="Для взаимодействия нажмите кнопку F" Width="85" Height="77" Canvas.Left="67" Canvas.Top="106" HorizontalAlignment="Left" VerticalAlignment="Top" >
@@ -23,28 +36,14 @@
                 <ImageBrush ImageSource="/img/book.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="BookArea" Tag="easel_area" Stroke="Black" Height="171" Canvas.Left="14" Canvas.Top="55" Width="196" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle x:Name="BookArea" Stroke="Black"  Tag="book_area" Height="399" Canvas.Left="14" Canvas.Top="55" Width="458" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
+        <Rectangle x:Name="PlateArea" Height="97" Canvas.Left="850" Canvas.Top="149" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        <Rectangle Name="QuestField" Width="575" Height="570" Canvas.Left="193" Canvas.Top="60" HorizontalAlignment="Left" VerticalAlignment="Top" >
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="/img/plita_v5.png" />
-            </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle x:Name="QuestArea" Stroke="Black" Height="566" Canvas.Left="184" Canvas.Top="65" Width="584" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-        
-        <Rectangle Name="Plate" Width="82" Height="86" Canvas.Left="857" Canvas.Top="61" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="0" RadiusY="0" RenderTransformOrigin="0.5,0.5" >
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="/img/plita_v2.png" />
-            </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle x:Name="PlateArea" Height="97" Stroke="Black" Canvas.Left="850" Canvas.Top="149" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
-        <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="Black"/>
-        <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>
-        <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
-        <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
+        <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950"/>
+        <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <Rectangle Name="TeleportToLocaltion4_1" Tag="teleport" Height="165" Canvas.Left="940" Canvas.Top="293" Width="30" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="LightGray" />
         <Rectangle Name="TeleportToLocaltionBack" Tag="teleport" Height="165" Canvas.Left="12" Canvas.Top="293" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="LightGray"/>

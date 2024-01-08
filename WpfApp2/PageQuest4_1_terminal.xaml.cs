@@ -48,12 +48,20 @@ public partial class PageQuest4_1_terminal
 
     private void CanvasSetObjects()
     {
-        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
-        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
+        Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.4 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
+        Canvas.SetTop(Reset, 0.7 * (SystemParameters.VirtualScreenHeight - Reset.Height));
+        Canvas.SetLeft(Reset, 0.5 * (SystemParameters.VirtualScreenWidth - Reset.Width));
 
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        Back.Foreground = _brush;
+        Canvas.SetTop(Enter, 0.7 * (SystemParameters.VirtualScreenHeight - Enter.Height));
+        Canvas.SetLeft(Enter, 0.6 * (SystemParameters.VirtualScreenWidth - Enter.Width) - 40);
+
+        Canvas.SetTop(txtScore, 0.6 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(txtScore, 0.46 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(txtInput, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput.Height));
+        Canvas.SetLeft(txtInput, 0.5 * (SystemParameters.VirtualScreenWidth - txtInput.Width));
 
     }
 
@@ -75,6 +83,7 @@ public partial class PageQuest4_1_terminal
             txtInput.IsReadOnly = true;
             Game.third_part_code += Game.randomString[3];
             IsTeleportActive = true;
+            Game.isQuestDone = true;
             Enter.Visibility = Visibility.Collapsed;
         }
         else

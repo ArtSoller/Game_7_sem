@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp2
 {
@@ -40,6 +41,8 @@ namespace WpfApp2
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
+            if (Game.isQuestDone == true)
+                TeleportToLocaltion0.Fill = Game.redBrush;
             CanvasSetObjects();
             GameSetUp();
         }
@@ -112,12 +115,14 @@ namespace WpfApp2
             if (gameTimer is null) throw new Exception("gameTimer is null");
 
             Location4_1.Focus();
-
             gameTimer.Interval = TimeSpan.FromMilliseconds(10);
 
             gameTimer.Tick += GameLoop;
 
             gameTimer.Start();
+
+            
+
 
             ImageBrush MyImage = new()
             {
@@ -163,6 +168,8 @@ namespace WpfApp2
                 GameOver("Dead");
         }
 
+
+
         private void SetMovementPossibility()
         {
             if (_toDisplay)
@@ -185,6 +192,7 @@ namespace WpfApp2
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location0));
+                        Game.isGameDone = true;
                     }
 
 

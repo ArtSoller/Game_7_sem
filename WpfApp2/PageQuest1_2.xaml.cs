@@ -56,10 +56,10 @@ public partial class PageQuest1_2
 
 
         Canvas.SetTop(Target1, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer1.Height));
-        Canvas.SetLeft(Target1, 0.25 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
+        Canvas.SetLeft(Target1, 0.43 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
 
         Canvas.SetTop(AnswerContainer1, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer1.Height));
-        Canvas.SetLeft(AnswerContainer1, 0.25 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
+        Canvas.SetLeft(AnswerContainer1, 0.43 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
 
 
         Canvas.SetTop(Target2, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer2.Height));
@@ -70,25 +70,20 @@ public partial class PageQuest1_2
 
 
         Canvas.SetTop(Target3, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer3.Height));
-        Canvas.SetLeft(Target3, 0.75 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
+        Canvas.SetLeft(Target3, 0.57 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
 
         Canvas.SetTop(AnswerContainer3, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer3.Height));
-        Canvas.SetLeft(AnswerContainer3, 0.75 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
+        Canvas.SetLeft(AnswerContainer3, 0.57 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
 
 
         Canvas.SetTop(Back, 0.95 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
-        Canvas.SetTop(txtScore, 0.98 * SystemParameters.VirtualScreenHeight);
-        Canvas.SetLeft(txtScore, 0.9 * SystemParameters.VirtualScreenWidth);
+        Canvas.SetTop(txtScore, 0.5 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(txtScore, 0.48 * SystemParameters.VirtualScreenWidth);
 
         Canvas.SetTop(Check, 0.85 * (SystemParameters.VirtualScreenHeight - Check.Height));
         Canvas.SetLeft(Check, 0.5 * (SystemParameters.VirtualScreenWidth - Check.Width));
-
-        //UIElement obj = MainContainer.FindName("Picture1") as Image;
-
-        //MainContainer.Children.Remove(obj);
-        //AnswerContainer1.Children.Add(obj);
     }
 
     private void Back_Click(object sender, RoutedEventArgs e)
@@ -117,6 +112,7 @@ public partial class PageQuest1_2
             if (child.Name != "Picture8")
                 return;
         }
+        Game.isQuestDone = true;
         txtScore.Text = "Готово!";
         txtScore.Visibility = Visibility.Visible;
         Game.first_part_code += Game.randomString[0];
@@ -139,6 +135,7 @@ public partial class PageQuest1_2
                 {
                     case (0, int, int):
                         AnswerContainer1.Children.Add(obj);
+                        AnswerContainer1.HorizontalAlignment = HorizontalAlignment.Center;
                         break;
                     case (1, 0, int):
                         AnswerContainer2.Children.Add(obj);

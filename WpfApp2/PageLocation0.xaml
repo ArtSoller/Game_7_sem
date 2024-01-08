@@ -16,7 +16,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="Player1" Width="50" Height="50" Fill="blue" Canvas.Left="100" Canvas.Top="251" />
+        <Rectangle Name="Player1" Width="80" Height="100" Fill="blue" Canvas.Left="100" Canvas.Top="251" />
         <Rectangle Name="Player2" Width="50" Height="50" Fill="red" Canvas.Left="100" Canvas.Top="406" />
 
         <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" Stroke="Black"/>
@@ -33,7 +33,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="ChestArea" Tag="chestArea" Height="235" Width="296" Canvas.Left="289" Canvas.Top="225" RadiusX="64.5" RadiusY="64.5"/>
+        <Rectangle Name="ChestArea" Tag="chestArea" Height="257" Width="324" Canvas.Left="275" Canvas.Top="214" RadiusX="64.5" RadiusY="64.5"/>
         <Rectangle x:Name="TeleportToLocaltionBack_1" Tag="teleport" Height="165" Canvas.Top="111" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle x:Name="TeleportToLocaltionBack_2" Tag="teleport" Height="165" Canvas.Top="395" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <TextBox Name="Tb1" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="20" Canvas.Top="60"/>

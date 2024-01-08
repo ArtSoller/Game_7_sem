@@ -14,10 +14,10 @@
                 <ImageBrush ImageSource="img/Smooth4_1.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox Name="txtInput" Width="200" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Button Name="Back" Click="Back_Click"  Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button x:Name="Enter" Click="Enter_Click"  Content="Ввод" Height="118" Canvas.Left="232" Canvas.Top="10" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button x:Name="Reset" Click="Reset_Click"  Content="Сброс" Height="118" Canvas.Left="232" Canvas.Top="152" Width="232" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBlock FontSize="16" Name="txtScore" Foreground="Black" HorizontalAlignment="Center" Canvas.Top="57" VerticalAlignment="Top" />
+        <TextBox Name="txtInput" FontSize="28" Width="200" Height="64" Canvas.Left="391" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="Back" Click="Back_Click" Style="{StaticResource BackButtonStyle}" Content="Назад" Canvas.Left="280" Canvas.Top="431" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="Enter" Click="Enter_Click" Content="Ввод" Height="60" Canvas.Left="593" Canvas.Top="450" Width="116"/>
+        <Button x:Name="Reset" Style="{StaticResource ResetButtonStyle}" Click="Reset_Click" Content="Сброс" Canvas.Left="478" Canvas.Top="431" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock Name="txtScore" Foreground="LightYellow" FontFamily="Segoe Print" FontSize="20" Canvas.Top="130" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="141"/>
     </Canvas>
 </local:Room>

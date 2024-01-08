@@ -14,17 +14,17 @@
                 <ImageBrush ImageSource="img/Smooth2_2.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Button Name="Back" Click="Back_Click"  Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button x:Name="Enter" Click="Enter_Click"  Content="Bвод" Height="118" Canvas.Left="232" Canvas.Top="10" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button x:Name="Reset" Click="Reset_Click"  Content="Сброс" Height="118" Canvas.Left="232" Canvas.Top="152" Width="232" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBlock FontSize="16" Name="txtScore" Foreground="Black" HorizontalAlignment="Center" Canvas.Top="57" VerticalAlignment="Top" />
-        <TextBox Name="txtInput1" Width="18" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <TextBox x:Name="txtInput2" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="18" />
-        <TextBox x:Name="txtInput3" Width="18" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="48" />
-        <TextBox x:Name="txtInput4" Width="18" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="66" />
-        <TextBox x:Name="txtInput5" Width="18" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="84" />
-        <TextBox x:Name="txtInput6" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="102" />
-        <TextBox x:Name="txtInput7" Width="18" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="132" />
-        <TextBox x:Name="txtInput8" Width="48" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="150" />
+        <Button Name="Back" Click="Back_Click" Style="{StaticResource BackButtonStyle}" Content="Назад" Canvas.Left="280" Canvas.Top="431" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="Enter" Click="Enter_Click" Content="Ввод" Height="60" Canvas.Left="593" Canvas.Top="450" Width="116"/>
+        <Button x:Name="Reset" Style="{StaticResource ResetButtonStyle}" Click="Reset_Click" Content="Сброс" Canvas.Left="478" Canvas.Top="431" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock Name="txtScore" Foreground="LightYellow" FontFamily="Segoe Print" FontSize="20" Canvas.Top="130" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="141"/>
+        <TextBox Name="txtInput1" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="297" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="txtInput2" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="345" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="txtInput3" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="393" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="txtInput4" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="441" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="txtInput5" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="489" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="txtInput6" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="537" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="txtInput7" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="585" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="txtInput8" FontSize="28" Width="60" Height="64" MaxLength="1" Canvas.Left="633" Canvas.Top="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>
 </local:Room>

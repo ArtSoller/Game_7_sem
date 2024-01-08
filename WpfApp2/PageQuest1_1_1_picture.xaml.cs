@@ -22,7 +22,6 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest1_1_1_picture
 {
-    private Brush? _brush;
 
     public PageQuest1_1_1_picture(Player pl1, Player pl2)
     {
@@ -43,14 +42,11 @@ public partial class PageQuest1_1_1_picture
 
     private void CanvasSetObjects()
     {
+        Canvas.SetTop(quest_1, 0.1 * (SystemParameters.VirtualScreenWidth - quest_1.Width));
         Canvas.SetLeft(quest_1, 0.5 * (SystemParameters.VirtualScreenWidth - quest_1.Width));
 
-        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
-
-
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        Back.Foreground = _brush;
 
     }
 

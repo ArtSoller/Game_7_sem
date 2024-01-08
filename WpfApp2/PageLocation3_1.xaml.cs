@@ -20,6 +20,7 @@ namespace WpfApp2
     /// </summary>
     public partial class PageLocation3_1 : Room
     {
+
         public PageLocation3_1(Player pl1, Player pl2)
         {
             gameTimer = new();
@@ -62,24 +63,24 @@ namespace WpfApp2
             Canvas.SetLeft(QuestField, 0.5 * (SystemParameters.VirtualScreenWidth - QuestField.Width));
 
             // Ставим область вокруг мольбертов.
-            Canvas.SetTop(QuestArea, 0.5 * (SystemParameters.VirtualScreenHeight - QuestArea.Height) - 15);
-            Canvas.SetLeft(QuestArea, 0.5 * (SystemParameters.VirtualScreenWidth - QuestArea.Width) - 12);
+            //Canvas.SetTop(QuestArea1, 0.5 * (SystemParameters.VirtualScreenHeight - QuestArea1.Height) - 15);
+            //Canvas.SetLeft(QuestArea1, 0.5 * (SystemParameters.VirtualScreenWidth - QuestArea1.Width) - 12);
 
-            Canvas.SetTop(Book, 0.15 * (SystemParameters.VirtualScreenHeight - Book.Height));
-            Canvas.SetLeft(Book, 0.1 * SystemParameters.VirtualScreenWidth);
+            Canvas.SetTop(Book, 0.2 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(Book, 0.2 * SystemParameters.VirtualScreenWidth);
 
-            Canvas.SetTop(BookArea, 0.12 * (SystemParameters.VirtualScreenHeight - BookArea.Height));
-            Canvas.SetLeft(BookArea, 0.07 *SystemParameters.VirtualScreenWidth);
+            Canvas.SetTop(BookArea, 0.22 * (SystemParameters.VirtualScreenHeight - BookArea.Height));
+            Canvas.SetLeft(BookArea, 0.27 *SystemParameters.VirtualScreenWidth);
 
             Canvas.SetTop(QuestField, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
             Canvas.SetLeft(QuestField, 0.2 * SystemParameters.VirtualScreenWidth);
             QuestField.Height = 0.87 * SystemParameters.VirtualScreenHeight;
-            QuestField.Width = 0.65 * SystemParameters.VirtualScreenWidth;
+            QuestField.Width = 0.5 * SystemParameters.VirtualScreenWidth;
 
-            Canvas.SetTop(QuestArea, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
-            Canvas.SetLeft(QuestArea, 0.2 * SystemParameters.VirtualScreenWidth);
-            QuestArea.Height = 0.87 * SystemParameters.VirtualScreenHeight;
-            QuestArea.Width = 0.65 * SystemParameters.VirtualScreenWidth;
+            //Canvas.SetTop(QuestArea, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            //Canvas.SetLeft(QuestArea, 0.2 * SystemParameters.VirtualScreenWidth);
+            //QuestArea.Height = 0.87 * SystemParameters.VirtualScreenHeight;
+            //QuestArea.Width = 0.5 * SystemParameters.VirtualScreenWidth;
 
 
             Canvas.SetTop(Plate, 50);
@@ -194,16 +195,15 @@ namespace WpfApp2
 
                 pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
 
-                foreach (var obj in Location3_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "book" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
+                foreach (var obj in Location3_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "book" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "book_area")))
                 {
                     Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                     {
                         _toDisplay = false;
-                        NavigationService?.Navigate(TeleportTo(Location.Location4_1));
+                        NavigationService?.Navigate(TeleportTo(Location.Location4_2));
                     }
-
 
                     if ((string)obj.Name == "BookArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {

@@ -27,21 +27,20 @@ namespace WpfApp2
 
             Floor.Height = SystemParameters.VirtualScreenHeight;
             Floor.Width = SystemParameters.VirtualScreenWidth;
-
             _me = pl1;
             _companion = pl2;
 
             mediaPlayer = new();
             mediaPlayer.MediaFailed += FailedMusic;
             mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
-
             code.IsReadOnly = true;
             code.Text = Game.parts_code;
             first_part_code.Text = Game.first_part_code;
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
-
+            if (Game.isQuestDone == true)
+                TeleportToLocaltion2_2.Fill = Game.blueBrush;
             CanvasSetObjects();
             GameSetUp();
         }
@@ -181,6 +180,7 @@ namespace WpfApp2
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location2_2));
+                        Game.isQuestDone = false;
                     }
 
 

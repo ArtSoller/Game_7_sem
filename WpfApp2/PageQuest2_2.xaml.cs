@@ -25,7 +25,6 @@ namespace WpfApp2;
 public partial class PageQuest2_2
 {
     public string InputText { get; set; }
-    private Brush? _brush;
     public PageQuest2_2(Player pl1, Player pl2)
     {
         InitializeComponent();
@@ -53,13 +52,41 @@ public partial class PageQuest2_2
 
     private void CanvasSetObjects()
     {
-        Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
-        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
+        Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.4 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
+        Canvas.SetTop(Reset, 0.7 * (SystemParameters.VirtualScreenHeight - Reset.Height));
+        Canvas.SetLeft(Reset, 0.5 * (SystemParameters.VirtualScreenWidth - Reset.Width));
 
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        Back.Foreground = _brush;
+        Canvas.SetTop(Enter, 0.7 * (SystemParameters.VirtualScreenHeight - Enter.Height));
+        Canvas.SetLeft(Enter, 0.6 * (SystemParameters.VirtualScreenWidth - Enter.Width) - 40);
 
+        Canvas.SetTop(txtScore, 0.6 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(txtScore, 0.46 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(txtInput1, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput1.Height));
+        Canvas.SetLeft(txtInput1, 0.405 * (SystemParameters.VirtualScreenWidth - txtInput1.Width));
+
+        Canvas.SetTop(txtInput2, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput2.Height));
+        Canvas.SetLeft(txtInput2, 0.43 * (SystemParameters.VirtualScreenWidth - txtInput2.Width));
+
+        Canvas.SetTop(txtInput3, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput3.Height));
+        Canvas.SetLeft(txtInput3, 0.455 * (SystemParameters.VirtualScreenWidth - txtInput3.Width));
+
+        Canvas.SetTop(txtInput4, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput4.Height));
+        Canvas.SetLeft(txtInput4, 0.480 * (SystemParameters.VirtualScreenWidth - txtInput4.Width));
+
+        Canvas.SetTop(txtInput5, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput5.Height));
+        Canvas.SetLeft(txtInput5, 0.505 * (SystemParameters.VirtualScreenWidth - txtInput5.Width));
+
+        Canvas.SetTop(txtInput6, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput6.Height));
+        Canvas.SetLeft(txtInput6, 0.530 * (SystemParameters.VirtualScreenWidth - txtInput6.Width));
+
+        Canvas.SetTop(txtInput7, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput7.Height));
+        Canvas.SetLeft(txtInput7, 0.555 * (SystemParameters.VirtualScreenWidth - txtInput7.Width));
+
+        Canvas.SetTop(txtInput8, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput8.Height));
+        Canvas.SetLeft(txtInput8, 0.585 * (SystemParameters.VirtualScreenWidth - txtInput8.Width));
     }
 
     private void Back_Click(object sender, RoutedEventArgs e)
@@ -80,6 +107,7 @@ public partial class PageQuest2_2
         if (inputValue1 == "4" && inputValue2 == "4" && inputValue3 == "2" && inputValue4 == "3")
         {
             txtScore.Text = "Готово!";
+            Game.isQuestDone = true;
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
             txtInput3.IsReadOnly = true;

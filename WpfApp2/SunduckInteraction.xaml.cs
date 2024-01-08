@@ -22,11 +22,11 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page6.xaml
 /// </summary>
-public partial class Page8
+public partial class SunduckInteraction
 {
     public string InputText { get; set; }
 
-    public Page8(Player pl1, Player pl2)
+    public SunduckInteraction(Player pl1, Player pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
@@ -42,10 +42,43 @@ public partial class Page8
         txtScore.Visibility = Visibility.Hidden;
         txtInput5.IsReadOnly = true;
         count.IsReadOnly = true;
-        txtInput5.Text = Game.AttemptsNumber.ToString();        
+        txtInput5.Text = Game.AttemptsNumber.ToString();
+    CanvasSetObjects();
     }
 
 
+    private void CanvasSetObjects()
+    {
+        Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.4 * (SystemParameters.VirtualScreenWidth - Back.Width));
+
+        Canvas.SetTop(Reset, 0.7 * (SystemParameters.VirtualScreenHeight - Reset.Height));
+        Canvas.SetLeft(Reset, 0.5 * (SystemParameters.VirtualScreenWidth - Reset.Width));
+
+        Canvas.SetTop(Enter, 0.7 * (SystemParameters.VirtualScreenHeight - Enter.Height));
+        Canvas.SetLeft(Enter, 0.6 * (SystemParameters.VirtualScreenWidth - Enter.Width) - 40);
+
+        Canvas.SetTop(txtScore, 0.6 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(txtScore, 0.46 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(txtInput1, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput1.Height));
+        Canvas.SetLeft(txtInput1, 0.465 * (SystemParameters.VirtualScreenWidth - txtInput1.Width));
+
+        Canvas.SetTop(txtInput2, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput2.Height));
+        Canvas.SetLeft(txtInput2, 0.49 * (SystemParameters.VirtualScreenWidth - txtInput2.Width));
+
+        Canvas.SetTop(txtInput3, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput3.Height));
+        Canvas.SetLeft(txtInput3, 0.515 * (SystemParameters.VirtualScreenWidth - txtInput3.Width));
+
+        Canvas.SetTop(txtInput4, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput4.Height));
+        Canvas.SetLeft(txtInput4, 0.54 * (SystemParameters.VirtualScreenWidth - txtInput4.Width));
+
+        Canvas.SetTop(count, 0.37 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(count, 0.42 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(txtInput5, 0.37 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(txtInput5, 0.565 * SystemParameters.VirtualScreenWidth);
+    }
 
     private void Back_Click(object sender, RoutedEventArgs e)
     {
@@ -64,24 +97,21 @@ public partial class Page8
 
         if (inputValue1 == Game.randomString[0].ToString() && inputValue2 == Game.randomString[1].ToString() && inputValue3 == Game.randomString[2].ToString() && inputValue4 == Game.randomString[3].ToString())
         {
-            txtScore.Text = "Готово!";
-            txtScore.Visibility = Visibility.Visible;
-            txtInput1.IsReadOnly = true;
-            Game.first_part_code += Game.randomString[0];
-            IsTeleportActive = true;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\GameWon.mp3"));
+            mediaPlayer.Play();
             Enter.Visibility = Visibility.Collapsed;
             GameOver("Won");
         }
         else
         {
-            txtScore.Text = "Неверный пароль!";
-            txtScore.Visibility = Visibility.Visible;
-            txtScore.Visibility = Visibility.Visible;
-            txtInput1.IsReadOnly = true;
             Game.AttemptsNumber -= 1;
             txtInput5.Text = Game.AttemptsNumber.ToString();
             if (Game.AttemptsNumber == 0)
                 GameOver("Dead");
+            txtScore.Text = "Неверный пароль!";
+            txtScore.Visibility = Visibility.Visible;
+            txtScore.Visibility = Visibility.Visible;
+            txtInput1.IsReadOnly = true;
         }
     }
 
@@ -106,8 +136,14 @@ public partial class Page8
 
     private void Reset_Click(object sender, RoutedEventArgs e)
     {
-        txtInput1.Text = ""; // Получаем значение из текстового поля
+        txtInput1.Text = "";
+        txtInput2.Text = "";
+        txtInput3.Text = "";
+        txtInput4.Text = "";
         txtInput1.IsReadOnly = false;
+        txtInput2.IsReadOnly = false;
+        txtInput3.IsReadOnly = false;
+        txtInput4.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
     }
 
