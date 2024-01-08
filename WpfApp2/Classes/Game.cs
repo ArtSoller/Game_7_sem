@@ -73,7 +73,5 @@ public static class Game
             Y = 0.66 * SystemParameters.VirtualScreenHeight,
             CurrentLocation = Location.Location0
         };
-
-        Connection.StartServer();
     }
 }

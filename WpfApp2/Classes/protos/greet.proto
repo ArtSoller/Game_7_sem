@@ -2,21 +2,15 @@
 
 option csharp_namespace = "GrpcService1";
 
-import "google/protobuf/empty.proto";
-
 package greet;
 
 service Greeter {
-    rpc ActionStream (stream Coordinates) returns (stream Coordinates);
-	rpc SendRole (RoleMessage) returns (google.protobuf.Empty);
-	rpc GetRole (google.protobuf.Empty) returns (RoleMessage);
+    rpc ActionStream (stream Content) returns (stream Content);
 }
 
-message Coordinates {
-	double XPosition = 1;
-	double YPosition = 2;
-}
-
-message RoleMessage {
-	bool Role = 1;
+message Content {	
+	string Name = 1;
+	bool Role = 2;
+	double X = 3;
+	double Y = 4;
 }

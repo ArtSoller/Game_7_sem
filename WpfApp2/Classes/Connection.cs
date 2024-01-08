@@ -14,7 +14,7 @@ namespace WpfApp2;
 
 internal static class Connection
 {
-    private static AsyncDuplexStreamingCall<Coordinates, Coordinates>? call;
+    private static AsyncDuplexStreamingCall<Content, Content>? call;
 
     private static GrpcChannel? channel;
 
@@ -33,44 +33,30 @@ internal static class Connection
         if (channel.State == ConnectivityState.Ready)
             IsConnected = true;
     }
-
-    public static async void StartServer()
-    {
-
-    }
-
-    public static void StopServer()
-    {
-        /* Остановка сервера. */
-    }
-
-    public static void SendCoordinates(double _x, double _y)
+    public static void SendCoordinates(string _name, double _x, double _y)
     {
         if (call is null) throw new ArgumentNullException("call is null");
-        call.RequestStream.WriteAsync(new Coordinates() { XPosition = _x, YPosition = _y });
+        call.RequestStream.WriteAsync(new Content() {Name = _name, X = _x, Y = _y });
     }
-
-    public static void SendRole(bool role)
-    {
-       if (client is null) throw new ArgumentNullException("client is null");
-           client.SendRole(new RoleMessage { Role = role });
-    }
-
-    public static bool ReceiveRole()
-    {
-        if (client is null) throw new ArgumentNullException("client is null");
-        return client.GetRole(null).Role;
-    }
-
-   public static async void ReceiveCoordinates()
+   public static async Task ReceiveCoordinates()
     {
         if (call is null) throw new ArgumentNullException("call is null");
 
         while (IsConnected)
             await foreach (var res in call.ResponseStream.ReadAllAsync())
-            { 
-                Game.Companion.X = res.XPosition;
-                Game.Companion.Y = res.YPosition;
+            {
+                Game.Companion.X = res.X;
+                Game.Companion.Y = res.Y;
             }
+    }
+
+    public static async void ReceiveRole()
+    {
+        if (call is null) throw new ArgumentNullException("call is null");
+        await foreach (var res in call.ResponseStream.ReadAllAsync())
+        {
+            Game.Me.Role = res.Role ? Role.Performer : Role.Assistant;
+            Game.Companion.Role = res.Role ? Role.Assistant : Role.Performer;
+        }        
     }
 }

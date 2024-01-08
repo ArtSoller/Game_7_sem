@@ -50,10 +50,6 @@ public partial class OpeningPage
         Canvas.SetTop(ButtConnect1, Canvas.GetTop(ButtStart) + 90);
         Canvas.SetLeft(ButtConnect1, 0.5 * (SystemParameters.VirtualScreenWidth - ButtStart.Width));
         
-        Canvas.SetTop(ButtConnect2, Canvas.GetTop(ButtStart) + 90);
-        Canvas.SetLeft(ButtConnect2, 0.5 * (SystemParameters.VirtualScreenWidth - ButtStart.Width));
-        ButtConnect2.Visibility = Visibility.Collapsed;
-
         Canvas.SetTop(QuitBox, Canvas.GetTop(ButtConnect1) + 90);
         Canvas.SetLeft(QuitBox, 0.5 * (SystemParameters.VirtualScreenWidth - ButtConnect1.Width));
         
@@ -81,21 +77,8 @@ public partial class OpeningPage
 
     private void StartGame(object sender, RoutedEventArgs e)
     {
-        if (IPEnterBox.Text is null)
-        {
-            Random rnd = new();
-            var value = rnd.Next(0, 2);
-            Game.Me.Role = value == 0 ? Role.Performer : Role.Assistant;
-            Game.Companion.Role = value == 0 ? Role.Assistant : Role.Performer;
-            Connection.SendRole(Game.Me.Role == 0 ? true : false);
-        }
-        else
-        {
-            Game.Me.Role = Connection.ReceiveRole() ? Role.Assistant : Role.Performer;
-            Game.Companion.Role = Connection.ReceiveRole() ? Role.Performer : Role.Assistant;
-        }
-
-        Connection.ReceiveCoordinates();
+        Connection.ReceiveRole();
+        Connection.ReceiveCoordinates().Start();
         NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 
@@ -107,25 +90,13 @@ public partial class OpeningPage
     private void ConnectToCompanion(object sender, RoutedEventArgs e)
     {
         IPEnterBox.Visibility = Visibility.Visible;
-        ButtConnect1.Visibility = Visibility.Collapsed;
-        ButtConnect2.Visibility = Visibility.Visible;
-        BackBox.Visibility = Visibility.Visible;
-        QuitBox.Visibility = Visibility.Collapsed;
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 0));
-        ButtStart.Foreground = _brush;
-        ButtStart.IsEnabled = true;
-    }
-
-    private void ConnectToCompanion2(object sender, RoutedEventArgs e)
-    {
-        Connection.StopServer();
         Connection.SetConnection(IPEnterBox.Text);
         if (Connection.IsConnected)
         {
             _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 0));
             ButtStart.Foreground = _brush;
             ButtStart.IsEnabled = true;
-            CompanionNameTextBox.Text = Game.Companion.Name; 
+            CompanionNameTextBox.Text = Game.Companion.Name;
         }
     }
 
@@ -136,13 +107,11 @@ public partial class OpeningPage
 
     private void BackToMain(object sender, RoutedEventArgs e)
     {
-        ButtConnect2.Visibility = Visibility.Collapsed;
         BackBox.Visibility = Visibility.Collapsed;
         QuitBox.Visibility = Visibility.Visible;
         ButtStart.Visibility = Visibility.Visible;
         ButtConnect1.Visibility = Visibility.Visible;
         IPEnterBox.Visibility = Visibility.Collapsed;
-        Connection.StartServer();
         ButtStart.IsEnabled = false;
     }
 

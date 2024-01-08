@@ -122,12 +122,11 @@ public partial class PageLocation0 : Room
 
         base.GameLoop(sender, e);
 
-        Canvas.SetLeft(Player1, _me.X);
-        Canvas.SetTop(Player1, _me.Y);
+        Canvas.SetLeft(Player1, _me.Role == Role.Performer ? _me.X : _companion.X);
+        Canvas.SetTop(Player1, _me.Role == Role.Performer ? _me.Y : _companion.Y);
 
-        Canvas.SetLeft(Player2, _companion.X);
-        Canvas.SetTop(Player2, _companion.Y);
-
+        Canvas.SetLeft(Player2, _me.Role == Role.Assistant ? _me.X : _companion.X);
+        Canvas.SetTop(Player2, _me.Role == Role.Assistant ? _me.Y : _companion.Y);
 
         Tb1.Text = _me.Role.ToString();
     }

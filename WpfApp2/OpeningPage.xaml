@@ -20,7 +20,6 @@
 
             <Button Name="ButtStart" Content="Начать" Height="57" Canvas.Left="414" Canvas.Top="413" Width="122" Click="StartGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24" IsEnabled="False"/>
             <Button Name ="ButtConnect1" Content="Подключиться" Height="57" Canvas.Left="414" Canvas.Top="483" Width="122" Click="ConnectToCompanion" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Button Name ="ButtConnect2" Content="Подключиться" Height="57" Canvas.Left="414" Canvas.Top="483" Width="122" Click="ConnectToCompanion2" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Button x:Name="QuitBox" Content="Выйти" Height="57" Canvas.Left="414" Canvas.Top="563" Width="122" Click="QuitGame" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Button x:Name="BackBox" Content="Вернуться" Height="57" Canvas.Left="414" Canvas.Top="563" Width="122" Click="BackToMain" FontFamily="Segoe Script" FontStyle="Italic" FontWeight="Bold" FontSize="19" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 

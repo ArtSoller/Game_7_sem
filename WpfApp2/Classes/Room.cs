@@ -182,7 +182,7 @@ public abstract class Room : Page
         _me.X += _me.SpeedX;
         _me.Y -= _me.SpeedY;
 
-        Connection.SendCoordinates(_me.X, _me.Y);
+        Connection.SendCoordinates(_me.Name, _me.X, _me.Y);
     }
 
     protected abstract void SetMovementPossibility();

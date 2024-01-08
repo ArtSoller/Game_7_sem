@@ -3,45 +3,94 @@ using Grpc.Net.Client;
 using GrpcService1;
 using System.Collections.Concurrent;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace GrpcService1.Services;
 
 internal record ChatClient
 {
-    public IServerStreamWriter<Coordinates>? StreamWriter { get; set; }
+    public IServerStreamWriter<Content>? StreamWriter { get; set; }
     public string? UserName { get; set; }
 }
 
 
 public class GreeterService : Greeter.GreeterBase
 {
-    private static ConcurrentDictionary<string, IServerStreamWriter<Coordinates>> clients = new();
+    private static ConcurrentDictionary<string, IServerStreamWriter<Content>> clients = new();
 
-    public override async Task ActionStream(IAsyncStreamReader<Coordinates> requestStream, IServerStreamWriter<Coordinates> responseStream, ServerCallContext context)
+    public override async Task ActionStream(IAsyncStreamReader<Content> requestStream, IServerStreamWriter<Content> responseStream, ServerCallContext context)
     {
         while (true)
         {
             var clientMessage = await ReadMessageWithTimeoutAsync(requestStream, Timeout.InfiniteTimeSpan);
-            await SendBroadcastMessageAsync($"{clientMessage.XPosition} {clientMessage.YPosition}");
+            await AddClientAsync(new ChatClient
+            {
+                StreamWriter = responseStream,
+                UserName = clientMessage.Name
+            });
+                        
+            await SendBroadcastMessageAsync($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y}");            
         }
     }
 
     private static async Task SendBroadcastMessageAsync(string messageBody)
     {
-        var message = new Coordinates { XPosition = Convert.ToDouble(messageBody.Split()[0]),
-                                        YPosition = Convert.ToDouble(messageBody.Split()[1])};
-        Console.WriteLine(messageBody);
+        var message = new Content
+        {
+            Name = messageBody.Split()[0],
+            X = Convert.ToDouble(messageBody.Split()[1]),
+            Y = Convert.ToDouble(messageBody.Split()[2]),            
+        };
+
         var tasks = new List<Task>() { };
-        foreach (KeyValuePair<string, IServerStreamWriter<Coordinates>> client in clients)
-            tasks.Add(client.Value.WriteAsync(message));
+        foreach (KeyValuePair<string, IServerStreamWriter<Content>> client in clients)
+        {
+            if (client.Key != message.Name)
+                tasks.Add(client.Value.WriteAsync(message));
+        }
+            
         await Task.WhenAll(tasks);
+    }
+
+    private static void SendRoleMessageAsync()
+    {
+        var assistantFree = true;
+        foreach (KeyValuePair<string, IServerStreamWriter<Content>> client in clients)
+        {
+            if (assistantFree)
+            {
+                var message = new Content
+                {
+                    Role = assistantFree
+                };
+                                
+                client.Value.WriteAsync(message);
+                assistantFree = false;
+            }
+            else
+            {
+                var message = new Content
+                {
+                    Role = assistantFree
+                };
+
+                client.Value.WriteAsync(message);                
+            }           
+        }
     }
 
     private static async Task AddClientAsync(ChatClient chatClient)
     {
         var existingUser = clients.FirstOrDefault(c => c.Key == chatClient.UserName);
         if (existingUser.Key == null)
+        {
             clients.TryAdd(chatClient.UserName ?? "Unexpected user", chatClient.StreamWriter);
+            if (clients.Count == 2)
+            {
+                SendRoleMessageAsync();
+            }
+        }
+            
         await Task.CompletedTask;
     }
 
@@ -60,7 +109,7 @@ public class GreeterService : Greeter.GreeterBase
         await Task.CompletedTask;
     }
 
-    public async Task<Coordinates> ReadMessageWithTimeoutAsync(IAsyncStreamReader<Coordinates> requestStream, TimeSpan timeout)
+    public async Task<Content> ReadMessageWithTimeoutAsync(IAsyncStreamReader<Content> requestStream, TimeSpan timeout)
     {
         CancellationTokenSource cancellationTokenSource = new();
 
