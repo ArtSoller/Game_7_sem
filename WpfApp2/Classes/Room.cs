@@ -23,14 +23,19 @@ public abstract class Room : Page
 {
     protected DispatcherTimer? gameTimer;
 
+
+    
     protected MediaPlayer? mediaPlayer;
 
     protected bool _isUpKeyPressed = false, _isDownKeyPressed = false,
                    _isLeftKeyPressed = false, _isRightKeyPressed = false,
                    _isForceButtonClicked = false;
-    public static bool IsTeleportActive = false;
 
-    protected const double _friction = 0.88F, _speed = 1.5F;
+    protected bool _toDisplay = true;
+
+    public static bool IsTeleportActive = true;
+
+    public double _friction = 0.88F, _speed = 1.5F;
 
     protected bool _isPossibleUpwardMovement = false, _isPossibleDownwardMovement = false,
                    _isPossibleLeftwardMovement = false, _isPossibleRightwardMovement = false;
@@ -64,7 +69,11 @@ public abstract class Room : Page
 
     protected void CanvasKeyUp(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.W) _isUpKeyPressed = false;
+        if (e.Key == Key.W)
+        {
+            _isUpKeyPressed = false;
+            //CheckKey();
+        }        
 
         if (e.Key == Key.A) _isLeftKeyPressed = false;
 
@@ -73,7 +82,25 @@ public abstract class Room : Page
         if (e.Key == Key.S) _isDownKeyPressed = false;
 
         if (e.Key == Key.F) _isForceButtonClicked = false;
+
     }
+    //protected void CheckKey()
+    //{
+    //    if (_isUpKeyPressed)
+    //    {
+    //        CanvasKeyDown();
+    //    }
+
+    //    if (e.Key == Key.A) _isLeftKeyPressed = false;
+
+    //    if (e.Key == Key.D) _isRightKeyPressed = false;
+
+    //    if (e.Key == Key.S) _isDownKeyPressed = false;
+
+    //    if (e.Key == Key.F) _isForceButtonClicked = false;
+
+    //}
+
 
     protected Page TeleportTo(Location location)
     {
@@ -87,11 +114,18 @@ public abstract class Room : Page
         _isUpKeyPressed = false;
         _isLeftKeyPressed = false;
         _isRightKeyPressed = false;
-
+        
         return location switch
         {
-            Location.Location1 => new Page1(_me, _companion),
-            Location.Location2 => new Page2(_me, _companion),
+            Location.Location0   => new PageLocation0(_me, _companion),
+            Location.Location1_1 => new PageLocation1_1(_me, _companion),
+            Location.Location1_2 => new PageLocation1_2(_me, _companion),
+            Location.Location2_1 => new PageLocation2_1(_me, _companion),
+            Location.Location2_2 => new PageLocation2_2(_me, _companion),
+            Location.Location3_1 => new PageLocation3_1(_me, _companion),
+            Location.Location3_2 => new PageLocation3_2(_me, _companion),
+            Location.Location4_1 => new PageLocation4_1(_me, _companion),
+            Location.Location4_2 => new PageLocation4_2(_me, _companion),
             _ => throw new NotSupportedException("Kuda zalez, pridurok?")
         };
     }
@@ -109,6 +143,7 @@ public abstract class Room : Page
             {
                 _me.IsMovingLeftward = true;
                 _me.IsMovingRightward = false;
+                
             }
         }
         else
@@ -137,3 +172,4 @@ public abstract class Room : Page
         }
     }
 }
+ 

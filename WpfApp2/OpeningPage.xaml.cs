@@ -61,9 +61,6 @@ public partial class OpeningPage
         Canvas.SetTop(CompanionNameTextBox, 0.45 * SystemParameters.VirtualScreenHeight);
         Canvas.SetLeft(CompanionNameTextBox, 0.25 * (SystemParameters.VirtualScreenWidth - CompanionNameTextBox.Width));
 
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        ButtStart.Foreground = _brush;
-
     }
 
     private void IpConnect()
@@ -76,13 +73,12 @@ public partial class OpeningPage
 
     private void StartGame(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new Page1(Game.Me, Game.Companion));
+        NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 
     private async void WaitingForCompanion(object sender, RoutedEventArgs e)
     {
         /* Здесь будет логика подключения между игроками */
-        
     }
 
     private void ConnectToCompanion(object sender, RoutedEventArgs e)

@@ -1,4 +1,4 @@
-﻿<local:Room x:Class="WpfApp2.Page4"
+﻿<local:Room x:Class="WpfApp2.PageQuest2_1"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,20 +6,20 @@
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d" 
       d:DesignHeight="685" d:DesignWidth="965"
-      Title="Page3">
+      Title="PageQuest2_1">
 
     <Canvas Name="MyCanvas" Focusable="True" Background="White">
         <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
+                <ImageBrush ImageSource="img/Smooth2_1.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="quest_3" Tag="easel" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
+        <Rectangle Name="quest_2" Width="750" Height="488" Canvas.Left="109" Canvas.Top="27">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/2_quest.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Button Name="But3" Click="But3_Click"  Content="B" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Name="Back" Style="{StaticResource BackButtonStyle}" Click="Back_Click" Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
     </Canvas>
 </local:Room>

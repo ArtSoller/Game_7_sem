@@ -20,12 +20,9 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page3.xaml
 /// </summary>
-public partial class Page3
+public partial class PageQuest1_2
 {
-    private bool isDragging = false;
-    private Point startPoint;
-
-    public Page3(Player pl1, Player pl2)
+    public PageQuest1_2(Player pl1, Player pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
@@ -34,9 +31,15 @@ public partial class Page3
         foreach(Image img in MainContainer.Children)
             img.MouseDown += DoubleMouseDown;
 
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureClosed.mp3"));
+
         _me = pl1;
         _companion = pl2;
-        
+        txtScore.Visibility = Visibility.Hidden;
+
+
         CanvasSetUp();
     }
 
@@ -53,10 +56,10 @@ public partial class Page3
 
 
         Canvas.SetTop(Target1, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer1.Height));
-        Canvas.SetLeft(Target1, 0.25 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
+        Canvas.SetLeft(Target1, 0.43 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
 
         Canvas.SetTop(AnswerContainer1, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer1.Height));
-        Canvas.SetLeft(AnswerContainer1, 0.25 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
+        Canvas.SetLeft(AnswerContainer1, 0.43 * (SystemParameters.VirtualScreenWidth - AnswerContainer1.Width));
 
 
         Canvas.SetTop(Target2, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer2.Height));
@@ -67,99 +70,55 @@ public partial class Page3
 
 
         Canvas.SetTop(Target3, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer3.Height));
-        Canvas.SetLeft(Target3, 0.75 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
+        Canvas.SetLeft(Target3, 0.57 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
 
         Canvas.SetTop(AnswerContainer3, 0.4 * (SystemParameters.VirtualScreenHeight - AnswerContainer3.Height));
-        Canvas.SetLeft(AnswerContainer3, 0.75 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
+        Canvas.SetLeft(AnswerContainer3, 0.57 * (SystemParameters.VirtualScreenWidth - AnswerContainer3.Width));
 
 
-        Canvas.SetTop(But3, 0.85 * (SystemParameters.VirtualScreenHeight - But3.Height));
-        Canvas.SetLeft(But3, 0.5 * (SystemParameters.VirtualScreenWidth - But3.Width));
+        Canvas.SetTop(Back, 0.95 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
-        //UIElement obj = MainContainer.FindName("Picture1") as Image;
+        Canvas.SetTop(txtScore, 0.5 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(txtScore, 0.48 * SystemParameters.VirtualScreenWidth);
 
-        //MainContainer.Children.Remove(obj);
-        //AnswerContainer1.Children.Add(obj);
+        Canvas.SetTop(Check, 0.85 * (SystemParameters.VirtualScreenHeight - Check.Height));
+        Canvas.SetLeft(Check, 0.5 * (SystemParameters.VirtualScreenWidth - Check.Width));
     }
 
-    private void But2_Click(object sender, RoutedEventArgs e)
+    private void Back_Click(object sender, RoutedEventArgs e)
     {
+        mediaPlayer.Play();
         if (_me is null) throw new ArgumentException("_me is null");
         if (_companion is null) throw new ArgumentException("_companion is null");
 
-        NavigationService.Navigate(new Page1(_me, _companion));
+        NavigationService.Navigate(new PageLocation1_2(_me, _companion));
     }
 
-
-
-    #region Возможный мусор
-    //private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-    //{
-    //    if (e.ChangedButton == MouseButton.Left)
-    //    {
-    //        startPoint = e.GetPosition(null);
-    //        isDragging = true;
-    //        ((Image)sender).CaptureMouse();
-    //    }
-    //}
-
-    //private void Image_MouseMove(object sender, MouseEventArgs e)
-    //{
-    //    if (isDragging)
-    //    {
-    //        Point position = e.GetPosition(null);
-    //        var tt = new TranslateTransform
-    //        {
-    //            X = position.X - startPoint.X,
-    //            Y = position.Y - startPoint.Y
-    //        };
-    //        ((Image)sender).RenderTransform = tt;
-    //    }
-    //}
-
-    //private void Image_MouseUp(object sender, MouseButtonEventArgs e)
-    //{
-    //    if (isDragging)
-    //    {
-    //        isDragging = false;
-    //        ((Image)sender).ReleaseMouseCapture();
-    //    }
-    //}
-
-    //private void Target_DragEnter(object sender, DragEventArgs e)
-    //{
-    //    e.Effects = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
-    //}
-
-    //private void Target_Drop(object sender, DragEventArgs e)
-    //{
-    //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
-    //    {
-    //        var files = (string[])e.Data.GetData(DataFormats.FileDrop);
-    //        foreach (var file in files)
-    //        {
-
-    //            // Создать новый Image элемент и добавить его в вашу страницу
-    //            var newImage = new Image
-    //            {
-    //                Source = new BitmapImage(new Uri(file))
-    //            };
-
-    //            // Добавить новый Image элемент в вашу разметку
-    //            // Например, добавить его в StackPanel или другой контейнер
-    //            MainContainer.Children.Add(newImage);
-
-    //            var dropTarget = new Border
-    //            {
-    //                Background = Brushes.White,
-    //                AllowDrop = true
-    //            };
-    //            dropTarget.DragEnter += Target_DragEnter;
-    //            dropTarget.Drop += Target_Drop;
-    //        }
-    //    }
-    //}
-    #endregion
+    private void Check_Click(object sender, RoutedEventArgs e)
+    {
+        foreach (Image child in AnswerContainer1.Children)
+        {
+            if (child.Name != "Picture1")
+                return;
+        }
+        foreach (Image child in AnswerContainer2.Children)
+        {
+            if (child.Name != "Picture6")
+                return;
+        }
+        foreach (Image child in AnswerContainer3.Children)
+        {
+            if (child.Name != "Picture8")
+                return;
+        }
+        Game.isQuestDone = true;
+        txtScore.Text = "Готово!";
+        txtScore.Visibility = Visibility.Visible;
+        Game.first_part_code += Game.randomString[0];
+        IsTeleportActive = true;
+        Check.Visibility = Visibility.Collapsed;
+    }
 
     private void DoubleMouseDown(object sender, MouseButtonEventArgs e)
     {
@@ -176,6 +135,7 @@ public partial class Page3
                 {
                     case (0, int, int):
                         AnswerContainer1.Children.Add(obj);
+                        AnswerContainer1.HorizontalAlignment = HorizontalAlignment.Center;
                         break;
                     case (1, 0, int):
                         AnswerContainer2.Children.Add(obj);

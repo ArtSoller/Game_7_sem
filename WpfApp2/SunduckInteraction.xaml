@@ -1,4 +1,4 @@
-﻿<local:Room x:Class="WpfApp2.Page8"
+﻿<local:Room x:Class="WpfApp2.SunduckInteraction"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,21 +6,24 @@
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d" 
       d:DesignHeight="685" d:DesignWidth="965"
-      Title="Page3">
+      Title="SunduckInteraction">
 
     <Canvas Name="MyCanvas" Focusable="True">
         <Rectangle Name="Background" Tag="Background" Height="685" Width="965" Canvas.Left="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="img/mapSmoothed.jpg" />
+                <ImageBrush ImageSource="img/Smooth0.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Button Name="Back" Click="Back_Click"  Content="Назад" Height="118" Canvas.Left="366" Canvas.Top="539" Width="232"/>
-        <Button x:Name="Enter" Click="Enter_Click" Content="Ввод" Height="59" Canvas.Left="232" Canvas.Top="69" Width="116"/>
-        <Button x:Name="Reset" Click="Reset_Click" Content="Сброс" Height="59" Canvas.Left="232" Canvas.Top="194" Width="116"/>
-        <TextBlock FontSize="16" Name="txtScore" Foreground="Black" Canvas.Top="57"/>
-        <TextBox Name="txtInput1" Width="60" Height="30" Canvas.Left="140" Canvas.Top="84" />
-        <TextBox Name="count" Canvas.Left="10" Canvas.Top="211" Background="Transparent" BorderBrush="Transparent">Количество попыток:</TextBox>
-        <TextBox Name="txtInput2" Canvas.Left="140" Canvas.Top="205" Width="60" Height="30" />
+        <Button Name="Back" Click="Back_Click" Style="{StaticResource BackButtonStyle}" Content="Назад" Canvas.Left="280" Canvas.Top="431" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="Enter" Click="Enter_Click" Content="Ввод" Height="60" Canvas.Left="593" Canvas.Top="450" Width="116"/>
+        <Button x:Name="Reset" Style="{StaticResource ResetButtonStyle}" Click="Reset_Click" Content="Сброс" Canvas.Left="478" Canvas.Top="431" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock Name="txtScore" Foreground="LightYellow" FontFamily="Segoe Print" FontSize="20" Canvas.Top="130" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="141"/>
+        <TextBox Name="txtInput1" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="391" Canvas.Top="164" Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="txtInput2" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="439" Canvas.Top="164" Background="Aqua" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="txtInput3" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="487" Canvas.Top="164" Background="LightGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="txtInput4" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="535" Canvas.Top="164" Background="HotPink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="count" Canvas.Left="205" FontFamily="Segoe Print" FontSize="24"  Canvas.Top="237" Background="Transparent" BorderBrush="Transparent">Количество попыток:</TextBox>
+        <TextBox Name="txtInput5" FontSize="28" Width="48" Background="Transparent" BorderBrush="Transparent" Height="64" Canvas.Left="140" Canvas.Top="205"/>
 
 
     </Canvas>

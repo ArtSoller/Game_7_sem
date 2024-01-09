@@ -46,7 +46,7 @@ public class Player
 
     internal Location CurrentLocation; 
 
-    public Role _role;
+    public Role Role;
 
     private readonly string _ip;
 
@@ -55,7 +55,7 @@ public class Player
     public Player()
     {
         _name = "Default";
-        _role = Role.Performer;
+        Role = Role.Performer;
         var Host = Dns.GetHostName();
         var _IP = Dns.GetHostAddresses(Host);
         _ip = _IP.Length == 5 ? $"{_IP[4]}:7106" : $"{_IP[1]}:7106";
@@ -64,7 +64,7 @@ public class Player
     public Player(string name, Role role)
     {
         _name = name;
-        _role = role;
+        Role = role;
         var Host = Dns.GetHostName();
         var _IP = Dns.GetHostAddresses(Host);
         _ip = _IP.Length == 5 ? $"{_IP[4]}:7106" : $"{_IP[1]}:7106";
@@ -73,26 +73,16 @@ public class Player
     public void TeleportateTo(Location location)
     {
         CurrentLocation = location;
-        switch (CurrentLocation)
+
+        if (CurrentLocation == Location.Location0)
         {
-            case Location.Location1:
-                X = SystemParameters.VirtualScreenWidth - 100;
-                Y = 95;
-            break;
-            case Location.Location2:
-                X = 80;
-                Y = 0.5 * (SystemParameters.VirtualScreenHeight - 50);
-            break;
-            case Location.Location3:
-                break;
-            case Location.Location4:
-                break;
-            case Location.Location5:
-                break;
-            case Location.Location6:
-                break;
-            case Location.Location7:
-                break;
+            X = 100;
+            Y = SystemParameters.VirtualScreenHeight * 0.33;
+        }
+        else
+        {
+            X = 80;
+            Y = 0.5 * (SystemParameters.VirtualScreenHeight - 50);
         }
     }
 }
