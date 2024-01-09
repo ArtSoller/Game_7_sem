@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.IO;
 namespace WpfApp2;
 
 /// <summary>
@@ -31,7 +31,7 @@ public partial class PageLocation1_1 : Room
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/PictureOpened.mp3")));
 
         code.IsReadOnly = true;
         code.Text = Game.parts_code;
@@ -224,7 +224,7 @@ public partial class PageLocation1_1 : Room
         base.GameLoop(sender, e);
         ImageBrush MyImage1 = new()
         {
-            ImageSource = new BitmapImage(new Uri(spritePaths1[currentSpriteIndex_1], UriKind.Relative))
+            ImageSource = new BitmapImage(new Uri(pathtemplate + spritePaths1[currentSpriteIndex_1], UriKind.Relative))
         };
         if (Game.Me.IsMovingRightward)
         {

@@ -40,7 +40,7 @@ public partial class PageLocation0
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/ChestOpened.mp3")));
         code.Text = Game.parts_code;
         first_part_code.Text = Game.first_part_code;
         second_part_code.Text = Game.second_part_code;
@@ -218,11 +218,11 @@ public partial class PageLocation0
         base.GameLoop(sender, e);
         ImageBrush MyImage1 = new()
         {
-            ImageSource = new BitmapImage(new Uri(spritePaths1[currentSpriteIndex_1], UriKind.Relative))
+            ImageSource = new BitmapImage(new Uri(pathtemplate+spritePaths1[currentSpriteIndex_1], UriKind.Relative))
         };
         ImageBrush MyImage2 = new()
         {
-            ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
+            ImageSource = new BitmapImage(new Uri(pathtemplate + spritePaths2[currentSpriteIndex_2], UriKind.Relative))
         };
         if ((Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer) || (Game.Companion.IsMovingRightward && Game.Companion.Role == Role.Performer))
         {

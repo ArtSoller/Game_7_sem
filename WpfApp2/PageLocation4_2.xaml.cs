@@ -172,7 +172,7 @@ public partial class PageLocation4_2 : Room
         base.GameLoop(sender, e);
         ImageBrush MyImage2 = new()
         {
-            ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
+            ImageSource = new BitmapImage(new Uri(pathtemplate + spritePaths2[currentSpriteIndex_2], UriKind.Relative))
         };
         if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
         {

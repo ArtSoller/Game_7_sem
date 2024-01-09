@@ -176,7 +176,7 @@ public partial class PageLocation4_1
 
         ImageBrush MyImage1 = new()
         {
-            ImageSource = new BitmapImage(new Uri(spritePaths1[currentSpriteIndex_1], UriKind.Relative))
+            ImageSource = new BitmapImage(new Uri(pathtemplate + spritePaths1[currentSpriteIndex_1], UriKind.Relative))
         };
         if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
         {

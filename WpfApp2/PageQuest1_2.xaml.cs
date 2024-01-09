@@ -35,7 +35,7 @@ public partial class PageQuest1_2
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\PictureClosed.mp3"));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/PictureClosed.mp3")));
 
         txtScore.Visibility = Visibility.Hidden;
 

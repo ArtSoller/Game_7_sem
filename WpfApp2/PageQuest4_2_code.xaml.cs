@@ -32,7 +32,7 @@ public partial class PageQuest4_2_code
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\BookOpened.mp3"));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookOpened.mp3")));
         mediaPlayer.Play();
 
         CanvasSetObjects();
@@ -56,7 +56,7 @@ public partial class PageQuest4_2_code
 
     private void Back_Click(object sender, RoutedEventArgs e)
     {
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\BookClosed.mp3"));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookClosed.mp3")));
         mediaPlayer.Play();
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");

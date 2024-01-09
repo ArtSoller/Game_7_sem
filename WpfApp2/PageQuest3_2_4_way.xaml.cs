@@ -34,7 +34,7 @@ public partial class PageQuest3_2_4_way
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\PapirusOpened.mp3"));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/PapirusOpened.mp3")));
 
         CanvasSetObjects();
     }

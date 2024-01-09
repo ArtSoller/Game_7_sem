@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Navigation;
@@ -34,7 +35,7 @@ public partial class App : Application
         //D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3
         _openFileDialog = new()
         {
-            FileName = "D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3"
+            FileName = Path.GetFullPath("../../../snd/Music1.mp3")
         };
         //mediaPlayer.MediaOpened += RunMusic;
         mediaPlayer.MediaFailed += FailedMusic;

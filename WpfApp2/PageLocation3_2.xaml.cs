@@ -33,7 +33,7 @@ public partial class PageLocation3_2
 
             mediaPlayer = new();
             mediaPlayer.MediaFailed += FailedMusic;
-            mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\PapirusOpened.mp3"));
+            mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/PapirusOpened.mp3")));
 
             code.IsReadOnly = true;
             code.Text = Game.parts_code;
@@ -201,7 +201,7 @@ public partial class PageLocation3_2
 
         ImageBrush MyImage2 = new()
         {
-            ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
+            ImageSource = new BitmapImage(new Uri(pathtemplate + spritePaths2[currentSpriteIndex_2], UriKind.Relative))
         };
         if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
         {

@@ -33,7 +33,7 @@ public partial class PageQuest2_1
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\BookClosed.mp3"));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookClosed.mp3")));
 
         CanvasSetObjects();
     }
