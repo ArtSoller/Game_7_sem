@@ -18,11 +18,7 @@ namespace WpfApp2;
 
 public partial class PageLocation0
 {
-    //public static string[] spritePathsUp = { "sptirte_1_1.png", "sptirte_1_2.png", "sptirte_1_3.png", "sptirte_1_4.png", "sptirte_1_5.png", "sptirte_1_6.png", "sptirte_1_7.png", "sptirte_1_8.png" };
-    public static string[] spritePathsUp = { "sptirte_2_1.png", "sptirte_2_2.png", "sptirte_2_3.png", "sptirte_2_4.png", "sptirte_2_5.png", "sptirte_2_6.png", "sptirte_2_7.png", "sptirte_2_8.png" };
-
-    public static int currentSpriteIndex = 0;
-    private MediaPlayer mediaPlayer = new();
+     private MediaPlayer mediaPlayer = new();
 
     public PageLocation0(Player pl1, Player pl2) : base(pl1, pl2)
     {
@@ -107,13 +103,15 @@ public partial class PageLocation0
         Location0.Focus();
         base.GameSetUp();
 
-        ImageBrush MyImage = new()
-        {
-            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-        };
-        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+        //    ImageBrush MyImage = new()
+        //    {
+        //        ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+        //    };
+        //    currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
 
         Player1.Fill = MyImage;
+        Player2.Fill = MyImagE;
+
     }
     #endregion
 
@@ -127,7 +125,10 @@ public partial class PageLocation0
     //        playerSprite.Source = new BitmapImage(new Uri("pacman.png", UriKind.Relative)); // Устанавливаем начальный спрайт
     //    }
     //}
+    //public static string[] spritePaths1 = { "sptirte_1_1.png", "sptirte_1_2.png", "sptirte_1_3.png", "sptirte_1_4.png", "sptirte_1_5.png", "sptirte_1_6.png", "sptirte_1_7.png", "sptirte_1_8.png" };
+    //public static string[] spritePaths2 = { "sptirte_2_1.png", "sptirte_2_2.png", "sptirte_2_3.png", "sptirte_2_4.png", "sptirte_2_5.png", "sptirte_2_6.png", "sptirte_2_7.png", "sptirte_2_8.png" };
 
+    //public static int currentSpriteIndex = 0;
     //private void CanvasKeyDown(object sender, KeyEventArgs e)
     //{
     //    if (e.Key == Key.W)
@@ -254,6 +255,36 @@ public partial class PageLocation0
             Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
 
         base.GameLoop(sender, e);
+        ImageBrush MyImage1 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths1[currentSpriteIndex_1], UriKind.Relative))
+        };
+        ImageBrush MyImage2 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
+        };
+        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        {
+            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Companion.IsMovingRightward && Game.Companion.Role == Role.Assistant)
+        {
+            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        {
+            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Companion.IsMovingLeftward && Game.Companion.Role == Role.Assistant)
+        {
+            Player2.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        Player1.Fill = MyImage1;
+        Player2.Fill = MyImage2;
 
         Canvas.SetLeft(Player1, Game.Me.Role == Role.Performer ? Game.Me.X : Game.Companion.X);
         Canvas.SetTop(Player1, Game.Me.Role == Role.Performer ? Game.Me.Y : Game.Companion.Y);

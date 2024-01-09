@@ -92,7 +92,7 @@ public partial class PageQuest1_2
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
-        NavigationService.Navigate(new PageLocation3_1(Game.Me, Game.Companion));
+        NavigationService.Navigate(new PageLocation1_2(Game.Me, Game.Companion));
     }
 
     private void Check_Click(object sender, RoutedEventArgs e)

@@ -49,7 +49,7 @@ public partial class PageLocation1_2 : Room
         if (gameTimer is null) throw new Exception("gameTimer is null");
         Location1_2.Focus();
         base.GameSetUp();
-        Player2.Fill = MyImage;
+        //Player2.Fill = MyImage;
     }
 
     protected override void CanvasSetObjects()

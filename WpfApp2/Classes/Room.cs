@@ -38,7 +38,11 @@ public abstract class Room : Page
   
     protected Rect pacmanHitBox;
 
-    protected ImageBrush MyImage;
+    protected ImageBrush MyImage, MyImagE;
+
+    public static string[] spritePaths1 = { "sptirte_1_1.png", "sptirte_1_2.png", "sptirte_1_3.png", "sptirte_1_4.png", "sptirte_1_5.png", "sptirte_1_6.png", "sptirte_1_7.png", "sptirte_1_8.png" };
+    public static string[] spritePaths2 = { "sptirte_2_1.png", "sptirte_2_2.png", "sptirte_2_3.png", "sptirte_2_4.png", "sptirte_2_5.png", "sptirte_2_6.png", "sptirte_2_7.png", "sptirte_2_8.png" };
+    protected int currentSpriteIndex_1 = 0, currentSpriteIndex_2 = 0;
 
     protected Room(Player pl1, Player pl2)
     {
@@ -48,10 +52,10 @@ public abstract class Room : Page
         Game.Me = pl1;
         Game.Companion = pl2;
 
-        MyImage = new()
-        {
-            ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
-        };
+        //MyImage = new()
+        //{
+        //    ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
+        //};
 
         //mediaPlayer = new();
         //mediaPlayer.MediaFailed += FailedMusic;
@@ -131,22 +135,6 @@ public abstract class Room : Page
         if (e.Key == Key.F) _isForceButtonClicked = false;
 
     }
-    //protected void CheckKey()
-    //{
-    //    if (_isUpKeyPressed)
-    //    {
-    //        CanvasKeyDown();
-    //    }
-
-    //    if (e.Key == Key.A) _isLeftKeyPressed = false;
-
-    //    if (e.Key == Key.D) _isRightKeyPressed = false;
-
-    //    if (e.Key == Key.S) _isDownKeyPressed = false;
-
-    //    if (e.Key == Key.F) _isForceButtonClicked = false;
-
-    //}
 
 
     protected Page TeleportTo(Location location)
@@ -199,6 +187,16 @@ public abstract class Room : Page
 
         Game.Me.X += Game.Me.SpeedX;
         Game.Me.Y -= Game.Me.SpeedY;
+
+        MyImage = new()
+        {
+            ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\sptirte_1_1.png"))
+        };
+
+        MyImagE = new()
+        {
+            ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\sptirte_2_1.png"))
+        };
 
         Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y);
     }
