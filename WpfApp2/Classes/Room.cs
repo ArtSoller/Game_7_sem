@@ -31,7 +31,7 @@ public abstract class Room : Page
 
     public bool IsTeleportActive = true;
 
-    protected const double _friction = 0.88F, _speed = 1.5F;
+    public double _friction = 0.88F, _speed = 1.5F;
 
     protected bool _isPossibleUpwardMovement = false, _isPossibleDownwardMovement = false,
                    _isPossibleLeftwardMovement = false, _isPossibleRightwardMovement = false;
@@ -116,7 +116,11 @@ public abstract class Room : Page
 
     protected void CanvasKeyUp(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.W) _isUpKeyPressed = false;
+        if (e.Key == Key.W)
+        {
+            _isUpKeyPressed = false;
+            //CheckKey();
+        }        
 
         if (e.Key == Key.A) _isLeftKeyPressed = false;
 
@@ -125,7 +129,25 @@ public abstract class Room : Page
         if (e.Key == Key.S) _isDownKeyPressed = false;
 
         if (e.Key == Key.F) _isForceButtonClicked = false;
+
     }
+    //protected void CheckKey()
+    //{
+    //    if (_isUpKeyPressed)
+    //    {
+    //        CanvasKeyDown();
+    //    }
+
+    //    if (e.Key == Key.A) _isLeftKeyPressed = false;
+
+    //    if (e.Key == Key.D) _isRightKeyPressed = false;
+
+    //    if (e.Key == Key.S) _isDownKeyPressed = false;
+
+    //    if (e.Key == Key.F) _isForceButtonClicked = false;
+
+    //}
+
 
     protected Page TeleportTo(Location location)
     {

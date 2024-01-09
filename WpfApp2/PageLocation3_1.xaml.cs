@@ -27,9 +27,21 @@ public partial class PageLocation3_1 : Room
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
 
-        CanvasSetObjects();
-        GameSetUp();
-    }
+
+
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\BookOpened.mp3"));
+
+            code.IsReadOnly = true;
+            code.Text = Game.parts_code;
+            first_part_code.Text = Game.first_part_code;
+            second_part_code.Text = Game.second_part_code;
+            third_part_code.Text = Game.third_part_code;
+            fourth_part_code.Text = Game.fourth_part_code;
+            CanvasSetObjects();
+            GameSetUp();
+        }
 
     protected override void CanvasSetObjects()
     {
@@ -48,15 +60,29 @@ public partial class PageLocation3_1 : Room
         Canvas.SetTop(QuestField, 0.5 * (SystemParameters.VirtualScreenHeight - QuestField.Height));
         Canvas.SetLeft(QuestField, 0.5 * (SystemParameters.VirtualScreenWidth - QuestField.Width));
 
-        // Ставим область вокруг мольбертов.
-        Canvas.SetTop(QuestArea, 0.5 * (SystemParameters.VirtualScreenHeight - QuestArea.Height) - 15);
-        Canvas.SetLeft(QuestArea, 0.5 * (SystemParameters.VirtualScreenWidth - QuestArea.Width) - 12);
+            // Ставим область вокруг мольбертов.
+            //Canvas.SetTop(QuestArea1, 0.5 * (SystemParameters.VirtualScreenHeight - QuestArea1.Height) - 15);
+            //Canvas.SetLeft(QuestArea1, 0.5 * (SystemParameters.VirtualScreenWidth - QuestArea1.Width) - 12);
 
-        Canvas.SetTop(Book, 50);
-        Canvas.SetLeft(Book, 50);
+            Canvas.SetTop(Book, 0.2 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(Book, 0.2 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(Plate, 50);
-        Canvas.SetLeft(Plate, SystemParameters.VirtualScreenWidth - Plate.Width - 12);
+            Canvas.SetTop(BookArea, 0.22 * (SystemParameters.VirtualScreenHeight - BookArea.Height));
+            Canvas.SetLeft(BookArea, 0.27 *SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(QuestField, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(QuestField, 0.2 * SystemParameters.VirtualScreenWidth);
+            QuestField.Height = 0.87 * SystemParameters.VirtualScreenHeight;
+            QuestField.Width = 0.5 * SystemParameters.VirtualScreenWidth;
+
+            //Canvas.SetTop(QuestArea, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            //Canvas.SetLeft(QuestArea, 0.2 * SystemParameters.VirtualScreenWidth);
+            //QuestArea.Height = 0.87 * SystemParameters.VirtualScreenHeight;
+            //QuestArea.Width = 0.5 * SystemParameters.VirtualScreenWidth;
+
+
+            Canvas.SetTop(Plate, 50);
+            Canvas.SetLeft(Plate, SystemParameters.VirtualScreenWidth - Plate.Width - 12);
 
 
         // Ставим стены.
@@ -75,11 +101,26 @@ public partial class PageLocation3_1 : Room
         wallRight.Height = SystemParameters.VirtualScreenHeight;
         wallRight.Width = 25;
 
-        Canvas.SetRight(wallBottom, 0);
-        Canvas.SetBottom(wallBottom, 0);
-        wallBottom.Height = 75;
-        wallBottom.Width = SystemParameters.VirtualScreenHeight;
-    }
+            Canvas.SetRight(wallBottom, 0);
+            Canvas.SetBottom(wallBottom, 0);
+            wallBottom.Height = 75;
+            wallBottom.Width = SystemParameters.VirtualScreenHeight;
+
+            Canvas.SetTop(code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(first_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(second_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(second_part_code, 0.91 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
+        }
 
     protected override void GameSetUp()
     {
@@ -106,11 +147,11 @@ public partial class PageLocation3_1 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-            {
-                _toDisplay = false;
-                NavigationService?.Navigate(TeleportTo(Location.Location4_1));
-            }
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    {
+                        _toDisplay = false;
+                        NavigationService?.Navigate(TeleportTo(Location.Location4_2));
+                    }
 
 
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)

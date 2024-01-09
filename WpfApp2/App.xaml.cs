@@ -31,6 +31,7 @@ public partial class App : Application
         // Гг
         // D:\CodeRepos\CS\NewGame\Game_7_sem\WpfApp2\snd\backgroundMusic.mp3
         // "pack://siteoforigin:,,,/snd/backgroundMusic.wav"
+        //A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3
         _openFileDialog = new()
         {
             FileName = "A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3"

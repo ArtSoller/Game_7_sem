@@ -18,12 +18,12 @@
 
         <Rectangle Name="Player1" Width="50" Height="50" Fill="Red" Canvas.Left="51" Canvas.Top="315" />
 
-        <Rectangle Name="picture1" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="414" Canvas.Top="124" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <Rectangle Name="picture1" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="147" Canvas.Top="121" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="picture2" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="147" Canvas.Top="121" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <Rectangle Name="picture2" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="160" Height="140" Canvas.Left="414" Canvas.Top="124" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/img/Picture_preview_transparent.png" />
             </Rectangle.Fill>
@@ -54,14 +54,19 @@
         <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
         <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Stroke="Black"/>
 
-        <Rectangle Name="TeleportToLocaltion2_1" Tag="teleport" Height="165" Canvas.Left="940" Canvas.Top="270" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="Red" />
-        <Rectangle Name="TeleportToLocaltionBack" Tag="teleport" Height="165" Canvas.Top="260" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="Black" />
+        <Rectangle Name="TeleportToLocaltion2_1" Tag="teleport" Height="165" Canvas.Left="940" Canvas.Top="270" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="LightGray" />
+        <Rectangle Name="TeleportToLocaltionBack" Tag="teleport" Height="165" Canvas.Top="260" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="LightGray" />
 
-        <Rectangle x:Name="AreaEasel1" Stroke="Black" Tag="easel_area" Height="158" Canvas.Left="403" Canvas.Top="117" Width="182" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle x:Name="AreaEasel2" Stroke="Black" Tag="easel_area" Height="156" Canvas.Left="138" Canvas.Top="113" Width="178" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle x:Name="AreaEasel3" Stroke="Black" Tag="easel_area" Height="172" Canvas.Left="656" Canvas.Top="110" Width="210" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Rectangle x:Name="AreaEasel4" Stroke="Black" Tag="easel_area" Height="180" Canvas.Left="120" Canvas.Top="442" Width="214" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle x:Name="AreaEasel5" Stroke="Black" Tag="easel_area" Height="168" Canvas.Left="388" Canvas.Top="449" Width="212" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle x:Name="AreaEasel6" Stroke="Black" Tag="easel_area" Height="167" Canvas.Left="656" Canvas.Top="449" Width="212" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle x:Name="AreaEasel1" Tag="easel_area" Height="294" Canvas.Left="39" Canvas.Top="45" Width="381" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle x:Name="AreaEasel2" Tag="easel_area" Height="294" Canvas.Left="307" Canvas.Top="45" Width="381" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle x:Name="AreaEasel3" Tag="easel_area" Height="294" Canvas.Left="573" Canvas.Top="45" Width="381" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle x:Name="AreaEasel4" Tag="easel_area" Height="261" Canvas.Left="61" Canvas.Top="398" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle x:Name="AreaEasel5" Tag="easel_area" Height="261" Canvas.Left="329" Canvas.Top="398" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle x:Name="AreaEasel6" Tag="easel_area" Height="261" Canvas.Left="595" Canvas.Top="398" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="code" Canvas.Left="690" Canvas.Top="646" Foreground="White" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="first_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Orange" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="second_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Aqua" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="third_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="LightGreen" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
+        <TextBox Name="fourth_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="HotPink" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
     </Canvas>
 </local:Room>

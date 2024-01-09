@@ -17,15 +17,33 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-    
+
   <ItemGroup>
+    <Resource Include="img\back.png" />
+    <Resource Include="img\button_reset.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\Smooth0.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\1.png" />
+    <Resource Include="img\11.png" />
+    <Resource Include="img\12.png" />
+    <Resource Include="img\2.png" />
     <Resource Include="img\2_quest.png" />
+    <Resource Include="img\3.png" />
     <Resource Include="img\3D_logo_V3.png" />
     <Resource Include="img\3_quest.png" />
+    <Resource Include="img\4.png" />
     <Resource Include="img\4_quest_1.png" />
     <Resource Include="img\4_quest_2.png" />
+    <Resource Include="img\5.png" />
+    <Resource Include="img\6.png" />
     <Resource Include="img\book.png" />
     <Resource Include="img\chest.png" />
+    <Resource Include="img\correct.png" />
     <Resource Include="img\floor.png" />
     <Resource Include="img\floor_1.png" />
     <Resource Include="img\image.png" />
@@ -38,6 +56,7 @@
     <Resource Include="img\Picture_preview_transparent.png" />
     <Resource Include="img\.png" />
     <Resource Include="img\plita_v2.png" />
+    <Resource Include="img\plita_v5.png" />
     <Resource Include="img\pole.png" />
     <Resource Include="img\pole_v1.png" />
     <Resource Include="img\pole_v2.png" />
@@ -46,17 +65,79 @@
     <Resource Include="img\quest1_1.png" />
     <Resource Include="img\red.jpg" />
     <Resource Include="img\Screenshot_1.png" />
+    <Resource Include="img\Smooth1_1.png" />
+    <Resource Include="img\Smooth1_2.png" />
+    <Resource Include="img\Smooth2_1.png" />
+    <Resource Include="img\Smooth2_2.png" />
+    <Resource Include="img\Smooth3_2.png" />
+    <Resource Include="img\Smooth4_1.png" />
+    <Resource Include="img\Smooth4_2.png" />
+    <Resource Include="img\sptirte_1_1.png" />
+    <Resource Include="img\sptirte_1_2.png" />
+    <Resource Include="img\sptirte_1_3.png" />
+    <Resource Include="img\sptirte_1_4.png" />
+    <Resource Include="img\sptirte_1_8.png" />
+    <Resource Include="img\sptirte_2_1.png" />
+    <Resource Include="img\sptirte_2_2.png" />
+    <Resource Include="img\sptirte_2_3.png" />
+    <Resource Include="img\sptirte_2_4.png" />
+    <Resource Include="img\sptirte_2_5.png" />
+    <Resource Include="img\sptirte_2_6.png" />
+    <Resource Include="img\sptirte_2_7.png" />
+    <Resource Include="img\sptirte_2_8.png" />
     <Resource Include="img\svitok.png" />
     <Resource Include="img\svitok_map.png" />
+    <Resource Include="img\test.png" />
+    <Resource Include="img\up1.png" />
+    <Resource Include="img\up2.png" />
+    <Resource Include="img\up3.png" />
+    <Resource Include="img\up4.png" />
     <Resource Include="img\Uravnenia.png" />
     <Resource Include="img\wall.png" />
     <Resource Include="img\wall_down.png" />
     <Resource Include="img\wall_side.png" />
     <Resource Include="img\wall_side_1.png" />
     <Resource Include="img\wall_up.png" />
+    <Resource Include="img\window1.png" />
+    <Resource Include="img\window2.png" />
+    <Resource Include="img\window3.png" />
+    <Resource Include="img\window4.png" />
+    <Resource Include="img\window5(correct).png" />
+    <Resource Include="img\window5correct_.png" />
+    <Resource Include="img\window6.png" />
     <Resource Include="img\windows_picture.png" />
+    <Resource Include="img\карта 1.png" />
+    <Resource Include="img\карта 2.png" />
+    <Resource Include="img\карта 3 (правильная).png" />
+    <Resource Include="img\карта 4.png" />
+    <Resource Include="img\карта 5.png" />
+    <Resource Include="img\карта 6.png" />
+    <Resource Include="snd\5_10.mp3" />
+    <Resource Include="snd\934.mp3" />
+    <Resource Include="snd\947.mp3" />
+    <Resource Include="snd\948.mp3" />
     <Resource Include="snd\ChestClosed.mp3" />
     <Resource Include="snd\ChestOpened.mp3" />
     <Resource Include="snd\GameWon.mp3" />
+    <Resource Include="snd\PictureOpened.mp3" />
+    <Resource Include="snd\Music1.mp3" />
+    <Resource Include="snd\Music2.mp3" />
+    <Resource Include="snd\Music3.mp3" />
+    <Resource Include="snd\Music4.mp3" />
+    <Resource Include="snd\Music5.mp3" />
+    <Resource Include="snd\Music5Short.mp3" />
+    <Resource Include="snd\Music6.mp3" />
+    <Resource Include="snd\wood1.mp3" />
+    <Resource Include="snd\wood_click.mp3" />
+    <Resource Include="snd\zvuk-otkryitiya-sunduka.mp3" />
+    <Resource Include="snd\BookOpened.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\sptirte_1_6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\sptirte_1_7.png" />
   </ItemGroup>
 </Project>

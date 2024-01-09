@@ -20,29 +20,31 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page4.xaml
 /// </summary>
-public partial class Page9
+public partial class PageQuest3_2_1_way
 {
-    private Brush? _brush;
-
-    public Page9(Player pl1, Player pl2) : base(pl1, pl2)
+    public PageQuest3_2_1_way(Player pl1, Player pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
+
+
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PapirusOpened.mp3"));
 
         CanvasSetObjects();
     }
 
     protected override void CanvasSetObjects()
     {
+        Canvas.SetTop(quest_3, 0.1 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
         Canvas.SetLeft(quest_3, 0.5 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
 
-        Canvas.SetTop(But3, 0.6 * (SystemParameters.VirtualScreenHeight - But3.Height));
-        Canvas.SetLeft(But3, 0.5 * (SystemParameters.VirtualScreenWidth - But3.Width));
+        Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
 
 
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        But3.Foreground = _brush;
 
     }
 
@@ -51,8 +53,10 @@ public partial class Page9
         throw new NotImplementedException();
     }
 
-    private void But3_Click(object sender, RoutedEventArgs e)
+private void Back_Click(object sender, RoutedEventArgs e)
     {
+        mediaPlayer.Play();
+
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
         NavigationService.Navigate(new PageLocation3_2(Game.Me, Game.Companion));

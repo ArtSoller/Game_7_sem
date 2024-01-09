@@ -24,12 +24,24 @@ public partial class PageLocation2_1 : Room
     {
         InitializeComponent();
 
-        Floor.Height = SystemParameters.VirtualScreenHeight;
-        Floor.Width = SystemParameters.VirtualScreenWidth;
-        
-        CanvasSetObjects();
-        GameSetUp();
-    }
+            Floor.Height = SystemParameters.VirtualScreenHeight;
+            Floor.Width = SystemParameters.VirtualScreenWidth;
+
+
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\BookOpened.mp3"));
+
+            code.IsReadOnly = true;
+            code.Text = Game.parts_code;
+            first_part_code.Text = Game.first_part_code;
+            second_part_code.Text = Game.second_part_code;
+            third_part_code.Text = Game.third_part_code;
+            fourth_part_code.Text = Game.fourth_part_code;
+
+            CanvasSetObjects();
+            GameSetUp();
+        }
 
     protected override void CanvasSetObjects()
     {
@@ -44,13 +56,13 @@ public partial class PageLocation2_1 : Room
         Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
         Canvas.SetLeft(TeleportToLocaltionBack, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack.Width - 1880);
 
-        // Ставим книги
-        Canvas.SetTop(picture1, 0.5 * (SystemParameters.VirtualScreenHeight - picture1.Height));
-        Canvas.SetLeft(picture1, 0.5 * (SystemParameters.VirtualScreenWidth - picture1.Width));
+            // Ставим книги
+            Canvas.SetTop(Book, 0.5 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(Book, 0.5 * (SystemParameters.VirtualScreenWidth - Book.Width));
 
-        // Ставим область вокруг книг
-        Canvas.SetTop(AreaEasel1, 0.5 * (SystemParameters.VirtualScreenHeight - AreaEasel1.Height) - 15);
-        Canvas.SetLeft(AreaEasel1, 0.5 * (SystemParameters.VirtualScreenWidth - AreaEasel1.Width) - 12);
+            // Ставим область вокруг книг
+            Canvas.SetTop(BookArea, 0.5 * (SystemParameters.VirtualScreenHeight - BookArea.Height) - 15);
+            Canvas.SetLeft(BookArea, 0.5 * (SystemParameters.VirtualScreenWidth - BookArea.Width) - 12);
 
         // Ставим стены.
         Canvas.SetTop(wallTop, 0);
@@ -68,11 +80,26 @@ public partial class PageLocation2_1 : Room
         wallRight.Height = SystemParameters.VirtualScreenHeight;
         wallRight.Width = 25;
 
-        Canvas.SetRight(wallBottom, 0);
-        Canvas.SetBottom(wallBottom, 0);
-        wallBottom.Height = 75;
-        wallBottom.Width = SystemParameters.VirtualScreenHeight;
-    }
+            Canvas.SetRight(wallBottom, 0);
+            Canvas.SetBottom(wallBottom, 0);
+            wallBottom.Height = 75;
+            wallBottom.Width = SystemParameters.VirtualScreenHeight;
+
+            Canvas.SetTop(code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(first_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(second_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(second_part_code, 0.91 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
+        }
 
     protected override void GameSetUp()
     {
@@ -98,18 +125,18 @@ public partial class PageLocation2_1 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-            {
-                _toDisplay = false;
-                NavigationService?.Navigate(TeleportTo(Location.Location3_1));
-            }
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion3_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    {
+                        _toDisplay = false;
+                        NavigationService?.Navigate(TeleportTo(Location.Location3_1));
+                    }
 
 
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-            {
-                //mediaPlayer.Play();
-                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
-            }
+                    if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest2_1(_me, _companion));
+                    }
 
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
             {

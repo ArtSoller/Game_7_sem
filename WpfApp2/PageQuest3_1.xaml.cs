@@ -20,28 +20,44 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page4.xaml
 /// </summary>
-public partial class Page7
+public partial class PageQuest3_1
 {
-    private bool isDragging = false;
-    private Point startPoint;
-
-    public Page7(Player pl1, Player pl2) : base(pl1, pl2)
+    public PageQuest3_1(Player pl1, Player pl2)
     {
         InitializeComponent();
+        Background.Width = SystemParameters.VirtualScreenWidth;
+        Background.Height = SystemParameters.VirtualScreenHeight;
+
+        _me = pl1;
+        _companion = pl2;
+
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\BookClosed.mp3"));
+
+        CanvasSetObjects();
     }
 
-    protected override void CanvasSetObjects()
-    {
-        throw new NotImplementedException();
-    }
-
+    
     protected override void SetMovementPossibility()
     {
         throw new NotImplementedException();
     }
 
-    private void But3_Click(object sender, RoutedEventArgs e)
+
+    private void CanvasSetObjects()
     {
+        Canvas.SetTop(quest_3, 0.1 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
+        Canvas.SetLeft(quest_3, 0.5 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
+
+        Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
+        Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
+
+    }
+    private void Back_Click(object sender, RoutedEventArgs e)
+    {
+        mediaPlayer.Play();
+
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
         NavigationService.Navigate(new PageLocation3_1(Game.Me, Game.Companion));

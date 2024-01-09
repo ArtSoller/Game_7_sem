@@ -24,12 +24,25 @@ public partial class PageLocation1_2 : Room
     {
         InitializeComponent();
 
-        Floor.Height = SystemParameters.VirtualScreenHeight;
-        Floor.Width = SystemParameters.VirtualScreenWidth;
+            Floor.Height = SystemParameters.VirtualScreenHeight;
+            Floor.Width = SystemParameters.VirtualScreenWidth;
+            _me = pl1;
+            _companion = pl2;
 
-        CanvasSetObjects();
-        GameSetUp();
-    }
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
+            code.IsReadOnly = true;
+            code.Text = Game.parts_code;
+            first_part_code.Text = Game.first_part_code;
+            second_part_code.Text = Game.second_part_code;
+            third_part_code.Text = Game.third_part_code;
+            fourth_part_code.Text = Game.fourth_part_code;
+            if (Game.isQuestDone == true)
+                TeleportToLocaltion2_2.Fill = Game.blueBrush;
+            CanvasSetObjects();
+            GameSetUp();
+        }
 
     protected override void GameSetUp()
     {
@@ -76,11 +89,26 @@ public partial class PageLocation1_2 : Room
         wallRight.Height = SystemParameters.VirtualScreenHeight;
         wallRight.Width = 25;
 
-        Canvas.SetRight(wallBottom, 0);
-        Canvas.SetBottom(wallBottom, 0);
-        wallBottom.Height = 75;
-        wallBottom.Width = SystemParameters.VirtualScreenHeight;
-    }
+            Canvas.SetRight(wallBottom, 0);
+            Canvas.SetBottom(wallBottom, 0);
+            wallBottom.Height = 75;
+            wallBottom.Width = SystemParameters.VirtualScreenHeight;
+
+            Canvas.SetTop(code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(first_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(second_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(second_part_code, 0.91 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
+        }
 
     protected override void SetMovementPossibility()
     {
@@ -98,14 +126,19 @@ public partial class PageLocation1_2 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-            {
-                _toDisplay = false;
-                NavigationService?.Navigate(TeleportTo(Location.Location2_2));
-            }
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion2_2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    {
+                        _toDisplay = false;
+                        NavigationService?.Navigate(TeleportTo(Location.Location2_2));
+                        Game.isQuestDone = false;
+                    }
 
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
+
+                    if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest1_2(_me, _companion));
+                    }
 
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
             {

@@ -7,6 +7,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="PageQuest4_2_code.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageQuest4_1_code.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PageQuest4_2_terminal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PageLocation1_1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -36,6 +45,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="PageQuest4_2_code.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageQuest4_1_code.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PageQuest4_2_terminal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="PageLocation1_1.xaml">
       <SubType>Designer</SubType>
     </Page>

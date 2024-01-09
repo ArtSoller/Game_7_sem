@@ -18,11 +18,37 @@ namespace WpfApp2;
 
 public partial class PageLocation0 : Room
 {
-    public PageLocation0(Player pl1, Player pl2) : base(pl1, pl2)
+    //public static string[] spritePathsUp = { "sptirte_1_1.png", "sptirte_1_2.png", "sptirte_1_3.png", "sptirte_1_4.png", "sptirte_1_5.png", "sptirte_1_6.png", "sptirte_1_7.png", "sptirte_1_8.png" };
+    public static string[] spritePathsUp = { "sptirte_2_1.png", "sptirte_2_2.png", "sptirte_2_3.png", "sptirte_2_4.png", "sptirte_2_5.png", "sptirte_2_6.png", "sptirte_2_7.png", "sptirte_2_8.png" };
+
+    public static int currentSpriteIndex = 0;
+    public PageLocation0(Player pl1, Player pl2)
     {
         InitializeComponent();
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
+        if (Game.isGameDone == false)
+        {
+            TeleportToLocaltion1_ForPlayer1.Fill = Game.redBrush;
+            TeleportToLocaltion1_ForPlayer2.Fill = Game.blueBrush;
+        }
+        else
+        {
+            TeleportToLocaltion1_ForPlayer1.Fill = Game.defaultBrush;
+            TeleportToLocaltion1_ForPlayer2.Fill = Game.defaultBrush;
+        }
+
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
+        code.Text = Game.parts_code;
+        first_part_code.Text = Game.first_part_code;
+        second_part_code.Text = Game.second_part_code;
+        third_part_code.Text = Game.third_part_code;
+        fourth_part_code.Text = Game.fourth_part_code;
+
+
+
         CanvasSetObjects();
         GameSetUp();
     }
@@ -41,7 +67,7 @@ public partial class PageLocation0 : Room
         Canvas.SetLeft(chest, 0.5 * (SystemParameters.VirtualScreenWidth - chest.Width));
 
         Canvas.SetTop(ChestArea, 0.5 * (SystemParameters.VirtualScreenHeight - ChestArea.Height));
-        Canvas.SetLeft(ChestArea, 0.5 * (SystemParameters.VirtualScreenWidth - ChestArea.Width));
+        Canvas.SetLeft(ChestArea, 0.6 * (SystemParameters.VirtualScreenWidth - ChestArea.Width));
 
         // Переходы на карты.
         Canvas.SetTop(TeleportToLocaltion1_ForPlayer1, SystemParameters.VirtualScreenHeight * 0.2);
@@ -51,22 +77,115 @@ public partial class PageLocation0 : Room
         Canvas.SetLeft(TeleportToLocaltion1_ForPlayer2, SystemParameters.VirtualScreenWidth - TeleportToLocaltion1_ForPlayer2.Width - 10);
 
         Canvas.SetTop(TeleportToLocaltionBack_1, SystemParameters.VirtualScreenHeight * 0.2);
-        Canvas.SetLeft(TeleportToLocaltionBack_1, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack_1.Width - 1875);
 
         Canvas.SetTop(TeleportToLocaltionBack_2, SystemParameters.VirtualScreenHeight * 0.65);
-        Canvas.SetLeft(TeleportToLocaltionBack_2, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack_2.Width - 1875);
+
+        Canvas.SetTop(code, 0.96 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(first_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(second_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(second_part_code, 0.91 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
+
+        Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+        Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
+
     }
 
     protected override void GameSetUp()
     {
+
         if (gameTimer is null) throw new Exception("gameTimer is null");
 
         Location0.Focus();
         base.GameSetUp();
 
+        ImageBrush MyImage = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+        };
+        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+
         Player1.Fill = MyImage;
     }
     #endregion
+
+    //void StopPlayerAnimation()
+    //{
+    //    if (gameTimer != null)
+    //    {
+    //        gameTimer.Stop();
+    //        gameTimer = null;
+    //        currentSpriteIndex = 0;
+    //        playerSprite.Source = new BitmapImage(new Uri("pacman.png", UriKind.Relative)); // Устанавливаем начальный спрайт
+    //    }
+    //}
+
+    private void CanvasKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.W)
+        {
+            _isUpKeyPressed = true;
+            _me.IsMovingUpward = true;
+            ImageBrush MyImage = new()
+            {
+                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+            };
+            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+            Player1.Fill = MyImage;
+        }
+
+        if (e.Key == Key.A)
+        {
+            _isLeftKeyPressed = true;
+            _me.IsMovingLeftward = true;
+            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            ImageBrush MyImage = new()
+            {
+                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+            };
+            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+            Player1.Fill = MyImage;
+        }
+
+        if (e.Key == Key.D)
+        {
+            _isRightKeyPressed = true;
+            _me.IsMovingRightward = true;
+            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            ImageBrush MyImage = new()
+            {
+                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+            };
+            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+            Player1.Fill = MyImage;
+        }
+
+        if (e.Key == Key.S)
+        {
+            _isDownKeyPressed = true;
+            _me.IsMovingDownward = true;
+            ImageBrush MyImage = new()
+            {
+                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+            };
+            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+            Player1.Fill = MyImage;
+        }
+
+        if (e.Key == Key.F)
+        {
+            _isForceButtonClicked = true;
+        }
+
+        if (e.Key == Key.Escape)
+            GameOver("Dead");
+    }
 
     protected override void SetMovementPossibility()
     {
@@ -77,27 +196,34 @@ public partial class PageLocation0 : Room
         Game.Me._isPossibleLeftwardMovement = Game.Me.X > wallLeft.Width;
         Game.Me._isPossibleRightwardMovement = Game.Me.X + 50 < SystemParameters.VirtualScreenWidth - wallRight.Width;
         Game.Me._isPossibleDownwardMovement = Game.Me.Y + 50 < SystemParameters.VirtualScreenHeight - wallBottom.Height;
-               
+
         pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
 
         foreach (var obj in Location0.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "chest" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "chestArea")))
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Performer)
-            {
-                NavigationService?.Navigate(TeleportTo(Location.Location1_1));
-                _toDisplay = false;
-            }
+            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Performer)
+                {
+                    Game.isQuestDone = false;
+                    NavigationService?.Navigate(TeleportTo(Location.Location1_1));
+                    _toDisplay = false;
+                    Game.isQuestDone = false;
+                }
 
-            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Assistant)
-            {
-                NavigationService?.Navigate(TeleportTo(Location.Location1_2));
-                _toDisplay = false;
-            }
+                if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Assistant)
+                {
+                    Game.isQuestDone = false;
+                    NavigationService?.Navigate(TeleportTo(Location.Location1_2));
+                    _toDisplay = false;
+                }
 
-            if ((string)obj.Tag == "chestArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
+                if ((string)obj.Tag == "chestArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+
+                {
+                    mediaPlayer.Play();
+                    NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
+                }
                 
             if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox))
             {

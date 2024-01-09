@@ -24,12 +24,24 @@ public partial class PageLocation1_1 : Room
     {
         InitializeComponent();
 
-        Floor.Height = SystemParameters.VirtualScreenHeight;
-        Floor.Width = SystemParameters.VirtualScreenWidth;
-        
-        CanvasSetObjects();
-        GameSetUp();
-    }
+            Floor.Height = SystemParameters.VirtualScreenHeight;
+            Floor.Width = SystemParameters.VirtualScreenWidth;
+
+
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
+
+            code.IsReadOnly = true;
+            code.Text = Game.parts_code;
+            first_part_code.Text = Game.first_part_code;
+            second_part_code.Text = Game.second_part_code;
+            third_part_code.Text = Game.third_part_code;
+            fourth_part_code.Text = Game.fourth_part_code;
+
+            CanvasSetObjects();
+            GameSetUp();
+        }
 
     protected override void CanvasSetObjects()
     {
@@ -44,43 +56,58 @@ public partial class PageLocation1_1 : Room
         Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
         Canvas.SetLeft(TeleportToLocaltionBack, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack.Width - 1880);
 
-        // Ставим карты
-        Canvas.SetTop(picture1, 0.1 * (SystemParameters.VirtualScreenHeight - picture1.Height));
-        Canvas.SetLeft(picture1, 0.8 * (SystemParameters.VirtualScreenWidth - picture1.Width));
+            // Ставим карты
+            Canvas.SetTop(picture1, 0.1 * (SystemParameters.VirtualScreenHeight - picture1.Height));
+            Canvas.SetLeft(picture1, 0.2 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(picture2, 0.1 * (SystemParameters.VirtualScreenHeight - picture2.Height));
-        Canvas.SetLeft(picture2, 0.5 * (SystemParameters.VirtualScreenWidth - picture2.Width));
+            Canvas.SetTop(picture2, 0.1 * (SystemParameters.VirtualScreenHeight - picture2.Height));
+            Canvas.SetLeft(picture2, 0.5 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(picture3, 0.1 * (SystemParameters.VirtualScreenHeight - picture3.Height));
-        Canvas.SetLeft(picture3, 0.2 * (SystemParameters.VirtualScreenWidth - picture3.Width));
+            Canvas.SetTop(picture3, 0.1 * (SystemParameters.VirtualScreenHeight - picture3.Height));
+            Canvas.SetLeft(picture3, 0.8 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(picture4, 0.9 * (SystemParameters.VirtualScreenHeight - picture4.Height));
-        Canvas.SetLeft(picture4, 0.8 * (SystemParameters.VirtualScreenWidth - picture4.Width));
+            Canvas.SetTop(picture4, 0.9 * (SystemParameters.VirtualScreenHeight - picture4.Height));
+            Canvas.SetLeft(picture4, 0.2 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(picture5, 0.9 * (SystemParameters.VirtualScreenHeight - picture5.Height));
-        Canvas.SetLeft(picture5, 0.5 * (SystemParameters.VirtualScreenWidth - picture5.Width));
+            Canvas.SetTop(picture5, 0.9 * (SystemParameters.VirtualScreenHeight - picture5.Height));
+            Canvas.SetLeft(picture5, 0.5 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(picture6, 0.9 * (SystemParameters.VirtualScreenHeight - picture6.Height));
-        Canvas.SetLeft(picture6, 0.2 * (SystemParameters.VirtualScreenWidth - picture6.Width));
+            Canvas.SetTop(picture6, 0.9 * (SystemParameters.VirtualScreenHeight - picture6.Height));
+            Canvas.SetLeft(picture6, 0.8 * SystemParameters.VirtualScreenWidth);
 
-        // Ставим область вокруг мольбертов.
-        Canvas.SetTop(AreaEasel1, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel1.Height));
-        Canvas.SetLeft(AreaEasel1, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel1.Width));
+            // Ставим область вокруг мольбертов.
+            Canvas.SetTop(AreaEasel1, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel1.Height));
+            Canvas.SetLeft(AreaEasel1, 0.15 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(AreaEasel2, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel2.Height));
-        Canvas.SetLeft(AreaEasel2, 0.5 * (SystemParameters.VirtualScreenWidth - AreaEasel2.Width));
+            Canvas.SetTop(AreaEasel2, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel2.Height));
+            Canvas.SetLeft(AreaEasel2, 0.45 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(AreaEasel3, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel3.Height));
-        Canvas.SetLeft(AreaEasel3, 0.2 * (SystemParameters.VirtualScreenWidth - AreaEasel3.Width));
+            Canvas.SetTop(AreaEasel3, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel3.Height));
+            Canvas.SetLeft(AreaEasel3, 0.75 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(AreaEasel4, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel4.Height));
-        Canvas.SetLeft(AreaEasel4, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel4.Width));
+            Canvas.SetTop(AreaEasel4, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel4.Height));
+            Canvas.SetLeft(AreaEasel4, 0.16 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(AreaEasel5, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel5.Height));
-        Canvas.SetLeft(AreaEasel5, 0.5 * (SystemParameters.VirtualScreenWidth - AreaEasel5.Width));
+            Canvas.SetTop(AreaEasel5, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel5.Height));
+            Canvas.SetLeft(AreaEasel5, 0.46 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(AreaEasel6, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height));
-        Canvas.SetLeft(AreaEasel6, 0.2 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width));
+            Canvas.SetTop(AreaEasel6, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height));
+            Canvas.SetLeft(AreaEasel6, 0.76 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(first_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(second_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(second_part_code, 0.91 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
 
         // Ставим стены.
         Canvas.SetTop(wallTop, 0);
@@ -128,21 +155,64 @@ public partial class PageLocation1_1 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-            {
-                _toDisplay = false;
-                NavigationService?.Navigate(TeleportTo(Location.Location2_1));
-            }
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion2_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    {
+                        _toDisplay = false;
+                        NavigationService?.Navigate(TeleportTo(Location.Location2_1));
+                    }
 
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
-                
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
-            {
-                Game.Me.X -= 1.1 * Game.Me.SpeedX;
-                Game.Me.Y += 1.1 * Game.Me.SpeedY;
-            }
-        }
+
+                    if ((string)obj.Name == "AreaEasel1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest1_1_1_picture(_me, _companion));
+                    }
+
+                    if ((string)obj.Name == "AreaEasel2" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest1_1_2_picture(_me, _companion));
+                    }
+
+                    if ((string)obj.Name == "AreaEasel3" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest1_1_3_picture(_me, _companion));
+                    }
+
+                    if ((string)obj.Name == "AreaEasel4" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest1_1_4_picture(_me, _companion));
+                    }
+
+                    if ((string)obj.Name == "AreaEasel5" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest1_1_5_picture(_me, _companion));
+                    }
+
+                    if ((string)obj.Name == "AreaEasel6" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                    {
+                        mediaPlayer.Play();
+                        NavigationService?.Navigate(new PageQuest1_1_6_picture(_me, _companion));
+                    }
+
+                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
+                    {
+                        _isPossibleUpwardMovement = false;
+                        _me.SpeedY = 0;
+                        _me.Y = Canvas.GetTop(obj) + obj.Height + 30;
+                        _me.IsMovingUpward = false;
+                    }
+
+                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
+                    {
+                        _isPossibleLeftwardMovement = false;
+                        _me.SpeedX = 0;
+                        _me.X = Canvas.GetLeft(obj) + obj.Width + 30;
+                        _me.IsMovingLeftward = false;
+                    }
 
     }
 

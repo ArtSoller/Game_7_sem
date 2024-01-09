@@ -27,9 +27,21 @@ public partial class PageLocation3_2 : Room
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
 
-        CanvasSetObjects();
-        GameSetUp();
-    }
+
+
+            mediaPlayer = new();
+            mediaPlayer.MediaFailed += FailedMusic;
+            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PapirusOpened.mp3"));
+
+            code.IsReadOnly = true;
+            code.Text = Game.parts_code;
+            first_part_code.Text = Game.first_part_code;
+            second_part_code.Text = Game.second_part_code;
+            third_part_code.Text = Game.third_part_code;
+            fourth_part_code.Text = Game.fourth_part_code;
+            CanvasSetObjects();
+            GameSetUp();
+        }
 
     protected override void CanvasSetObjects()
     {
@@ -44,52 +56,49 @@ public partial class PageLocation3_2 : Room
         Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
         Canvas.SetLeft(TeleportToLocaltionBack, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack.Width - 1880);
 
-        // Ставим карты
-        Canvas.SetTop(picture1, 0.1 * (SystemParameters.VirtualScreenHeight - picture1.Height));
-        Canvas.SetLeft(picture1, 0.8 * (SystemParameters.VirtualScreenWidth - picture1.Width));
+            // Ставим карты
+            Canvas.SetTop(papirus1, 0.1 * (SystemParameters.VirtualScreenHeight - papirus1.Height));
+            Canvas.SetLeft(papirus1, 0.8 * (SystemParameters.VirtualScreenWidth - papirus1.Width));
 
-        Canvas.SetTop(picture2, 0.1 * (SystemParameters.VirtualScreenHeight - picture2.Height));
-        Canvas.SetLeft(picture2, 0.5 * (SystemParameters.VirtualScreenWidth - picture2.Width));
+            Canvas.SetTop(papirus2, 0.1 * (SystemParameters.VirtualScreenHeight - papirus2.Height));
+            Canvas.SetLeft(papirus2, 0.5 * (SystemParameters.VirtualScreenWidth - papirus2.Width));
 
-        Canvas.SetTop(picture3, 0.1 * (SystemParameters.VirtualScreenHeight - picture3.Height));
-        Canvas.SetLeft(picture3, 0.2 * (SystemParameters.VirtualScreenWidth - picture3.Width));
+            Canvas.SetTop(papirus3, 0.1 * (SystemParameters.VirtualScreenHeight - papirus3.Height));
+            Canvas.SetLeft(papirus3, 0.2 * (SystemParameters.VirtualScreenWidth - papirus3.Width));
 
-        Canvas.SetTop(picture4, 0.9 * (SystemParameters.VirtualScreenHeight - picture4.Height));
-        Canvas.SetLeft(picture4, 0.8 * (SystemParameters.VirtualScreenWidth - picture4.Width));
+            Canvas.SetTop(papirus4, 0.9 * (SystemParameters.VirtualScreenHeight - papirus4.Height));
+            Canvas.SetLeft(papirus4, 0.8 * (SystemParameters.VirtualScreenWidth - papirus4.Width));
 
-        Canvas.SetTop(picture5, 0.9 * (SystemParameters.VirtualScreenHeight - picture5.Height));
-        Canvas.SetLeft(picture5, 0.5 * (SystemParameters.VirtualScreenWidth - picture5.Width));
+            Canvas.SetTop(papirus5, 0.9 * (SystemParameters.VirtualScreenHeight - papirus5.Height));
+            Canvas.SetLeft(papirus5, 0.5 * (SystemParameters.VirtualScreenWidth - papirus5.Width));
 
-        Canvas.SetTop(picture6, 0.9 * (SystemParameters.VirtualScreenHeight - picture6.Height));
-        Canvas.SetLeft(picture6, 0.2 * (SystemParameters.VirtualScreenWidth - picture6.Width));
+            Canvas.SetTop(papirus6, 0.9 * (SystemParameters.VirtualScreenHeight - papirus6.Height));
+            Canvas.SetLeft(papirus6, 0.2 * (SystemParameters.VirtualScreenWidth - papirus6.Width));
 
-        Canvas.SetTop(picture7, 0.5 * (SystemParameters.VirtualScreenHeight - picture7.Height));
-        Canvas.SetLeft(picture7, 0.5 * (SystemParameters.VirtualScreenWidth - picture7.Width));
+            Canvas.SetTop(Panel, 0.5 * (SystemParameters.VirtualScreenHeight - Panel.Height));
+            Canvas.SetLeft(Panel, 0.5 * (SystemParameters.VirtualScreenWidth - Panel.Width));
 
-        // Ставим область вокруг мольбертов.
-        Canvas.SetTop(AreaEasel1, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel1.Height));
-        Canvas.SetLeft(AreaEasel1, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel1.Width));
+            // Ставим область вокруг мольбертов.
+            Canvas.SetTop(AreaPapirus1, 0.1 * (SystemParameters.VirtualScreenHeight - AreaPapirus1.Height));
+            Canvas.SetLeft(AreaPapirus1, 0.2 * (SystemParameters.VirtualScreenWidth - AreaPapirus1.Width));
 
-        Canvas.SetTop(AreaEasel2, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel2.Height));
-        Canvas.SetLeft(AreaEasel2, 0.5 * (SystemParameters.VirtualScreenWidth - AreaEasel2.Width));
+            Canvas.SetTop(AreaPapirus2, 0.1 * (SystemParameters.VirtualScreenHeight - AreaPapirus2.Height));
+            Canvas.SetLeft(AreaPapirus2, 0.5 * (SystemParameters.VirtualScreenWidth - AreaPapirus2.Width));
 
-        Canvas.SetTop(AreaEasel3, 0.1 * (SystemParameters.VirtualScreenHeight - AreaEasel3.Height));
-        Canvas.SetLeft(AreaEasel3, 0.2 * (SystemParameters.VirtualScreenWidth - AreaEasel3.Width));
+            Canvas.SetTop(AreaPapirus3, 0.1 * (SystemParameters.VirtualScreenHeight - AreaPapirus3.Height));
+            Canvas.SetLeft(AreaPapirus3, 0.8 * (SystemParameters.VirtualScreenWidth - AreaPapirus3.Width));
 
-        Canvas.SetTop(AreaEasel4, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel4.Height));
-        Canvas.SetLeft(AreaEasel4, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel4.Width));
+            Canvas.SetTop(AreaPapirus4, 0.9 * (SystemParameters.VirtualScreenHeight - AreaPapirus4.Height));
+            Canvas.SetLeft(AreaPapirus4, 0.2 * (SystemParameters.VirtualScreenWidth - AreaPapirus4.Width));
 
-        Canvas.SetTop(AreaEasel5, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel5.Height));
-        Canvas.SetLeft(AreaEasel5, 0.5 * (SystemParameters.VirtualScreenWidth - AreaEasel5.Width));
+            Canvas.SetTop(AreaPapirus5, 0.9 * (SystemParameters.VirtualScreenHeight - AreaPapirus5.Height));
+            Canvas.SetLeft(AreaPapirus5, 0.5 * (SystemParameters.VirtualScreenWidth - AreaPapirus5.Width));
 
-        Canvas.SetTop(AreaEasel6, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height));
-        Canvas.SetLeft(AreaEasel6, 0.2 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width));
+            Canvas.SetTop(AreaPapirus6, 0.9 * (SystemParameters.VirtualScreenHeight - AreaPapirus6.Height));
+            Canvas.SetLeft(AreaPapirus6, 0.8 * (SystemParameters.VirtualScreenWidth - AreaPapirus6.Width));
 
-        Canvas.SetTop(AreaEasel6, 0.9 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height));
-        Canvas.SetLeft(AreaEasel6, 0.8 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width));
-
-        Canvas.SetTop(AreaEasel6, 0.5 * (SystemParameters.VirtualScreenHeight - AreaEasel6.Height));
-        Canvas.SetLeft(AreaEasel6, 0.5 * (SystemParameters.VirtualScreenWidth - AreaEasel6.Width));
+            Canvas.SetTop(AreaPanel, 0.5 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(AreaPanel, 0.5 * SystemParameters.VirtualScreenWidth);
 
         // Ставим стены.
         Canvas.SetTop(wallTop, 0);
@@ -107,11 +116,26 @@ public partial class PageLocation3_2 : Room
         wallRight.Height = SystemParameters.VirtualScreenHeight;
         wallRight.Width = 25;
 
-        Canvas.SetRight(wallBottom, 0);
-        Canvas.SetBottom(wallBottom, 0);
-        wallBottom.Height = 75;
-        wallBottom.Width = SystemParameters.VirtualScreenHeight;
-    }
+            Canvas.SetRight(wallBottom, 0);
+            Canvas.SetBottom(wallBottom, 0);
+            wallBottom.Height = 75;
+            wallBottom.Width = SystemParameters.VirtualScreenHeight;
+
+            Canvas.SetTop(code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(code, 0.8 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(first_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(first_part_code, 0.9 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(second_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(second_part_code, 0.91 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
+
+            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
+            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
+        }
 
     protected override void GameSetUp()
     {
@@ -138,11 +162,11 @@ public partial class PageLocation3_2 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-            {
-                _toDisplay = false;
-                NavigationService?.Navigate(TeleportTo(Location.Location4_2));
-            }
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    {
+                        _toDisplay = false;
+                        NavigationService?.Navigate(TeleportTo(Location.Location4_2));
+                    }
 
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                 NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));

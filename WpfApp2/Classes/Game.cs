@@ -52,14 +52,26 @@ public static class Game
 
     public static string QuestKeyString => $"{digit1}{digit2}{digit3}{digit4}";
 
-    public static int AttemptsNumber = 5;
+    public static int AttemptsNumber = 3;
 
-    public static bool Quest0_5 = false, Quest1 = false, Quest2 = false, Quest3 = false, Quest4 = false;
-    
-    public static string CodeParts = "Найденные части кода: ";
+    public static SolidColorBrush blueBrush = new SolidColorBrush(Colors.Blue);
+    public static SolidColorBrush redBrush = new SolidColorBrush(Colors.Red);
+    public static SolidColorBrush defaultBrush = new SolidColorBrush(Colors.LightGray);
 
-    public static void Init()
-    {                              
+
+    public static string parts_code = "Найденные части кода: ";
+    public static string first_part_code = "";
+    public static string second_part_code = "";
+    public static string third_part_code = "";
+    public static string fourth_part_code = "";
+
+    public static bool isQuestDone = true;
+    public static bool isGameDone = false;
+
+
+    public Game()
+    {
+        
         Me = new Player() 
         {   
             CurrentLocation = Location.Location0
