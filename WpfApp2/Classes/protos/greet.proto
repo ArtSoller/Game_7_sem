@@ -21,5 +21,4 @@ message Content {
     string first = 10;
     string second = 11;
     string third = 12;
-    string fourth = 13;
 }

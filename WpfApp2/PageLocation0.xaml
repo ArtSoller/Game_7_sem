@@ -42,6 +42,5 @@
         <TextBox Name="first_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Orange" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
         <TextBox Name="second_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Aqua" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
         <TextBox Name="third_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="LightGreen" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
-        <TextBox Name="fourth_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="HotPink" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
     </Canvas>
 </local:Room>

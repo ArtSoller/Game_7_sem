@@ -20,30 +20,29 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page4.xaml
 /// </summary>
-public partial class PageQuest3_2_6_way
+public partial class PageQuest3_2_code
 {
     private MediaPlayer mediaPlayer = new();
 
-    public PageQuest3_2_6_way(Player pl1, Player pl2) : base(pl1, pl2)
+    public PageQuest3_2_code(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
 
-        Game.Me = pl1;
-        Game.Companion = pl2;
-
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
-        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/PapirusOpened.mp3")));
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookOpened.mp3")));
+        mediaPlayer.Play();
 
         CanvasSetObjects();
     }
 
+
     protected override void CanvasSetObjects()
     {
-        Canvas.SetTop(quest_3, 0.1 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
-        Canvas.SetLeft(quest_3, 0.5 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
+        Canvas.SetTop(quest_4_2, 0.1 * (SystemParameters.VirtualScreenWidth - quest_4_2.Width));
+        Canvas.SetLeft(quest_4_2, 0.5 * (SystemParameters.VirtualScreenWidth - quest_4_2.Width));
 
         Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
@@ -57,10 +56,11 @@ public partial class PageQuest3_2_6_way
 
     private void Back_Click(object sender, RoutedEventArgs e)
     {
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookClosed.mp3")));
         mediaPlayer.Play();
-        
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
         NavigationService.Navigate(new PageLocation3_2(Game.Me, Game.Companion));
     }
+
 }

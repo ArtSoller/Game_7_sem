@@ -46,11 +46,10 @@ public static class Game
     private static readonly int digit1 = 1;
     private static readonly int digit2 = 2;
     private static readonly int digit3 = 3;
-    private static readonly int digit4 = 4;
 
     // Собираем строку из сгенерированных цифр
 
-    public static string QuestKeyString => $"{digit1}{digit2}{digit3}{digit4}";
+    public static string QuestKeyString => $"{digit1}{digit2}{digit3}";
 
     public static int AttemptsNumber = 3;
 
@@ -63,9 +62,6 @@ public static class Game
     public static string first_part_code = "";
     public static string second_part_code = "";
     public static string third_part_code = "";
-    public static string fourth_part_code = "";
-
-    public static bool isGameDone = false;
 
 
     public static void Init()

@@ -37,10 +37,10 @@ internal static class Connection
         call.RequestStream.WriteAsync(new Content() { Name = name });
         Game.Me.Name = name;
     }
-    public static void SendCoordinates(string _name, double _x, double _y, bool _isMovingLeftward, bool _isMovingRightward, bool _isMovingUpward, bool _isMovingDownward, string _first, string _second, string _third, string _fourth)
+    public static void SendCoordinates(string _name, double _x, double _y, bool _isMovingLeftward, bool _isMovingRightward, bool _isMovingUpward, bool _isMovingDownward, string _first, string _second, string _third)
     {
         if (call is null) throw new ArgumentNullException("call is null");
-        call.RequestStream.WriteAsync(new Content() {Name = _name, X = _x, Y = _y, IsMovingLeftward = _isMovingLeftward, IsMovingRightward = _isMovingRightward, IsMovingUpward = _isMovingUpward, IsMovingDownward = _isMovingDownward, First = _first, Second = _second, Third = _third, Fourth = _fourth });
+        call.RequestStream.WriteAsync(new Content() {Name = _name, X = _x, Y = _y, IsMovingLeftward = _isMovingLeftward, IsMovingRightward = _isMovingRightward, IsMovingUpward = _isMovingUpward, IsMovingDownward = _isMovingDownward, First = _first, Second = _second, Third = _third });
     }
     public static async Task ReceiveCoordinates()
     {
@@ -64,8 +64,6 @@ internal static class Connection
                         Game.second_part_code = res.Second;
                     if (res.Third != "z" && res.Third != "") 
                         Game.third_part_code = res.Third;
-                    if (res.Fourth != "z" && res.Fourth != "")
-                        Game.fourth_part_code = res.Fourth;
                 }
             }
         }

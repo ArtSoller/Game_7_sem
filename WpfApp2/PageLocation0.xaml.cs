@@ -41,7 +41,6 @@ public partial class PageLocation0
         first_part_code.Text = Game.first_part_code;
         second_part_code.Text = Game.second_part_code;
         third_part_code.Text = Game.third_part_code;
-        fourth_part_code.Text = Game.fourth_part_code;
 
 
 
@@ -88,8 +87,6 @@ public partial class PageLocation0
         Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
         Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
 
-        Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
-        Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
 
     }
 

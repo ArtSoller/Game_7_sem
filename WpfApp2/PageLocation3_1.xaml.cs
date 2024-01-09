@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp2;
 
@@ -33,22 +34,17 @@ public partial class PageLocation3_1
 
             mediaPlayer = new();
             mediaPlayer.MediaFailed += FailedMusic;
-            mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookOpened.mp3")));
 
             code.IsReadOnly = true;
             code.Text = Game.parts_code;
             first_part_code.Text = Game.first_part_code;
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
-            fourth_part_code.Text = Game.fourth_part_code;
+        if (Game.third_part_code != "")
+        {
+            TeleportToLocaltion0.Fill = Game.redBrush;
             IsTeleportActive = true;
-        TeleportToLocaltion4_1.Fill = Game.redBrush;
-
-        //if (Game.second_part_code != "")
-        //{
-        //    TeleportToLocaltion4_1.Fill = Game.redBrush;
-        //    IsTeleportActive = true;
-        //}
+        }
         CanvasSetObjects();
             GameSetUp();
         }
@@ -60,40 +56,19 @@ public partial class PageLocation3_1
         Canvas.SetTop(Performer, Game.Me.Y);
 
         // Переходы на карты.
-        Canvas.SetTop(TeleportToLocaltion4_1, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion4_1.Height));
-        Canvas.SetLeft(TeleportToLocaltion4_1, SystemParameters.VirtualScreenWidth - TeleportToLocaltion4_1.Width - 10);
+        Canvas.SetTop(TeleportToLocaltion0, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion0.Height));
+        Canvas.SetLeft(TeleportToLocaltion0, SystemParameters.VirtualScreenWidth - TeleportToLocaltion0.Width - 10);
 
         Canvas.SetTop(TeleportToLocaltionBack, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltionBack.Height));
         Canvas.SetLeft(TeleportToLocaltionBack, SystemParameters.VirtualScreenWidth - TeleportToLocaltionBack.Width - 1880);
 
-        // Ставим мольберты.
-        Canvas.SetTop(QuestField, 0.5 * (SystemParameters.VirtualScreenHeight - QuestField.Height));
-        Canvas.SetLeft(QuestField, 0.5 * (SystemParameters.VirtualScreenWidth - QuestField.Width));
+            // Ставим книгу и бумагу
+            Canvas.SetTop(Book, 0.1 * (SystemParameters.VirtualScreenHeight - Book.Height));
+            Canvas.SetLeft(Book, 0.5 * (SystemParameters.VirtualScreenWidth - Book.Width));
 
-            // Ставим область вокруг мольбертов.
-            //Canvas.SetTop(QuestArea1, 0.5 * (SystemParameters.VirtualScreenHeight - QuestArea1.Height) - 15);
-            //Canvas.SetLeft(QuestArea1, 0.5 * (SystemParameters.VirtualScreenWidth - QuestArea1.Width) - 12);
-
-            Canvas.SetTop(Book, 0.2 * (SystemParameters.VirtualScreenHeight - Book.Height));
-            Canvas.SetLeft(Book, 0.2 * SystemParameters.VirtualScreenWidth);
-
-            Canvas.SetTop(BookArea, 0.22 * (SystemParameters.VirtualScreenHeight - BookArea.Height));
-            Canvas.SetLeft(BookArea, 0.27 *SystemParameters.VirtualScreenWidth);
-
-            Canvas.SetTop(QuestField, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
-            Canvas.SetLeft(QuestField, 0.2 * SystemParameters.VirtualScreenWidth);
-            QuestField.Height = 0.87 * SystemParameters.VirtualScreenHeight;
-            QuestField.Width = 0.5 * SystemParameters.VirtualScreenWidth;
-
-            //Canvas.SetTop(QuestArea, 0.07 * (SystemParameters.VirtualScreenHeight - Book.Height));
-            //Canvas.SetLeft(QuestArea, 0.2 * SystemParameters.VirtualScreenWidth);
-            //QuestArea.Height = 0.87 * SystemParameters.VirtualScreenHeight;
-            //QuestArea.Width = 0.5 * SystemParameters.VirtualScreenWidth;
-
-
-            Canvas.SetTop(Plate, 50);
-            Canvas.SetLeft(Plate, SystemParameters.VirtualScreenWidth - Plate.Width - 12);
-
+            // Ставим область вокруг книги и бумаги
+            Canvas.SetTop(AreaBook, 0.1 * (SystemParameters.VirtualScreenHeight - AreaBook.Height));
+            Canvas.SetLeft(AreaBook, 0.5 * (SystemParameters.VirtualScreenWidth - AreaBook.Width));
 
         // Ставим стены.
         Canvas.SetTop(wallTop, 0);
@@ -128,15 +103,13 @@ public partial class PageLocation3_1
             Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
             Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
 
-            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
-            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
         }
 
     protected override void GameSetUp()
     {
         if (gameTimer is null) throw new Exception("gameTimer is null");
 
-        Location3_1.Focus();
+        Location4_1.Focus();
         base.GameSetUp();
         Performer.Fill = MyImage;
     }
@@ -153,21 +126,21 @@ public partial class PageLocation3_1
 
         pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
 
-        foreach (var obj in Location3_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "papirus" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "papirus_area")))
+        foreach (var obj in Location4_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "book" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "book_area")))
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion0" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                     {
                         _toDisplay = false;
-                        NavigationService?.Navigate(TeleportTo(Location.Location4_1));
+                        NavigationService?.Navigate(TeleportTo(Location.Location0));
                     }
 
+            if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                NavigationService?.Navigate(new PageQuest3_1_code(Game.Me, Game.Companion));
 
-            if ((string)obj.Tag == "papirus_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new PageQuest3_1(Game.Me, Game.Companion));
-            
-            if ((string)obj.Tag == "papirus" && pacmanHitBox.IntersectsWith(hitBox))
+
+            if (((string)obj.Tag == "book") && pacmanHitBox.IntersectsWith(hitBox))
             {
                 Game.Me.X -= Game.Me.SpeedX;
                 Game.Me.Y += Game.Me.SpeedY;
@@ -188,6 +161,7 @@ public partial class PageLocation3_1
             Performer.RenderTransform = new RotateTransform(180, Performer.Width / 2, Performer.Height / 2);
         else if (Game.Me.IsMovingRightward)
             Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
+
 
         base.GameLoop(sender, e);
 

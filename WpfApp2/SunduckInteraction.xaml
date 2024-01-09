@@ -21,7 +21,6 @@
         <TextBox Name="txtInput1" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="391" Canvas.Top="164" Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox Name="txtInput2" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="439" Canvas.Top="164" Background="Aqua" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox Name="txtInput3" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="487" Canvas.Top="164" Background="LightGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox Name="txtInput4" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="535" Canvas.Top="164" Background="HotPink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox Name="count" Canvas.Left="205" FontFamily="Segoe Print" FontSize="24"  Canvas.Top="237" Background="Transparent" BorderBrush="Transparent">Количество попыток:</TextBox>
         <TextBox Name="txtInput5" FontSize="28" Width="48" Background="Transparent" BorderBrush="Transparent" Height="64" Canvas.Left="140" Canvas.Top="205"/>
 

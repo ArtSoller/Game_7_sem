@@ -176,8 +176,7 @@ public abstract class Room : Page
             Location.Location2_2 => new PageLocation2_2(Game.Me, Game.Companion),
             Location.Location3_1 => new PageLocation3_1(Game.Me, Game.Companion),
             Location.Location3_2 => new PageLocation3_2(Game.Me, Game.Companion),
-            Location.Location4_1 => new PageLocation4_1(Game.Me, Game.Companion),
-            Location.Location4_2 => new PageLocation4_2(Game.Me, Game.Companion),
+
             _ => throw new NotSupportedException("Kuda zalez, pridurok?")
         };
     }
@@ -215,7 +214,7 @@ public abstract class Room : Page
             ImageSource = new BitmapImage(new Uri(System.IO.Path.GetFullPath("../../../img/sptirte_2_1.png")))
         };
 
-        Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y, Game.Me.IsMovingLeftward, Game.Me.IsMovingRightward, Game.Me.IsMovingUpward, Game.Me.IsMovingDownward, Game.first_part_code, Game.second_part_code, Game.third_part_code, Game.fourth_part_code);
+        Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y, Game.Me.IsMovingLeftward, Game.Me.IsMovingRightward, Game.Me.IsMovingUpward, Game.Me.IsMovingDownward, Game.first_part_code, Game.second_part_code, Game.third_part_code);
     }
 
     protected abstract void SetMovementPossibility();

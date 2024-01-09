@@ -37,7 +37,6 @@ public partial class PageLocation1_2 : Room
             first_part_code.Text = Game.first_part_code;
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
-            fourth_part_code.Text = Game.fourth_part_code;
             if (Game.first_part_code != "")
             {
                 TeleportToLocaltion2_2.Fill = Game.blueBrush;
@@ -109,8 +108,6 @@ public partial class PageLocation1_2 : Room
             Canvas.SetTop(third_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
             Canvas.SetLeft(third_part_code, 0.92 * SystemParameters.VirtualScreenWidth);
 
-            Canvas.SetTop(fourth_part_code, 0.96 * SystemParameters.VirtualScreenHeight);
-            Canvas.SetLeft(fourth_part_code, 0.93 * SystemParameters.VirtualScreenWidth);
         }
 
     protected override void SetMovementPossibility()

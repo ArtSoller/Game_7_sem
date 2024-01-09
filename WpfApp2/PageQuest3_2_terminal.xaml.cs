@@ -21,7 +21,7 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page5.xaml
 /// </summary>
-public partial class PageQuest4_2_terminal
+public partial class PageQuest3_2_terminal
 {
     private MediaPlayer mediaPlayer = new();
 
@@ -29,7 +29,7 @@ public partial class PageQuest4_2_terminal
 
     private Brush? _brush;
 
-    public PageQuest4_2_terminal(Player pl1, Player pl2) : base(pl1, pl2)
+    public PageQuest3_2_terminal(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
@@ -71,7 +71,7 @@ public partial class PageQuest4_2_terminal
         mediaPlayer.Play();
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
-        NavigationService.Navigate(new PageLocation4_2(Game.Me, Game.Companion));
+        NavigationService.Navigate(new PageLocation3_2(Game.Me, Game.Companion));
     }
     private void Enter_Click(object sender, RoutedEventArgs e)
     {
@@ -81,7 +81,7 @@ public partial class PageQuest4_2_terminal
             txtScore.Text = "Готово!";
             txtScore.Visibility = Visibility.Visible;
             txtInput.IsReadOnly = true;
-            Game.third_part_code += Game.QuestKeyString[3];
+            Game.third_part_code += Game.QuestKeyString[2];
             IsTeleportActive = true;
             Enter.Visibility = Visibility.Collapsed;
         }

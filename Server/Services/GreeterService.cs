@@ -30,7 +30,7 @@ public class GreeterService : Greeter.GreeterBase
             });
 
             //Console.WriteLine($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y}");
-            await SendBroadcastMessageAsync($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y} {clientMessage.CompanionsName} {clientMessage.IsMovingLeftward} {clientMessage.IsMovingRightward} {clientMessage.IsMovingUpward} {clientMessage.IsMovingDownward} {clientMessage.First} {clientMessage.Second} {clientMessage.Third} {clientMessage.Fourth}");
+            await SendBroadcastMessageAsync($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y} {clientMessage.CompanionsName} {clientMessage.IsMovingLeftward} {clientMessage.IsMovingRightward} {clientMessage.IsMovingUpward} {clientMessage.IsMovingDownward} {clientMessage.First} {clientMessage.Second} {clientMessage.Third}");
         }
     }
 
@@ -49,7 +49,6 @@ public class GreeterService : Greeter.GreeterBase
             First = messageBody.Split()[8],
             Second = messageBody.Split()[9],
             Third = messageBody.Split()[10],
-            Fourth = messageBody.Split()[11]            
         };
 
         var tasks = new List<Task>() { };
@@ -76,7 +75,7 @@ public class GreeterService : Greeter.GreeterBase
 
                 client.Value.WriteAsync(message);
                 assistantFree = false;
-                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key} {false} {false} {false} {false} {"z"} {"z"} {"z"} {"z"}");
+                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key} {false} {false} {false} {false} {"z"} {"z"} {"z"}");
             }
             else
             {
@@ -86,7 +85,7 @@ public class GreeterService : Greeter.GreeterBase
                 };
 
                 client.Value.WriteAsync(message);
-                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key} {false} {false} {false} {false} {"z"} {"z"} {"z"} {"z"}");
+                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key} {false} {false} {false} {false} {"z"} {"z"} {"z"}");
             }
         }
     }

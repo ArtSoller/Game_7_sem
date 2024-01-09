@@ -7,25 +7,19 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="PageQuest4_2_code.xaml.cs">
+    <Compile Update="PageQuest3_2_code.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PageQuest4_1_code.xaml.cs">
+    <Compile Update="PageQuest3_1_code.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PageQuest4_2_terminal.xaml.cs">
+    <Compile Update="PageQuest3_2_terminal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="PageLocation1_1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="PageLocation3_1.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="PageLocation3_2.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="PageLocation4_1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="PageLocation2_2.xaml.cs">
@@ -40,30 +34,24 @@
     <Compile Update="PageLocation1_2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PageLocation4_2.xaml.cs">
+    <Compile Update="PageLocation3_2.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="PageQuest4_2_code.xaml">
+    <Page Update="PageQuest3_2_code.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PageQuest4_1_code.xaml">
+    <Page Update="PageQuest3_1_code.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PageQuest4_2_terminal.xaml">
+    <Page Update="PageQuest3_2_terminal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PageLocation1_1.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PageLocation3_1.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PageLocation3_2.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PageLocation4_1.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PageLocation2_2.xaml">
@@ -78,7 +66,7 @@
     <Page Update="PageLocation1_2.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PageLocation4_2.xaml">
+    <Page Update="PageLocation3_2.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -73,9 +73,6 @@ public partial class SunduckInteraction
         Canvas.SetTop(txtInput3, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput3.Height));
         Canvas.SetLeft(txtInput3, 0.515 * (SystemParameters.VirtualScreenWidth - txtInput3.Width));
 
-        Canvas.SetTop(txtInput4, 0.3 * (SystemParameters.VirtualScreenHeight - txtInput4.Height));
-        Canvas.SetLeft(txtInput4, 0.54 * (SystemParameters.VirtualScreenWidth - txtInput4.Width));
-
         Canvas.SetTop(count, 0.37 * SystemParameters.VirtualScreenHeight);
         Canvas.SetLeft(count, 0.42 * SystemParameters.VirtualScreenWidth);
 
@@ -97,10 +94,9 @@ public partial class SunduckInteraction
         var inputValue1 = txtInput1.Text; // Получаем значение из текстового поля
         var inputValue2 = txtInput2.Text; // Получаем значение из текстового поля
         var inputValue3 = txtInput3.Text; // Получаем значение из текстового поля
-        var inputValue4 = txtInput4.Text; // Получаем значение из текстового поля
 
 
-        if (inputValue1 == Game.QuestKeyString[0].ToString() && inputValue2 == Game.QuestKeyString[1].ToString() && inputValue3 == Game.QuestKeyString[2].ToString() && inputValue4 == Game.QuestKeyString[3].ToString())
+        if (inputValue1 == Game.QuestKeyString[0].ToString() && inputValue2 == Game.QuestKeyString[1].ToString() && inputValue3 == Game.QuestKeyString[2].ToString())
         {
             mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/CameWon.mp3")));
             mediaPlayer.Play();
@@ -143,11 +139,9 @@ public partial class SunduckInteraction
         txtInput1.Text = "";
         txtInput2.Text = "";
         txtInput3.Text = "";
-        txtInput4.Text = "";
         txtInput1.IsReadOnly = false;
         txtInput2.IsReadOnly = false;
         txtInput3.IsReadOnly = false;
-        txtInput4.IsReadOnly = false;
         txtScore.Visibility = Visibility.Hidden;
     }
 
