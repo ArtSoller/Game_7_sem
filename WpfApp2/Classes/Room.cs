@@ -49,8 +49,25 @@ public abstract class Room : Page
         gameTimer = new();
         _toDisplay = true;
 
-        Game.Me = pl1;
-        Game.Companion = pl2;
+        //Game.Me = pl1;
+        //Game.Companion = pl2;
+
+        //MyImage = new()
+        //{
+        //    ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
+        //};
+
+        //mediaPlayer = new();
+        //mediaPlayer.MediaFailed += FailedMusic;
+    }
+
+    protected Room()
+    {
+        gameTimer = new();
+        _toDisplay = true;
+
+        //Game.Me = pl1;
+        //Game.Companion = pl2;
 
         //MyImage = new()
         //{
@@ -198,7 +215,7 @@ public abstract class Room : Page
             ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\sptirte_2_1.png"))
         };
 
-        Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y);
+        Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y, Game.Me.IsMovingLeftward, Game.Me.IsMovingRightward, Game.Me.IsMovingUpward, Game.Me.IsMovingDownward);
     }
 
     protected abstract void SetMovementPossibility();

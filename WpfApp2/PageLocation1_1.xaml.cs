@@ -21,7 +21,7 @@ namespace WpfApp2;
 public partial class PageLocation1_1 : Room
 {
     private MediaPlayer mediaPlayer = new();
-    public PageLocation1_1(Player pl1, Player pl2) : base(pl1, pl2) 
+    public PageLocation1_1(Player pl1, Player pl2)
     {
         InitializeComponent();
 
@@ -47,9 +47,8 @@ public partial class PageLocation1_1 : Room
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player1, Game.Me.X);
-        Canvas.SetTop(Player1, Game.Me.Y);
-
+        Canvas.SetLeft(Performer, Game.Me.X);
+        Canvas.SetTop(Performer, Game.Me.Y);
         // Переходы на карты.
         Canvas.SetTop(TeleportToLocaltion2_1, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion2_1.Height));
         Canvas.SetLeft(TeleportToLocaltion2_1, SystemParameters.VirtualScreenWidth - TeleportToLocaltion2_1.Width - 10);
@@ -137,7 +136,7 @@ public partial class PageLocation1_1 : Room
         if (gameTimer is null) throw new Exception("gameTimer is null");
         Location1_1.Focus();
         base.GameSetUp();
-        Player1.Fill = MyImage;
+        Performer.Fill = MyImage;
     }
 
     protected override void SetMovementPossibility()
@@ -151,6 +150,8 @@ public partial class PageLocation1_1 : Room
         Game.Me._isPossibleDownwardMovement = Game.Me.Y + 50 < SystemParameters.VirtualScreenHeight - wallBottom.Height;
 
         pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
+        double a = Game.Me.X;
+
 
         foreach (var obj in Location1_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
         {
@@ -215,14 +216,34 @@ public partial class PageLocation1_1 : Room
         SetMovementPossibility();
 
         if (Game.Me.IsMovingLeftward)
-            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(180, Performer.Width / 2, Performer.Height / 2);
+
         else if (Game.Me.IsMovingRightward)
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
 
         base.GameLoop(sender, e);
-
-        Canvas.SetLeft(Player1, Game.Me.X + Game.Me.SpeedX);
-        Canvas.SetTop(Player1, Game.Me.Y - Game.Me.SpeedY);
+        ImageBrush MyImage1 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths1[currentSpriteIndex_1], UriKind.Relative))
+        };
+        if (Game.Me.IsMovingRightward)
+        {
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Me.IsMovingLeftward)
+        {
+            Performer.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Me.IsMovingUpward)
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        if (Game.Me.IsMovingDownward)
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+       
+        Performer.Fill = MyImage1;
+        Canvas.SetLeft(Performer, Game.Me.X + Game.Me.SpeedX);
+        Canvas.SetTop(Performer, Game.Me.Y - Game.Me.SpeedY);
     }
 }
 

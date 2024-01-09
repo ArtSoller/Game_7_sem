@@ -38,7 +38,7 @@ public partial class PageLocation1_2 : Room
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
-            if (Game.isQuestDone == true)
+            if (IsTeleportActive == true)
                 TeleportToLocaltion2_2.Fill = Game.blueBrush;
             CanvasSetObjects();
             GameSetUp();
@@ -49,7 +49,7 @@ public partial class PageLocation1_2 : Room
         if (gameTimer is null) throw new Exception("gameTimer is null");
         Location1_2.Focus();
         base.GameSetUp();
-        //Player2.Fill = MyImage;
+        Player2.Fill = MyImagE;
     }
 
     protected override void CanvasSetObjects()
@@ -130,7 +130,7 @@ public partial class PageLocation1_2 : Room
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location2_2));
-                        Game.isQuestDone = false;
+                        IsTeleportActive = false;
                     }
 
 
@@ -163,6 +163,26 @@ public partial class PageLocation1_2 : Room
             Player2.RenderTransform = new RotateTransform(180, Player2.Width / 2, Player2.Height / 2);
         else if (Game.Me.IsMovingRightward)
             Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+
+        ImageBrush MyImage2 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
+        };
+        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        {
+            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        {
+            Player2.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        Player2.Fill = MyImage2;
 
         Canvas.SetLeft(Player2, Game.Me.X + Game.Me.SpeedX);
         Canvas.SetTop(Player2, Game.Me.Y - Game.Me.SpeedY);

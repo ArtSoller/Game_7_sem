@@ -112,7 +112,6 @@ public partial class PageQuest1_2
             if (child.Name != "Picture8")
                 return;
         }
-        Game.isQuestDone = true;
         txtScore.Text = "Готово!";
         txtScore.Visibility = Visibility.Visible;
         Game.first_part_code += Game.QuestKeyString[0];

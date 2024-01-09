@@ -40,7 +40,7 @@ public partial class PageLocation2_2
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
-            if (Game.isQuestDone == true)
+            if (IsTeleportActive == true)
                 TeleportToLocaltion3_2.Fill = Game.blueBrush;
             CanvasSetObjects();
             GameSetUp();
@@ -110,7 +110,7 @@ public partial class PageLocation2_2
 
         Location2_2.Focus();
         base.GameSetUp();
-        Player2.Fill = MyImage;
+        Player2.Fill = MyImagE;
     }
 
     protected override void SetMovementPossibility()
@@ -125,7 +125,7 @@ public partial class PageLocation2_2
 
         pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
 
-        foreach (var obj in Location2_2.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
+        foreach (var obj in Location2_2.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "book" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "book_area")))
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
@@ -136,10 +136,10 @@ public partial class PageLocation2_2
             }
 
 
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                 NavigationService?.Navigate(new PageQuest2_2(Game.Me, Game.Companion));
             
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
+            if ((string)obj.Tag == "book" && pacmanHitBox.IntersectsWith(hitBox))
             {
                 Game.Me.X -= 1.1 * Game.Me.SpeedX;
                 Game.Me.Y += 1.1 * Game.Me.SpeedY;
@@ -163,6 +163,26 @@ public partial class PageLocation2_2
 
 
         base.GameLoop(sender, e);
+
+        ImageBrush MyImage2 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
+        };
+        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        {
+            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        {
+            Player2.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        Player2.Fill = MyImage2;
 
         Canvas.SetLeft(Player2, Game.Me.X + Game.Me.SpeedX);
         Canvas.SetTop(Player2, Game.Me.Y - Game.Me.SpeedY);

@@ -14,4 +14,8 @@ message Content {
 	double X = 3;
 	double Y = 4;
 	string CompanionsName = 5;
-}
+	bool IsMovingLeftward = 6;
+	bool IsMovingRightward = 7;
+	bool IsMovingUpward = 8;
+	bool IsMovingDownward = 9;
+	}

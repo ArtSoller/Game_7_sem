@@ -65,7 +65,6 @@ public static class Game
     public static string third_part_code = "";
     public static string fourth_part_code = "";
 
-    public static bool isQuestDone = true;
     public static bool isGameDone = false;
 
 

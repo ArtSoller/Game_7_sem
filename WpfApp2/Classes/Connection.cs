@@ -37,10 +37,10 @@ internal static class Connection
         call.RequestStream.WriteAsync(new Content() { Name = name });
         Game.Me.Name = name;
     }
-    public static void SendCoordinates(string _name, double _x, double _y)
+    public static void SendCoordinates(string _name, double _x, double _y, bool _isMovingLeftward, bool _isMovingRightward, bool _isMovingUpward, bool _isMovingDownward)
     {
         if (call is null) throw new ArgumentNullException("call is null");
-        call.RequestStream.WriteAsync(new Content() {Name = _name, X = _x, Y = _y });
+        call.RequestStream.WriteAsync(new Content() {Name = _name, X = _x, Y = _y, IsMovingLeftward = _isMovingLeftward, IsMovingRightward = _isMovingRightward, IsMovingUpward = _isMovingUpward, IsMovingDownward = _isMovingDownward });
     }
     public static async Task ReceiveCoordinates()
     {
@@ -54,6 +54,10 @@ internal static class Connection
                 {
                     Game.Companion.X = res.X;
                     Game.Companion.Y = res.Y;
+                    Game.Companion.IsMovingLeftward = res.IsMovingLeftward;
+                    Game.Companion.IsMovingRightward = res.IsMovingRightward;
+                    Game.Companion.IsMovingUpward = res.IsMovingUpward;
+                    Game.Companion.IsMovingDownward = res.IsMovingDownward;
                 }
             }
         }

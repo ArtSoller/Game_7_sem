@@ -41,7 +41,7 @@ public partial class PageLocation4_1
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
-            if (Game.isQuestDone == true)
+            if (IsTeleportActive == true)
                 TeleportToLocaltion0.Fill = Game.redBrush;
             CanvasSetObjects();
             GameSetUp();
@@ -173,6 +173,26 @@ public partial class PageLocation4_1
 
 
         base.GameLoop(sender, e);
+
+        ImageBrush MyImage1 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths1[currentSpriteIndex_1], UriKind.Relative))
+        };
+        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        {
+            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        {
+            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        Player1.Fill = MyImage1;
 
         Canvas.SetLeft(Player1, Game.Me.X + Game.Me.SpeedX);
         Canvas.SetTop(Player1, Game.Me.Y - Game.Me.SpeedY);

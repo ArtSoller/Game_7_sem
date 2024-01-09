@@ -149,10 +149,10 @@ public partial class PageLocation3_1
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion4_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
                     {
                         _toDisplay = false;
-                        NavigationService?.Navigate(TeleportTo(Location.Location4_2));
+                        NavigationService?.Navigate(TeleportTo(Location.Location4_1));
                     }
 
 
@@ -182,6 +182,27 @@ public partial class PageLocation3_1
             Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
 
         base.GameLoop(sender, e);
+
+        ImageBrush MyImage1 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths1[currentSpriteIndex_1], UriKind.Relative))
+        };
+        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        {
+            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        {
+            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        }
+        if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        Player1.Fill = MyImage1;
+
         Canvas.SetLeft(Player1, Game.Me.X + Game.Me.SpeedX);
         Canvas.SetTop(Player1, Game.Me.Y - Game.Me.SpeedY);
     }

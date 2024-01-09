@@ -145,7 +145,7 @@ public partial class PageLocation3_2
 
         Location3_2.Focus();
         base.GameSetUp();
-        Player2.Fill = MyImage;
+        Player2.Fill = MyImagE;
     }
 
     protected override void SetMovementPossibility()
@@ -169,6 +169,8 @@ public partial class PageLocation3_2
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location4_2));
                     }
+
+                    
 
             if ((string)obj.Tag == "AreaEasel1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                 NavigationService?.Navigate(new PageQuest3_2_1_way(Game.Me, Game.Companion));
@@ -196,6 +198,27 @@ public partial class PageLocation3_2
             Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
 
         base.GameLoop(sender, e);
+
+        ImageBrush MyImage2 = new()
+        {
+            ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
+        };
+        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        {
+            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        {
+            Player2.RenderTransform = new ScaleTransform(-1, 1);
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        }
+        if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        Player2.Fill = MyImage2;
+
 
         Canvas.SetLeft(Player2, Game.Me.X + Game.Me.SpeedX);
         Canvas.SetTop(Player2, Game.Me.Y - Game.Me.SpeedY);

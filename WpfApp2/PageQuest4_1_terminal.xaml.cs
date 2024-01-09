@@ -81,7 +81,6 @@ public partial class PageQuest4_1_terminal
             txtInput.IsReadOnly = true;
             Game.third_part_code += Game.QuestKeyString[3];
             IsTeleportActive = true;
-            Game.isQuestDone = true;
             Enter.Visibility = Visibility.Collapsed;
         }
         else

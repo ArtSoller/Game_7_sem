@@ -23,17 +23,19 @@ public partial class PageLocation0
     public PageLocation0(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
+        Performer.Visibility = Visibility.Visible;
+        Assistant.Visibility = Visibility.Visible;
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
         if (Game.isGameDone == false)
         {
-            TeleportToLocaltion1_ForPlayer1.Fill = Game.redBrush;
-            TeleportToLocaltion1_ForPlayer2.Fill = Game.blueBrush;
+            TeleportToLocaltion1_ForPerformer.Fill = Game.redBrush;
+            TeleportToLocaltion1_ForAssistant.Fill = Game.blueBrush;
         }
         else
         {
-            TeleportToLocaltion1_ForPlayer1.Fill = Game.defaultBrush;
-            TeleportToLocaltion1_ForPlayer2.Fill = Game.defaultBrush;
+            TeleportToLocaltion1_ForPerformer.Fill = Game.defaultBrush;
+            TeleportToLocaltion1_ForAssistant.Fill = Game.defaultBrush;
         }
 
         mediaPlayer = new();
@@ -55,11 +57,11 @@ public partial class PageLocation0
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player1, Game.Me.X);
-        Canvas.SetTop(Player1, Game.Me.Y);
+        Canvas.SetLeft(Performer, Game.Me.X);
+        Canvas.SetTop(Performer, Game.Me.Y);
 
-        Canvas.SetLeft(Player2, Game.Companion.X);
-        Canvas.SetTop(Player2, Game.Companion.Y);
+        Canvas.SetLeft(Assistant, Game.Companion.X);
+        Canvas.SetTop(Assistant, Game.Companion.Y);
 
         Canvas.SetTop(chest, 0.5 * (SystemParameters.VirtualScreenHeight - chest.Height));
         Canvas.SetLeft(chest, 0.5 * (SystemParameters.VirtualScreenWidth - chest.Width));
@@ -68,11 +70,11 @@ public partial class PageLocation0
         Canvas.SetLeft(ChestArea, 0.6 * (SystemParameters.VirtualScreenWidth - ChestArea.Width));
 
         // Переходы на карты.
-        Canvas.SetTop(TeleportToLocaltion1_ForPlayer1, SystemParameters.VirtualScreenHeight * 0.2);
-        Canvas.SetLeft(TeleportToLocaltion1_ForPlayer1, SystemParameters.VirtualScreenWidth - TeleportToLocaltion1_ForPlayer1.Width - 10);
+        Canvas.SetTop(TeleportToLocaltion1_ForPerformer, SystemParameters.VirtualScreenHeight * 0.2);
+        Canvas.SetLeft(TeleportToLocaltion1_ForPerformer, SystemParameters.VirtualScreenWidth - TeleportToLocaltion1_ForPerformer.Width - 10);
 
-        Canvas.SetTop(TeleportToLocaltion1_ForPlayer2, SystemParameters.VirtualScreenHeight * 0.65);
-        Canvas.SetLeft(TeleportToLocaltion1_ForPlayer2, SystemParameters.VirtualScreenWidth - TeleportToLocaltion1_ForPlayer2.Width - 10);
+        Canvas.SetTop(TeleportToLocaltion1_ForAssistant, SystemParameters.VirtualScreenHeight * 0.65);
+        Canvas.SetLeft(TeleportToLocaltion1_ForAssistant, SystemParameters.VirtualScreenWidth - TeleportToLocaltion1_ForAssistant.Width - 10);
 
         Canvas.SetTop(TeleportToLocaltionBack_1, SystemParameters.VirtualScreenHeight * 0.2);
 
@@ -102,15 +104,8 @@ public partial class PageLocation0
 
         Location0.Focus();
         base.GameSetUp();
-
-        //    ImageBrush MyImage = new()
-        //    {
-        //        ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-        //    };
-        //    currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-
-        Player1.Fill = MyImage;
-        Player2.Fill = MyImagE;
+        Performer.Fill = MyImage;
+        Assistant.Fill = MyImagE;
 
     }
     #endregion
@@ -125,70 +120,7 @@ public partial class PageLocation0
     //        playerSprite.Source = new BitmapImage(new Uri("pacman.png", UriKind.Relative)); // Устанавливаем начальный спрайт
     //    }
     //}
-    //public static string[] spritePaths1 = { "sptirte_1_1.png", "sptirte_1_2.png", "sptirte_1_3.png", "sptirte_1_4.png", "sptirte_1_5.png", "sptirte_1_6.png", "sptirte_1_7.png", "sptirte_1_8.png" };
-    //public static string[] spritePaths2 = { "sptirte_2_1.png", "sptirte_2_2.png", "sptirte_2_3.png", "sptirte_2_4.png", "sptirte_2_5.png", "sptirte_2_6.png", "sptirte_2_7.png", "sptirte_2_8.png" };
 
-    //public static int currentSpriteIndex = 0;
-    //private void CanvasKeyDown(object sender, KeyEventArgs e)
-    //{
-    //    if (e.Key == Key.W)
-    //    {
-    //        _isUpKeyPressed = true;
-    //        _me.IsMovingUpward = true;
-    //        ImageBrush MyImage = new()
-    //        {
-    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-    //        };
-    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-    //        Player1.Fill = MyImage;
-    //    }
-
-    //    if (e.Key == Key.A)
-    //    {
-    //        _isLeftKeyPressed = true;
-    //        _me.IsMovingLeftward = true;
-    //        Player1.RenderTransform = new ScaleTransform(-1, 1);
-    //        ImageBrush MyImage = new()
-    //        {
-    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-    //        };
-    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-    //        Player1.Fill = MyImage;
-    //    }
-
-    //    if (e.Key == Key.D)
-    //    {
-    //        _isRightKeyPressed = true;
-    //        _me.IsMovingRightward = true;
-    //        Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
-    //        ImageBrush MyImage = new()
-    //        {
-    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-    //        };
-    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-    //        Player1.Fill = MyImage;
-    //    }
-
-    //    if (e.Key == Key.S)
-    //    {
-    //        _isDownKeyPressed = true;
-    //        _me.IsMovingDownward = true;
-    //        ImageBrush MyImage = new()
-    //        {
-    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-    //        };
-    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-    //        Player1.Fill = MyImage;
-    //    }
-
-    //    if (e.Key == Key.F)
-    //    {
-    //        _isForceButtonClicked = true;
-    //    }
-
-    //    if (e.Key == Key.Escape)
-    //        GameOver("Dead");
-    //}
 
     protected override void SetMovementPossibility()
     {
@@ -200,39 +132,66 @@ public partial class PageLocation0
         Game.Me._isPossibleRightwardMovement = Game.Me.X + 50 < SystemParameters.VirtualScreenWidth - wallRight.Width;
         Game.Me._isPossibleDownwardMovement = Game.Me.Y + 50 < SystemParameters.VirtualScreenHeight - wallBottom.Height;
 
-        pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
+        var PerformerHitBox = new Rect(Game.Me.Role == Role.Performer ? Game.Me.X : Game.Companion.X, Game.Me.Role == Role.Performer ? Game.Me.Y : Game.Companion.Y, 50, 50);
+        var AssistantHitBox = new Rect(Game.Me.Role == Role.Assistant ? Game.Me.X : Game.Companion.X, Game.Me.Role == Role.Assistant ? Game.Me.Y : Game.Companion.Y, 50, 50);
+
 
         foreach (var obj in Location0.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "chest" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "chestArea")))
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Performer)
+            if (obj.Name == "TeleportToLocaltion1_ForPerformer" && IsTeleportActive && PerformerHitBox.IntersectsWith(hitBox))
+            {
+                if (Game.Me.Role == Role.Performer)
                 {
-                    Game.isQuestDone = false;
+                    IsTeleportActive = false;
                     NavigationService?.Navigate(TeleportTo(Location.Location1_1));
                     _toDisplay = false;
-                    Game.isQuestDone = false;
+                }
+                else
+                {
+                    Performer.Visibility = Visibility.Collapsed;
                 }
 
-                if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Assistant)
+            }
+
+            if (obj.Name == "TeleportToLocaltion1_ForAssistant" && IsTeleportActive && AssistantHitBox.IntersectsWith(hitBox))
+            {
+                if (Game.Me.Role == Role.Assistant)
                 {
-                    Game.isQuestDone = false;
+                    IsTeleportActive = false;
                     NavigationService?.Navigate(TeleportTo(Location.Location1_2));
                     _toDisplay = false;
                 }
-
-                if ((string)obj.Tag == "chestArea" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-
+                else
                 {
-                    mediaPlayer.Play();
-                    NavigationService?.Navigate(new SunduckInteraction(Game.Me, Game.Companion));
+                    Assistant.Visibility = Visibility.Collapsed;
                 }
-                
-            if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox))
-            {
-                Game.Me.X -= 1.1 * Game.Me.SpeedX;
-                Game.Me.Y += 1.1 * Game.Me.SpeedY;
             }
+
+            if ((string)obj.Tag == "chestArea" && (PerformerHitBox.IntersectsWith(hitBox) || AssistantHitBox.IntersectsWith(hitBox)) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new SunduckInteraction(Game.Me, Game.Companion));
+            }
+
+            if ((string)obj.Tag == "chest" && PerformerHitBox.IntersectsWith(hitBox))
+            {
+                PerformerHitBox.X -= 1.1 * (Game.Me.Role == Role.Performer ? Game.Me.SpeedX : Game.Companion.SpeedX);
+                PerformerHitBox.Y += 1.1 * (Game.Me.Role == Role.Performer ? Game.Me.SpeedY : Game.Companion.SpeedY);
+            }
+
+            if ((string)obj.Tag == "chest" && AssistantHitBox.IntersectsWith(hitBox))
+            {
+                AssistantHitBox.X -= 1.1 * (Game.Me.Role == Role.Assistant ? Game.Me.SpeedX : Game.Companion.SpeedX);
+                AssistantHitBox.Y += 1.1 * (Game.Me.Role == Role.Assistant ? Game.Me.SpeedY : Game.Companion.SpeedY);
+            }
+
+            Game.Me.X = Game.Me.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
+            Game.Me.Y = Game.Me.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
+
+            Game.Companion.X = Game.Companion.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
+            Game.Companion.Y = Game.Companion.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
         }
     }
 
@@ -246,13 +205,13 @@ public partial class PageLocation0
         SetMovementPossibility();
 
         if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
-            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(180, Performer.Width/2, Performer.Height/2);
         else if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Assistant)
-            Player2.RenderTransform = new RotateTransform(180, Player2.Width / 2, Player2.Height / 2);
+            Assistant.RenderTransform = new RotateTransform(180, Assistant.Width / 2, Assistant.Height/2);
         else if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height/2);
         else if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Assistant)
-            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            Assistant.RenderTransform = new RotateTransform(0, Assistant.Width / 2, Assistant.Height / 2);
 
         base.GameLoop(sender, e);
         ImageBrush MyImage1 = new()
@@ -263,42 +222,50 @@ public partial class PageLocation0
         {
             ImageSource = new BitmapImage(new Uri(spritePaths2[currentSpriteIndex_2], UriKind.Relative))
         };
-        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        if ((Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer) || (Game.Companion.IsMovingRightward && Game.Companion.Role == Role.Performer))
         {
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width/2, Performer.Height/2);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
-        if (Game.Companion.IsMovingRightward && Game.Companion.Role == Role.Assistant)
+        if ((Game.Companion.IsMovingRightward && Game.Companion.Role == Role.Assistant) || (Game.Me.IsMovingRightward && Game.Me.Role == Role.Assistant))
         {
-            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            Assistant.RenderTransform = new RotateTransform(0, Assistant.Width / 2, Assistant.Height / 2);
             currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
         }
-        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        if ((Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer) || (Game.Companion.IsMovingLeftward && Game.Companion.Role == Role.Performer))
         {
-            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            Performer.RenderTransform = new ScaleTransform(-1, 1);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
-        if (Game.Companion.IsMovingLeftward && Game.Companion.Role == Role.Assistant)
+        if ((Game.Companion.IsMovingLeftward && Game.Companion.Role == Role.Assistant) || (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Assistant))
         {
-            Player2.RenderTransform = new ScaleTransform(-1, 1);
+            Assistant.RenderTransform = new ScaleTransform(-1, 1);
             currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
         }
-        Player1.Fill = MyImage1;
-        Player2.Fill = MyImage2;
+        if ((Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer) || (Game.Companion.IsMovingUpward && Game.Companion.Role == Role.Performer))
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        if ((Game.Me.IsMovingUpward && Game.Me.Role == Role.Assistant) || (Game.Companion.IsMovingUpward && Game.Companion.Role == Role.Assistant))
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        if ((Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer) || (Game.Companion.IsMovingDownward && Game.Companion.Role == Role.Performer))
+            currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
+        if ((Game.Me.IsMovingDownward && Game.Me.Role == Role.Assistant) || (Game.Companion.IsMovingDownward && Game.Companion.Role == Role.Assistant))
+            currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
+        Performer.Fill = MyImage1;
+        Assistant.Fill = MyImage2;
 
-        Canvas.SetLeft(Player1, Game.Me.Role == Role.Performer ? Game.Me.X : Game.Companion.X);
-        Canvas.SetTop(Player1, Game.Me.Role == Role.Performer ? Game.Me.Y : Game.Companion.Y);
+        Canvas.SetLeft(Performer, Game.Me.Role == Role.Performer ? Game.Me.X : Game.Companion.X);
+        Canvas.SetTop(Performer, Game.Me.Role == Role.Performer ? Game.Me.Y : Game.Companion.Y);
 
-        Canvas.SetLeft(Player2, Game.Me.Role == Role.Assistant ? Game.Me.X : Game.Companion.X);
-        Canvas.SetTop(Player2, Game.Me.Role == Role.Assistant ? Game.Me.Y : Game.Companion.Y);
+        Canvas.SetLeft(Assistant, Game.Me.Role == Role.Assistant ? Game.Me.X : Game.Companion.X);
+        Canvas.SetTop(Assistant, Game.Me.Role == Role.Assistant ? Game.Me.Y : Game.Companion.Y);
 
         //if (Game.Me.Role == Role.Performer)
         //{
-        //    Canvas.SetLeft(Player1, Game.Me.X);
+        //    Canvas.SetLeft(Performer, Game.Me.X);
         //}
         //if (Game.Me.Role == Role.Assistant)
         //{
-        //    Canvas.SetLeft(Player2, Game.Me.X);
+        //    Canvas.SetLeft(Assistant, Game.Me.X);
         //}
 
         Tb1.Text = Game.Me.Role.ToString();

@@ -30,7 +30,7 @@ public class GreeterService : Greeter.GreeterBase
             });
 
             //Console.WriteLine($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y}");
-            await SendBroadcastMessageAsync($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y} {clientMessage.CompanionsName}");      
+            await SendBroadcastMessageAsync($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y} {clientMessage.CompanionsName} {clientMessage.IsMovingLeftward} {clientMessage.IsMovingRightward} {clientMessage.IsMovingUpward} {clientMessage.IsMovingDownward}");      
         }
     }
 
@@ -41,7 +41,11 @@ public class GreeterService : Greeter.GreeterBase
             Name = messageBody.Split()[0],
             X = Convert.ToDouble(messageBody.Split()[1]),
             Y = Convert.ToDouble(messageBody.Split()[2]),
-            CompanionsName = messageBody.Split()[3]
+            CompanionsName = messageBody.Split()[3],
+            IsMovingLeftward = Convert.ToBoolean(messageBody.Split()[4]),
+            IsMovingRightward = Convert.ToBoolean(messageBody.Split()[5]),
+            IsMovingUpward = Convert.ToBoolean(messageBody.Split()[6]),
+            IsMovingDownward = Convert.ToBoolean(messageBody.Split()[7])
         };
 
         var tasks = new List<Task>() { };
@@ -68,7 +72,7 @@ public class GreeterService : Greeter.GreeterBase
                                 
                 client.Value.WriteAsync(message);
                 assistantFree = false;
-                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key}");
+                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key} {false} {false} {false} {false}");
             }
             else
             {
@@ -78,7 +82,7 @@ public class GreeterService : Greeter.GreeterBase
                 };
 
                 client.Value.WriteAsync(message);
-                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key}");
+                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key} {false} {false} {false} {false}");
             }
         }
     }
@@ -99,7 +103,7 @@ public class GreeterService : Greeter.GreeterBase
     }
 
 
-    // Должно работать.
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
     private static async Task RemoveClientAsync(ChatClient chatClient)
     {
         var existingUser = clients.FirstOrDefault(c => c.Key == chatClient.UserName);
@@ -132,12 +136,12 @@ public class GreeterService : Greeter.GreeterBase
         }
         catch (RpcException ex) when (ex.StatusCode == StatusCode.Cancelled)
         {
-            Console.WriteLine("Что это?");
+            Console.WriteLine("пїЅпїЅпїЅ пїЅпїЅпїЅ?");
             throw new TimeoutException();
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Вылет где надо: {ex}");
+            Console.WriteLine($"пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ: {ex}");
             throw new Exception();
         }
     }

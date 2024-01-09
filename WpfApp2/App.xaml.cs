@@ -36,7 +36,7 @@ public partial class App : Application
         {
             FileName = "A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\Music1.mp3"
         };
-        //_mediaPlayer.MediaOpened += RunMusic;
+        mediaPlayer.MediaOpened += RunMusic;
         mediaPlayer.MediaFailed += FailedMusic;
         mediaPlayer.Open(new Uri(_openFileDialog.FileName));
     }

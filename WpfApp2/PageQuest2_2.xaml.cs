@@ -107,7 +107,6 @@ public partial class PageQuest2_2
         if (inputValue1 == "4" && inputValue2 == "4" && inputValue3 == "2" && inputValue4 == "3")
         {
             txtScore.Text = "Готово!";
-            Game.isQuestDone = true;
             txtScore.Visibility = Visibility.Visible;
             txtInput1.IsReadOnly = true;
             txtInput3.IsReadOnly = true;

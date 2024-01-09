@@ -16,16 +16,16 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="Player1" Width="80" Height="100" Fill="blue" Canvas.Left="100" Canvas.Top="251" />
-        <Rectangle Name="Player2" Width="50" Height="50" Fill="red" Canvas.Left="100" Canvas.Top="406" />
+        <Rectangle Name="Performer" Width="80" Height="100" Fill="blue" Canvas.Left="100" Canvas.Top="251" />
+        <Rectangle Name="Assistant" Width="80" Height="100" Fill="red" Canvas.Left="100" Canvas.Top="406" />
 
         <Rectangle Name="wallTop" Tag="wall" Height="60" Width="950" Stroke="Black"/>
         <Rectangle Name="wallBottom" Tag="wall" Height="60" Width="950" Stroke="Black"/>
         <Rectangle Name="wallLeft" Tag="wall" Height="630" Width="12" Stroke="Black"/>
         <Rectangle Name="wallRight" Tag="wall" Height="630" Width="20" Stroke="Black"/>
 
-        <Rectangle Name="TeleportToLocaltion1_ForPlayer1" Tag="teleport" Height="165" Canvas.Left="920" Canvas.Top="395" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Name="TeleportToLocaltion1_ForPlayer2" Tag="teleport" Height="165" Canvas.Left="920" Canvas.Top="111" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle Name="TeleportToLocaltion1_ForAssistant" Tag="teleport" Height="165" Canvas.Left="920" Canvas.Top="395" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Rectangle Name="TeleportToLocaltion1_ForPerformer" Tag="teleport" Height="165" Canvas.Left="920" Canvas.Top="111" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <Rectangle Name="chest" Tag="chest" Height="147" Width="226" Canvas.Left="324" Canvas.Top="269">
             <Rectangle.Fill>
