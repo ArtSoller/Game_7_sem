@@ -18,13 +18,8 @@ message Content {
     bool IsMovingRightward = 7;
     bool IsMovingUpward = 8;
     bool IsMovingDownward = 9;
-    Code Combination = 10;
-
-}
-
-message Code {
-    string first = 1;
-    string second = 2;
-    string third = 3;
-    string fourth = 4;
+    string first = 10;
+    string second = 11;
+    string third = 12;
+    string fourth = 13;
 }

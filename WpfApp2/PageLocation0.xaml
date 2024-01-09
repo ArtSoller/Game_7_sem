@@ -37,16 +37,7 @@
         <Rectangle x:Name="TeleportToLocaltionBack_1" Tag="teleport" Height="165" Canvas.Top="111" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle x:Name="TeleportToLocaltionBack_2" Tag="teleport" Height="165" Canvas.Top="395" Width="30" Fill="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <TextBox Name="Tb1" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="20" Canvas.Top="60"/>
-        <TextBox Name="Tb2" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="20" Canvas.Top="88"/>
-        <TextBox Name="Tb3" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="60"/>
-        <TextBox Name="Tb4" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="88"/>
-        <TextBox Name="Tb5" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="119"/>
-        <TextBox Name="Tb6" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="169" Canvas.Top="153"/>
-
-        <TextBox Name="Tb7" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="88"/>
-        <TextBox Name="Tb8" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="119"/>
-        <TextBox Name="Tb9" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="153"/>
-        <TextBox Name="Tb10" TextWrapping="Wrap" Text="TextBox" Width="120" Canvas.Left="311" Canvas.Top="185"/>
+        
         <TextBox Name="code" Canvas.Left="690" Canvas.Top="646" Foreground="White" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
         <TextBox Name="first_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Orange" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>
         <TextBox Name="second_part_code" Canvas.Left="690" Canvas.Top="646" Foreground="Aqua" FontSize="18" Background="Transparent" BorderBrush="Transparent"></TextBox>

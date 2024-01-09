@@ -245,19 +245,6 @@ public partial class PageLocation0
         Canvas.SetLeft(Assistant, Game.Me.Role == Role.Assistant ? Game.Me.X : Game.Companion.X);
         Canvas.SetTop(Assistant, Game.Me.Role == Role.Assistant ? Game.Me.Y : Game.Companion.Y);
 
-        //if (Game.Me.Role == Role.Performer)
-        //{
-        //    Canvas.SetLeft(Performer, Game.Me.X);
-        //}
-        //if (Game.Me.Role == Role.Assistant)
-        //{
-        //    Canvas.SetLeft(Assistant, Game.Me.X);
-        //}
-
         Tb1.Text = Game.Me.Role.ToString();
-        Tb3.Text = Game.Me.X.ToString();
-        Tb4.Text = Game.Me.Y.ToString();
-        Tb7.Text = Game.Companion.X.ToString();
-        Tb8.Text = Game.Companion.Y.ToString();
     }
 }

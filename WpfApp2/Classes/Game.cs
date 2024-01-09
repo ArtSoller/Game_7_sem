@@ -57,7 +57,7 @@ public static class Game
     public static SolidColorBrush blueBrush = new SolidColorBrush(Colors.Blue);
     public static SolidColorBrush redBrush = new SolidColorBrush(Colors.Red);
     public static SolidColorBrush defaultBrush = new SolidColorBrush(Colors.LightGray);
-
+    
 
     public static string parts_code = "Найденные части кода: ";
     public static string first_part_code = "";
