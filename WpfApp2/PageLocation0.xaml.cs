@@ -27,10 +27,11 @@ public partial class PageLocation0
         Assistant.Visibility = Visibility.Visible;
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
-        if (IsTeleportActive)
+        if (Game.first_part_code=="")
         {
             TeleportToLocaltion1_ForPerformer.Fill = Game.redBrush;
             TeleportToLocaltion1_ForAssistant.Fill = Game.blueBrush;
+            IsTeleportActive = true;
         }
 
         mediaPlayer = new();
@@ -127,7 +128,6 @@ public partial class PageLocation0
             {
                 if (Game.Me.Role == Role.Performer)
                 {
-                    IsTeleportActive = false;
                     NavigationService?.Navigate(TeleportTo(Location.Location1_1));
                     _toDisplay = false;
                 }

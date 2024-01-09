@@ -29,7 +29,7 @@ public abstract class Room : Page
 
     protected bool _toDisplay = true;
 
-    public bool IsTeleportActive = true;
+    public bool IsTeleportActive = false;
 
     public double _friction = 0.88F, _speed = 1.5F;
 
