@@ -32,7 +32,7 @@ public partial class PageLocation2_1 : Room
 
             mediaPlayer = new();
             mediaPlayer.MediaFailed += FailedMusic;
-            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\BookOpened.mp3"));
+            mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\BookOpened.mp3"));
 
             code.IsReadOnly = true;
             code.Text = Game.parts_code;

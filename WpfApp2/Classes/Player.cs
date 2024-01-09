@@ -76,14 +76,22 @@ public class Player
         CurrentLocation = location;
 
         if (CurrentLocation == Location.Location0)
-        {
-            X = 100;
-            Y = SystemParameters.VirtualScreenHeight * 0.33;
+        { 
+            if (Game.Me.Role == Role.Performer)
+            {
+                Game.Me.X = 100;
+                Game.Me.Y = SystemParameters.VirtualScreenHeight * 0.33;
+            }
+            else
+            {
+                Game.Me.X = 100;
+                Game.Me.Y = SystemParameters.VirtualScreenHeight * 0.66;
+            }
         }
         else
         {
-            X = 80;
-            Y = 0.5 * (SystemParameters.VirtualScreenHeight - 50);
+            Game.Me.X = 80;
+            Game.Me.Y = 0.5 * (SystemParameters.VirtualScreenHeight - 50);
         }
     }
 }

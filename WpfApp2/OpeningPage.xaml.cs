@@ -69,10 +69,10 @@ public partial class OpeningPage
 
     private void IpConnect()
     {
-        var Host = Dns.GetHostName();
-        var IP = Dns.GetHostAddresses(Host);
-        var externalIP = new WebClient().DownloadString("https://api.ipify.org");
-        TextBoxInfoIP.Text = "Ваш внешний IP адрес: " + externalIP + "\nВаш локальный IP адрес: " + IP[0];
+        //var Host = Dns.GetHostName();
+        //var IP = Dns.GetHostAddresses(Host);
+        //var externalIP = new WebClient().DownloadString("https://api.ipify.org");
+        //TextBoxInfoIP.Text = "Ваш внешний IP адрес: " + externalIP + "\nВаш локальный IP адрес: " + IP[0];
     }
 
     private void StartGame(object sender, RoutedEventArgs e)

@@ -54,7 +54,7 @@ public abstract class Room : Page
 
         //MyImage = new()
         //{
-        //    ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
+        //    ImageSource = new BitmapImage(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
         //};
 
         //mediaPlayer = new();
@@ -71,7 +71,7 @@ public abstract class Room : Page
 
         //MyImage = new()
         //{
-        //    ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
+        //    ImageSource = new BitmapImage(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
         //};
 
         //mediaPlayer = new();
@@ -207,12 +207,12 @@ public abstract class Room : Page
 
         MyImage = new()
         {
-            ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\sptirte_1_1.png"))
+            ImageSource = new BitmapImage(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\img\\sptirte_1_1.png"))
         };
 
         MyImagE = new()
         {
-            ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\sptirte_2_1.png"))
+            ImageSource = new BitmapImage(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\img\\sptirte_2_1.png"))
         };
 
         Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y, Game.Me.IsMovingLeftward, Game.Me.IsMovingRightward, Game.Me.IsMovingUpward, Game.Me.IsMovingDownward);

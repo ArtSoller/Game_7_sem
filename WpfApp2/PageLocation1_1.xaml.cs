@@ -25,24 +25,24 @@ public partial class PageLocation1_1 : Room
     {
         InitializeComponent();
 
-            Floor.Height = SystemParameters.VirtualScreenHeight;
-            Floor.Width = SystemParameters.VirtualScreenWidth;
+        Floor.Height = SystemParameters.VirtualScreenHeight;
+        Floor.Width = SystemParameters.VirtualScreenWidth;
 
 
-            mediaPlayer = new();
-            mediaPlayer.MediaFailed += FailedMusic;
-            mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\PictureOpened.mp3"));
 
-            code.IsReadOnly = true;
-            code.Text = Game.parts_code;
-            first_part_code.Text = Game.first_part_code;
-            second_part_code.Text = Game.second_part_code;
-            third_part_code.Text = Game.third_part_code;
-            fourth_part_code.Text = Game.fourth_part_code;
+        code.IsReadOnly = true;
+        code.Text = Game.parts_code;
+        first_part_code.Text = Game.first_part_code;
+        second_part_code.Text = Game.second_part_code;
+        third_part_code.Text = Game.third_part_code;
+        fourth_part_code.Text = Game.fourth_part_code;
 
-            CanvasSetObjects();
-            GameSetUp();
-        }
+        CanvasSetObjects();
+        GameSetUp();
+    }
 
     protected override void CanvasSetObjects()
     {
