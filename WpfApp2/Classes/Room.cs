@@ -50,7 +50,7 @@ public abstract class Room : Page
 
         MyImage = new()
         {
-            ImageSource = new BitmapImage(new Uri("C:\\Users\\popen\\source\\repos\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
+            ImageSource = new BitmapImage(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\img\\pacman.png"))
         };
 
         //mediaPlayer = new();

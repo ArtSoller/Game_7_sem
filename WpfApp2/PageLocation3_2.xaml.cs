@@ -127,12 +127,12 @@ public partial class PageLocation3_2 : Room
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
-        _isPossibleUpwardMovement = Canvas.GetTop(Player2) > wallTop.Height;
-        _isPossibleLeftwardMovement = Canvas.GetLeft(Player2) > wallLeft.Width;
-        _isPossibleRightwardMovement = Canvas.GetLeft(Player2) + Player2.Width < SystemParameters.VirtualScreenWidth - wallRight.Width;
-        _isPossibleDownwardMovement = Canvas.GetTop(Player2) + Player2.Height < SystemParameters.VirtualScreenHeight - wallBottom.Height;
+        Game.Me._isPossibleUpwardMovement = Game.Me.Y > wallTop.Height;
+        Game.Me._isPossibleLeftwardMovement = Game.Me.X > wallLeft.Width;
+        Game.Me._isPossibleRightwardMovement = Game.Me.X + 50 < SystemParameters.VirtualScreenWidth - wallRight.Width;
+        Game.Me._isPossibleDownwardMovement = Game.Me.Y + 50 < SystemParameters.VirtualScreenHeight - wallBottom.Height;
 
-        pacmanHitBox = new Rect(Canvas.GetLeft(Player2), Canvas.GetTop(Player2), Player2.Width, Player2.Height);
+        pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
 
         foreach (var obj in Location3_2.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
         {
