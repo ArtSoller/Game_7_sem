@@ -30,21 +30,25 @@ public partial class PageLocation2_2
 
 
 
-            mediaPlayer = new();
-            mediaPlayer.MediaFailed += FailedMusic;
-            mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookOpened.mp3")));
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/BookOpened.mp3")));
 
-            code.IsReadOnly = true;
-            code.Text = Game.parts_code;
-            first_part_code.Text = Game.first_part_code;
-            second_part_code.Text = Game.second_part_code;
-            third_part_code.Text = Game.third_part_code;
-            fourth_part_code.Text = Game.fourth_part_code;
-            if (IsTeleportActive == true)
-                TeleportToLocaltion3_2.Fill = Game.blueBrush;
-            CanvasSetObjects();
-            GameSetUp();
+        code.IsReadOnly = true;
+        code.Text = Game.parts_code;
+        first_part_code.Text = Game.first_part_code;
+        second_part_code.Text = Game.second_part_code;
+        third_part_code.Text = Game.third_part_code;
+        fourth_part_code.Text = Game.fourth_part_code;
+        if (Game.second_part_code != "")
+        {
+            TeleportToLocaltion3_2.Fill = Game.blueBrush;
+            IsTeleportActive = true;
         }
+        CanvasSetObjects();
+        GameSetUp();
+    }
+
 
     protected override void CanvasSetObjects()
     {
@@ -133,7 +137,6 @@ public partial class PageLocation2_2
             {
                 _toDisplay = false;
                 NavigationService?.Navigate(TeleportTo(Location.Location3_2));
-                IsTeleportActive = false;
             }
 
 

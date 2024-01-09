@@ -41,9 +41,12 @@ public partial class PageLocation4_1
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
-            if (IsTeleportActive == true)
-                TeleportToLocaltion0.Fill = Game.redBrush;
-            CanvasSetObjects();
+        if (Game.second_part_code != "")
+        {
+            TeleportToLocaltion0.Fill = Game.redBrush;
+            IsTeleportActive = true;
+        }
+        CanvasSetObjects();
             GameSetUp();
         }
 
@@ -140,7 +143,6 @@ public partial class PageLocation4_1
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location0));
-                        IsTeleportActive = false;
                     }
 
             if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)

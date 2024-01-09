@@ -42,10 +42,14 @@ public partial class PageLocation3_1
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
             IsTeleportActive = true;
+        TeleportToLocaltion4_1.Fill = Game.redBrush;
 
-            if (IsTeleportActive == true)
-                TeleportToLocaltion4_1.Fill = Game.redBrush;
-            CanvasSetObjects();
+        //if (Game.second_part_code != "")
+        //{
+        //    TeleportToLocaltion4_1.Fill = Game.redBrush;
+        //    IsTeleportActive = true;
+        //}
+        CanvasSetObjects();
             GameSetUp();
         }
 
@@ -157,7 +161,6 @@ public partial class PageLocation3_1
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location4_1));
-                        IsTeleportActive = false;
                     }
 
 
