@@ -8,14 +8,23 @@ service Greeter {
     rpc ActionStream (stream Content) returns (stream Content);
 }
 
-message Content {	
-	string Name = 1;
-	bool Role = 2;
-	double X = 3;
-	double Y = 4;
-	string CompanionsName = 5;
-	bool IsMovingLeftward = 6;
-	bool IsMovingRightward = 7;
-	bool IsMovingUpward = 8;
-	bool IsMovingDownward = 9;
-	}
+message Content {
+    string Name = 1;
+    bool Role = 2;
+    double X = 3;
+    double Y = 4;
+    string CompanionsName = 5;
+    bool IsMovingLeftward = 6;
+    bool IsMovingRightward = 7;
+    bool IsMovingUpward = 8;
+    bool IsMovingDownward = 9;
+    Code Combination = 10;
+
+}
+
+message Code {
+    string first = 1;
+    string second = 2;
+    string third = 3;
+    string fourth = 4;
+}

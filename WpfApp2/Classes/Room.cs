@@ -215,7 +215,7 @@ public abstract class Room : Page
             ImageSource = new BitmapImage(new Uri(System.IO.Path.GetFullPath("../../../img/sptirte_2_1.png")))
         };
 
-        Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y, Game.Me.IsMovingLeftward, Game.Me.IsMovingRightward, Game.Me.IsMovingUpward, Game.Me.IsMovingDownward);
+        Connection.SendCoordinates(Game.Me.Name, Game.Me.X, Game.Me.Y, Game.Me.IsMovingLeftward, Game.Me.IsMovingRightward, Game.Me.IsMovingUpward, Game.Me.IsMovingDownward, Game.first_part_code, Game.second_part_code, Game.third_part_code, Game.fourth_part_code);
     }
 
     protected abstract void SetMovementPossibility();

@@ -37,10 +37,10 @@ internal static class Connection
         call.RequestStream.WriteAsync(new Content() { Name = name });
         Game.Me.Name = name;
     }
-    public static void SendCoordinates(string _name, double _x, double _y, bool _isMovingLeftward, bool _isMovingRightward, bool _isMovingUpward, bool _isMovingDownward)
+    public static void SendCoordinates(string _name, double _x, double _y, bool _isMovingLeftward, bool _isMovingRightward, bool _isMovingUpward, bool _isMovingDownward, string _first, string _second, string _third, string _fourth)
     {
         if (call is null) throw new ArgumentNullException("call is null");
-        call.RequestStream.WriteAsync(new Content() {Name = _name, X = _x, Y = _y, IsMovingLeftward = _isMovingLeftward, IsMovingRightward = _isMovingRightward, IsMovingUpward = _isMovingUpward, IsMovingDownward = _isMovingDownward });
+        call.RequestStream.WriteAsync(new Content() {Name = _name, X = _x, Y = _y, IsMovingLeftward = _isMovingLeftward, IsMovingRightward = _isMovingRightward, IsMovingUpward = _isMovingUpward, IsMovingDownward = _isMovingDownward, Combination = new Code {First = _first, Second = _second, Third = _third, Fourth = _fourth }});
     }
     public static async Task ReceiveCoordinates()
     {
@@ -58,6 +58,11 @@ internal static class Connection
                     Game.Companion.IsMovingRightward = res.IsMovingRightward;
                     Game.Companion.IsMovingUpward = res.IsMovingUpward;
                     Game.Companion.IsMovingDownward = res.IsMovingDownward;
+                    Game.first_part_code = res.Combination.First;
+                    Game.second_part_code = res.Combination.Second;
+                    Game.third_part_code = res.Combination.Third;
+                    Game.fourth_part_code = res.Combination.Fourth;
+
                 }
             }
         }

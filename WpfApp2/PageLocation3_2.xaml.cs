@@ -178,9 +178,42 @@ public partial class PageLocation3_2
 
 
 
-            if ((string)obj.Tag == "papirus_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            if ((string)obj.Name == "AreaPapirus1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
                 NavigationService?.Navigate(new PageQuest3_2_1_way(Game.Me, Game.Companion));
-            
+            }
+
+            if ((string)obj.Name == "AreaPapirus2" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest3_2_2_way(Game.Me, Game.Companion));
+            }
+
+            if ((string)obj.Name == "AreaPapirus3" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest3_2_3_way(Game.Me, Game.Companion));
+            }
+
+            if ((string)obj.Name == "AreaPapirus4" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest3_2_4_way(Game.Me, Game.Companion));
+            }
+
+            if ((string)obj.Name == "AreaPapirus5" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest3_2_5_way(Game.Me, Game.Companion));
+            }
+
+            if ((string)obj.Name == "AreaPapirus6" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest3_2_6_way(Game.Me, Game.Companion));
+            }
+
             if ((string)obj.Tag == "papirus" && pacmanHitBox.IntersectsWith(hitBox))
             {
                 Game.Me.X -= Game.Me.SpeedX;
