@@ -20,6 +20,7 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageLocation1_1 : Room
 {
+    private MediaPlayer mediaPlayer = new();
     public PageLocation1_1(Player pl1, Player pl2) : base(pl1, pl2) 
     {
         InitializeComponent();
@@ -155,65 +156,53 @@ public partial class PageLocation1_1 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion2_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-                    {
-                        _toDisplay = false;
-                        NavigationService?.Navigate(TeleportTo(Location.Location2_1));
-                    }
+            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion2_1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+            {
+                _toDisplay = false;
+                NavigationService?.Navigate(TeleportTo(Location.Location2_1));
+            }
 
+            if ((string)obj.Name == "AreaEasel1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest1_1_1_picture(Game.Me, Game.Companion));
+            }
 
-                    if ((string)obj.Name == "AreaEasel1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    {
-                        mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest1_1_1_picture(_me, _companion));
-                    }
+            if ((string)obj.Name == "AreaEasel2" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest1_1_2_picture(Game.Me, Game.Companion));
+            }
 
-                    if ((string)obj.Name == "AreaEasel2" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    {
-                        mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest1_1_2_picture(_me, _companion));
-                    }
+            if ((string)obj.Name == "AreaEasel3" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest1_1_3_picture(Game.Me, Game.Companion));
+            }
 
-                    if ((string)obj.Name == "AreaEasel3" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    {
-                        mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest1_1_3_picture(_me, _companion));
-                    }
+            if ((string)obj.Name == "AreaEasel4" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest1_1_4_picture(Game.Me, Game.Companion));
+            }
 
-                    if ((string)obj.Name == "AreaEasel4" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    {
-                        mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest1_1_4_picture(_me, _companion));
-                    }
+            if ((string)obj.Name == "AreaEasel5" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest1_1_5_picture(Game.Me, Game.Companion));
+            }
 
-                    if ((string)obj.Name == "AreaEasel5" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    {
-                        mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest1_1_5_picture(_me, _companion));
-                    }
-
-                    if ((string)obj.Name == "AreaEasel6" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    {
-                        mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest1_1_6_picture(_me, _companion));
-                    }
-
-                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
-                    {
-                        _isPossibleUpwardMovement = false;
-                        _me.SpeedY = 0;
-                        _me.Y = Canvas.GetTop(obj) + obj.Height + 30;
-                        _me.IsMovingUpward = false;
-                    }
-
-                    if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
-                    {
-                        _isPossibleLeftwardMovement = false;
-                        _me.SpeedX = 0;
-                        _me.X = Canvas.GetLeft(obj) + obj.Width + 30;
-                        _me.IsMovingLeftward = false;
-                    }
-
+            if ((string)obj.Name == "AreaEasel6" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                mediaPlayer.Play();
+                NavigationService?.Navigate(new PageQuest1_1_6_picture(Game.Me, Game.Companion));
+            }
+            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
+            {
+                Game.Me.X -= 1.1 * Game.Me.SpeedX;
+                Game.Me.Y += 1.1 * Game.Me.SpeedY;
+            }
+        }
     }
 
     protected override void GameLoop(object sender, EventArgs e)

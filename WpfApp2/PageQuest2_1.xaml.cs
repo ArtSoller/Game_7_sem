@@ -22,9 +22,9 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest2_1
 {
+    private MediaPlayer mediaPlayer = new();
 
-
-    public PageQuest2_1(Player pl1, Player pl2)
+    public PageQuest2_1(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
@@ -46,16 +46,12 @@ public partial class PageQuest2_1
     }
 
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetLeft(quest_2, 0.5 * (SystemParameters.VirtualScreenWidth - quest_2.Width));
 
         Canvas.SetTop(Back, 0.6 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
-
-
-        _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(190, 190, 190));
-        Back.Foreground = _brush;
 
     }
 
@@ -68,6 +64,4 @@ public partial class PageQuest2_1
         NavigationService.Navigate(new PageLocation1_1(Game.Me, Game.Companion));
     }
 
-
-    }
 }

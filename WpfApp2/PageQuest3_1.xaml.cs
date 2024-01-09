@@ -22,14 +22,16 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest3_1
 {
-    public PageQuest3_1(Player pl1, Player pl2)
+    private MediaPlayer mediaPlayer = new();
+
+    public PageQuest3_1(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
 
-        _me = pl1;
-        _companion = pl2;
+        Game.Me = pl1;
+        Game.Companion = pl2;
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
@@ -45,7 +47,7 @@ public partial class PageQuest3_1
     }
 
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetTop(quest_3, 0.1 * (SystemParameters.VirtualScreenWidth - quest_3.Width));
         Canvas.SetLeft(quest_3, 0.5 * (SystemParameters.VirtualScreenWidth - quest_3.Width));

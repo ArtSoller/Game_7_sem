@@ -22,7 +22,8 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest1_1_6_picture
 {
-    public PageQuest1_1_6_picture(Player pl1, Player pl2)
+    private MediaPlayer mediaPlayer = new();
+    public PageQuest1_1_6_picture(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
@@ -44,6 +45,11 @@ public partial class PageQuest1_1_6_picture
 
         Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
+    }
+
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
     }
 
     private void Back_Click(object sender, RoutedEventArgs e)

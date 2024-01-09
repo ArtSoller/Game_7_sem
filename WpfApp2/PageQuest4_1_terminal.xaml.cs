@@ -24,19 +24,17 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest4_1_terminal
 {
+    private MediaPlayer mediaPlayer = new();
+
     public string InputText { get; set; }
 
-    private Brush? _brush;
 
-    public PageQuest4_1_terminal(Player pl1, Player pl2)
+    public PageQuest4_1_terminal(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
-
-        _me = pl1;
-        _companion = pl2;
 
         mediaPlayer = new();
         mediaPlayer.MediaFailed += FailedMusic;
@@ -46,7 +44,7 @@ public partial class PageQuest4_1_terminal
 
     }
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.4 * (SystemParameters.VirtualScreenWidth - Back.Width));
@@ -69,9 +67,9 @@ public partial class PageQuest4_1_terminal
     {
         mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\PapirusOpened.mp3"));
         mediaPlayer.Play();
-        if (_me is null) throw new ArgumentException("_me is null");
-        if (_companion is null) throw new ArgumentException("_companion is null");
-        NavigationService.Navigate(new PageLocation4_1(_me, _companion));
+        if (Game.Me is null) throw new ArgumentException("Game.Me is null");
+        if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
+        NavigationService.Navigate(new PageLocation4_1(Game.Me, Game.Companion));
     }
     private void Enter_Click(object sender, RoutedEventArgs e)
     {
@@ -81,7 +79,7 @@ public partial class PageQuest4_1_terminal
             txtScore.Text = "Готово!";
             txtScore.Visibility = Visibility.Visible;
             txtInput.IsReadOnly = true;
-            Game.third_part_code += Game.randomString[3];
+            Game.third_part_code += Game.QuestKeyString[3];
             IsTeleportActive = true;
             Game.isQuestDone = true;
             Enter.Visibility = Visibility.Collapsed;
@@ -100,4 +98,8 @@ public partial class PageQuest4_1_terminal
         txtScore.Visibility = Visibility.Hidden;
     }
 
+    protected override void SetMovementPossibility()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -69,7 +69,7 @@ public static class Game
     public static bool isGameDone = false;
 
 
-    public Game()
+    public static void Init()
     {
         
         Me = new Player() 

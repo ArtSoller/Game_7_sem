@@ -18,8 +18,10 @@ namespace WpfApp2;
 /// <summary>
 /// Логика взаимодействия для Page1.xaml
 /// </summary>
-public partial class PageLocation3_2 : Room
+public partial class PageLocation3_2
 {
+    private MediaPlayer mediaPlayer = new();
+
     public PageLocation3_2(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
@@ -168,8 +170,8 @@ public partial class PageLocation3_2 : Room
                         NavigationService?.Navigate(TeleportTo(Location.Location4_2));
                     }
 
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
+            if ((string)obj.Tag == "AreaEasel1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+                NavigationService?.Navigate(new PageQuest3_2_1_way(Game.Me, Game.Companion));
             
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
             {

@@ -24,8 +24,10 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest2_2
 {
+    private MediaPlayer mediaPlayer = new();
+
     public string InputText { get; set; }
-    public PageQuest2_2(Player pl1, Player pl2)
+    public PageQuest2_2(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
@@ -48,7 +50,7 @@ public partial class PageQuest2_2
         CanvasSetObjects();
     }
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.4 * (SystemParameters.VirtualScreenWidth - Back.Width));
@@ -111,7 +113,7 @@ public partial class PageQuest2_2
             txtInput3.IsReadOnly = true;
             txtInput5.IsReadOnly = true;
             txtInput7.IsReadOnly = true;
-            Game.second_part_code += Game.randomString[1];
+            Game.second_part_code += Game.QuestKeyString[1];
             IsTeleportActive = true;
             Enter.Visibility = Visibility.Collapsed;
         }

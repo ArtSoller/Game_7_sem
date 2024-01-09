@@ -20,6 +20,8 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageLocation2_1 : Room
 {
+    private MediaPlayer mediaPlayer = new();
+
     public PageLocation2_1(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
@@ -135,7 +137,7 @@ public partial class PageLocation2_1 : Room
                     if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
                         mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest2_1(_me, _companion));
+                        NavigationService?.Navigate(new PageQuest2_1(Game.Me, Game.Companion));
                     }
 
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))

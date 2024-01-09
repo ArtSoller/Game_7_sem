@@ -16,13 +16,15 @@ using System.Xml.Linq;
 
 namespace WpfApp2;
 
-public partial class PageLocation0 : Room
+public partial class PageLocation0
 {
     //public static string[] spritePathsUp = { "sptirte_1_1.png", "sptirte_1_2.png", "sptirte_1_3.png", "sptirte_1_4.png", "sptirte_1_5.png", "sptirte_1_6.png", "sptirte_1_7.png", "sptirte_1_8.png" };
     public static string[] spritePathsUp = { "sptirte_2_1.png", "sptirte_2_2.png", "sptirte_2_3.png", "sptirte_2_4.png", "sptirte_2_5.png", "sptirte_2_6.png", "sptirte_2_7.png", "sptirte_2_8.png" };
 
     public static int currentSpriteIndex = 0;
-    public PageLocation0(Player pl1, Player pl2)
+    private MediaPlayer mediaPlayer = new();
+
+    public PageLocation0(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Floor.Height = SystemParameters.VirtualScreenHeight;
@@ -126,66 +128,66 @@ public partial class PageLocation0 : Room
     //    }
     //}
 
-    private void CanvasKeyDown(object sender, KeyEventArgs e)
-    {
-        if (e.Key == Key.W)
-        {
-            _isUpKeyPressed = true;
-            _me.IsMovingUpward = true;
-            ImageBrush MyImage = new()
-            {
-                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-            };
-            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-            Player1.Fill = MyImage;
-        }
+    //private void CanvasKeyDown(object sender, KeyEventArgs e)
+    //{
+    //    if (e.Key == Key.W)
+    //    {
+    //        _isUpKeyPressed = true;
+    //        _me.IsMovingUpward = true;
+    //        ImageBrush MyImage = new()
+    //        {
+    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+    //        };
+    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+    //        Player1.Fill = MyImage;
+    //    }
 
-        if (e.Key == Key.A)
-        {
-            _isLeftKeyPressed = true;
-            _me.IsMovingLeftward = true;
-            Player1.RenderTransform = new ScaleTransform(-1, 1);
-            ImageBrush MyImage = new()
-            {
-                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-            };
-            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-            Player1.Fill = MyImage;
-        }
+    //    if (e.Key == Key.A)
+    //    {
+    //        _isLeftKeyPressed = true;
+    //        _me.IsMovingLeftward = true;
+    //        Player1.RenderTransform = new ScaleTransform(-1, 1);
+    //        ImageBrush MyImage = new()
+    //        {
+    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+    //        };
+    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+    //        Player1.Fill = MyImage;
+    //    }
 
-        if (e.Key == Key.D)
-        {
-            _isRightKeyPressed = true;
-            _me.IsMovingRightward = true;
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
-            ImageBrush MyImage = new()
-            {
-                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-            };
-            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-            Player1.Fill = MyImage;
-        }
+    //    if (e.Key == Key.D)
+    //    {
+    //        _isRightKeyPressed = true;
+    //        _me.IsMovingRightward = true;
+    //        Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+    //        ImageBrush MyImage = new()
+    //        {
+    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+    //        };
+    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+    //        Player1.Fill = MyImage;
+    //    }
 
-        if (e.Key == Key.S)
-        {
-            _isDownKeyPressed = true;
-            _me.IsMovingDownward = true;
-            ImageBrush MyImage = new()
-            {
-                ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
-            };
-            currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
-            Player1.Fill = MyImage;
-        }
+    //    if (e.Key == Key.S)
+    //    {
+    //        _isDownKeyPressed = true;
+    //        _me.IsMovingDownward = true;
+    //        ImageBrush MyImage = new()
+    //        {
+    //            ImageSource = new BitmapImage(new Uri(spritePathsUp[currentSpriteIndex], UriKind.Relative))
+    //        };
+    //        currentSpriteIndex = (currentSpriteIndex + 1) % spritePathsUp.Length;
+    //        Player1.Fill = MyImage;
+    //    }
 
-        if (e.Key == Key.F)
-        {
-            _isForceButtonClicked = true;
-        }
+    //    if (e.Key == Key.F)
+    //    {
+    //        _isForceButtonClicked = true;
+    //    }
 
-        if (e.Key == Key.Escape)
-            GameOver("Dead");
-    }
+    //    if (e.Key == Key.Escape)
+    //        GameOver("Dead");
+    //}
 
     protected override void SetMovementPossibility()
     {
@@ -203,7 +205,7 @@ public partial class PageLocation0 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Performer)
+            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer1" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Performer)
                 {
                     Game.isQuestDone = false;
                     NavigationService?.Navigate(TeleportTo(Location.Location1_1));
@@ -211,7 +213,7 @@ public partial class PageLocation0 : Room
                     Game.isQuestDone = false;
                 }
 
-                if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && _me.Role == Role.Assistant)
+                if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion1_ForPlayer2" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.Role == Role.Assistant)
                 {
                     Game.isQuestDone = false;
                     NavigationService?.Navigate(TeleportTo(Location.Location1_2));
@@ -222,7 +224,7 @@ public partial class PageLocation0 : Room
 
                 {
                     mediaPlayer.Play();
-                    NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
+                    NavigationService?.Navigate(new SunduckInteraction(Game.Me, Game.Companion));
                 }
                 
             if ((string)obj.Tag == "chest" && pacmanHitBox.IntersectsWith(hitBox))

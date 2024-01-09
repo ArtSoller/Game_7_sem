@@ -20,27 +20,25 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageLocation4_2 : Room
 {
+    private MediaPlayer mediaPlayer = new ();
     public PageLocation4_2(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
 
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
+        mediaPlayer.MediaFailed += FailedMusic;
 
-
-            mediaPlayer = new();
-            mediaPlayer.MediaFailed += FailedMusic;
-
-            code.IsReadOnly = true;
-            code.Text = Game.parts_code;
-            first_part_code.Text = Game.first_part_code;
-            second_part_code.Text = Game.second_part_code;
-            third_part_code.Text = Game.third_part_code;
-            fourth_part_code.Text = Game.fourth_part_code;
-            if (Game.isQuestDone == true)
-                TeleportToLocaltion0.Fill = Game.blueBrush;
-            CanvasSetObjects();
-            GameSetUp();
+        code.IsReadOnly = true;
+        code.Text = Game.parts_code;
+        first_part_code.Text = Game.first_part_code;
+        second_part_code.Text = Game.second_part_code;
+        third_part_code.Text = Game.third_part_code;
+        fourth_part_code.Text = Game.fourth_part_code;
+        if (Game.isQuestDone == true)
+            TeleportToLocaltion0.Fill = Game.blueBrush;
+        CanvasSetObjects();
+        GameSetUp();
         }
 
     protected override void CanvasSetObjects()
@@ -132,51 +130,28 @@ public partial class PageLocation4_2 : Room
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
-                    if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion0" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
-                    {
-                        _toDisplay = false;
-                        NavigationService?.Navigate(TeleportTo(Location.Location0));
-                        Game.isGameDone = true;
-                    }
+            if ((string)obj.Tag == "teleport" && obj.Name == "TeleportToLocaltion0" && IsTeleportActive && pacmanHitBox.IntersectsWith(hitBox))
+            {
+                _toDisplay = false;
+                NavigationService?.Navigate(TeleportTo(Location.Location0));
+                Game.isGameDone = true;
+            }
 
-
-                    if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                    {
-                        NavigationService?.Navigate(new PageQuest4_2_code(_me, _companion));
-                    }
+            if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            {
+                NavigationService?.Navigate(new PageQuest4_2_code(Game.Me, Game.Companion));
+            }
 
             if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
-                NavigationService?.Navigate(new Page8(Game.Me, Game.Companion));
+                NavigationService?.Navigate(new SunduckInteraction(Game.Me, Game.Companion));
 
-
-                    if (((string)obj.Tag == "papirus" || (string)obj.Tag == "book") && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingUpward)
-                    {
-                        _isPossibleUpwardMovement = false;
-                        _me.SpeedY = 0;
-                        _me.Y = Canvas.GetTop(obj) + obj.Height + 30;
-                        _me.IsMovingUpward = false;
-                    }
-
-                    if (((string)obj.Tag == "papirus" || (string)obj.Tag == "book") && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingLeftward)
-                    {
-                        _isPossibleLeftwardMovement = false;
-                        _me.SpeedX = 0;
-                        _me.X = Canvas.GetLeft(obj) + obj.Width + 30;
-                        _me.IsMovingLeftward = false;
-                    }
-
-                    if (((string)obj.Tag == "papirus" || (string)obj.Tag == "book") && pacmanHitBox.IntersectsWith(hitBox) && _me.IsMovingRightward)
-                    {
-                        _isPossibleRightwardMovement = false;
-                        _me.SpeedX = 0;
-                        _me.X = Canvas.GetLeft(obj) - 0.5 * obj.Width;
-                        _me.IsMovingRightward = false;
-                    }
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.IsMovingUpward)
+                    
+            if (((string)obj.Tag == "papirus" || (string)obj.Tag == "book") && pacmanHitBox.IntersectsWith(hitBox) && Game.Me.IsMovingUpward)
             {
                 Game.Me.X -= Game.Me.SpeedX;
                 Game.Me.Y += Game.Me.SpeedY;
             }
+
         }
     }
 

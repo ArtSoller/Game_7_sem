@@ -22,7 +22,9 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest3_2_5_way
 {
-    public PageQuest3_2_5_way(Player pl1, Player pl2)
+    private MediaPlayer mediaPlayer = new();
+
+    public PageQuest3_2_5_way(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
@@ -44,6 +46,7 @@ public partial class PageQuest3_2_5_way
 
         Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.5 * (SystemParameters.VirtualScreenWidth - Back.Width));
+    }
 
 
 

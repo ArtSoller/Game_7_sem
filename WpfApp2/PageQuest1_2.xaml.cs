@@ -22,7 +22,9 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest1_2
 {
-    public PageQuest1_2(Player pl1, Player pl2)
+    private MediaPlayer mediaPlayer = new();
+
+    public PageQuest1_2(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;
@@ -113,7 +115,7 @@ public partial class PageQuest1_2
         Game.isQuestDone = true;
         txtScore.Text = "Готово!";
         txtScore.Visibility = Visibility.Visible;
-        Game.first_part_code += Game.randomString[0];
+        Game.first_part_code += Game.QuestKeyString[0];
         IsTeleportActive = true;
         Check.Visibility = Visibility.Collapsed;
     }

@@ -23,11 +23,13 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest4_2_terminal
 {
+    private MediaPlayer mediaPlayer = new();
+
     public string InputText { get; set; }
 
     private Brush? _brush;
 
-    public PageQuest4_2_terminal(Player pl1, Player pl2)
+    public PageQuest4_2_terminal(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         txtScore.Visibility = Visibility.Hidden;
@@ -79,7 +81,7 @@ public partial class PageQuest4_2_terminal
             txtScore.Text = "Готово!";
             txtScore.Visibility = Visibility.Visible;
             txtInput.IsReadOnly = true;
-            Game.third_part_code += Game.randomString[3];
+            Game.third_part_code += Game.QuestKeyString[3];
             IsTeleportActive = true;
             Enter.Visibility = Visibility.Collapsed;
             Game.isQuestDone = true;

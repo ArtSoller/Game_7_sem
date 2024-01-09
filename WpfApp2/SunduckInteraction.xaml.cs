@@ -26,16 +26,17 @@ namespace WpfApp2;
 public partial class SunduckInteraction
 {
     public string? InputText { get; set; }
+    private MediaPlayer mediaPlayer = new();
 
-    public SunduckInteraction(Player pl1, Player pl2)
+    public SunduckInteraction(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
 
-        _mediaPlayer = new();
-        _mediaPlayer.MediaFailed += FailedMusic;
+        mediaPlayer = new();
+        mediaPlayer.MediaFailed += FailedMusic;
 
-        _mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
-        _mediaPlayer.Play();
+        mediaPlayer.Open(new Uri("D:\\CodeRepos\\CS\\NewGame\\Game_7_sem\\WpfApp2\\snd\\ChestOpened.mp3"));
+        mediaPlayer.Play();
         Background.Width = SystemParameters.VirtualScreenWidth;
         Background.Height = SystemParameters.VirtualScreenHeight;
         gameTimer = new();
@@ -49,11 +50,11 @@ public partial class SunduckInteraction
         txtInput5.IsReadOnly = true;
         count.IsReadOnly = true;
         txtInput5.Text = Game.AttemptsNumber.ToString();
-    CanvasSetObjects();
+        CanvasSetObjects();
     }
 
 
-    private void CanvasSetObjects()
+    protected override void CanvasSetObjects()
     {
         Canvas.SetTop(Back, 0.7 * (SystemParameters.VirtualScreenHeight - Back.Height));
         Canvas.SetLeft(Back, 0.4 * (SystemParameters.VirtualScreenWidth - Back.Width));
@@ -89,9 +90,9 @@ public partial class SunduckInteraction
     private void Back_Click(object sender, RoutedEventArgs e)
     {
         mediaPlayer.Play();
-        if (_me is null) throw new ArgumentException("_me is null");
-        if (_companion is null) throw new ArgumentException("_companion is null");
-        NavigationService.Navigate(new PageLocation0(_me, _companion));
+        if (Game.Me is null) throw new ArgumentException("Game.Me is null");
+        if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
+        NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }
 
     private void Enter_Click(object sender, RoutedEventArgs e)
@@ -102,7 +103,7 @@ public partial class SunduckInteraction
         var inputValue4 = txtInput4.Text; // Получаем значение из текстового поля
 
 
-        if (inputValue1 == Game.randomString[0].ToString() && inputValue2 == Game.randomString[1].ToString() && inputValue3 == Game.randomString[2].ToString() && inputValue4 == Game.randomString[3].ToString())
+        if (inputValue1 == Game.QuestKeyString[0].ToString() && inputValue2 == Game.QuestKeyString[1].ToString() && inputValue3 == Game.QuestKeyString[2].ToString() && inputValue4 == Game.QuestKeyString[3].ToString())
         {
             mediaPlayer.Open(new Uri("A:\\NSTU\\4_course\\7_sem\\Elem_comp\\Игра\\Game_new\\Game_7_sem\\WpfApp2\\snd\\GameWon.mp3"));
             mediaPlayer.Play();
@@ -158,8 +159,4 @@ public partial class SunduckInteraction
         throw new NotImplementedException();
     }
 
-    protected override void CanvasSetObjects()
-    {
-        throw new NotImplementedException();
-    }
 }

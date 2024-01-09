@@ -22,7 +22,8 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageQuest1_1_5_picture
 {
-    public PageQuest1_1_5_picture(Player pl1, Player pl2)
+    private MediaPlayer mediaPlayer = new();
+    public PageQuest1_1_5_picture(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
         Background.Width = SystemParameters.VirtualScreenWidth;

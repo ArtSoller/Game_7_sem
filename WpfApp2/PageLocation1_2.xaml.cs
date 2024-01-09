@@ -20,14 +20,14 @@ namespace WpfApp2;
 /// </summary>
 public partial class PageLocation1_2 : Room
 {
+    private MediaPlayer mediaPlayer = new();
+
     public PageLocation1_2(Player pl1, Player pl2) : base(pl1, pl2)
     {
         InitializeComponent();
 
             Floor.Height = SystemParameters.VirtualScreenHeight;
             Floor.Width = SystemParameters.VirtualScreenWidth;
-            _me = pl1;
-            _companion = pl2;
 
             mediaPlayer = new();
             mediaPlayer.MediaFailed += FailedMusic;
@@ -137,7 +137,7 @@ public partial class PageLocation1_2 : Room
                     if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                     {
                         mediaPlayer.Play();
-                        NavigationService?.Navigate(new PageQuest1_2(_me, _companion));
+                        NavigationService?.Navigate(new PageQuest1_2(Game.Me, Game.Companion));
                     }
 
             if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
