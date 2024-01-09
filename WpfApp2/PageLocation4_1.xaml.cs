@@ -50,8 +50,8 @@ public partial class PageLocation4_1
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player1, Game.Me.X);
-        Canvas.SetTop(Player1, Game.Me.Y);
+        Canvas.SetLeft(Performer, Game.Me.X);
+        Canvas.SetTop(Performer, Game.Me.Y);
 
         // Переходы на карты.
         Canvas.SetTop(TeleportToLocaltion0, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion0.Height));
@@ -117,7 +117,7 @@ public partial class PageLocation4_1
 
         Location4_1.Focus();
         base.GameSetUp();
-        Player1.Fill = MyImage;
+        Performer.Fill = MyImage;
     }
 
     protected override void SetMovementPossibility()
@@ -132,7 +132,7 @@ public partial class PageLocation4_1
 
         pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
 
-        foreach (var obj in Location4_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
+        foreach (var obj in Location4_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "book" || (string)_obj.Tag == "papirus" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "book_area" || (string)_obj.Tag == "papirus_area")))
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
@@ -140,7 +140,7 @@ public partial class PageLocation4_1
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location0));
-                        Game.isGameDone = true;
+                        IsTeleportActive = false;
                     }
 
             if ((string)obj.Tag == "book_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
@@ -167,9 +167,9 @@ public partial class PageLocation4_1
         SetMovementPossibility();
 
         if (Game.Me.IsMovingLeftward)
-            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(180, Performer.Width / 2, Performer.Height / 2);
         else if (Game.Me.IsMovingRightward)
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
 
 
         base.GameLoop(sender, e);
@@ -180,22 +180,22 @@ public partial class PageLocation4_1
         };
         if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
         {
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
         if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
         {
-            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            Performer.RenderTransform = new ScaleTransform(-1, 1);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
         if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
-        Player1.Fill = MyImage1;
+        Performer.Fill = MyImage1;
 
-        Canvas.SetLeft(Player1, Game.Me.X + Game.Me.SpeedX);
-        Canvas.SetTop(Player1, Game.Me.Y - Game.Me.SpeedY);
+        Canvas.SetLeft(Performer, Game.Me.X + Game.Me.SpeedX);
+        Canvas.SetTop(Performer, Game.Me.Y - Game.Me.SpeedY);
     }
 }
 

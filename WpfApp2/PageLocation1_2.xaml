@@ -16,7 +16,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="Player2" Width="50" Height="50" Fill="Blue" Canvas.Left="53" Canvas.Top="318" />
+        <Rectangle Name="Assistant" Width="80" Height="100" Fill="Blue" Canvas.Left="53" Canvas.Top="318" />
 
         <Rectangle Name="picture1" Tag="easel" ToolTip="Для взаимодействия нажмите кнопку F" Width="193" Height="170" Canvas.Left="386" Canvas.Top="258" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>

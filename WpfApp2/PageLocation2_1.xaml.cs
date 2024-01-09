@@ -40,7 +40,8 @@ public partial class PageLocation2_1 : Room
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
-
+            if (IsTeleportActive == true)
+                TeleportToLocaltion3_1.Fill = Game.redBrush;
             CanvasSetObjects();
             GameSetUp();
         }
@@ -48,8 +49,8 @@ public partial class PageLocation2_1 : Room
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player1, Game.Me.X);
-        Canvas.SetTop(Player1, Game.Me.Y);
+        Canvas.SetLeft(Performer, Game.Me.X);
+        Canvas.SetTop(Performer, Game.Me.Y);
 
         // Переходы на карты.
         Canvas.SetTop(TeleportToLocaltion3_1, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion3_1.Height));
@@ -108,7 +109,7 @@ public partial class PageLocation2_1 : Room
         if (gameTimer is null) throw new Exception("gameTimer is null");
         Location2_1.Focus();
         base.GameSetUp();
-        Player1.Fill = MyImage;
+        Performer.Fill = MyImage;
     }
 
     protected override void SetMovementPossibility()
@@ -131,6 +132,7 @@ public partial class PageLocation2_1 : Room
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location3_1));
+                        IsTeleportActive = false;
                     }
 
 
@@ -158,9 +160,9 @@ public partial class PageLocation2_1 : Room
         SetMovementPossibility();
 
         if (Game.Me.IsMovingLeftward)
-            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(180, Performer.Width / 2, Performer.Height / 2);
         else if (Game.Me.IsMovingRightward)
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
 
         base.GameLoop(sender, e);
 
@@ -170,22 +172,22 @@ public partial class PageLocation2_1 : Room
         };
         if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
         {
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
         if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
         {
-            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            Performer.RenderTransform = new ScaleTransform(-1, 1);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
         if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
-        Player1.Fill = MyImage1;
+        Performer.Fill = MyImage1;
 
-        Canvas.SetLeft(Player1, Game.Me.X + Game.Me.SpeedX);
-        Canvas.SetTop(Player1, Game.Me.Y - Game.Me.SpeedY);
+        Canvas.SetLeft(Performer, Game.Me.X + Game.Me.SpeedX);
+        Canvas.SetTop(Performer, Game.Me.Y - Game.Me.SpeedY);
     }
 }
 

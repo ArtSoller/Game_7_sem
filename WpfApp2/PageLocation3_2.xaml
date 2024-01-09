@@ -16,7 +16,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="Player2" Width="50" Height="50" Fill="Blue" Canvas.Left="62" Canvas.Top="347" />
+        <Rectangle Name="Assistant" Width="80" Height="100" Fill="Blue" Canvas.Left="62" Canvas.Top="347" />
 
         <Rectangle Name="papirus1" Tag="papirus" ToolTip="Для взаимодействия нажмите кнопку F" Width="84" Height="78" Canvas.Left="154" Canvas.Top="180" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>

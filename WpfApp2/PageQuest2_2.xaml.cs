@@ -94,7 +94,7 @@ public partial class PageQuest2_2
         mediaPlayer.Play();
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
-        NavigationService.Navigate(new PageLocation3_1(Game.Me, Game.Companion));
+        NavigationService.Navigate(new PageLocation2_2(Game.Me, Game.Companion));
     }
     private void Enter_Click(object sender, RoutedEventArgs e)
     {

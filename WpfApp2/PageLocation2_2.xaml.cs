@@ -49,8 +49,8 @@ public partial class PageLocation2_2
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player2, Game.Me.X);
-        Canvas.SetTop(Player2, Game.Me.Y);
+        Canvas.SetLeft(Assistant, Game.Me.X);
+        Canvas.SetTop(Assistant, Game.Me.Y);
 
         // Переходы на карты.
         Canvas.SetTop(TeleportToLocaltion3_2, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion3_2.Height));
@@ -110,7 +110,7 @@ public partial class PageLocation2_2
 
         Location2_2.Focus();
         base.GameSetUp();
-        Player2.Fill = MyImagE;
+        Assistant.Fill = MyImagE;
     }
 
     protected override void SetMovementPossibility()
@@ -133,6 +133,7 @@ public partial class PageLocation2_2
             {
                 _toDisplay = false;
                 NavigationService?.Navigate(TeleportTo(Location.Location3_2));
+                IsTeleportActive = false;
             }
 
 
@@ -157,34 +158,35 @@ public partial class PageLocation2_2
         SetMovementPossibility();
 
         if (Game.Me.IsMovingLeftward)
-            Player2.RenderTransform = new RotateTransform(180, Player2.Width / 2, Player2.Height / 2);
+            Assistant.RenderTransform = new RotateTransform(180, Assistant.Width / 2, Assistant.Height / 2);
         else if (Game.Me.IsMovingRightward)
-            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            Assistant.RenderTransform = new RotateTransform(0, Assistant.Width / 2, Assistant.Height / 2);
 
 
         base.GameLoop(sender, e);
+
 
         ImageBrush MyImage2 = new()
         {
             ImageSource = new BitmapImage(new Uri(pathtemplate + spritePaths2[currentSpriteIndex_2], UriKind.Relative))
         };
-        if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
+        if ((Game.Companion.IsMovingRightward && Game.Companion.Role == Role.Assistant) || (Game.Me.IsMovingRightward && Game.Me.Role == Role.Assistant))
         {
-            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
+            Assistant.RenderTransform = new RotateTransform(0, Assistant.Width / 2, Assistant.Height / 2);
             currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
         }
-        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
+        if ((Game.Companion.IsMovingLeftward && Game.Companion.Role == Role.Assistant) || (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Assistant))
         {
-            Player2.RenderTransform = new ScaleTransform(-1, 1);
+            Assistant.RenderTransform = new ScaleTransform(-1, 1);
             currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
         }
-        if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
+        if ((Game.Me.IsMovingUpward && Game.Me.Role == Role.Assistant) || (Game.Companion.IsMovingUpward && Game.Companion.Role == Role.Assistant))
             currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
-        if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
+        if ((Game.Me.IsMovingDownward && Game.Me.Role == Role.Assistant) || (Game.Companion.IsMovingDownward && Game.Companion.Role == Role.Assistant))
             currentSpriteIndex_2 = (currentSpriteIndex_2 + 1) % spritePaths2.Length;
-        Player2.Fill = MyImage2;
+        Assistant.Fill = MyImage2;
 
-        Canvas.SetLeft(Player2, Game.Me.X + Game.Me.SpeedX);
-        Canvas.SetTop(Player2, Game.Me.Y - Game.Me.SpeedY);
+        Canvas.SetLeft(Assistant, Game.Me.X + Game.Me.SpeedX);
+        Canvas.SetTop(Assistant, Game.Me.Y - Game.Me.SpeedY);
     }
 }

@@ -16,7 +16,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Name="Player1" Width="50" Height="50" Fill="Red" Canvas.Left="79" Canvas.Top="342" />
+        <Rectangle Name="Performer" Width="80" Height="100" Fill="Red" Canvas.Left="79" Canvas.Top="342" />
 
         <Rectangle Name="Book" Tag="book" ToolTip="Для взаимодействия нажмите кнопку F" Width="102" Height="88" Canvas.Left="597" Canvas.Top="78" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Rectangle.Fill>

@@ -27,15 +27,10 @@ public partial class PageLocation0
         Assistant.Visibility = Visibility.Visible;
         Floor.Height = SystemParameters.VirtualScreenHeight;
         Floor.Width = SystemParameters.VirtualScreenWidth;
-        if (Game.isGameDone == false)
+        if (IsTeleportActive)
         {
             TeleportToLocaltion1_ForPerformer.Fill = Game.redBrush;
             TeleportToLocaltion1_ForAssistant.Fill = Game.blueBrush;
-        }
-        else
-        {
-            TeleportToLocaltion1_ForPerformer.Fill = Game.defaultBrush;
-            TeleportToLocaltion1_ForAssistant.Fill = Game.defaultBrush;
         }
 
         mediaPlayer = new();
@@ -110,18 +105,6 @@ public partial class PageLocation0
     }
     #endregion
 
-    //void StopPlayerAnimation()
-    //{
-    //    if (gameTimer != null)
-    //    {
-    //        gameTimer.Stop();
-    //        gameTimer = null;
-    //        currentSpriteIndex = 0;
-    //        playerSprite.Source = new BitmapImage(new Uri("pacman.png", UriKind.Relative)); // Устанавливаем начальный спрайт
-    //    }
-    //}
-
-
     protected override void SetMovementPossibility()
     {
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
@@ -147,13 +130,11 @@ public partial class PageLocation0
                     IsTeleportActive = false;
                     NavigationService?.Navigate(TeleportTo(Location.Location1_1));
                     _toDisplay = false;
-                    return;
                 }
                 else
                 {
                     Performer.Visibility = Visibility.Collapsed;
                 }
-
             }
 
             if (obj.Name == "TeleportToLocaltion1_ForAssistant" && IsTeleportActive && AssistantHitBox.IntersectsWith(hitBox))
@@ -163,7 +144,6 @@ public partial class PageLocation0
                     IsTeleportActive = false;
                     NavigationService?.Navigate(TeleportTo(Location.Location1_2));
                     _toDisplay = false;
-                    return;
                 }
                 else
                 {
@@ -192,8 +172,12 @@ public partial class PageLocation0
             Game.Me.X = Game.Me.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
             Game.Me.Y = Game.Me.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
 
-            Game.Companion.X = Game.Companion.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
-            Game.Companion.Y = Game.Companion.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
+            if (Game.Companion.CurrentLocation == Location.Location0)
+            {
+                Game.Companion.X = Game.Companion.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
+                Game.Companion.Y = Game.Companion.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
+            }
+
         }
     }
 

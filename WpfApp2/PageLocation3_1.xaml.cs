@@ -41,6 +41,10 @@ public partial class PageLocation3_1
             second_part_code.Text = Game.second_part_code;
             third_part_code.Text = Game.third_part_code;
             fourth_part_code.Text = Game.fourth_part_code;
+            IsTeleportActive = true;
+
+            if (IsTeleportActive == true)
+                TeleportToLocaltion4_1.Fill = Game.redBrush;
             CanvasSetObjects();
             GameSetUp();
         }
@@ -48,8 +52,8 @@ public partial class PageLocation3_1
     protected override void CanvasSetObjects()
     {
         // Ставим игроков.
-        Canvas.SetLeft(Player1, Game.Me.X);
-        Canvas.SetTop(Player1, Game.Me.Y);
+        Canvas.SetLeft(Performer, Game.Me.X);
+        Canvas.SetTop(Performer, Game.Me.Y);
 
         // Переходы на карты.
         Canvas.SetTop(TeleportToLocaltion4_1, 0.5 * (SystemParameters.VirtualScreenHeight - TeleportToLocaltion4_1.Height));
@@ -130,7 +134,7 @@ public partial class PageLocation3_1
 
         Location3_1.Focus();
         base.GameSetUp();
-        Player1.Fill = MyImage;
+        Performer.Fill = MyImage;
     }
 
     protected override void SetMovementPossibility()
@@ -145,7 +149,7 @@ public partial class PageLocation3_1
 
         pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
 
-        foreach (var obj in Location3_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "easel" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "easel_area")))
+        foreach (var obj in Location3_1.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "papirus" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "papirus_area")))
         {
             Rect hitBox = new(Canvas.GetLeft(obj), Canvas.GetTop(obj), obj.Width, obj.Height);
 
@@ -153,13 +157,14 @@ public partial class PageLocation3_1
                     {
                         _toDisplay = false;
                         NavigationService?.Navigate(TeleportTo(Location.Location4_1));
+                        IsTeleportActive = false;
                     }
 
 
-            if ((string)obj.Tag == "easel_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
+            if ((string)obj.Tag == "papirus_area" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
                 NavigationService?.Navigate(new PageQuest3_1(Game.Me, Game.Companion));
             
-            if ((string)obj.Tag == "easel" && pacmanHitBox.IntersectsWith(hitBox))
+            if ((string)obj.Tag == "papirus" && pacmanHitBox.IntersectsWith(hitBox))
             {
                 Game.Me.X -= Game.Me.SpeedX;
                 Game.Me.Y += Game.Me.SpeedY;
@@ -177,9 +182,9 @@ public partial class PageLocation3_1
         SetMovementPossibility();
 
         if (Game.Me.IsMovingLeftward)
-            Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(180, Performer.Width / 2, Performer.Height / 2);
         else if (Game.Me.IsMovingRightward)
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
 
         base.GameLoop(sender, e);
 
@@ -189,22 +194,22 @@ public partial class PageLocation3_1
         };
         if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
         {
-            Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+            Performer.RenderTransform = new RotateTransform(0, Performer.Width / 2, Performer.Height / 2);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
         if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
         {
-            Player1.RenderTransform = new ScaleTransform(-1, 1);
+            Performer.RenderTransform = new ScaleTransform(-1, 1);
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         }
         if (Game.Me.IsMovingUpward && Game.Me.Role == Role.Performer)
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
         if (Game.Me.IsMovingDownward && Game.Me.Role == Role.Performer)
             currentSpriteIndex_1 = (currentSpriteIndex_1 + 1) % spritePaths1.Length;
-        Player1.Fill = MyImage1;
+        Performer.Fill = MyImage1;
 
-        Canvas.SetLeft(Player1, Game.Me.X + Game.Me.SpeedX);
-        Canvas.SetTop(Player1, Game.Me.Y - Game.Me.SpeedY);
+        Canvas.SetLeft(Performer, Game.Me.X + Game.Me.SpeedX);
+        Canvas.SetTop(Performer, Game.Me.Y - Game.Me.SpeedY);
     }
 }
 

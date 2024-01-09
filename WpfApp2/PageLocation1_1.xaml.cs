@@ -39,7 +39,8 @@ public partial class PageLocation1_1 : Room
         second_part_code.Text = Game.second_part_code;
         third_part_code.Text = Game.third_part_code;
         fourth_part_code.Text = Game.fourth_part_code;
-
+        if (IsTeleportActive == true)
+            TeleportToLocaltion2_1.Fill = Game.redBrush;
         CanvasSetObjects();
         GameSetUp();
     }
@@ -161,6 +162,7 @@ public partial class PageLocation1_1 : Room
             {
                 _toDisplay = false;
                 NavigationService?.Navigate(TeleportTo(Location.Location2_1));
+                IsTeleportActive = false;
             }
 
             if ((string)obj.Name == "AreaEasel1" && pacmanHitBox.IntersectsWith(hitBox) && _isForceButtonClicked)
