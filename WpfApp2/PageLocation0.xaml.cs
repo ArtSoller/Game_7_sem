@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace WpfApp2;
 
@@ -72,12 +73,12 @@ public partial class PageLocation0 : Room
         if (Game.Me is null) throw new ArgumentException("Game.Me is null");
         if (Game.Companion is null) throw new ArgumentException("Game.Companion is null");
 
-        _isPossibleUpwardMovement = Canvas.GetTop(Player1) > wallTop.Height;
-        _isPossibleLeftwardMovement = Canvas.GetLeft(Player1) > wallLeft.Width;
-        _isPossibleRightwardMovement = Canvas.GetLeft(Player1) + Player1.Width < SystemParameters.VirtualScreenWidth - wallRight.Width;
-        _isPossibleDownwardMovement = Canvas.GetTop(Player1) + Player1.Height < SystemParameters.VirtualScreenHeight - wallBottom.Height;
-
-        pacmanHitBox = new Rect(Canvas.GetLeft(Player1), Canvas.GetTop(Player1), Player1.Width, Player1.Height);
+        Game.Me._isPossibleUpwardMovement = Game.Me.Y > wallTop.Height;
+        Game.Me._isPossibleLeftwardMovement = Game.Me.X > wallLeft.Width;
+        Game.Me._isPossibleRightwardMovement = Game.Me.X + 50 < SystemParameters.VirtualScreenWidth - wallRight.Width;
+        Game.Me._isPossibleDownwardMovement = Game.Me.Y + 50 < SystemParameters.VirtualScreenHeight - wallBottom.Height;
+               
+        pacmanHitBox = new Rect(Game.Me.X, Game.Me.Y, 50, 50);
 
         foreach (var obj in Location0.Children.OfType<Rectangle>().Where(_obj => ((string)_obj.Tag == "chest" || (string)_obj.Tag == "teleport" || (string)_obj.Tag == "chestArea")))
         {
@@ -115,10 +116,14 @@ public partial class PageLocation0 : Room
 
         SetMovementPossibility();
 
-        if (Game.Me.IsMovingLeftward)
+        if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Performer)
             Player1.RenderTransform = new RotateTransform(180, Player1.Width / 2, Player1.Height / 2);
-        else if (Game.Me.IsMovingRightward)
+        else if (Game.Me.IsMovingLeftward && Game.Me.Role == Role.Assistant)
+            Player2.RenderTransform = new RotateTransform(180, Player2.Width / 2, Player2.Height / 2);
+        else if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Performer)
             Player1.RenderTransform = new RotateTransform(0, Player1.Width / 2, Player1.Height / 2);
+        else if (Game.Me.IsMovingRightward && Game.Me.Role == Role.Assistant)
+            Player2.RenderTransform = new RotateTransform(0, Player2.Width / 2, Player2.Height / 2);
 
         base.GameLoop(sender, e);
 
@@ -127,6 +132,15 @@ public partial class PageLocation0 : Room
 
         Canvas.SetLeft(Player2, Game.Me.Role == Role.Assistant ? Game.Me.X : Game.Companion.X);
         Canvas.SetTop(Player2, Game.Me.Role == Role.Assistant ? Game.Me.Y : Game.Companion.Y);
+
+        //if (Game.Me.Role == Role.Performer)
+        //{
+        //    Canvas.SetLeft(Player1, Game.Me.X);
+        //}
+        //if (Game.Me.Role == Role.Assistant)
+        //{
+        //    Canvas.SetLeft(Player2, Game.Me.X);
+        //}
 
         Tb1.Text = Game.Me.Role.ToString();
         Tb3.Text = Game.Me.X.ToString();

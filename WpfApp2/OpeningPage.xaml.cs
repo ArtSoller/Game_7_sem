@@ -78,6 +78,7 @@ public partial class OpeningPage
     private void StartGame(object sender, RoutedEventArgs e)
     {
         Connection.ReceiveRole();
+        Connection.ReceiveRole();
         Task.Run(Connection.ReceiveCoordinates);
         NavigationService.Navigate(new PageLocation0(Game.Me, Game.Companion));
     }

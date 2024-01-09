@@ -28,8 +28,9 @@ public class GreeterService : Greeter.GreeterBase
                 StreamWriter = responseStream,
                 UserName = clientMessage.Name
             });
-                        
-            await SendBroadcastMessageAsync($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y}");            
+
+            //Console.WriteLine($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y}");
+            await SendBroadcastMessageAsync($"{clientMessage.Name} {clientMessage.X} {clientMessage.Y} {clientMessage.CompanionsName}");      
         }
     }
 
@@ -39,7 +40,8 @@ public class GreeterService : Greeter.GreeterBase
         {
             Name = messageBody.Split()[0],
             X = Convert.ToDouble(messageBody.Split()[1]),
-            Y = Convert.ToDouble(messageBody.Split()[2]),            
+            Y = Convert.ToDouble(messageBody.Split()[2]),
+            CompanionsName = messageBody.Split()[3]
         };
 
         var tasks = new List<Task>() { };
@@ -52,7 +54,7 @@ public class GreeterService : Greeter.GreeterBase
         await Task.WhenAll(tasks);
     }
 
-    private static void SendRoleMessageAsync()
+    private static async void SendRoleMessageAsync()
     {
         var assistantFree = true;
         foreach (KeyValuePair<string, IServerStreamWriter<Content>> client in clients)
@@ -66,6 +68,7 @@ public class GreeterService : Greeter.GreeterBase
                                 
                 client.Value.WriteAsync(message);
                 assistantFree = false;
+                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key}");
             }
             else
             {
@@ -74,8 +77,9 @@ public class GreeterService : Greeter.GreeterBase
                     Role = assistantFree
                 };
 
-                client.Value.WriteAsync(message);                
-            }           
+                client.Value.WriteAsync(message);
+                await SendBroadcastMessageAsync($"{client.Key} {0.0} {0.0} {client.Key}");
+            }
         }
     }
 

@@ -13,4 +13,5 @@ message Content {
 	bool Role = 2;
 	double X = 3;
 	double Y = 4;
+	string CompanionsName = 5;
 }

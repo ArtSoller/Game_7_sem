@@ -160,17 +160,17 @@ public abstract class Room : Page
         if (!_toDisplay)
             return;
 
-        if (_isUpKeyPressed && _isPossibleUpwardMovement) Game.Me.SpeedY += _speed;
-        else if (!_isPossibleUpwardMovement && Game.Me.IsMovingUpward) Game.Me.SpeedY = 0;
+        if (_isUpKeyPressed && Game.Me._isPossibleUpwardMovement) Game.Me.SpeedY += _speed;
+        else if (!Game.Me._isPossibleUpwardMovement && Game.Me.IsMovingUpward) Game.Me.SpeedY = 0;
 
-        if (_isLeftKeyPressed && _isPossibleLeftwardMovement) Game.Me.SpeedX -= _speed;
-        else if (!_isPossibleLeftwardMovement && Game.Me.IsMovingLeftward) Game.Me.SpeedX = 0;
+        if (_isLeftKeyPressed && Game.Me._isPossibleLeftwardMovement) Game.Me.SpeedX -= _speed;
+        else if (!Game.Me._isPossibleLeftwardMovement && Game.Me.IsMovingLeftward) Game.Me.SpeedX = 0;
 
-        if (_isRightKeyPressed && _isPossibleRightwardMovement) Game.Me.SpeedX += _speed;
-        else if (!_isPossibleRightwardMovement && Game.Me.IsMovingRightward) Game.Me.SpeedX = 0;
+        if (_isRightKeyPressed && Game.Me._isPossibleRightwardMovement) Game.Me.SpeedX += _speed;
+        else if (!Game.Me._isPossibleRightwardMovement && Game.Me.IsMovingRightward) Game.Me.SpeedX = 0;
 
-        if (_isDownKeyPressed && _isPossibleDownwardMovement) Game.Me.SpeedY -= _speed;
-        else if (!_isPossibleDownwardMovement && Game.Me.IsMovingDownward) Game.Me.SpeedY = 0;
+        if (_isDownKeyPressed && Game.Me._isPossibleDownwardMovement) Game.Me.SpeedY -= _speed;
+        else if (!Game.Me._isPossibleDownwardMovement && Game.Me.IsMovingDownward) Game.Me.SpeedY = 0;
 
         Game.Me.SpeedX *= _friction;
         Game.Me.SpeedY *= _friction;

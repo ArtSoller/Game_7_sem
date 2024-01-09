@@ -61,16 +61,12 @@ public static class Game
     public static void Init()
     {                              
         Me = new Player() 
-        { 
-            X = 0.05 * SystemParameters.VirtualScreenWidth, 
-            Y = 0.33 * SystemParameters.VirtualScreenHeight, 
+        {   
             CurrentLocation = Location.Location0
         };
         
         Companion = new Player() 
         {
-            X = 0.05 * SystemParameters.VirtualScreenWidth,
-            Y = 0.66 * SystemParameters.VirtualScreenHeight,
             CurrentLocation = Location.Location0
         };
     }

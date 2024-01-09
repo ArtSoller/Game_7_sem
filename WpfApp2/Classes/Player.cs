@@ -50,7 +50,8 @@ public class Player
 
     private readonly string _ip;
 
-    public string IP { get => _ip; }
+    public bool _isPossibleUpwardMovement = false, _isPossibleLeftwardMovement = false, _isPossibleRightwardMovement = false, _isPossibleDownwardMovement = false;
+
 
     public Player()
     {
