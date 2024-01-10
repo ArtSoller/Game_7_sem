@@ -97,7 +97,7 @@ public partial class OpeningPage
             _brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 0));
             ButtStart.Foreground = _brush;
             ButtStart.IsEnabled = true;
-            CompanionNameTextBox.Text = Game.Companion.Name;
+            CompanionNameTextBox.Text = "подключено";
         }
     }
 
@@ -119,5 +119,10 @@ public partial class OpeningPage
     private void QuitGame(object sender, RoutedEventArgs e)
     {
         Application.Current.Shutdown();
+    }
+
+    private void IPEnterBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+
     }
 }

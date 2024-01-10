@@ -31,11 +31,11 @@
             </Rectangle>
 
 
-            <TextBox Name="TextBoxInfoIP" Canvas.Left="830" TextWrapping="Wrap" Text="TextBox" Canvas.Top="613" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox Name="TextBoxInfoIP" Canvas.Left="830" TextWrapping="Wrap" Text="TextBox" Visibility="Hidden" Canvas.Top="613" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
             <TextBox x:Name="MyNameTextBox" Canvas.Left="166" TextWrapping="Wrap" Text="Введите имя" Canvas.Top="247" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="CompanionNameTextBox" Canvas.Left="166" TextWrapping="Wrap" Text="Имя игрока" Canvas.Top="317" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <TextBox x:Name="IPEnterBox" Canvas.Left="396" TextWrapping="Wrap" Canvas.Top="247" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="CompanionNameTextBox" Canvas.Left="166" TextWrapping="Wrap" Text="Не подключен" IsReadOnly="true" Background="Transparent" BorderBrush="Transparent" Canvas.Top="317" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="IPEnterBox" Canvas.Left="396" TextWrapping="Wrap" Text="Введите адрес" Canvas.Top="247" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" TextChanged="IPEnterBox_TextChanged"/>
         </Canvas>
     </Grid>
 </Page>

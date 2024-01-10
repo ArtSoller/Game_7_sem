@@ -96,9 +96,9 @@ public partial class SunduckInteraction
         var inputValue3 = txtInput3.Text; // Получаем значение из текстового поля
 
 
-        if (inputValue1 == Game.QuestKeyString[0].ToString() && inputValue2 == Game.QuestKeyString[1].ToString() && inputValue3 == Game.QuestKeyString[2].ToString())
+        if (inputValue1 == Game.QuestKeyString[1].ToString() && inputValue2 == Game.QuestKeyString[0].ToString() && inputValue3 == Game.QuestKeyString[2].ToString())
         {
-            mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/CameWon.mp3")));
+            mediaPlayer.Open(new Uri(System.IO.Path.GetFullPath("../../../snd/GameWon.mp3")));
             mediaPlayer.Play();
             Enter.Visibility = Visibility.Collapsed;
             GameOver("Won");

@@ -38,14 +38,14 @@ public static class Game
     private static Random random = new();
 
     // Генерируем случайные цифры
-    //private static int digit1 = random.Next(0, 10);
-    //private static int digit2 = random.Next(0, 10);
-    //private static int digit3 = random.Next(0, 10);
+    private static int digit1 = random.Next(0, 10);
+    private static int digit2 = random.Next(0, 10);
+    private static int digit3 = random.Next(0, 10);
     //private static int digit4 = random.Next(0, 10);
 
-    private static readonly int digit1 = 1;
-    private static readonly int digit2 = 2;
-    private static readonly int digit3 = 3;
+    //private static readonly int digit1 = 1;
+    //private static readonly int digit2 = 2;
+    //private static readonly int digit3 = 3;
 
     // Собираем строку из сгенерированных цифр
 

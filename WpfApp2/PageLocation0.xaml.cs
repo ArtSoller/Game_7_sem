@@ -166,15 +166,15 @@ public partial class PageLocation0
                 AssistantHitBox.Y += 1.1 * (Game.Me.Role == Role.Assistant ? Game.Me.SpeedY : Game.Companion.SpeedY);
             }
 
-            Game.Me.X = Game.Me.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
-            Game.Me.Y = Game.Me.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
-
-            if (Game.Companion.CurrentLocation == Location.Location0)
+            if (Game.Me.CurrentLocation == Location.Location0)
             {
-                Game.Companion.X = Game.Companion.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
-                Game.Companion.Y = Game.Companion.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
-            }
+                Game.Me.X = Game.Me.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
+                Game.Me.Y = Game.Me.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
 
+            }
+            
+            Game.Companion.X = Game.Companion.Role == Role.Performer ? PerformerHitBox.X : AssistantHitBox.X;
+            Game.Companion.Y = Game.Companion.Role == Role.Performer ? PerformerHitBox.Y : AssistantHitBox.Y;
         }
     }
 

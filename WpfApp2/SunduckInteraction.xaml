@@ -18,8 +18,8 @@
         <Button x:Name="Enter" Click="Enter_Click" Content="Ввод" Height="60" Canvas.Left="593" Canvas.Top="450" Width="116"/>
         <Button x:Name="Reset" Style="{StaticResource ResetButtonStyle}" Click="Reset_Click" Content="Сброс" Canvas.Left="478" Canvas.Top="431" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBlock Name="txtScore" Foreground="LightYellow" FontFamily="Segoe Print" FontSize="20" Canvas.Top="130" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="141"/>
-        <TextBox Name="txtInput1" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="391" Canvas.Top="164" Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox Name="txtInput2" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="439" Canvas.Top="164" Background="Aqua" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="txtInput1" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="391" Canvas.Top="164" Background="Aqua" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="txtInput2" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="439" Canvas.Top="164" Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox Name="txtInput3" FontSize="28" Width="48" Height="64" MaxLength="1" Canvas.Left="487" Canvas.Top="164" Background="LightGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox Name="count" Canvas.Left="205" FontFamily="Segoe Print" FontSize="24"  Canvas.Top="237" Background="Transparent" BorderBrush="Transparent">Количество попыток:</TextBox>
         <TextBox Name="txtInput5" FontSize="28" Width="48" Background="Transparent" BorderBrush="Transparent" Height="64" Canvas.Left="140" Canvas.Top="205"/>

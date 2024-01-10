@@ -37,7 +37,7 @@ public partial class App : Application
         {
             FileName = Path.GetFullPath("../../../snd/Music1.mp3")
         };
-        //mediaPlayer.MediaOpened += RunMusic;
+        mediaPlayer.MediaOpened += RunMusic;
         mediaPlayer.MediaFailed += FailedMusic;
         mediaPlayer.Open(new Uri(_openFileDialog.FileName));
     }
